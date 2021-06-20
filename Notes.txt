@@ -3,4 +3,3 @@ Technologies to use:
 typescript - React.js - Next.js - sass
 Node.js - express.js - Firebase(nosql db)
 
-I just added this 11:59
