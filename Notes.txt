@@ -1,4 +1,4 @@
 Technologies to use:
 
 typescript - React.js - Next.js - sass
-Node.js - express.js - Firebase(nosql db)
+Node.js  - express.js - Firebase(nosql db)
