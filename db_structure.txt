@@ -6,6 +6,7 @@ landlord = {
     offers_list:[],
     offers_count: '',
     verified:'bool',
+    trusted: 'bool'
 }
 
 tenant = {
@@ -37,6 +38,6 @@ offer = {
         tv: 'bool',
         dishwasher: 'bool',
     }
-    summery: '',
-
+    summary: '',
+    
 }
