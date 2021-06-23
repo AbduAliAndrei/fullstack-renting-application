@@ -1,6 +1,5 @@
 .Nav {
   position: relative;
-  background-color: #5b5f97;
   width: 100vw;
   text-align: center;
   height: 60px;
@@ -24,7 +23,14 @@
 .Nav .logo {
   position: absolute;
   left: 0;
+  cursor: pointer;
   margin-left: 40px;
+}
+
+.Nav .logo a {
+  color: #191515;
+  font-size: 40px;
+  text-decoration: none;
 }
 
 .Nav .menu {
@@ -83,25 +89,51 @@
   content: "";
   height: 5px;
   width: 100%;
-  background-color: red;
+  background-color: #5b5f97;
   left: 0;
-  bottom: -17px;
+  bottom: -19px;
   border-radius: 50px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-animation: showUnderLine 0.3s linear;
+          animation: showUnderLine 0.3s linear;
 }
 
-.Nav .login_signUp {
+@-webkit-keyframes showUnderLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes showUnderLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.Nav .login_signin {
   position: absolute;
   right: 0;
   margin-right: 40px;
 }
 
-.Nav .login_signUp .login p {
-  color: #ffc145;
+.Nav .login_signin .login p {
+  color: #5b5f97;
 }
 
-.Nav .login_signUp .signup p {
-  font-size: 12px;
+.Nav .login_signin .signin p {
+  font-size: 15px;
   color: #a7a7a7;
+}
+
+.Nav .login_signin .signin a {
+  color: #191515;
 }
 
 .Header {
@@ -154,10 +186,23 @@
 }
 
 .RecentOffers {
-  min-height: 70vh;
+  min-height: 100vh;
   width: 100vw;
-  background-color: #c26161;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .RecentOffers .title {
@@ -165,7 +210,7 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 50px auto;
+  margin: 50px 0;
 }
 
 .RecentOffers .offers {
@@ -190,17 +235,39 @@
 }
 
 .RecentOffers .offers .offer {
-  width: 300px;
   height: 350px;
-  background-color: red;
+  width: 300px;
+  background-color: #fffffb;
   border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+}
+
+.RecentOffers .offers .offer:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .ForLandlords {
-  min-height: 70vh;
+  min-height: 100vh;
   width: 100vw;
-  background-color: #ffdbdb;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .ForLandlords .title {
@@ -208,7 +275,7 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 50px auto;
+  margin: 50px 0;
 }
 
 .ForLandlords .offers {
@@ -233,18 +300,26 @@
 }
 
 .ForLandlords .offers .offer {
-  width: 300px;
   height: 350px;
-  background-color: red;
+  width: 300px;
+  background-color: #fffffb;
   border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+}
+
+.ForLandlords .offers .offer:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .Footer {
-  position: absolute;
   width: 100vw;
   height: 50vh;
-  background-color: red;
-  bottom: 0;
+  background-color: #5b5f97;
+  margin-top: auto;
 }
 
 * {
@@ -265,5 +340,9 @@ html {
   scroll-behavior: smooth;
   background-color: #fffffb;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.children {
+  min-height: 100vh;
 }
 /*# sourceMappingURL=App.css.map */
