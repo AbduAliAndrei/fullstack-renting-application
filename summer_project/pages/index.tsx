@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/App.css'
+import Home from './Home'
 
-export default function Home() {
-  return (
-    <div><p>Hey there</p></div>
-  )
+export default function Index() {
+    return (
+        <div>
+            <Home />
+        </div>
+    )
 }

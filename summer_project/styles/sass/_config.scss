@@ -1,0 +1,33 @@
+// Colors
+
+$main-color1: #ffc145;
+$main-color2: #5b5f97;
+$main-color3: #fffffb;
+$main-black: hsl(0, 7%, 9%);
+
+// fonts
+
+// mixins
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin btn($bc-color) {
+  background-color: $bc-color;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  color: $main-color3;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+  &:hover {
+    transition: 0.5s;
+    transform: scale(1.15);
+  }
+}

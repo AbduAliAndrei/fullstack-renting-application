@@ -1,0 +1,67 @@
+// @import "./config";
+
+.Nav {
+  position: relative;
+  background-color: $main-color2;
+  width: 100vw;
+  text-align: center;
+  height: 60px;
+  @include flex(row);
+  // justify-content: space-between;
+
+  .logo {
+    position: absolute;
+    left: 0;
+    margin-left: 40px;
+  }
+  .menu {
+    min-width: 150px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    nav {
+      min-width: 100%;
+      ul {
+        @include flex(row);
+        justify-content: space-between;
+        li {
+          position: relative;
+          text-align: center;
+          cursor: pointer;
+
+          a {
+            text-decoration: none;
+            color: $main-black;
+            font-size: 20px;
+          }
+        }
+        li.active::after {
+          position: absolute;
+          content: "";
+          height: 5px;
+          width: 100%;
+          background-color: red;
+          left: 0;
+          bottom: -17px;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+  .login_signUp {
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+    .login {
+      p {
+        color: $main-color1;
+      }
+    }
+    .signup {
+      p {
+        font-size: 12px;
+        color: rgb(167, 167, 167);
+      }
+    }
+  }
+}

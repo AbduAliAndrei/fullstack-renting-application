@@ -1,1 +1,251 @@
-/* No CSS *//*# sourceMappingURL=App.css.map */
+.Nav {
+  position: relative;
+  background-color: #5b5f97;
+  width: 100vw;
+  text-align: center;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Nav .logo {
+  position: absolute;
+  left: 0;
+  margin-left: 40px;
+}
+
+.Nav .menu {
+  min-width: 150px;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.Nav .menu nav {
+  min-width: 100%;
+}
+
+.Nav .menu nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Nav .menu nav ul li {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Nav .menu nav ul li a {
+  text-decoration: none;
+  color: #191515;
+  font-size: 20px;
+}
+
+.Nav .menu nav ul li.active::after {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  left: 0;
+  bottom: -17px;
+  border-radius: 50px;
+}
+
+.Nav .login_signUp {
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
+}
+
+.Nav .login_signUp .login p {
+  color: #ffc145;
+}
+
+.Nav .login_signUp .signup p {
+  font-size: 12px;
+  color: #a7a7a7;
+}
+
+.Header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: #ffc6c6;
+  width: 100vw;
+  height: 80vh;
+}
+
+.Header .title {
+  width: 50%;
+  text-align: center;
+}
+
+.Header .available-offers button {
+  background-color: #5b5f97;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.Header .available-offers button:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+.RecentOffers {
+  min-height: 70vh;
+  width: 100vw;
+  background-color: #c26161;
+  text-align: center;
+}
+
+.RecentOffers .title {
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 50px auto;
+}
+
+.RecentOffers .offers {
+  width: 100%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+.RecentOffers .offers .offer {
+  width: 300px;
+  height: 350px;
+  background-color: red;
+  border-radius: 20px;
+}
+
+.ForLandlords {
+  min-height: 70vh;
+  width: 100vw;
+  background-color: #ffdbdb;
+  text-align: center;
+}
+
+.ForLandlords .title {
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 50px auto;
+}
+
+.ForLandlords .offers {
+  width: 100%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ForLandlords .offers .offer {
+  width: 300px;
+  height: 350px;
+  background-color: red;
+  border-radius: 20px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Gotham Rounded, sans-serif;
+  font-weight: normal;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  position: relative;
+  overflow-x: hidden;
+  height: 100vh;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  background-color: #fffffb;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+/*# sourceMappingURL=App.css.map */

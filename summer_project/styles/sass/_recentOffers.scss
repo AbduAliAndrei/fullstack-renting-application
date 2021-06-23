@@ -1,0 +1,25 @@
+.RecentOffers {
+  min-height: 70vh;
+  width: 100vw;
+  background-color: rgb(194, 97, 97);
+  text-align: center;
+  //   padding: 20px;
+  .title {
+    display: inline-block;
+    width: fit-content;
+    margin: 50px auto;
+  }
+  .offers {
+    width: 100%;
+    height: 80%;
+    @include flex(row);
+    gap: 20px;
+
+    .offer {
+      width: 300px;
+      height: 350px;
+      background-color: red;
+      border-radius: 20px;
+    }
+  }
+}
