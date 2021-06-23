@@ -72,6 +72,12 @@
   font-size: 20px;
 }
 
+.Nav .menu nav ul li a:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 60%;
+}
+
 .Nav .menu nav ul li.active::after {
   position: absolute;
   content: "";
@@ -140,6 +146,11 @@
   transition: 0.5s;
   -webkit-transform: scale(1.15);
           transform: scale(1.15);
+}
+
+.Header .available-offers button a {
+  color: #fffffb;
+  text-decoration: none;
 }
 
 .RecentOffers {
@@ -228,6 +239,14 @@
   border-radius: 20px;
 }
 
+.Footer {
+  position: absolute;
+  width: 100vw;
+  height: 50vh;
+  background-color: red;
+  bottom: 0;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -242,7 +261,6 @@ body,
 html {
   position: relative;
   overflow-x: hidden;
-  height: 100vh;
   min-height: 100vh;
   scroll-behavior: smooth;
   background-color: #fffffb;
