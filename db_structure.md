@@ -7,6 +7,7 @@
     offers_list:[],
     offers_count: '',
     verified:'bool',
+    trusted: 'bool'
 }
 
 ```
@@ -43,7 +44,7 @@ offer = {
         tv: 'bool',
         dishwasher: 'bool',
     }
-    summery: '',
-
+    summary: '',
+    
 }
 ```
