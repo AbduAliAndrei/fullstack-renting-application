@@ -1,1 +1,1 @@
-# Summer_Project
+# Renting Apartments Application
