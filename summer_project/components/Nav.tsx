@@ -4,9 +4,14 @@ import styles from '../styles/sass/_nav.scss'
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/dist/client/router'
 
+// import your icons
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Nav({ children, href, ...props }: NavLinkProps) {
   const router = useRouter()
+
+
   return (
     <div className="Nav">
       <div className="logo">
@@ -22,7 +27,8 @@ export default function Nav({ children, href, ...props }: NavLinkProps) {
       </div >
       <div className="login_signin">
         <div className="login">
-          <p>Login</p>
+          <FontAwesomeIcon icon={faSignInAlt} />
+          <span>Login</span>
         </div>
         <div className="signin">
           <p>Don't have account? <Link href="/"><a>Sign In</a></Link></p>
