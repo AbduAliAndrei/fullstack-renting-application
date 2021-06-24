@@ -2,7 +2,6 @@
 
 .Nav {
   position: relative;
-  background-color: $main-color2;
   width: 100vw;
   text-align: center;
   height: 60px;
@@ -12,7 +11,13 @@
   .logo {
     position: absolute;
     left: 0;
+    cursor: pointer;
     margin-left: 40px;
+    a {
+      color: $main-black;
+      font-size: 40px;
+      text-decoration: none;
+    }
   }
   .menu {
     min-width: 150px;
@@ -44,27 +49,41 @@
           content: "";
           height: 5px;
           width: 100%;
-          background-color: red;
+          background-color: $main-color2;
           left: 0;
-          bottom: -17px;
+          bottom: -19px;
           border-radius: 50px;
+          transition: 1s;
+          animation: showUnderLine 0.3s linear;
+        }
+
+        @keyframes showUnderLine {
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
         }
       }
     }
   }
-  .login_signUp {
+  .login_signin {
     position: absolute;
     right: 0;
     margin-right: 40px;
     .login {
       p {
-        color: $main-color1;
+        color: $main-color2;
       }
     }
-    .signup {
+    .signin {
       p {
-        font-size: 12px;
+        font-size: 15px;
         color: rgb(167, 167, 167);
+      }
+      a {
+        color: $main-black;
       }
     }
   }

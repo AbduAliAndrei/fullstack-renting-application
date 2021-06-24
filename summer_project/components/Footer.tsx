@@ -7,5 +7,4 @@ export default function Footer() {
             <p>Footer</p>
         </div>
     )
-
 }
