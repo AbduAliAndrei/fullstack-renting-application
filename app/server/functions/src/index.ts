@@ -4,11 +4,12 @@ import admin from "firebase-admin";
 import serviceAccount from "./service-account.json";
 import {ServiceAccount} from "firebase-admin/lib/credential";
 
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as ServiceAccount),
 });
 
-const db = admin.firestore();
+const db: FirebaseFirestore.Firestore = admin.firestore();
 
 export default db;
 // // Start writing Firebase Functions
