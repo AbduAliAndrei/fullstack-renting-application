@@ -33,6 +33,7 @@ offer = {
     depositRequired:'bool'
     deposit_months: '',
     available_from: '',
+    allIncluded:'bool',
     smokingAllowed :'bool',
     petsAllowed:'bool',
     facilities: {
