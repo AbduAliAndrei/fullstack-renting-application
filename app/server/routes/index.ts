@@ -4,7 +4,7 @@ const router = express.Router();
 
 function routes(app: Express) {
     router.get("/", (req, res) => {
-        res.end("We made it! And it's great");
+        res.json({});
     });
 
     return router;

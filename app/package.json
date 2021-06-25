@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cuid": "^2.1.8",
     "express": "^4.17.1",
     "firebase": "^8.6.8",
     "firebase-admin": "^9.9.0",
