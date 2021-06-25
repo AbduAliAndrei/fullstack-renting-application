@@ -11,12 +11,13 @@ on:
 
 jobs:
   test_pull_request:
-    runs-on: ubuntu-latest
+    name: pull request checker
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-            node-version: 12
+           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm test
       - run: npm run build
