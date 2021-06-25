@@ -123,8 +123,13 @@
   margin-right: 40px;
 }
 
-.Nav .login_signin .login p {
+.Nav .login_signin .login {
+  cursor: pointer;
+}
+
+.Nav .login_signin .login span {
   color: #5b5f97;
+  margin: 0 0 0 10px;
 }
 
 .Nav .login_signin .signin p {
@@ -152,42 +157,28 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: #ffc6c6;
   width: 100vw;
-  height: 80vh;
+  height: calc(100vh - 60px);
 }
 
-.Header .title {
-  width: 50%;
-  text-align: center;
+.Header .image-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.Header .available-offers button {
-  background-color: #5b5f97;
-  border: none;
-  outline: none;
-  padding: 10px 20px;
-  color: #fffffb;
-  border-radius: 50px;
-  margin: 20px 0;
-  cursor: pointer;
+.Header .image-slider .img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  -webkit-transition: opacity 0.75s ease-in-out;
+  transition: opacity 0.75s ease-in-out;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.Header .available-offers button:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
-}
-
-.Header .available-offers button a {
-  color: #fffffb;
-  text-decoration: none;
-}
-
-.RecentOffers {
-  min-height: 100vh;
-  width: 100vw;
+.Header .try {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,6 +194,47 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: absolute;
+}
+
+.Header .try .title {
+  width: 90%;
+  text-align: center;
+}
+
+.Header .try .title h1 {
+  font-size: 3rem;
+  color: #fffffb;
+}
+
+.Header .try .available-offers button {
+  background-color: #5b5f97;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.Header .try .available-offers button:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+.Header .try .available-offers button a {
+  color: #fffffb;
+  text-decoration: none;
+}
+
+.RecentOffers {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  text-align: center;
 }
 
 .RecentOffers .title {
@@ -210,11 +242,12 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 50px 0;
+  margin: 70px 0 90px 0;
 }
 
 .RecentOffers .offers {
   width: 100%;
+  z-index: 9;
   height: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -236,7 +269,7 @@
 
 .RecentOffers .offers .offer {
   height: 350px;
-  width: 300px;
+  min-width: 300px;
   background-color: #fffffb;
   border-radius: 20px;
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
@@ -250,9 +283,14 @@
           transform: scale(1.03);
 }
 
+@media screen and (max-width: 640px) {
+  .RecentOffers .offers .offer {
+    min-width: 40px;
+    height: 250px;
+  }
+}
+
 .ForLandlords {
-  min-height: 100vh;
-  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -268,19 +306,19 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-height: 80vh;
+  width: 100vw;
+  margin-bottom: 100px;
 }
 
 .ForLandlords .title {
-  display: inline-block;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 50px 0;
 }
 
-.ForLandlords .offers {
-  width: 100%;
-  height: 80%;
+.ForLandlords .services {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -296,30 +334,84 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 20px;
+  width: 100%;
+  gap: 70px;
 }
 
-.ForLandlords .offers .offer {
-  height: 350px;
+.ForLandlords .services .service {
   width: 300px;
-  background-color: #fffffb;
-  border-radius: 20px;
-  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
-  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
 }
 
-.ForLandlords .offers .offer:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
+.ForLandlords .services .service .service-img img {
+  width: 100%;
+}
+
+.ForLandlords .services .service .service-title {
+  margin: 5px 0;
 }
 
 .Footer {
   width: 100vw;
   height: 50vh;
   background-color: #5b5f97;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: auto;
+}
+
+.Offers {
+  position: relative;
+  min-height: 400vh;
+}
+
+.Offers .offers-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  row-gap: 20px;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.Offers .filter-tool {
+  width: 70%;
+  height: 100px;
+  background-color: #5b5f97;
+  margin: 50px auto;
+}
+
+@media screen and (max-width: 1648px) {
+  .Offers .offers-container {
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Offers .offers-container {
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    -ms-grid-columns: (minmax(40%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  }
 }
 
 * {
@@ -344,5 +436,28 @@ html {
 
 .children {
   min-height: 100vh;
+}
+
+.Card {
+  height: 350px;
+  min-width: 300px;
+  background-color: #fffffb;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+}
+
+.Card:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+@media screen and (max-width: 640px) {
+  .Card {
+    min-width: 40px;
+    height: 250px;
+  }
 }
 /*# sourceMappingURL=App.css.map */
