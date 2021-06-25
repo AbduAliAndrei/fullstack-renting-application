@@ -29,21 +29,10 @@ export default function Header() {
         <div className="Header">
             <div ref={test} className="image-slider">
                 <div className="img">
-                    <Image
-                        src={image}
-                        alt="Budapest"
-                        layout='fill'
-                        objectFit='cover'
-                    ></Image>
+                    <Image src={image} alt="Budapest" layout='fill' objectFit="cover" />
                 </div>
                 <div className="img">
-                    <Image
-                        src={image2}
-                        alt="Budapest"
-                        layout='fill'
-                        objectFit='cover'
-
-                    ></Image>
+                    <Image src={image2} alt="Budapest" layout='fill' objectFit="cover" />
                 </div>
             </div>
             <div className="try">
