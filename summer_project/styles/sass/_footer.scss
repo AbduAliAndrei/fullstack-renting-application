@@ -2,5 +2,6 @@
   width: 100vw;
   height: 50vh;
   background-color: $main-color2;
+  @include flex(column);
   margin-top: auto;
 }

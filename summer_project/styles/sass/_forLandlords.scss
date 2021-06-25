@@ -1,20 +1,33 @@
 .ForLandlords {
-  min-height: 100vh;
-  width: 100vw;
   @include flex(column);
+  min-height: 80vh;
+  width: 100vw;
+  margin-bottom: 100px;
+
   .title {
-    display: inline-block;
     width: fit-content;
     margin: 50px 0;
   }
-  .offers {
-    width: 100%;
-    height: 80%;
+  .services {
     @include flex(row);
-    gap: 20px;
-
-    .offer {
-      @include card();
+    width: 100%;
+    gap: 70px;
+    .service {
+      width: 300px;
+      .service-img {
+        img {
+          width: 100%;
+        }
+      }
+      .service-title {
+        margin: 5px 0;
+        h2 {
+        }
+      }
+      .service-text {
+        p {
+        }
+      }
     }
   }
 }

@@ -73,8 +73,10 @@
     right: 0;
     margin-right: 40px;
     .login {
-      p {
+      cursor: pointer;
+      span {
         color: $main-color2;
+        margin: 0 0 0 10px;
       }
     }
     .signin {
