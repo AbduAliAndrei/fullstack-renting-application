@@ -1,21 +1,40 @@
 .Offers {
-  //   @include flex(row);
-  gap: 20px;
   position: relative;
-  height: 400vh;
-  padding: 100px;
+  min-height: 400vh;
   .offers-container {
-    @include flex(row);
-    float: right;
-    width: 70%;
-    gap: 20px;
-    margin-right: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 20px;
+    column-gap: 40px;
+    width: 80%;
+    margin: 0 auto;
   }
   .filter-tool {
-    float: left;
-    width: 300px;
-    height: 100vh;
-    background-color: red;
-    margin-left: 100px;
+    width: 70%;
+    height: 100px;
+    background-color: $main-color2;
+    margin: 50px auto;
+  }
+}
+
+@media screen and (max-width: 1648px) {
+  .Offers {
+    .offers-container {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Offers {
+    .offers-container {
+      gap: 10px;
+      width: 100%;
+      padding: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    }
+    .filter-tool {
+    }
   }
 }
