@@ -6,13 +6,15 @@
   text-align: center;
   height: 60px;
   @include flex(row);
-  // justify-content: space-between;
-
+  border-bottom: solid rgba(0, 0, 0, 0.171) 0.5px;
+  .ham-menu {
+    display: none;
+  }
   .logo {
     position: absolute;
     left: 0;
     cursor: pointer;
-    margin-left: 40px;
+    margin-left: 80px;
     a {
       color: $main-black;
       font-size: 40px;
@@ -87,6 +89,20 @@
       a {
         color: $main-black;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Nav {
+    .menu {
+      display: none;
+    }
+    .ham-menu {
+      display: block;
+      position: absolute;
+      left: 0;
+      margin-left: 20px;
     }
   }
 }

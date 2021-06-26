@@ -16,18 +16,31 @@ $main-black: hsl(0, 7%, 9%);
   flex-wrap: wrap;
 }
 
-@mixin btn($bc-color) {
+@mixin btn($bc-color, $border-color) {
   background-color: $bc-color;
-  border: none;
+  border: $border-color;
   outline: none;
-  padding: 10px 20px;
-  color: $main-color3;
+  @if ($bc-color == transparent) {
+    color: $main-color2;
+  } @else {
+    color: $main-color3;
+  }
+  @if ($border-color != none) {
+    border: solid $border-color 0.5px;
+  }
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
   border-radius: 50px;
   margin: 20px 0;
   cursor: pointer;
   &:hover {
     transition: 0.5s;
-    transform: scale(1.15);
+    @if ($bc-color == transparent) {
+      background-color: lighten($main-color2, 50%);
+    } @else {
+      background-color: darken($bc-color, 10%);
+    }
   }
 }
 

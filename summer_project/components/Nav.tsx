@@ -5,7 +5,7 @@ import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/dist/client/router'
 
 // import your icons
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Nav({ children, href, ...props }: NavLinkProps) {
@@ -14,6 +14,10 @@ export default function Nav({ children, href, ...props }: NavLinkProps) {
 
   return (
     <div className="Nav">
+      <div className="ham-menu">
+        <FontAwesomeIcon icon={faBars} size="2x" />
+
+      </div>
       <div className="logo">
         <Link href='/'><a>viaRent</a></Link>
       </div>
