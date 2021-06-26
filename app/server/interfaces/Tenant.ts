@@ -3,4 +3,9 @@ export default interface Tenant {
     firstName: string;
     lastName: string;
     userName: string;
+    password: string;
+    email: string;
+    createdDate: Date;
+    updatedDate: Date;
+    verified: boolean;
 }
