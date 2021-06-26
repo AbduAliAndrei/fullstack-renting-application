@@ -7,7 +7,7 @@ Project parts:
 - [X] application backend 
 - [X] application frontend 
 
-## Tehnologies 
+## Technologies 
 
 - Languages:
     - Server: NodeJS (Typescript supersetted) 
