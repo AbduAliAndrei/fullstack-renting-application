@@ -1,1 +1,461 @@
-/* No CSS *//*# sourceMappingURL=App.css.map */
+.Nav {
+  position: relative;
+  width: 100vw;
+  text-align: center;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Nav .logo {
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+.Nav .logo a {
+  color: #191515;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.Nav .menu {
+  min-width: 150px;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.Nav .menu nav {
+  min-width: 100%;
+}
+
+.Nav .menu nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Nav .menu nav ul li {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Nav .menu nav ul li a {
+  text-decoration: none;
+  color: #191515;
+  font-size: 20px;
+}
+
+.Nav .menu nav ul li a:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 60%;
+}
+
+.Nav .menu nav ul li.active::after {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: #5b5f97;
+  left: 0;
+  bottom: -19px;
+  border-radius: 50px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-animation: showUnderLine 0.3s linear;
+          animation: showUnderLine 0.3s linear;
+}
+
+@-webkit-keyframes showUnderLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes showUnderLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.Nav .login_signin {
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
+}
+
+.Nav .login_signin .login {
+  cursor: pointer;
+}
+
+.Nav .login_signin .login span {
+  color: #5b5f97;
+  margin: 0 0 0 10px;
+}
+
+.Nav .login_signin .signin p {
+  font-size: 15px;
+  color: #a7a7a7;
+}
+
+.Nav .login_signin .signin a {
+  color: #191515;
+}
+
+.Header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100vw;
+  height: calc(100vh - 60px);
+}
+
+.Header .image-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.Header .image-slider .img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  -webkit-transition: opacity 0.75s ease-in-out;
+  transition: opacity 0.75s ease-in-out;
+}
+
+.Header .try {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+}
+
+.Header .try .title {
+  width: 90%;
+  text-align: center;
+}
+
+.Header .try .title h1 {
+  font-size: 3rem;
+  color: #fffffb;
+}
+
+.Header .try .available-offers button {
+  background-color: #5b5f97;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.Header .try .available-offers button:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+.Header .try .available-offers button a {
+  color: #fffffb;
+  text-decoration: none;
+}
+
+.RecentOffers {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.RecentOffers .title {
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 70px 0 90px 0;
+}
+
+.RecentOffers .offers {
+  width: 100%;
+  z-index: 9;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+.RecentOffers .offers .offer {
+  height: 350px;
+  min-width: 300px;
+  background-color: #fffffb;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+}
+
+.RecentOffers .offers .offer:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+@media screen and (max-width: 640px) {
+  .RecentOffers .offers .offer {
+    min-width: 40px;
+    height: 250px;
+  }
+}
+
+.ForLandlords {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 80vh;
+  width: 100vw;
+  margin-bottom: 100px;
+}
+
+.ForLandlords .title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 50px 0;
+}
+
+.ForLandlords .services {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  gap: 70px;
+}
+
+.ForLandlords .services .service {
+  width: 300px;
+}
+
+.ForLandlords .services .service .service-img img {
+  width: 100%;
+}
+
+.ForLandlords .services .service .service-title {
+  margin: 5px 0;
+}
+
+.Footer {
+  width: 100vw;
+  height: 50vh;
+  background-color: #5b5f97;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.Offers {
+  position: relative;
+  min-height: 400vh;
+}
+
+.Offers .offers-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  row-gap: 20px;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.Offers .filter-tool {
+  width: 70%;
+  height: 100px;
+  background-color: #5b5f97;
+  margin: 50px auto;
+}
+
+@media screen and (max-width: 1648px) {
+  .Offers .offers-container {
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Offers .offers-container {
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    -ms-grid-columns: (minmax(40%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Gotham Rounded, sans-serif;
+  font-weight: normal;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  background-color: #fffffb;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.children {
+  min-height: 100vh;
+}
+
+.Card {
+  height: 350px;
+  min-width: 300px;
+  background-color: #fffffb;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+}
+
+.Card:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+@media screen and (max-width: 640px) {
+  .Card {
+    min-width: 40px;
+    height: 250px;
+  }
+}
+/*# sourceMappingURL=App.css.map */

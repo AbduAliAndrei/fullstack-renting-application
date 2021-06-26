@@ -1,9 +1,13 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/App.css'
+import Header from "../components/LandingPage/Header";
+import RecentOffers from "../components/LandingPage/RecentOffers";
+import ForLandlords from "../components/LandingPage/ForLandlords";
 
 export default function Home() {
   return (
-    <div><p>Hey there</p></div>
+      <div>
+        <Header />
+        <RecentOffers />
+        <ForLandlords />
+      </div>
   )
 }

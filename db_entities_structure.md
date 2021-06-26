@@ -6,8 +6,8 @@
     user_name: first_name + last_name,
     offers_list:[],
     offers_count: '',
-    verified:'bool',
-    trusted: 'bool'
+    isVerified:'bool',
+    isTrusted: 'bool'
 }
 
 ```
@@ -18,6 +18,7 @@ tenant = {
     first_name:'',
     last_name:'',
     user_name: first_name + last_name,
+    isVerified:'bool'
 }
 ```
 
@@ -31,18 +32,30 @@ offer = {
     price_currency: '',
     location: '',
     size: '',
-    rooms_count: '', --could be null
-    is_deposit:'bool'
+    rooms_count: '', --could be null,
+    newBuilding :'bool',
+    oldBuidling:'bool',
+    hasBalcony:'bool',
+    depositRequired:'bool'
     deposit_months: '',
     available_from: '',
+    allIncluded:'bool',
+    smokingAllowed :'bool',
+    petsAllowed:'bool',
     facilities: {
+        fridge:'bool'
         AC: 'bool',
         washing_machine: 'bool',
         wifi: 'bool',
         gas_heating: 'bool',
         dryer, 'bool',
         tv: 'bool',
+        oven:'bool',
+        stove:'bool',
         dishwasher: 'bool',
+        microwave:'bool',
+        fan:'bool',
+        avgInternetSpeed:'float',
     }
     summary: '',
     

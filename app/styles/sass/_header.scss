@@ -1,0 +1,38 @@
+.Header {
+  @include flex(column);
+  width: 100vw;
+  height: calc(100vh - 60px);
+  .image-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.75s ease-in-out;
+    }
+  }
+  .try {
+    @include flex(column);
+    position: absolute;
+    .title {
+      width: 90%;
+      text-align: center;
+      h1 {
+        font-size: 3rem;
+        color: $main-color3;
+      }
+    }
+    .available-offers {
+      button {
+        @include btn($main-color2);
+        a {
+          color: $main-color3;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

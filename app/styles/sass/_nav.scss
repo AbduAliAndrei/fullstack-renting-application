@@ -1,0 +1,92 @@
+// @import "./config";
+
+.Nav {
+  position: relative;
+  width: 100vw;
+  text-align: center;
+  height: 60px;
+  @include flex(row);
+  // justify-content: space-between;
+
+  .logo {
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    margin-left: 40px;
+    a {
+      color: $main-black;
+      font-size: 40px;
+      text-decoration: none;
+    }
+  }
+  .menu {
+    min-width: 150px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    nav {
+      min-width: 100%;
+      ul {
+        @include flex(row);
+        justify-content: space-between;
+        li {
+          position: relative;
+          text-align: center;
+          cursor: pointer;
+
+          a {
+            text-decoration: none;
+            color: $main-black;
+            font-size: 20px;
+            &:hover {
+              transition: 0.2s;
+              opacity: 60%;
+            }
+          }
+        }
+        li.active::after {
+          position: absolute;
+          content: "";
+          height: 5px;
+          width: 100%;
+          background-color: $main-color2;
+          left: 0;
+          bottom: -19px;
+          border-radius: 50px;
+          transition: 1s;
+          animation: showUnderLine 0.3s linear;
+        }
+
+        @keyframes showUnderLine {
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .login_signin {
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+    .login {
+      cursor: pointer;
+      span {
+        color: $main-color2;
+        margin: 0 0 0 10px;
+      }
+    }
+    .signin {
+      p {
+        font-size: 15px;
+        color: rgb(167, 167, 167);
+      }
+      a {
+        color: $main-black;
+      }
+    }
+  }
+}
