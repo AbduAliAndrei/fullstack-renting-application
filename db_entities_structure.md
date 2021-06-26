@@ -1,4 +1,5 @@
-landlord = {                                                    
+```landlord = {                                                    
+
     id:'',
     first_name:'',
     last_name:'',
@@ -9,6 +10,9 @@ landlord = {
     isTrusted: 'bool'
 }
 
+```
+
+```
 tenant = {
     id:'',
     first_name:'',
@@ -16,7 +20,9 @@ tenant = {
     user_name: first_name + last_name,
     isVerified:'bool'
 }
+```
 
+```
 offer = {
     title: '',
     description: '',
@@ -54,3 +60,4 @@ offer = {
     summary: '',
     
 }
+```
