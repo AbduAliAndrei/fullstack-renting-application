@@ -5,12 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 // import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
-import img1 from '../../Images/service1.png'
+// import img1 from '../../Images/service1.png'
 export default function Header() {
-
-
     return (
-
         <div className="Header">
             <div className="text">
                 <div className="hd-title">
@@ -25,11 +22,8 @@ export default function Header() {
                 </div>
             </div>
             <div className="vector-img-container">
-                <Image src={img1} alt="Budapest" />
+                {/* <Image src={img1} alt="Budapest" /> */}
             </div>
         </div>
     )
-
 }
-
-/* width="600" height="400" */
