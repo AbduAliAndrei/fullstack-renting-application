@@ -7,6 +7,8 @@
   height: 60px;
   @include flex(row);
   border-bottom: solid rgba(0, 0, 0, 0.171) 0.5px;
+
+  #check,
   .ham-menu {
     display: none;
   }
@@ -14,7 +16,7 @@
     position: absolute;
     left: 0;
     cursor: pointer;
-    margin-left: 80px;
+    margin-left: 60px;
     a {
       color: $main-black;
       font-size: 40px;
@@ -96,13 +98,32 @@
 @media screen and (max-width: 900px) {
   .Nav {
     .menu {
-      display: none;
+      transform: translateY(-100vh);
     }
     .ham-menu {
       display: block;
       position: absolute;
       left: 0;
       margin-left: 20px;
+      z-index: 99;
+    }
+    #check:checked ~ .menu {
+      @include flex(column);
+      transform: translateY(0);
+      transition: 0.3s;
+      background-color: red;
+      width: 100vw;
+      height: 50vh;
+      z-index: 98;
+      nav {
+        ul {
+          @include flex(column);
+
+          li.active::after {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

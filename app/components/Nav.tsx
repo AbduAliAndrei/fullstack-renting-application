@@ -14,10 +14,15 @@ export default function Nav({ children, href, ...props }: NavLinkProps) {
 
   return (
     <div className="Nav">
+      <input type="checkbox" id="check" />
+
       <div className="ham-menu">
-        <FontAwesomeIcon icon={faBars} size="2x" />
 
       </div>
+
+      <label htmlFor="check" className="ham-menu">
+        <FontAwesomeIcon icon={faBars} size="2x" />
+      </label>
       <div className="logo">
         <Link href='/'><a>viaRent</a></Link>
       </div>

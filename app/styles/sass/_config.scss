@@ -1,0 +1,66 @@
+// Colors
+$main-color1: #ffc145;
+$main-color2: #5b5f97;
+$main-color3: #fffffb;
+$main-black: hsl(0, 7%, 9%);
+
+// fonts
+
+// mixins
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin btn($bc-color, $border-color) {
+  background-color: $bc-color;
+  border: none;
+  border: $border-color;
+  outline: none;
+  padding: 10px 20px;
+  color: $main-color3;
+  @if ($bc-color == transparent) {
+    color: $main-color2;
+  } @else {
+    color: $main-color3;
+  }
+  @if ($border-color != none) {
+    border: solid $border-color 0.5px;
+  }
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+  &:hover {
+    transition: 0.5s;
+    @if ($bc-color == transparent) {
+      background-color: lighten($main-color2, 50%);
+    } @else {
+      background-color: darken($bc-color, 10%);
+    }
+  }
+}
+
+@mixin card() {
+  height: 350px;
+  min-width: 300px;
+  background-color: $main-color3;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+  &:hover {
+    transition: 0.5s;
+    transform: scale(1.03);
+  }
+
+  @media screen and (max-width: 640px) {
+    min-width: 40px;
+    height: 250px;
+  }
+}

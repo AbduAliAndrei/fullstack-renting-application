@@ -21,6 +21,7 @@
   border-bottom: solid rgba(0, 0, 0, 0.171) 0.5px;
 }
 
+.Nav #check,
 .Nav .ham-menu {
   display: none;
 }
@@ -29,7 +30,7 @@
   position: absolute;
   left: 0;
   cursor: pointer;
-  margin-left: 80px;
+  margin-left: 60px;
 }
 
 .Nav .logo a {
@@ -148,13 +149,60 @@
 
 @media screen and (max-width: 900px) {
   .Nav .menu {
-    display: none;
+    -webkit-transform: translateY(-100vh);
+            transform: translateY(-100vh);
   }
   .Nav .ham-menu {
     display: block;
     position: absolute;
     left: 0;
     margin-left: 20px;
+    z-index: 99;
+  }
+  .Nav #check:checked ~ .menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    background-color: red;
+    width: 100vw;
+    height: 50vh;
+    z-index: 98;
+  }
+  .Nav #check:checked ~ .menu nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .Nav #check:checked ~ .menu nav ul li.active::after {
+    display: none;
   }
 }
 
@@ -198,7 +246,10 @@
 .Header .text .btns .find-tenant-btn button {
   background-color: #5b5f97;
   border: none;
+  border: none;
   outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
   color: #fffffb;
   font-size: 15px;
   height: 40px;
@@ -216,8 +267,11 @@
 
 .Header .text .btns .find-flat-btn button {
   background-color: transparent;
+  border: none;
   border: #5b5f97;
   outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
   color: #5b5f97;
   border: solid #5b5f97 0.5px;
   font-size: 15px;
