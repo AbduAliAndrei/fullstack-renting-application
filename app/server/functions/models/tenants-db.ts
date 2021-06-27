@@ -33,7 +33,12 @@ export default function makeTenantsDb ( { db } : { db: Firestore }) {
                 id: doc.id,
                 firstName: doc.data().firstName,
                 lastName: doc.data().lastName,
-                userName: doc.data().userName
+                userName: doc.data().userName,
+                email: doc.data().email,
+                password: doc.data().password,
+                createdAt: doc.data().createdDate,
+                updatedAt: doc.data().updatedDate,
+                verified: doc.data().verified
             })];
         })
 

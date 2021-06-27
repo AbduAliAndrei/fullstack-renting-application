@@ -5,7 +5,7 @@ export default interface Tenant {
     userName: string;
     password: string;
     email: string;
-    createdDate: Date;
-    updatedDate: Date;
+    createdAt: Date;
+    updatedAt: Date;
     verified: boolean;
 }

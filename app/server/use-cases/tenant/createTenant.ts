@@ -1,0 +1,1 @@
+import makeTenant from "../../entities/tenant";
