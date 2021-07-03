@@ -1,7 +1,7 @@
-import Tenant from "../../interfaces/Tenant";
+import Landlord from "../../interfaces/Landlord";
 
-export default function buildMakeTenant({Id, validate }: {Id: any, validate?: any}) {
-    return function makeTenant({
+export default function buildMakeLandlord({Id, validate }: {Id: any, validate?: any}) {
+    return function makeLandlord({
        firstName,
        createdAt = new Date(),
        id = Id.makeId(),
@@ -10,32 +10,28 @@ export default function buildMakeTenant({Id, validate }: {Id: any, validate?: an
        userName = firstName + ' ' + lastName,
        updatedAt = new Date(),
        verified  = false,
-       gender,
-       bio,
-       picture,
        password,
-    } : Tenant) {
+       picture,       
+       bio,
+    } : Landlord) {
         if (!email) {
-            throw new Error('Tenant must have email')
+            throw new Error('Landlord must have email')
         }
-        
+
         if (!firstName || !lastName)  {
-            throw new Error('Tenant must have first name and last name');
+            throw new Error('Landlord must have first name and last name');
         }
-        
+
         if (!password) {
-            throw new Error('Tenant password is required');
-        }
-        if(!gender){
-            throw new Error('Tenant must provide gender')
-        }
-        if(!bio){
-            throw new Error('Tenant must provide a short bio')
+            throw new Error('Landlord password is required');
         }
         if(!picture){
             throw new Error('Tenant must provide a picture')
         }
-        
+        if(!bio){
+            throw new Error('Tenant must provide a short bio')
+        }
+
         return Object.freeze({
             getFirstName: () => firstName,
             getLastName: () => lastName,
