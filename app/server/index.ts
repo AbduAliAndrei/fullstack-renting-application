@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 import next from "next";
 import showRoutes from './routes/index';
 
