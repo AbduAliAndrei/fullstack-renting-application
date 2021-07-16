@@ -5,6 +5,7 @@ export default function buildMakeTenant({Id, validate }: {Id: any, validate?: an
        firstName,
        createdAt = new Date(),
        id = Id.makeId(),
+       idType,
        email,
        lastName,
        userName = firstName + ' ' + lastName,
@@ -13,7 +14,7 @@ export default function buildMakeTenant({Id, validate }: {Id: any, validate?: an
        gender,
        bio,
        picture,
-       password,
+       password
     } : Tenant) {
         if (!email) {
             throw new Error('Tenant must have email')
@@ -29,21 +30,29 @@ export default function buildMakeTenant({Id, validate }: {Id: any, validate?: an
         if(!gender){
             throw new Error('Tenant must provide gender')
         }
-        if(!bio){
-            throw new Error('Tenant must provide a short bio')
-        }
+
         if(!picture){
             throw new Error('Tenant must provide a picture')
+        }
+
+        if (!idType) {
+            throw new Error('Tenant must provide id type of passport')
         }
         
         return Object.freeze({
             getFirstName: () => firstName,
             getLastName: () => lastName,
             getCreatedAt: () => createdAt,
+            getEmail: () => email,
             getId: () => id,
             getUpdatedAt: () => updatedAt,
             getUsername: () => userName,
-            getVerified: () => verified
+            getVerified: () => verified,
+            getIdType: () => idType,
+            getBio: () => bio,
+            getGender: () => gender,
+            getPicture: () => picture,
+            getPassword: () => password
         })
     }
 }

@@ -9,7 +9,7 @@ export default interface Tenant {
   createdAt: Date;
   updatedAt: Date;
   verified: boolean;
-  bio: string;
+  bio?: string;
   gender: string;
   picture: string;
 }

@@ -1,12 +1,12 @@
 import {firestore} from "firebase-admin/lib/firestore";
 import Firestore = firestore.Firestore;
 import Tenant from "../../interfaces/Tenant";
-import {TenantFunction} from "../../interfaces/DatabaseTenants";
+import { TenantDatabase } from "../../interfaces/DatabaseTenants";
 import {CollectionPaths} from "../../enums/CollectionPaths";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 
-export default function makeTenantsDb ( { db } : { db: Firestore }) {
+export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatabase {
     return Object.freeze({
         add,
         findAll,
@@ -15,12 +15,12 @@ export default function makeTenantsDb ( { db } : { db: Firestore }) {
         remove
     });
 
-    async function add(tenantInfo: Tenant): Promise<TenantFunction<Date>>  {
+    async function add(tenantInfo: Tenant) {
         const result = await db.collection(CollectionPaths.TENANT).doc().set(tenantInfo);
-        return { data: result.writeTime.toDate() };
+        return ({data: {writeTime: result.writeTime.toDate(), data: tenantInfo}});
     }
 
-    async function findAll({ name }: { name?: string } ): Promise<TenantFunction<Tenant[]> & {_name: string}> {
+    async function findAll({ name }: { name?: string } ){
         const opts : [string, WhereFilterOp, string] = ['name', '==', name]
         const result = name ? await db.collection(CollectionPaths.TENANT)
             .where(...opts)
@@ -38,14 +38,18 @@ export default function makeTenantsDb ( { db } : { db: Firestore }) {
                 password: doc.data().password,
                 createdAt: doc.data().createdDate,
                 updatedAt: doc.data().updatedDate,
-                verified: doc.data().verified
+                verified: doc.data().verified,
+                idType: doc.data().idType,
+                gender: doc.data().gender,
+                bio: doc.data().bio,
+                picture: doc.data().picture
             })];
         })
 
         return ({data: tenants, _name: name });
     }
 
-    async function findById({id}: {id: string}): Promise<TenantFunction<null | Tenant> & {id?: string} >  {
+    async function findById({id}: {id: string}) {
         const tenant = await db.collection(CollectionPaths.TENANT).doc(id);
         const data = await tenant.get();
         if (!data.exists) {
@@ -55,16 +59,16 @@ export default function makeTenantsDb ( { db } : { db: Firestore }) {
         return ({data: data.data() as Tenant, id});
     }
 
-    async function update({id, data}: {id: string, data: Tenant}): Promise<TenantFunction<Date>> {
+    async function update({id, data}: {id: string, data: Tenant}) {
         const tenant = await db.collection(CollectionPaths.TENANT).doc(id);
         const result = await tenant.update(data);
 
-        return { data: result.writeTime.toDate() };
+        return { data: { writeTime: result.writeTime.toDate(), data } };
     }
 
-    async function remove({id}: {id: string}): Promise<TenantFunction<Date>> {
+    async function remove({id}: {id: string}) {
         const result = await db.collection(CollectionPaths.TENANT).doc(id).delete();
 
-        return { data: result.writeTime.toDate() };
+        return { data: { writeTime: result.writeTime.toDate(), data: id } };
     }
 }

@@ -1,5 +1,6 @@
 import express from "express";
 import next from "next";
+import bodyParser from "body-parser";
 import showRoutes from "./routes/index";
 
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ app
   .then(() => {
     const server = express();
 
+    server.use(bodyParser.json());
     server.use("/api", showRoutes(server));
 
     server.get("*", (req, res) => {

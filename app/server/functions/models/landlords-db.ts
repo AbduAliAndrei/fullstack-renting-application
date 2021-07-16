@@ -38,7 +38,11 @@ export default function makeLandlordsDb ( { db } : { db: Firestore }) {
                 password: doc.data().password,
                 createdAt: doc.data().createdDate,
                 updatedAt: doc.data().updatedDate,
-                verified: doc.data().verified
+                verified: doc.data().verified,
+                offersList: doc.data().offersList,
+                trusted: doc.data().trusted,
+                bio: doc.data().bio,
+                picture: doc.data().picture
             })];
         })
 
