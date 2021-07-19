@@ -1,8 +1,8 @@
 import {firestore} from "firebase-admin/lib/firestore";
 import Firestore = firestore.Firestore;
-import Landlord from "../../interfaces/Landlord";
-import {LandlordFunction} from "../../interfaces/DatabaseLandlords";
-import {CollectionPaths} from "../../enums/CollectionPaths";
+import Landlord from "../interfaces/Landlord";
+import {LandlordFunction} from "../interfaces/DatabaseLandlords";
+import {CollectionPaths} from "../enums/CollectionPaths";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 

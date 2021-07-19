@@ -2,9 +2,8 @@ import {Request, Response} from "express";
 import Controller from "../interfaces/Controller";
 import {HttpRequest} from "../interfaces/HttpRequest";
 
-export default function createExpressCallback<T>(controller:  (h: HttpRequest) => Promise<Controller<T>>) {
+export default function createExpressCallback<T>(controller:  (h: HttpRequest) => Promise<Controller<T>>): (req: Request, res:  Response) => void {
     return (req: Request, res:  Response) => {
-        console.log(req, res);
         const httpRequest: HttpRequest = {
             body: req.body,
             query: req.query,
@@ -27,6 +26,6 @@ export default function createExpressCallback<T>(controller:  (h: HttpRequest) =
                 res.type('json');
                 res.status(httpResponse.statusCode).send(httpResponse.body);
             })
-            .catch(e => res.status(500).send('An unknown error occurred.'));
+            .catch(e => res.status(500).send(`An unknown error occurred. Error message: ${e}`));
     }
 }

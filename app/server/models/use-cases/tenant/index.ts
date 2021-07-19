@@ -1,5 +1,5 @@
 import createAddTenant from "./createTenant";
-import {tenantsDb} from "../../functions/models";
+import {tenantsDb} from "../../../database";
 
 const createTenant = createAddTenant({ tenantsDb });
 

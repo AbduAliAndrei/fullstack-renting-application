@@ -1,4 +1,4 @@
-import Tenant from "../../interfaces/Tenant";
+import {TenantRequest} from "../../../interfaces/Tenant";
 
 export default function buildMakeTenant({Id, validate }: {Id: any, validate?: any}) {
     return function makeTenant({
@@ -15,7 +15,7 @@ export default function buildMakeTenant({Id, validate }: {Id: any, validate?: an
        bio,
        picture,
        password
-    } : Tenant) {
+    } : TenantRequest) {
         if (!email) {
             throw new Error('Tenant must have email')
         }

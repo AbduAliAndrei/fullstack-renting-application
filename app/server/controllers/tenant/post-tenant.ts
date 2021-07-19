@@ -1,13 +1,13 @@
-import Tenant from "../../interfaces/Tenant";
+import {TenantRequest, TenantResponse} from "../../interfaces/Tenant";
 import {DatabaseTenant, TenantFunction} from "../../interfaces/DatabaseTenants";
 import asyncF from "../../../utils/asyncF";
 import Controller from "../../interfaces/Controller";
 import {HttpRequest} from "../../interfaces/HttpRequest";
 
 export default function createPostTenant( { createTenant } :
-{ createTenant: (tenantInfo: Tenant) => Promise<TenantFunction<DatabaseTenant<Tenant>>> } ): (h: HttpRequest) => Promise<Controller<DatabaseTenant<Tenant>>> {
+{ createTenant: (tenantInfo: TenantRequest) => Promise<TenantFunction<DatabaseTenant<TenantResponse>>> } ): (h: HttpRequest) => Promise<Controller<DatabaseTenant<TenantResponse>>> {
     return async function postTenant(httpRequest: HttpRequest) {
-        const postProcess = async (): Promise<TenantFunction<DatabaseTenant<Tenant>>> => {
+        const postProcess = async (): Promise<TenantFunction<DatabaseTenant<TenantResponse>>> => {
             const {source = {}, ...tenantsInfo} = httpRequest.body;
             source.ip = httpRequest.ip;
             source.browser = httpRequest.headers['User-Agent'];
@@ -22,8 +22,8 @@ export default function createPostTenant( { createTenant } :
         }
 
 
-        const [data, error] = await asyncF<TenantFunction<DatabaseTenant<Tenant>>>(postProcess());
-        let result!: Controller<DatabaseTenant<Tenant>>;
+        const [data, error] = await asyncF<TenantFunction<DatabaseTenant<TenantResponse>>>(postProcess());
+        let result!: Controller<DatabaseTenant<TenantResponse>>;
         if (error) {
             result = {
                 headers: {

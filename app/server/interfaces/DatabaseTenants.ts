@@ -1,14 +1,14 @@
-import Tenant from "./Tenant";
+import {TenantResponse} from "./Tenant";
 
 export type TenantFunction<T> = {
     data: T,
 }
 
 export interface TenantDatabase  {
-    add: (tenantInfo: Tenant) => Promise<TenantFunction<DatabaseTenant<Tenant>>>,
-    findAll: ({ name }: {name?: string}) => Promise<TenantFunction<Tenant[]> & {_name: string}>,
-    findById: ({ id }: {id: string}) => Promise<TenantFunction<Tenant> & {id?: string}>,
-    update: ( { id, data }: {id: string, data: Tenant}) => Promise<TenantFunction<DatabaseTenant<Tenant>>>,
+    add: (tenantInfo: TenantResponse) => Promise<TenantFunction<DatabaseTenant<TenantResponse>>>,
+    findAll: ({ name }: {name?: string}) => Promise<TenantFunction<TenantResponse[]> & {_name: string}>,
+    findById: ({ id }: {id: string}) => Promise<TenantFunction<TenantResponse> & {id?: string}>,
+    update: ( { id, data }: {id: string, data: TenantResponse}) => Promise<TenantFunction<DatabaseTenant<TenantResponse>>>,
     remove: ({ id }: {id: string}) => Promise<TenantFunction<DatabaseTenant<string>>>
 }
 

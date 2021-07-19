@@ -1,4 +1,4 @@
-import { createTenant } from "../../use-cases/tenant";
+import { createTenant } from "../../models/use-cases/tenant";
 import createPostTenant from "./post-tenant";
 
 const postTenant = createPostTenant({ createTenant });

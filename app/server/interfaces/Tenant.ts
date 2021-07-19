@@ -1,15 +1,23 @@
-export default interface Tenant {
-  idType: string; //Passport or ID card
+export interface TenantResponse extends TenantRequest {
   id: string;
-  firstName: string;
-  lastName: string;
   userName: string;
-  password: string;
   email: string;
   createdAt: Date;
   updatedAt: Date;
-  verified: boolean;
+}
+
+export interface TenantRequest {
+  idType: string; //Passport or ID card
+  password: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   bio?: string;
-  gender: string;
   picture: string;
+  gender: string;
+  id?: string;
+  userName?: string;
+  verified?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

@@ -14,6 +14,10 @@ app
     const server = express();
 
     server.use(bodyParser.json());
+    server.use((_, res, next) => {
+      res.set({ Tk: '!' })
+      next()
+    })
     server.use("/api", showRoutes(server));
 
     server.get("*", (req, res) => {
