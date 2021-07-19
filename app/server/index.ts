@@ -18,7 +18,7 @@ app
       res.set({ Tk: '!' })
       next()
     })
-    server.use("/api", showRoutes(server));
+    server.use("/api", showRoutes());
 
     server.get("*", (req, res) => {
       return handle(req, res);
