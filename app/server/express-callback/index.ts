@@ -4,6 +4,7 @@ import {HttpRequest} from "../interfaces/HttpRequest";
 
 export default function createExpressCallback<T>(controller:  (h: HttpRequest) => Promise<Controller<T>>) {
     return (req: Request, res:  Response) => {
+        console.log(req, res);
         const httpRequest: HttpRequest = {
             body: req.body,
             query: req.query,
