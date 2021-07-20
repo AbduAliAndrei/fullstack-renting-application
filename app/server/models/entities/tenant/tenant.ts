@@ -12,7 +12,7 @@ export default function buildMakeTenant({Id, validate }: {Id: any, validate?: an
        updatedAt = new Date(),
        verified  = false,
        gender,
-       bio,
+       bio = '',
        picture,
        password
     } : TenantRequest) {

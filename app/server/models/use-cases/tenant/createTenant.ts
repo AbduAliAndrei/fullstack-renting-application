@@ -6,26 +6,30 @@ export default function createAddTenant({ tenantsDb }: {tenantsDb : TenantDataba
 {
     return async function addTenant(tenantInfo: TenantRequest) {
         const tenant = makeTenant(tenantInfo);
-        const exists = await tenantsDb.findById({id: tenant.getId()});
+        try {
+            const exists = await tenantsDb.findById({id: tenant.getId()});
 
-        if (exists) {
-            return {data: {writeTime: exists.data.createdAt, data: exists.data}};
+            if (exists) {
+                return {data: {writeTime: exists.data.createdAt, data: exists.data}};
+            }
+
+            return tenantsDb.add({
+                id: tenant.getId(),
+                idType: tenant.getIdType(),
+                firstName: tenant.getFirstName(),
+                lastName: tenant.getLastName(),
+                userName: tenant.getUsername(),
+                email: tenant.getEmail(),
+                password: tenant.getPassword(),
+                createdAt: tenant.getCreatedAt(),
+                updatedAt: tenant.getUpdatedAt(),
+                verified: tenant.getVerified(),
+                bio: tenant.getBio(),
+                gender: tenant.getGender(),
+                picture: tenant.getPicture()
+            });
+        } catch (e) {
+            console.error(e);
         }
-
-        return tenantsDb.add({
-            id: tenant.getId(),
-            idType: tenant.getIdType(),
-            firstName: tenant.getFirstName(),
-            lastName: tenant.getLastName(),
-            userName: tenant.getUsername(),
-            email: tenant.getEmail(),
-            password: tenant.getPassword(),
-            createdAt: tenant.getCreatedAt(),
-            updatedAt: tenant.getUpdatedAt(),
-            verified: tenant.getVerified(),
-            bio: tenant.getBio(),
-            gender: tenant.getGender(),
-            picture: tenant.getPicture()
-        });
     }
 }
