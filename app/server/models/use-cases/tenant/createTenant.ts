@@ -1,10 +1,10 @@
 import { TenantDatabase } from "../../../interfaces/DatabaseTenants";
-import {TenantRequest} from "../../../interfaces/Tenant";
+import {Tenant} from "../../../../interfaces/Tenant";
 import makeTenant from "../../entities/tenant";
 
 export default function createAddTenant({ tenantsDb }: {tenantsDb : TenantDatabase })
 {
-    return async function addTenant(tenantInfo: TenantRequest) {
+    return async function addTenant(tenantInfo: Tenant) {
         const tenant = makeTenant(tenantInfo);
         try {
             const exists = await tenantsDb.findById({id: tenant.getId()});

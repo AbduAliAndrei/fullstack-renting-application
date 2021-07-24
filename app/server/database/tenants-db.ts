@@ -1,10 +1,10 @@
 import {firestore} from "firebase-admin/lib/firestore";
 import Firestore = firestore.Firestore;
-import { TenantResponse } from "../interfaces/Tenant";
 import { TenantDatabase } from "../interfaces/DatabaseTenants";
 import {CollectionPaths} from "../enums/CollectionPaths";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
+import {Tenant} from "../../interfaces/Tenant";
 
 export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatabase {
     return Object.freeze({
@@ -15,7 +15,7 @@ export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatab
         remove
     });
 
-    async function add(tenantInfo: TenantResponse) {
+    async function add(tenantInfo: Required<Tenant>) {
         const result = await db.collection(CollectionPaths.TENANT).doc().set(tenantInfo);
         return ({data: {writeTime: result.writeTime.toDate(), data: tenantInfo}});
     }
@@ -26,7 +26,7 @@ export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatab
             .where(...opts)
             .get() : await db.collection(CollectionPaths.TENANT).get();
 
-        let tenants: TenantResponse[] = [];
+        let tenants: Required<Tenant>[] = [];
 
         result.forEach(doc => {
             tenants = [ ...tenants,  ({
@@ -56,10 +56,10 @@ export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatab
             return ({data: null});
         }
 
-        return ({data: data.data() as TenantResponse, id});
+        return ({data: data.data() as Required<Tenant>, id});
     }
 
-    async function update({id, data}: {id: string, data: TenantResponse}) {
+    async function update({id, data}: {id: string, data: Required<Tenant>}) {
         const tenant = await db.collection(CollectionPaths.TENANT).doc(id);
         const result = await tenant.update(data);
 
