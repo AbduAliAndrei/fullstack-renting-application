@@ -1,15 +1,6 @@
-export default interface Landlord {
-  id: string;
-  firstName: string;
-  lastName: string;
-  userName: string;
+import {User} from "./User";
+
+export default interface Landlord extends User {
   offersList: [];
-  password: string;
-  email: string;
-  createdAt: Date;
-  updatedAt: Date;
-  verified: boolean;
-  bio?: string;
   trusted: boolean;
-  picture: string;
 }

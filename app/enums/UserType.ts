@@ -1,4 +1,4 @@
 export enum UserType {
-    TENANT,
-    LANDLORD
+    TENANT = 'Tenant',
+    LANDLORD = 'Landlord'
 }
