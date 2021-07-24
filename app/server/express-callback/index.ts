@@ -23,6 +23,9 @@ export default function createExpressCallback<T>(controller:  (h: HttpRequest) =
                 if (httpResponse.headers) {
                     res.set(httpResponse.headers);
                 }
+                if (httpResponse.cookie) {
+                    res.cookie(httpResponse.cookie.value, httpResponse.cookie.options);
+                }
                 res.type('json');
                 res.status(httpResponse.statusCode).send(httpResponse.body);
             })

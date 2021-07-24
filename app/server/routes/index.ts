@@ -4,11 +4,13 @@ import {postTenant} from "../controllers/tenant";
 import {DatabaseTenant} from "../interfaces/DatabaseTenants";
 import {Tenant} from "../../interfaces/Tenant";
 import db from "../functions/src";
+import {postRegisterAttempt} from "../controllers/auth";
 
 const router = express.Router();
 
 function routes() {
-    router.post("/login/tenant", createExpressCallback<DatabaseTenant<Tenant>>(postTenant));
+    router.post('/auth/login', createExpressCallback<DatabaseTenant<Tenant>>(postRegisterAttempt));
+    router.post("/auth/tenant", createExpressCallback<DatabaseTenant<Tenant>>(postTenant));
 
     router.get('/all-collections', (req, res) => {
         db.listCollections()
@@ -29,7 +31,7 @@ function routes() {
             .catch(error => console.error(error));
     });
 
-    router.get("/login", (req, res) => {
+    router.get("/auth", (req, res) => {
         res.json({
             login: "inProcess"
         });

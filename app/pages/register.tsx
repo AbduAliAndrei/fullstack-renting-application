@@ -1,18 +1,20 @@
-import {BaseSyntheticEvent, useState} from "react";
+import {BaseSyntheticEvent, useEffect, useState} from "react";
 import {UserType} from "../enums/UserType";
 import {Tenant} from "../interfaces/Tenant";
 import Landlord from "../interfaces/Landlord";
 
+import {useCookies} from "react-cookie";
+
 
 const Register = () => {
-    const [, setUserType] = useState<UserType>(UserType.TENANT);
+    const [userType, setUserType] = useState<UserType>(UserType.TENANT);
     const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
-        email: '',
+        email: 'andrei.cristea@gmail.com',
         trusted: false,
-        firstName: '',
-        lastName: '',
-        password: '',
-        userName: '',
+        firstName: 'Andrei',
+        lastName: 'Cristea',
+        password: '123456',
+        userName: 'Andrei Cristea',
         offersList: [],
         verified: false,
         gender: 'male',
@@ -20,14 +22,41 @@ const Register = () => {
         picture: ''
     });
 
+    const [xsrfToken] = useCookies(['XSRF-TOKEN']);
+
     const [userTypes] =  useState<UserType[]>(Object.values(UserType));
 
     const onInputChange = (event: BaseSyntheticEvent) =>
         setRegisteringUser({...registeringUser, [event.currentTarget.name]: event.currentTarget.value});
 
+    useEffect(() => {
+        // console.log(xsrfToken['XSRF-Token']);
+    }, []);
+
+
+    const register = () => {
+        return fetch("api/auth/login", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "CSRF-Token": xsrfToken['XSRF-Token']
+            },
+            body: JSON.stringify({
+                user: registeringUser,
+                userType: userType
+            }),
+        });
+    }
+
+    const onSubmit = async (e: BaseSyntheticEvent) => {
+        e.preventDefault();
+        const res =  await register();
+        console.log(res);
+    }
 
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <label htmlFor={'userType'}>User Type</label>
             <select id={'userType'}>
                 {
@@ -45,6 +74,7 @@ const Register = () => {
             <input type={'text'} name={'lastName'} onChange={onInputChange} value={registeringUser.lastName}  />
             <input type={'radio'} name={'verified'} onChange={onInputChange} checked={registeringUser.verified}  />
             <input type={'radio'} name={'verified'} onChange={onInputChange} checked={!registeringUser.verified}  />
+            <button type={'submit'}>Submit test User</button>
         </form>
     );
 }

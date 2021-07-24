@@ -11,5 +11,5 @@ export interface HttpRequest {
     ip: string,
     method: string,
     path: string,
-    headers: Record<string, string>
+    headers: Record<string, string>;
 }

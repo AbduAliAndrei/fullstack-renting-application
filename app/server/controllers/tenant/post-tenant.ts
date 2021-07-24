@@ -6,9 +6,9 @@ import {HttpRequest} from "../../interfaces/HttpRequest";
 
 export default function createPostTenant( { createTenant } :
 { createTenant: (tenantInfo: Tenant) => Promise<TenantFunction<DatabaseTenant<Required<Tenant>>>> } ): (h: HttpRequest) => Promise<Controller<DatabaseTenant<Required<Tenant>>>> {
-    return async function postTenant(httpRequest: HttpRequest) {
+    return async function postTenant(httpRequest: HttpRequest) : Promise<Controller<DatabaseTenant<Required<Tenant>>>> {
         const postProcess = async (): Promise<TenantFunction<DatabaseTenant<Required<Tenant>>>> => {
-            const {source = {}, ...tenantsInfo} = httpRequest.body;
+            const {source = {}, ...user} = httpRequest.body;
             source.ip = httpRequest.ip;
             source.browser = httpRequest.headers['User-Agent'];
             if (httpRequest.headers['Referer']) {
@@ -16,7 +16,7 @@ export default function createPostTenant( { createTenant } :
             }
 
             return await createTenant({
-                ...tenantsInfo,
+                ...user,
                 source
             });
         }
