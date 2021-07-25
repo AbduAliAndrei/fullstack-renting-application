@@ -9,7 +9,7 @@ export default function createAddTenant({ tenantsDb }: {tenantsDb : TenantDataba
         try {
             const exists = await tenantsDb.findById({id: tenant.getId()});
 
-            if (exists) {
+            if (exists.data) {
                 return {data: {writeTime: exists.data.createdAt, data: exists.data}};
             }
 

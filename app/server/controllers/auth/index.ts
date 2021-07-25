@@ -1,7 +1,7 @@
 import createRegisterAttempt from "./register";
-import {registerDb, authCreate} from "../../database";
+import {registerDb, authCreate, authRemove} from "../../database";
 
-const postRegisterAttempt = createRegisterAttempt({ createUser: registerDb, authCreate })
+const postRegisterAttempt = createRegisterAttempt({ createUser: registerDb, authCreate, authRemove });
 
 const AuthController = Object.freeze({
     postRegisterAttempt

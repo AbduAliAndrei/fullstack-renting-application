@@ -18,8 +18,8 @@ const Register = () => {
         offersList: [],
         verified: false,
         gender: 'male',
-        idType: '',
-        picture: ''
+        idType: 'passport',
+        picture: 'svg.net',
     });
 
     const [xsrfToken] = useCookies(['XSRF-TOKEN']);
