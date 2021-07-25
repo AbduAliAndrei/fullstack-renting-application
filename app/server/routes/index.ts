@@ -4,12 +4,13 @@ import {postTenant} from "../controllers/tenant";
 import {DatabaseTenant} from "../interfaces/DatabaseTenants";
 import {Tenant} from "../../interfaces/Tenant";
 import db from "../functions/src";
-import {postRegisterAttempt} from "../controllers/auth";
+import {getCheckedUser, postRegisterAttempt} from "../controllers/auth";
 
 const router = express.Router();
 
 function routes() {
-    router.post('/auth/login', createExpressCallback<DatabaseTenant<Tenant>>(postRegisterAttempt));
+    router.get('/auth/check', createExpressCallback<Tenant>(getCheckedUser));
+    router.post('/auth/register', createExpressCallback<DatabaseTenant<Tenant>>(postRegisterAttempt));
     router.post("/auth/tenant", createExpressCallback<DatabaseTenant<Tenant>>(postTenant));
 
     router.get('/all-collections', (req, res) => {

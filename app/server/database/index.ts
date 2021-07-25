@@ -8,6 +8,9 @@ import firebaseAuthRemove from "../functions/src/authentication/firebaseAuthRemo
 export const tenantsDb = makeTenantsDb({ db });
 
 export const registerDb = firebaseAuth;
-export const authVerify = firebaseAuthVerify;
+export const authVerify = async ({ sessionCookie }: {sessionCookie: string}) => {
+    const decoded = await firebaseAuthVerify({sessionCookie});
+    return decoded.uid;
+};
 export const authCreate = firebaseAuthCreate;
 export const authRemove = firebaseAuthRemove;
