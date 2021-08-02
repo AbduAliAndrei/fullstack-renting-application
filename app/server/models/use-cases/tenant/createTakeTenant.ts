@@ -6,7 +6,7 @@ export default function createTakeTenant({ tenantsDb }: {tenantsDb : TenantDatab
         const tenant = await tenantsDb.findById({id});
 
         if (!tenant.data) {
-            throw new Error('Such tenant user is not yet created on the database');
+            throw new Error(`Such tenant user is not yet created on the database. Id: ${id}`);
         }
 
         return tenant.data;

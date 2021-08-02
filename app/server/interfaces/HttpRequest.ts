@@ -12,4 +12,5 @@ export interface HttpRequest {
     method: string,
     path: string,
     headers: Record<string, string>;
+    cookies: any;
 }

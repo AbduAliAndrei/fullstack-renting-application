@@ -50,13 +50,25 @@ export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatab
     }
 
     async function findById({id}: {id: string}) {
-        const tenant = await db.collection(CollectionPaths.TENANT).doc(id);
-        const data = await tenant.get();
-        if (!data.exists) {
+        const tenantsRef = await db.collection(CollectionPaths.TENANT);
+        const data = await tenantsRef.where('id', '==', id).get();
+        if (data.empty) {
             return ({data: null});
         }
+        let tenant!: Required<Tenant>;
+        let index = 0;
+        data.forEach((data) => {
+            if (index > 0) {
+                return;
+            }
 
-        return ({data: data.data() as Required<Tenant>, id});
+            tenant.id = data.data().id;
+            console.log(data.data(), tenant.id, 'id???');
+
+            index++;
+        })
+
+        return ({data: data as unknown as Required<Tenant>, id});
     }
 
     async function update({id, data}: {id: string, data: Required<Tenant>}) {

@@ -8,6 +8,7 @@ export default interface Controller<T> {
         res?: T;
     },
     cookie?: {
+        name: string;
         value: string;
         options: CookieOptions;
     }

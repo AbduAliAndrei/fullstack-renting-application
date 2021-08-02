@@ -23,6 +23,7 @@ const Register = () => {
     });
 
     const [xsrfToken] = useCookies(['XSRF-TOKEN']);
+    const [sessionCookie] = useCookies(['sessionCookie']);
 
     const [userTypes] =  useState<UserType[]>(Object.values(UserType));
 
@@ -35,7 +36,7 @@ const Register = () => {
 
 
     const register = () => {
-        return fetch("api/auth/login", {
+        return fetch("api/auth/register", {
             method: "POST",
             headers: {
                 Accept: "application/json",

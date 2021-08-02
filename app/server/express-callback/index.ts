@@ -15,7 +15,8 @@ export default function createExpressCallback<T>(controller:  (h: HttpRequest) =
                 'Content-Type': req.get('Content-Type'),
                 Referer: req.get('referer'),
                 'User-Agent': req.get('User-Agent')
-            }
+            },
+            cookies: req.cookies
         };
 
         controller(httpRequest)
@@ -24,7 +25,7 @@ export default function createExpressCallback<T>(controller:  (h: HttpRequest) =
                     res.set(httpResponse.headers);
                 }
                 if (httpResponse.cookie) {
-                    res.cookie(httpResponse.cookie.value, httpResponse.cookie.options);
+                    res.cookie(httpResponse.cookie.name, httpResponse.cookie.value, httpResponse.cookie.options);
                 }
                 res.type('json');
                 res.status(httpResponse.statusCode).send(httpResponse.body);

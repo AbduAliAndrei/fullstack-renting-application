@@ -55,7 +55,7 @@ export default function createRegisterAttempt
             if (result.body.error) {
                 await authRemove({uid: created.uid});
             }
-            result.cookie = { value: sessionCookie, options }
+            result.cookie = { name: 'session', value: sessionCookie, options }
         } else {
             result = {
                 headers: {

@@ -1,24 +1,17 @@
-import {BaseSyntheticEvent, useState} from "react";
+import {BaseSyntheticEvent, useCallback, useState} from "react";
 
 
 const Login = () => {
-    const [email, setEmail] = useState<string>();
-    const [password, setPassword] = useState<string>();
+    const [loginUser, setLoginUser] = useState<{email: string, password: string}>({email: '', password: ''});
 
-    const onEmailInput = (event: BaseSyntheticEvent) => {
-        setEmail(event.target.value);
-        console.log(email);
-    }
-
-    const onPasswordInput = (event: BaseSyntheticEvent) => {
-        setPassword(event.target.value);
-        console.log(password);
-    }
+    const changeLoginInfo = useCallback((e: BaseSyntheticEvent) => {
+        setLoginUser({...loginUser, [e.target.name]: e.target.value });
+    }, [loginUser]);
 
     return (
        <form>
-           <input type={'string'} onInput={onEmailInput} />
-           <input type={'password'} onInput={onPasswordInput} />
+           <input type={'string'} onChange={changeLoginInfo} value={loginUser.email} name={'email'} />
+           <input type={'password'} onChange={changeLoginInfo} value={loginUser.password} name={'password'}/>
            <button type={'submit'}>Login</button>
        </form>
     );
