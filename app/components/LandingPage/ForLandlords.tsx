@@ -1,8 +1,5 @@
 // import '../styles/App.css'
-import React, { useEffect } from 'react'
-import styles from '../styles/sass/_forLandlords.scss'
-import Image from 'next/image'
-import service1 from '../../Images/service1.png';
+import React from 'react'
 export default function ForLandlords() {
     const image = "https://images.unsplash.com/photo-1565426873118-a17ed65d74b9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80"
     return (

@@ -1,15 +1,15 @@
-import {HttpRequest} from "../../interfaces/HttpRequest";
-import asyncF from "../../../utils/asyncF";
-import {Tenant} from "../../../interfaces/Tenant";
-import Controller from "../../interfaces/Controller";
+import {HttpRequest} from "../../interfaces/http-request";
+import asyncF from "../../../utils/async-f";
+import Controller from "../../interfaces/controller";
+import {UserExtended} from "../../../interfaces/user-extended";
 
-export default function createGetCheckedUser({ takeCheckedTenant }: { takeCheckedTenant: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<Tenant>> })  {
+export default function createGetCheckedUser({ checkTakeUser }: { checkTakeUser: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<UserExtended>> })  {
     return async function checkAttempt(httpRequest: HttpRequest) {
         const { source: {}, ...data }: { source: {}, data: { sessionCookie: string } } = httpRequest.body;
 
-        const [tenant, tenantError] = await asyncF<Required<Tenant>>(takeCheckedTenant({  sessionCookie: data.data.sessionCookie}));
+        const [tenant, tenantError] = await asyncF<Required<UserExtended>>(checkTakeUser({  sessionCookie: data.data.sessionCookie}));
 
-        let result!: Controller<Required<Tenant>>;
+        let result!: Controller<Required<UserExtended>>;
         if (tenantError) {
             result = {
                 headers: {

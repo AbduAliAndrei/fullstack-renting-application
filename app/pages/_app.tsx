@@ -8,26 +8,12 @@ import {NextComponentType} from "next";
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const { data, error } = useSWR('api/');
-  console.log(pageProps);
 
   return (
       <CookiesProvider>
-          <Provider session={pageProps.session}>
-              {
-                  (Component as NextComponentType & { isAuth: boolean }).isAuth ? (
-                      <Auth>
-                          <Layout>
-                              <Component {...pageProps} />
-                          </Layout>
-                      </Auth>
-                  ) : (
-                      <Layout>
-                          <Component {...pageProps} />
-                      </Layout>
-                  )
-              }
-
-          </Provider>
+          <Layout>
+              <Component {...pageProps} />
+          </Layout>
       </CookiesProvider>
   )
 }

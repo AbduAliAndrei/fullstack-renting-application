@@ -1,12 +1,12 @@
-import {HttpRequest} from "../../interfaces/HttpRequest";
-import Controller from "../../interfaces/Controller";
-import {Tenant} from "../../../interfaces/Tenant";
-import asyncF from "../../../utils/asyncF";
+import {HttpRequest} from "../../interfaces/http-request";
+import Controller from "../../interfaces/controller";
+import asyncF from "../../../utils/async-f";
+import {UserExtended} from "../../../interfaces/user-extended";
 
-export default function createGetSession({ takeCheckedTenant }: { takeCheckedTenant: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<Tenant>> }) {
+export default function createGetSession({ checkTakeUser }: { checkTakeUser: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<UserExtended>> }) {
     return async function getSession(httpRequest: HttpRequest): Promise<Controller<Record<string, any>>> {
         const session =  httpRequest.cookies.session ?? '';
-        const [tenant, tenantError] = await asyncF<Required<Tenant>>(takeCheckedTenant({  sessionCookie: session}));
+        const [tenant, tenantError] = await asyncF<Required<UserExtended>>(checkTakeUser({  sessionCookie: session}));
 
         let result!: Controller<Record<string, any>>;
         if (tenantError) {

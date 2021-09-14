@@ -1,8 +1,8 @@
-import createGetSession from "./getSession";
-import {takeCheckTenant} from "../../models/use-cases/tenant";
+import createGetSession from "./get-session.controller";
+import {checkTakeUser} from "../../models/use-cases/user";
 
 
-const getSession = createGetSession({ takeCheckedTenant: takeCheckTenant });
+const getSession = createGetSession({ checkTakeUser });
 
 const sessionController = Object.freeze({
     getSession

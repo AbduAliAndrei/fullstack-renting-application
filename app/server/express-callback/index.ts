@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import Controller from "../interfaces/Controller";
-import {HttpRequest} from "../interfaces/HttpRequest";
+import Controller from "../interfaces/controller";
+import {HttpRequest} from "../interfaces/http-request";
 
 export default function createExpressCallback<T>(controller:  (h: HttpRequest) => Promise<Controller<T>>): (req: Request, res:  Response) => void {
     return (req: Request, res:  Response) => {

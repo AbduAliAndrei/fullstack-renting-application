@@ -1,6 +1,6 @@
 // import '../styles/App.css'
 import React, { useEffect, useRef } from 'react'
-import styles from '../styles/sass/_header.scss'
+// import styles from '../styles/sass/_header.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 // import "../../node_modules/bootstrap/dist/css/bootstrap.css"

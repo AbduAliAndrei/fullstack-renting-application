@@ -1,12 +1,12 @@
 import {firestore} from "firebase-admin/lib/firestore";
 import Firestore = firestore.Firestore;
-import { TenantDatabase } from "../interfaces/DatabaseTenants";
-import {CollectionPaths} from "../enums/CollectionPaths";
+import {CollectionPaths} from "../enums/collection-paths";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
-import {Tenant} from "../../interfaces/Tenant";
+import {Tenant} from "../../interfaces/tenant";
+import {DatabaseEntity} from "../interfaces/database-entity";
 
-export default function makeTenantsDb ( { db } : { db: Firestore }): TenantDatabase {
+export default function makeTenantsDb ( { db } : { db: Firestore }): DatabaseEntity<Tenant> {
     return Object.freeze({
         add,
         findAll,

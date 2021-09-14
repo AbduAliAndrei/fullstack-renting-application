@@ -1,11 +1,13 @@
+import Auth from "../components/Auth";
+
 const Profile = () => {
     return (
-        <div>
-            Profile
-        </div>
+        <Auth>
+            <div>
+                Profile
+            </div>
+        </Auth>
     )
 }
-
-Profile.isPrivate = true;
 
 export default Profile;

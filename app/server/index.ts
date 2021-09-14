@@ -1,12 +1,12 @@
 import express from "express";
 import next from "next";
 import bodyParser from "body-parser";
-import csrf from "csurf";
+// import csrf from "csurf";
 import cookieParser from "cookie-parser";
 import showRoutes from "./routes/index";
 
 // protect from csrf attack. more here https://en.wikipedia.org/wiki/Cross-site_request_forgery
-const csrfMiddleware = csrf({ cookie: true });
+// const csrfMiddleware = csrf({ cookie: true });
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -20,13 +20,13 @@ app
 
     server.use(bodyParser.json());
     server.use(cookieParser());
-    server.use(csrfMiddleware);
+    // server.use(csrfMiddleware);
 
-    server.all("*", (req, res, next) => {
-        // @ts-ignore
-        res.cookie("XSRF-Token", req.csrfToken());
-        next();
-    });
+    // server.all("*", (req, res, next) => {
+    //     // @ts-ignore
+    //     res.cookie("XSRF-Token", req.csrfToken());
+    //     next();
+    // });
 
     server.use((_, res, next) => {
       res.set({ Tk: '!' })

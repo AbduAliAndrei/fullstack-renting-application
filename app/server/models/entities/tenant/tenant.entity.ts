@@ -1,4 +1,4 @@
-import {Tenant} from "../../../../interfaces/Tenant";
+import {Tenant} from "../../../../interfaces/tenant";
 
 export default function buildMakeTenant({Id, validate }: {Id: any, validate?: any}) {
     return function makeTenant({

@@ -1,12 +1,13 @@
 // import '../styles/App.css'
 import React, { useEffect } from 'react'
-import styles from '../styles/sass/_nav.scss'
+// import styles from '../styles/sass/_nav.scss'
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/dist/client/router'
 
 // import your icons
 import { faSignInAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {NavLinkProps} from "react-bootstrap";
 
 export default function Nav({ children, href, ...props }: NavLinkProps) {
   const router = useRouter()

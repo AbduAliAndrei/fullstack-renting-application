@@ -1,10 +1,10 @@
-import { TenantDatabase } from "../../../interfaces/DatabaseTenants";
-import {Tenant} from "../../../../interfaces/Tenant";
-import makeTenant from "../../entities/tenant";
+import makeTenant from "../../../entities/tenant";
+import {DatabaseEntity, DatabaseFunction, DatabaseObject} from "../../../../interfaces/database-entity";
+import {Tenant} from '../../../../../interfaces/tenant';
 
-export default function createAddTenant({ tenantsDb }: {tenantsDb : TenantDatabase })
+export default function createAddTenant({ tenantsDb }: {tenantsDb : DatabaseEntity<Tenant> })
 {
-    return async function addTenant(tenantInfo: Tenant) {
+    return async function addTenant(tenantInfo: Tenant): Promise<DatabaseFunction<DatabaseObject<Required<Tenant>>>> {
         const tenant = makeTenant(tenantInfo);
         try {
             const exists = await tenantsDb.findById({id: tenant.getId()});
