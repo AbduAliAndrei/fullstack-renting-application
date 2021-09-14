@@ -1,26 +1,29 @@
 .Offers {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   min-height: 400vh;
+  background-color: rgb(240, 240, 240);
+  .filter-tool {
+    position: fixed;
+    width: 15%;
+    height: 100vh;
+    background-color: red;
+  }
   .offers-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     row-gap: 20px;
     column-gap: 40px;
-    width: 80%;
-    margin: 0 auto;
-  }
-  .filter-tool {
     width: 70%;
-    height: 100px;
-    background-color: $main-color2;
-    margin: 50px auto;
+    margin: 70px auto;
   }
 }
 
 @media screen and (max-width: 1648px) {
   .Offers {
     .offers-container {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 60px;
     }
   }

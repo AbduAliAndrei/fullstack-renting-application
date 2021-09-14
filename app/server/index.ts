@@ -1,6 +1,7 @@
 import express from "express";
 import next from "next";
 import showRoutes from './routes/index';
+// import * as express from  "express"
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== "production";

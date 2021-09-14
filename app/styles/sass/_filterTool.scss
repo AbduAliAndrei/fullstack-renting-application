@@ -1,0 +1,74 @@
+.FilterTool {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  background-color: $main-color3;
+  text-align: center;
+  height: 100vh;
+  .title-arrow {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    .title {
+      p {
+        font-size: 1.5em;
+      }
+    }
+  }
+  .price,
+  .location,
+  .date,
+  .property-type {
+    position: relative;
+    width: 100%;
+    input {
+      @include input();
+    }
+  }
+
+  .drop-down {
+    padding: 0 10px;
+    text-align: left;
+    margin-top: 5px;
+    z-index: 99;
+    width: 100%;
+    // animation: popup 0.2s linear;
+    div {
+      input {
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .arrow-up {
+    display: none;
+  }
+  .action-btn-filter {
+    button {
+      @include btn($main-color2, $main-color2);
+    }
+  }
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .FilterTool {
+    .title-arrow {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      .title {
+        p {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}

@@ -111,7 +111,7 @@
       @include flex(column);
       transform: translateY(0);
       transition: 0.3s;
-      background-color: red;
+      background-color: $main-color2;
       width: 100vw;
       height: 50vh;
       z-index: 98;

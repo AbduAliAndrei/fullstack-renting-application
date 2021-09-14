@@ -1,11 +1,9 @@
-// import '../styles/App.css'
+/* eslint-disable @next/next/link-passhref */
 import React, { useEffect, useRef } from 'react'
-import styles from '../styles/sass/_header.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 // import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
-import img1 from '../../Images/service1.png'
 export default function Header() {
     return (
         <div className="Header">
@@ -26,7 +24,7 @@ export default function Header() {
                 </div>
             </div>
             <div className="vector-img-container">
-                <Image src={img1} alt="Budapest" />
+                <Image src="/service1.png" alt="Budapest" layout="fill" />
             </div>
         </div>
     )

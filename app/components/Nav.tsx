@@ -1,12 +1,12 @@
 // import '../styles/App.css'
 import React, { useEffect } from 'react'
-import styles from '../styles/sass/_nav.scss'
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/dist/client/router'
 
 // import your icons
 import { faSignInAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavLinkProps } from 'react-bootstrap';
 
 export default function Nav({ children, href, ...props }: NavLinkProps) {
   const router = useRouter()
@@ -16,9 +16,7 @@ export default function Nav({ children, href, ...props }: NavLinkProps) {
     <div className="Nav">
       <input type="checkbox" id="check" />
 
-      <div className="ham-menu">
-
-      </div>
+      <div className="ham-menu"></div>
 
       <label htmlFor="check" className="ham-menu">
         <FontAwesomeIcon icon={faBars} size="2x" />
@@ -40,7 +38,7 @@ export default function Nav({ children, href, ...props }: NavLinkProps) {
           <span>Login</span>
         </div>
         <div className="signin">
-          <p>Don't have account? <Link href="/"><a>Sign In</a></Link></p>
+          <p>Dont have account? <Link href="/"><a>Sign In</a></Link></p>
         </div>
       </div>
     </div >
