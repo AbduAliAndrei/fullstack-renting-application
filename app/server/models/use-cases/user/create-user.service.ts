@@ -4,6 +4,7 @@ import Landlord from "../../../../interfaces/landlord";
 import createAddTenant from "./tenant/create-tenant.service";
 
 
+// TODO Implement createUser function
 export default function createUserCreator({ db }: {db: DatabaseEntity<Tenant | Landlord>  })
 {
     return async function createUser(info: Tenant | Landlord, strategy: 'landlord' | 'tenant') {

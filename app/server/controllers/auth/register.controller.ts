@@ -26,9 +26,9 @@ export default function createRegisterAttempt
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                statusCode: 401,
+                statusCode: 409,
                 body: {
-                    error: `Unauthorized, ${createdError}`
+                    error: `Couldn't create user, Error: ${createdError}`
                 }
             }
         }

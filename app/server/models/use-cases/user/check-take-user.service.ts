@@ -1,11 +1,12 @@
 import asyncF from "../../../../utils/async-f";
 import {UserExtended} from "../../../../interfaces/user-extended";
 
-export default function checkTakeUserCreator({ takeUser, checkAuth }:
-  {
-      takeUser: ({ id }: { id: string }) => Promise<Required<UserExtended>>,
-      checkAuth: ({ sessionCookie }: {sessionCookie: string}) => Promise<string>
-  })
+export type CheckTakeUserCreatorParams = {
+    takeUser: ({ id }: { id: string }) => Promise<Required<UserExtended>>,
+    checkAuth: ({ sessionCookie }: {sessionCookie: string}) => Promise<string>
+}
+
+export default function checkTakeUserCreator({ takeUser, checkAuth }: CheckTakeUserCreatorParams)
 {
     return async function checkTakeTenant({ sessionCookie }: { sessionCookie: string }): Promise<Required<UserExtended>> {
         const [uid, uidError] = await asyncF<string>(checkAuth({  sessionCookie }));
