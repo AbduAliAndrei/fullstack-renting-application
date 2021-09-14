@@ -42,7 +42,8 @@ export default function makeLandlordsDb ( { db } : { db: Firestore }) {
                 offersList: doc.data().offersList,
                 trusted: doc.data().trusted,
                 bio: doc.data().bio,
-                picture: doc.data().picture
+                picture: doc.data().picture,
+                gender: doc.data().gender
             })];
         })
 

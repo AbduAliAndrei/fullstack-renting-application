@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node --project server/tsconfig.json server/index.ts",
+    "dev": "cross-env NODE_ENV=development && nodemon server/index.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,6 +17,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^5.0.2",
     "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
     "csurf": "^1.11.0",
     "cuid": "^2.1.8",
     "express": "^4.17.1",
@@ -26,6 +27,7 @@
     "next": "11.0.0",
     "next-auth": "^3.27.3",
     "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12",
     "react": "17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-cookie": "^4.0.3",
