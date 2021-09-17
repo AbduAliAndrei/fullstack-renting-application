@@ -2,7 +2,6 @@ import express from "express";
 import createExpressCallback from "../express-callback";
 import {postTenant} from "../controllers/tenant";
 import {getCheckedUser, postLogin, postRegisterAttempt} from "../controllers/auth";
-import {getSession} from "../controllers/session";
 import {UserExtended} from "../../interfaces/user-extended";
 
 const router = express.Router();
@@ -12,7 +11,6 @@ function routes() {
     router.post('/auth/register', createExpressCallback(postRegisterAttempt));
     router.post('/auth/tenant', createExpressCallback(postTenant));
     router.post('/auth/login', createExpressCallback(postLogin));
-    router.get('/auth/session', createExpressCallback(getSession));
 
     return router;
 }
