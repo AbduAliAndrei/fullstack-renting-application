@@ -6,6 +6,7 @@ import Landlord from "../../../interfaces/landlord";
 import {postTenant} from "../tenant";
 import Controller from "../../interfaces/controller";
 import {DatabaseObject} from "../../interfaces/database-entity";
+import {UserExtended} from "../../../interfaces/user-extended";
 
 export default function createRegisterAttempt
 ( { createUser, authCreate, authRemove } :
@@ -35,8 +36,8 @@ export default function createRegisterAttempt
 
         const [sessionCookie, sessionCookieError] = await asyncF(authCreate({idToken: created.idToken, expire: expiresIn}));
 
-        let result: Controller<DatabaseObject<Required<Tenant>>>;
-        const options = { maxAge: expiresIn, httpOnly: true }
+        let result: Controller<DatabaseObject<Required<UserExtended>>>;
+        const options = { maxAge: expiresIn, httpOnly: true };
 
         if (sessionCookieError) {
             result = {
