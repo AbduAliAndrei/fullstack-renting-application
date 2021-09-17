@@ -1,6 +1,6 @@
 // import '../styles/App.css'
 import React, { useEffect } from 'react'
-import styles from '../styles/sass/_RecentOffers.scss'
+// import styles from '../styles/sass/_RecentOffers.scss'
 export default function RecentOffers() {
     return (
         <div className="RecentOffers">
@@ -9,10 +9,10 @@ export default function RecentOffers() {
             </div>
 
             <div className="offers">
-                <div className="offer"></div>
-                <div className="offer"></div>
-                <div className="offer"></div>
-                <div className="offer"></div>
+                <div className="offer"/>
+                <div className="offer"/>
+                <div className="offer"/>
+                <div className="offer"/>
             </div>
         </div>
     )

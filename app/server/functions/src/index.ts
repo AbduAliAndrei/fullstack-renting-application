@@ -3,11 +3,15 @@
 import admin from "firebase-admin";
 import serviceAccount from "./service-account.json";
 import {ServiceAccount} from "firebase-admin/lib/credential";
+import firebase from "firebase";
+import {firebaseConfig} from "./firebase-config";
 
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as ServiceAccount),
 });
+
+firebase.initializeApp(firebaseConfig);
 
 const db: FirebaseFirestore.Firestore = admin.firestore();
 

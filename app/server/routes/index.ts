@@ -1,17 +1,16 @@
-import express, {Express, Request} from "express";
+import express from "express";
 import createExpressCallback from "../express-callback";
 import {postTenant} from "../controllers/tenant";
-import {DatabaseTenant} from "../interfaces/DatabaseTenants";
-import Tenant from "../interfaces/Tenant";
+import {getCheckedUser, postLogin, postRegisterAttempt} from "../controllers/auth";
+import {UserExtended} from "../../interfaces/user-extended";
 
 const router = express.Router();
 
-function routes(app: Express) {
-    router.get("/", (req: Request, res) => {
-        res.json({});
-    });
-
-    router.post("/login/tenant", createExpressCallback<DatabaseTenant<Tenant>>(postTenant));
+function routes() {
+    router.get('/auth/check', createExpressCallback<UserExtended>(getCheckedUser));
+    router.post('/auth/register', createExpressCallback(postRegisterAttempt));
+    router.post('/auth/tenant', createExpressCallback(postTenant));
+    router.post('/auth/login', createExpressCallback(postLogin));
 
     return router;
 }
