@@ -62,13 +62,24 @@ export default function makeTenantsDb ( { db } : { db: Firestore }): DatabaseEnt
                 return;
             }
 
-            tenant.id = data.data().id;
-            console.log(data.data(), tenant.id, 'id???');
-
-            index++;
+            tenant = ({
+                id: data.id,
+                firstName: data.data().firstName,
+                lastName: data.data().lastName,
+                userName: data.data().userName,
+                email: data.data().email,
+                password: data.data().password,
+                createdAt: data.data().createdDate,
+                updatedAt: data.data().updatedDate,
+                verified: data.data().verified,
+                idType: data.data().idType,
+                gender: data.data().gender,
+                bio: data.data().bio,
+                picture: data.data().picture
+            })
         })
 
-        return ({data: data as unknown as Required<Tenant>, id});
+        return ({data: tenant, id});
     }
 
     async function update({id, data}: {id: string, data: Required<Tenant>}) {

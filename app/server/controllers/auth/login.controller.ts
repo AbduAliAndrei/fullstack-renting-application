@@ -24,8 +24,16 @@ export default function createLogin(
                     error: `Unauthorized, ${checkedError}`
                 }
             }
+        } else {
+            return {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                statusCode: 200,
+                body: {
+                    res: checked
+                }
+            }
         }
-
-        return checked;
     }
 }

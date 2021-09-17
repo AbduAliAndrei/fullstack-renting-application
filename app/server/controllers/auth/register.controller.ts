@@ -54,6 +54,7 @@ export default function createRegisterAttempt
             result = await postTenant(httpRequest);
             if (result.body.error) {
                 await authRemove({uid: created.uid});
+                return result;
             }
             result.cookie = { name: 'session', value: sessionCookie, options }
         } else {

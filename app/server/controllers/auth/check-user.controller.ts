@@ -3,7 +3,7 @@ import asyncF from "../../../utils/async-f";
 import Controller from "../../interfaces/controller";
 import {UserExtended} from "../../../interfaces/user-extended";
 
-export default function createGetCheckedUser({ checkTakeUser }: { checkTakeUser: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<UserExtended>> })  {
+export default function createUserChecker({ checkTakeUser }: { checkTakeUser: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<UserExtended>> })  {
     return async function checkAttempt(httpRequest: HttpRequest) {
         const { source: {}, ...data }: { source: {}, data: { sessionCookie: string } } = httpRequest.body;
 
