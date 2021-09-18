@@ -35,7 +35,7 @@
 }
 
 .Nav .logo a {
-  color: #191515;
+  color: #363636;
   font-size: 40px;
   text-decoration: none;
 }
@@ -81,7 +81,7 @@
 
 .Nav .menu nav ul li a {
   text-decoration: none;
-  color: #191515;
+  color: #363636;
   font-size: 20px;
 }
 
@@ -145,7 +145,7 @@
 }
 
 .Nav .login_signin .signin a {
-  color: #191515;
+  color: #363636;
 }
 
 @media screen and (max-width: 900px) {
@@ -291,7 +291,15 @@
 
 .Header .vector-img-container {
   position: relative;
-  width: 700px;
+  width: 40%;
+  height: 70%;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Header .vector-img-container .ld-img {
+  border-radius: 50px;
 }
 
 @media screen and (max-width: 1518px) {
@@ -315,7 +323,7 @@
   }
 }
 
-@media screen and (max-width: 1124px) {
+@media screen and (max-width: 1000px) {
   .Header .text {
     width: 90%;
   }
@@ -393,6 +401,30 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100vw;
+  margin-bottom: 100px;
+  padding: 20px;
+  min-height: 70vh;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.ForLandlords .features {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -405,19 +437,46 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-height: 80vh;
-  width: 100vw;
-  margin-bottom: 100px;
+  height: 100%;
+  gap: 20px;
+  width: 40%;
 }
 
-.ForLandlords .title {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 50px 0;
+.ForLandlords .features .feature {
+  background-color: transparent;
+  padding: 20px 100px 20px 20px;
+  border-radius: 20px;
+  border: solid #363636 1px;
 }
 
-.ForLandlords .services {
+.ForLandlords .features .feature .feature-title {
+  color: #5b5f97;
+  margin: 10px 0;
+}
+
+.ForLandlords .features .feature .sub-features {
+  color: #363636;
+  font-size: 20px;
+}
+
+.ForLandlords .feature-view {
+  width: 40%;
+  height: 100%;
+  border-radius: 20px;
+  border: solid #363636 1px;
+  padding: 20px;
+}
+
+.ForLandlords .feature-view .right-btn {
+  float: right;
+}
+
+.ForLandlords .feature-view .feature-view-title {
+  margin: 20px 0;
+  color: #5b5f97;
+}
+
+.ForLandlords .feature-view .feature-image-description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -433,20 +492,31 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  height: 200px;
   width: 100%;
-  gap: 70px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
-.ForLandlords .services .service {
-  width: 300px;
+.ForLandlords .feature-view .feature-image-description .image-preview {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.ForLandlords .services .service .service-img img {
-  width: 100%;
+.ForLandlords .feature-view .feature-image-description .image-preview .ld-img {
+  border-radius: 50px;
 }
 
-.ForLandlords .services .service .service-title {
-  margin: 5px 0;
+.ForLandlords .feature-view .feature-image-description .feature-description {
+  width: 50%;
+}
+
+.ForLandlords .feature-view .feature-image-description .feature-description p {
+  color: #363636;
 }
 
 .Footer {
@@ -472,22 +542,20 @@
 }
 
 .Offers {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: relative;
   min-height: 400vh;
   background-color: #f0f0f0;
 }
 
 .Offers .filter-tool {
-  position: fixed;
   width: 15%;
-  height: 100vh;
-  background-color: red;
+  height: 100%;
 }
 
 .Offers .offers-container {

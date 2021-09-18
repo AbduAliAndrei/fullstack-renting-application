@@ -24,7 +24,7 @@ export default function Header() {
                 </div>
             </div>
             <div className="vector-img-container">
-                <Image src="/service1.png" alt="Budapest" layout="fill" />
+                <Image src="/DSC_2778.jpg" alt="Landlord Image" className="ld-img" objectFit="cover" layout="fill" />
             </div>
         </div>
     )

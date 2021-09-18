@@ -1,14 +1,12 @@
 .Offers {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  position: relative;
   min-height: 400vh;
   background-color: rgb(240, 240, 240);
   .filter-tool {
-    position: fixed;
     width: 15%;
-    height: 100vh;
-    background-color: red;
+    height: 100%;
   }
   .offers-container {
     display: grid;

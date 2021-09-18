@@ -7,7 +7,6 @@ export default function FilterTool() {
     return (
         <div className="FilterTool">
             <div className="options">
-
                 <div className="price">
                     <div className="title-arrow">
                         <div className="title">
