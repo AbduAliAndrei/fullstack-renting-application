@@ -4,10 +4,10 @@ import ForLandlords from "../components/LandingPage/ForLandlords";
 
 export default function Home() {
   return (
-      <div>
-        <Header />
-        <RecentOffers />
-        <ForLandlords />
-      </div>
+    <div>
+      <Header />
+      <RecentOffers />
+      <ForLandlords />
+    </div>
   )
 }

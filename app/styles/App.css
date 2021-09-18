@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
 .Nav {
   position: relative;
   width: 100vw;
@@ -21,6 +22,7 @@
   border-bottom: solid rgba(0, 0, 0, 0.171) 0.5px;
 }
 
+.Nav #check,
 .Nav .ham-menu {
   display: none;
 }
@@ -29,11 +31,11 @@
   position: absolute;
   left: 0;
   cursor: pointer;
-  margin-left: 80px;
+  margin-left: 60px;
 }
 
 .Nav .logo a {
-  color: #191515;
+  color: #363636;
   font-size: 40px;
   text-decoration: none;
 }
@@ -79,7 +81,7 @@
 
 .Nav .menu nav ul li a {
   text-decoration: none;
-  color: #191515;
+  color: #363636;
   font-size: 20px;
 }
 
@@ -143,18 +145,65 @@
 }
 
 .Nav .login_signin .signin a {
-  color: #191515;
+  color: #363636;
 }
 
 @media screen and (max-width: 900px) {
   .Nav .menu {
-    display: none;
+    -webkit-transform: translateY(-100vh);
+            transform: translateY(-100vh);
   }
   .Nav .ham-menu {
     display: block;
     position: absolute;
     left: 0;
     margin-left: 20px;
+    z-index: 99;
+  }
+  .Nav #check:checked ~ .menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    background-color: #5b5f97;
+    width: 100vw;
+    height: 50vh;
+    z-index: 98;
+  }
+  .Nav #check:checked ~ .menu nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .Nav #check:checked ~ .menu nav ul li.active::after {
+    display: none;
   }
 }
 
@@ -198,7 +247,10 @@
 .Header .text .btns .find-tenant-btn button {
   background-color: #5b5f97;
   border: none;
+  border: none;
   outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
   color: #fffffb;
   font-size: 15px;
   height: 40px;
@@ -216,8 +268,11 @@
 
 .Header .text .btns .find-flat-btn button {
   background-color: transparent;
+  border: none;
   border: #5b5f97;
   outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
   color: #5b5f97;
   border: solid #5b5f97 0.5px;
   font-size: 15px;
@@ -235,7 +290,16 @@
 }
 
 .Header .vector-img-container {
-  width: 700px;
+  position: relative;
+  width: 40%;
+  height: 70%;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Header .vector-img-container .ld-img {
+  border-radius: 50px;
 }
 
 @media screen and (max-width: 1518px) {
@@ -259,7 +323,7 @@
   }
 }
 
-@media screen and (max-width: 1124px) {
+@media screen and (max-width: 1000px) {
   .Header .text {
     width: 90%;
   }
@@ -312,57 +376,28 @@
 }
 
 .RecentOffers .offers .offer {
-  height: 350px;
-  min-width: 300px;
+  height: 520px;
+  min-width: 350px;
   background-color: #fffffb;
   border-radius: 20px;
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+  padding: 30px;
 }
 
 .RecentOffers .offers .offer:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
 }
 
 @media screen and (max-width: 640px) {
   .RecentOffers .offers .offer {
-    min-width: 40px;
+    min-width: 350px;
     height: 250px;
   }
 }
 
 .ForLandlords {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  min-height: 80vh;
-  width: 100vw;
-  margin-bottom: 100px;
-}
-
-.ForLandlords .title {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 50px 0;
-}
-
-.ForLandlords .services {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -378,20 +413,110 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 100vw;
+  margin-bottom: 100px;
+  padding: 20px;
+  min-height: 70vh;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.ForLandlords .features {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%;
+  gap: 20px;
+  width: 40%;
+}
+
+.ForLandlords .features .feature {
+  background-color: transparent;
+  padding: 20px 100px 20px 20px;
+  border-radius: 20px;
+  border: solid #363636 1px;
+}
+
+.ForLandlords .features .feature .feature-title {
+  color: #5b5f97;
+  margin: 10px 0;
+}
+
+.ForLandlords .features .feature .sub-features {
+  color: #363636;
+  font-size: 20px;
+}
+
+.ForLandlords .feature-view {
+  width: 40%;
+  height: 100%;
+  border-radius: 20px;
+  border: solid #363636 1px;
+  padding: 20px;
+}
+
+.ForLandlords .feature-view .right-btn {
+  float: right;
+}
+
+.ForLandlords .feature-view .feature-view-title {
+  margin: 20px 0;
+  color: #5b5f97;
+}
+
+.ForLandlords .feature-view .feature-image-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 200px;
   width: 100%;
-  gap: 70px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
-.ForLandlords .services .service {
-  width: 300px;
+.ForLandlords .feature-view .feature-image-description .image-preview {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.ForLandlords .services .service .service-img img {
-  width: 100%;
+.ForLandlords .feature-view .feature-image-description .image-preview .ld-img {
+  border-radius: 50px;
 }
 
-.ForLandlords .services .service .service-title {
-  margin: 5px 0;
+.ForLandlords .feature-view .feature-image-description .feature-description {
+  width: 50%;
+}
+
+.ForLandlords .feature-view .feature-image-description .feature-description p {
+  color: #363636;
 }
 
 .Footer {
@@ -418,32 +543,37 @@
 
 .Offers {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   min-height: 400vh;
+  background-color: #f0f0f0;
+}
+
+.Offers .filter-tool {
+  width: 15%;
+  height: 100%;
 }
 
 .Offers .offers-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   row-gap: 20px;
   -webkit-column-gap: 40px;
           column-gap: 40px;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.Offers .filter-tool {
   width: 70%;
-  height: 100px;
-  background-color: #5b5f97;
-  margin: 50px auto;
+  margin: 70px auto;
 }
 
 @media screen and (max-width: 1648px) {
   .Offers .offers-container {
-    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 60px;
   }
 }
@@ -455,6 +585,399 @@
     padding: 10px;
     -ms-grid-columns: (minmax(40%, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  }
+}
+
+.Card {
+  height: 520px;
+  min-width: 350px;
+  background-color: #fffffb;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
+  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+  padding: 30px;
+}
+
+.Card:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 640px) {
+  .Card {
+    min-width: 350px;
+    height: 250px;
+  }
+}
+
+.Card .offer-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  height: 250px;
+  width: 100%;
+}
+
+.Card .offer-images .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  z-index: 99;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Card .offer-images .of-img {
+  border-radius: 30px;
+}
+
+.Card .offer-details .offer-title {
+  margin: 10px 0;
+}
+
+.Card .offer-details .offer-title p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Card .offer-details .price-rank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Card .offer-details .price-rank .price-info h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffac07;
+}
+
+.Card .offer-details .price-rank .price-info p {
+  color: #5b5f97;
+  font-weight: bold;
+}
+
+.Card .offer-details .price-rank .offer-ranking {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: transparent;
+  border: solid #5b5f97 2px;
+  padding: 5px 10px;
+}
+
+.Card .offer-details .price-rank .offer-ranking p {
+  margin-right: 5px;
+  color: #5b5f97;
+  font-weight: bold;
+}
+
+.Card .offer-details .line {
+  width: 100%;
+  height: 1px;
+  margin: 5px 0;
+  background-color: #cecece;
+}
+
+.Card .offer-details .landlord-facilities {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Card .offer-details .landlord-facilities .landlord {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Card .offer-details .landlord-facilities .landlord .landlord-img {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Card .offer-details .landlord-facilities .landlord .landlord-img .ld-img {
+  border-radius: 50px;
+}
+
+.Card .offer-details .landlord-facilities .landlord .landlord-name p {
+  color: #5b5f97;
+}
+
+.Card .offer-details .landlord-facilities .facilities {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 35%;
+  padding: 5px;
+}
+
+.Card .offer-details .landlord-facilities .facilities .facilitie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 5px;
+}
+
+.Card .offer-details .datePosted-goToOfferBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 10px;
+}
+
+.Card .offer-details .datePosted-goToOfferBtn .date-posted p {
+  color: rgba(163, 163, 163, 0.972);
+}
+
+.Card .offer-details .datePosted-goToOfferBtn .go-to-offer-btn button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px 0 20px 0;
+  background-color: #5b5f97;
+  color: #fffffb;
+}
+
+.Card .offer-details .datePosted-goToOfferBtn .go-to-offer-btn button:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #787bad;
+}
+
+.FilterTool {
+  background-color: #fffffb;
+  text-align: center;
+  height: 100vh;
+}
+
+.FilterTool .title-arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+}
+
+.FilterTool .title-arrow .title p {
+  font-size: 1.5em;
+}
+
+.FilterTool .price,
+.FilterTool .location,
+.FilterTool .date,
+.FilterTool .property-type {
+  position: relative;
+  width: 100%;
+}
+
+.FilterTool .price input,
+.FilterTool .location input,
+.FilterTool .date input,
+.FilterTool .property-type input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.FilterTool .drop-down {
+  padding: 0 10px;
+  text-align: left;
+  margin-top: 5px;
+  z-index: 99;
+  width: 100%;
+}
+
+.FilterTool .drop-down div input {
+  margin-right: 3px;
+}
+
+.FilterTool .arrow-up {
+  display: none;
+}
+
+.FilterTool .action-btn-filter button {
+  background-color: #5b5f97;
+  border: none;
+  border: #5b5f97;
+  outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
+  color: #fffffb;
+  border: solid #5b5f97 0.5px;
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.FilterTool .action-btn-filter button:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #484b77;
+}
+
+@-webkit-keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .FilterTool .title-arrow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 10px;
+  }
+  .FilterTool .title-arrow .title p {
+    font-size: 1em;
   }
 }
 
@@ -480,28 +1003,5 @@ html {
 
 .children {
   min-height: 100vh;
-}
-
-.Card {
-  height: 350px;
-  min-width: 300px;
-  background-color: #fffffb;
-  border-radius: 20px;
-  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
-  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
-}
-
-.Card:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
-}
-
-@media screen and (max-width: 640px) {
-  .Card {
-    min-width: 40px;
-    height: 250px;
-  }
 }
 /*# sourceMappingURL=App.css.map */

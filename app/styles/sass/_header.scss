@@ -33,7 +33,14 @@
     }
   }
   .vector-img-container {
-    width: 700px;
+    position: relative;
+    width: 40%;
+    height: 70%;
+    margin-right: 5px;
+    object-fit: cover;
+    .ld-img {
+      border-radius: 50px;
+    }
   }
 }
 
@@ -72,7 +79,7 @@
   }
 }
 
-@media screen and (max-width: 1124px) {
+@media screen and (max-width: 1000px) {
   .Header {
     .text {
       width: 90%;

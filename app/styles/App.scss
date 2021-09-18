@@ -5,6 +5,8 @@
 @import "./sass/forLandlords";
 @import "./sass/footer";
 @import "./sass/offers";
+@import "./sass/card";
+@import "./sass/filterTool";
 
 * {
   box-sizing: border-box;
@@ -28,8 +30,4 @@ html {
 
 .children {
   min-height: 100vh;
-}
-
-.Card {
-  @include card();
 }

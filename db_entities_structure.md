@@ -1,4 +1,4 @@
-```landlord = {                                                    
+```landlord = {
 
     id:'',
     first_name:'',
@@ -43,12 +43,12 @@ offer = {
     smokingAllowed :'bool',
     petsAllowed:'bool',
     facilities: {
-        fridge:'bool'
+        fridge:'bool',
         AC: 'bool',
         washing_machine: 'bool',
         wifi: 'bool',
         gas_heating: 'bool',
-        dryer, 'bool',
+        dryer: 'bool',
         tv: 'bool',
         oven:'bool',
         stove:'bool',
@@ -58,6 +58,6 @@ offer = {
         avgInternetSpeed:'float',
     }
     summary: '',
-    
+
 }
 ```
