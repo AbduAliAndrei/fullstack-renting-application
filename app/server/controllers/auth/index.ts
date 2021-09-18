@@ -6,7 +6,7 @@ import createLogin from "./login.controller";
 
 const postRegisterAttempt = createRegisterAttempt({ createUser: registerDb, authCreate, authRemove });
 const getCheckedUser = createGetCheckedUser({ checkTakeUser });
-const postLogin = createLogin({ loginUser: login });
+const postLogin = createLogin({ loginUser: login, authCreate });
 
 const AuthController = Object.freeze({
     postRegisterAttempt,

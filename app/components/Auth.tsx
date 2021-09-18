@@ -1,10 +1,13 @@
 import {ReactNode} from "react";
 import {useSession} from "next-auth/client";
+import {useCookies} from "react-cookie";
 
 const Auth = ({ children }: {children: ReactNode}) => {
-    const [session, loading] = useSession();
+    // const [session, loading] = useSession();
+    const [sessionCookie] = useCookies(['sessionCookie']);
+    console.log(sessionCookie);
 
-    if (session) {
+    if (sessionCookie) {
         return <div>{children}</div>;
     }
 

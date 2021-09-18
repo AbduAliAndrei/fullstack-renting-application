@@ -5,9 +5,8 @@ import {UserExtended} from "../../../interfaces/user-extended";
 
 export default function createUserChecker({ checkTakeUser }: { checkTakeUser: ({ sessionCookie }: {sessionCookie: string}) => Promise<Required<UserExtended>> })  {
     return async function checkAttempt(httpRequest: HttpRequest) {
-        const { source: {}, ...data }: { source: {}, data: { sessionCookie: string } } = httpRequest.body;
-
-        const [tenant, tenantError] = await asyncF<Required<UserExtended>>(checkTakeUser({  sessionCookie: data.data.sessionCookie}));
+        const { source: {}, ...data }: { source: {}, sessionCookie: string  } = httpRequest.body;
+        const [tenant, tenantError] = await asyncF<Required<UserExtended>>(checkTakeUser({  sessionCookie: data.sessionCookie}));
 
         let result!: Controller<Required<UserExtended>>;
         if (tenantError) {

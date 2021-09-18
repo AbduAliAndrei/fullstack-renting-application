@@ -5,8 +5,9 @@ import Controller from "../../interfaces/controller";
 
 
 export default function createLogin(
-    { loginUser }: {
-        loginUser: ({email, password}: {email: string, password: string}) =>  Promise<[Required<UserExtended>, string]>
+    { loginUser, authCreate }: {
+        loginUser: ({email, password}: {email: string, password: string}) =>  Promise<[Required<UserExtended>, string]>,
+        authCreate: ({idToken, expire}: {idToken: string, expire: number}) => Promise<string>,
     }
 ) {
     return async function login(httpRequest: HttpRequest) {
@@ -17,9 +18,22 @@ export default function createLogin(
 
         let result: Controller<Required<UserExtended>>;
         const expiresIn = 60 * 60 * 24 * 5 * 1000;
-        const options = { maxAge: expiresIn, httpOnly: true };
+        const options = { maxAge: expiresIn, httpOnly: true, secure: false };
 
-        if (checkedError) {
+
+        const [sessionCookie, sessionCookieError] = await asyncF(authCreate({idToken: checked[1], expire: expiresIn}));
+
+        if (sessionCookieError || !sessionCookie) {
+            result = {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                statusCode: 404,
+                body: {
+                    error: `Error with session cookie. ${sessionCookieError}`
+                }
+            }
+        } else  if (checkedError) {
             result = {
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,7 +45,7 @@ export default function createLogin(
             }
         } else {
             result = {
-                cookie: { name: 'session', value: checked[1], options },
+                cookie: { name: 'session', value: sessionCookie, options },
                 headers: {
                     'Content-Type': 'application/json',
                 },
