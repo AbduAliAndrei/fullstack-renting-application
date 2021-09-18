@@ -1,6 +1,6 @@
 // import '../styles/App.css'
-import React, { useEffect } from 'react'
-import Link, { LinkProps } from 'next/link'
+import React from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/dist/client/router'
 
 // import your icons
@@ -8,7 +8,7 @@ import { faSignInAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLinkProps } from 'react-bootstrap';
 
-export default function Nav({ children, href, ...props }: NavLinkProps) {
+export default function Nav({ }: NavLinkProps) {
   const router = useRouter()
 
 
@@ -28,7 +28,7 @@ export default function Nav({ children, href, ...props }: NavLinkProps) {
         <nav>
           <ul >
             <li className={router.pathname === "/" ? "active" : ""}><Link href="/"><a href="">Home</a></Link></li>
-            <li className={router.pathname === "/Offers" ? "active" : ""}><Link href="/Offers"><a href="">Offers</a></Link></li>
+            <li className={router.pathname === "/offers" ? "active" : ""}><Link href="/offers"><a href="">Offers</a></Link></li>
           </ul>
         </nav >
       </div >

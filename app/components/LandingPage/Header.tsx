@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/link-passhref */
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-// import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
 export default function Header() {
     return (
@@ -17,7 +15,7 @@ export default function Header() {
                 <div className="btns">
                     <div className="find-tenant-btn"><button>Find tenant</button></div>
                     <div className="find-flat-btn">
-                        <Link href="/Offers">
+                        <Link href="/offers">
                             <button>Find flat</button>
                         </Link>
                     </div>
