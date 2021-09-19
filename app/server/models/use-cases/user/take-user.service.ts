@@ -1,6 +1,6 @@
 import {DatabaseEntity} from "../../../interfaces/database-entity";
 import {Tenant} from "../../../../interfaces/tenant";
-import Landlord from "../../../../interfaces/landlord";
+import {Landlord }from "../../../../interfaces/landlord";
 
 export default function takeUserCreator({ tenantsDb }: {tenantsDb :DatabaseEntity<Tenant | Landlord> }) {
     return async function takeUser({ id }: { id: string }): Promise<Required<Tenant | Landlord>> {

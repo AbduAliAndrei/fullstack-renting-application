@@ -10,6 +10,7 @@ function routes() {
     router.get('/auth/check', createExpressCallback<UserExtended>(getCheckedUser));
     router.post('/auth/register', createExpressCallback(postRegisterAttempt));
     router.post('/auth/tenant', createExpressCallback(postTenant));
+    // router.post('/auth/tenant', createExpressCallback(postTenant));
     router.post('/auth/login', createExpressCallback(postLogin));
 
     return router;
