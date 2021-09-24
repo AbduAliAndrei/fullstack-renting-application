@@ -1,6 +1,6 @@
-import makeLandlord from "../../../entities/landlord";
 import { DatabaseEntity, DatabaseFunction, DatabaseObject } from "../../../../interfaces/database-entity";
 import { Landlord } from '../../../../../interfaces/landlord';
+import {makeLandlord} from "../../../entities/user";
 
 
 export default function createAddLandlord({ landlordsDb }: { landlordsDb: DatabaseEntity<Landlord> }) {
