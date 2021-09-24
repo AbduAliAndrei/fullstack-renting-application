@@ -1,4 +1,4 @@
-import Landlord from "../../../../interfaces/landlord";
+import {Landlord} from "../../../../interfaces/landlord";
 
 export default function buildMakeLandlord({Id, validate }: {Id: any, validate?: any}) {
     return function makeLandlord({

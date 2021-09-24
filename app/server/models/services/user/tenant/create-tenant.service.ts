@@ -1,6 +1,6 @@
-import makeTenant from "../../../entities/tenant";
 import {DatabaseEntity, DatabaseFunction, DatabaseObject} from "../../../../interfaces/database-entity";
 import {Tenant} from '../../../../../interfaces/tenant';
+import {makeTenant} from "../../../entities/user";
 
 export default function createAddTenant({ tenantsDb }: {tenantsDb : DatabaseEntity<Tenant> })
 {

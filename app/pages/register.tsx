@@ -1,14 +1,13 @@
 import {BaseSyntheticEvent, useEffect, useState} from "react";
 import {UseType} from "../enums/use-type";
-import {Tenant} from "../interfaces/tenant";
-import Landlord from "../interfaces/landlord";
 
 import {useCookies} from "react-cookie";
+import {UserExtended} from "../interfaces/user-extended";
 
 
 const Register = () => {
     const [userType, setUserType] = useState<UseType>(UseType.TENANT);
-    const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
+    const [registeringUser, setRegisteringUser] = useState<UserExtended>({
         email: 'andrei.cristea@gmail.com',
         trusted: false,
         firstName: 'Andrei',

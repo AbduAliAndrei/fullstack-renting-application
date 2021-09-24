@@ -1,6 +1,6 @@
 import {DatabaseEntity} from "../../../interfaces/database-entity";
 import {Tenant} from "../../../../interfaces/tenant";
-import Landlord from "../../../../interfaces/landlord";
+import {Landlord} from "../../../../interfaces/landlord";
 import createAddTenant from "./tenant/create-tenant.service";
 
 

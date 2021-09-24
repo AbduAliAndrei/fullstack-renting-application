@@ -2,8 +2,8 @@ import {HttpRequest} from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
 import {UseType} from "../../../enums/use-type";
 import {Tenant} from "../../../interfaces/tenant";
-import Landlord from "../../../interfaces/landlord";
-import {postTenant} from "../tenant";
+import {Landlord} from "../../../interfaces/landlord";
+import controller from "../index";
 import Controller from "../../interfaces/controller";
 import {DatabaseObject} from "../../interfaces/database-entity";
 import {UserExtended} from "../../../interfaces/user-extended";
@@ -52,12 +52,12 @@ export default function createRegisterAttempt
         } else if (loginInfo.userType === UseType.TENANT) {
             loginInfo.user.id = created.uid;
             httpRequest.body = { source, user: loginInfo.user }
-            result = await postTenant(httpRequest);
+            result = await controller.postTenant(httpRequest);
             if (result.body.error) {
                 await authRemove({uid: created.uid});
                 return result;
             }
-            result.cookie = { name: 'session', value: sessionCookie, options }
+            result = {...result, cookie: { name: 'session', value: sessionCookie, options }}
         } else {
             await authRemove({uid: created.uid});
             result = {

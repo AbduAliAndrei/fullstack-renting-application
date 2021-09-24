@@ -1,4 +1,5 @@
 import {User} from "./user";
 import {Privilege} from "./privilege";
+import {Merge} from "../ts-utils/merge";
 
-export default interface Landlord extends User, Required<Pick<Privilege, "offerList" | "trusted" >> {};
+export type Landlord = Merge<User, Required<Pick<Privilege, "offersList" | "trusted">>>

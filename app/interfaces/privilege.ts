@@ -1,5 +1,6 @@
 export interface Privilege {
-    offerList: [];
+    offersList: [];
     trusted: boolean;
     idType: string; //Passport or ID card
+    admin: boolean;
 }
