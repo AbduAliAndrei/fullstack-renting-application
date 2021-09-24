@@ -1,34 +1,37 @@
 import {Landlord} from "../../../../interfaces/landlord";
 
-export default function buildMakeLandlord({Id, validate }: {Id: any, validate?: any}) {
+export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?: any }) {
     return function makeLandlord({
-       firstName,
-       createdAt = new Date(),
-       id = Id.makeId(),
-       email,
-       lastName,
-       userName = firstName + ' ' + lastName,
-       updatedAt = new Date(),
-       verified  = false,
-       password,
-       picture,       
-       bio,
-    } : Landlord) {
+        firstName,
+        lastName,
+        createdAt = new Date(),
+        id = Id.makeId(),
+        email,
+        userName = firstName + ' ' + lastName,
+        updatedAt = new Date(),
+        verified = false,
+        password,
+        picture,
+        bio,
+        offersList,
+        trusted,
+        gender
+    }: Landlord) {
         if (!email) {
             throw new Error('Landlord must have email')
         }
 
-        if (!firstName || !lastName)  {
+        if (!firstName || !lastName) {
             throw new Error('Landlord must have first name and last name');
         }
 
         if (!password) {
             throw new Error('Landlord password is required');
         }
-        if(!picture){
+        if (!picture) {
             throw new Error('Tenant must provide a picture')
         }
-        if(!bio){
+        if (!bio) {
             throw new Error('Tenant must provide a short bio')
         }
 
@@ -39,7 +42,14 @@ export default function buildMakeLandlord({Id, validate }: {Id: any, validate?: 
             getId: () => id,
             getUpdatedAt: () => updatedAt,
             getUsername: () => userName,
-            getVerified: () => verified
+            getPassword: () => password,
+            getVerified: () => verified,
+            isTrusted: () => trusted,
+            getOffersList: () => offersList,
+            getGender: () => gender,
+            getPicture:() => picture,
+            getEmail: ()  => email,
+            getBio: () => bio,
         })
     }
 }
