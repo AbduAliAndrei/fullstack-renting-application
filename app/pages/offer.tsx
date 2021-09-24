@@ -1,5 +1,5 @@
 // import '../styles/App.css'
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
 export default function Offer() {
 
