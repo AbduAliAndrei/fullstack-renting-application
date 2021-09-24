@@ -51,13 +51,41 @@ export default function makeLandlordsDb ( { db } : { db: Firestore }): DatabaseE
     }
 
     async function findById({id}: {id: string}) {
-        const landlord = await db.collection(CollectionPaths.LANDLORD).doc(id);
-        const data = await landlord.get();
-        if (!data.exists) {
+        const landlordRef = await db.collection(CollectionPaths.LANDLORD);
+        const data = await landlordRef.where('id', '==', id).get();
+        if (data.empty) {
             return ({data: null});
         }
 
-        return ({data: data as unknown as Required<Landlord>, id});
+        let landlord!: Required<Landlord>;
+        let index = 0;
+
+        data.forEach((data) => {
+            if (index > 0) {
+                return;
+            }
+
+            landlord = ({
+                id: data.id,
+                firstName: data.data().firstName,
+                lastName: data.data().lastName,
+                userName: data.data().userName,
+                email: data.data().email,
+                password: data.data().password,
+                createdAt: data.data().createdDate,
+                updatedAt: data.data().updatedDate,
+                verified: data.data().verified,
+                offersList: data.data().offersList,
+                trusted: data.data().trusted,
+                gender: data.data().gender,
+                bio: data.data().bio,
+                picture: data.data().picture
+            });
+
+            index++;
+        })
+
+        return ({data: landlord, id});
     }
 
     async function update({id, data}: {id: string, data: Required<Landlord>}) {

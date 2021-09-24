@@ -12,8 +12,8 @@ export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?
         verified = false,
         password,
         picture,
-        bio,
-        offersList,
+        bio = '',
+        offersList = [],
         trusted,
         gender
     }: Landlord) {
@@ -29,10 +29,7 @@ export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?
             throw new Error('Landlord password is required');
         }
         if (!picture) {
-            throw new Error('Tenant must provide a picture')
-        }
-        if (!bio) {
-            throw new Error('Tenant must provide a short bio')
+            throw new Error('Landlord must provide a picture')
         }
 
         return Object.freeze({

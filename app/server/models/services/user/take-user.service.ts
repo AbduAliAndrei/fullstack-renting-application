@@ -1,15 +1,27 @@
 import {DatabaseEntity} from "../../../interfaces/database-entity";
 import {Tenant} from "../../../../interfaces/tenant";
 import {Landlord} from "../../../../interfaces/landlord";
+import {UserType} from "../../../../enums/use-type";
+import {UserExtended} from "../../../../interfaces/user-extended";
 
-export default function takeUserCreator({ tenantsDb }: {tenantsDb :DatabaseEntity<Tenant | Landlord> }) {
-    return async function takeUser({ id }: { id: string }): Promise<Required<Tenant | Landlord>> {
-        const tenant = await tenantsDb.findById({id});
+interface TakeUserInterface {
+    tenantsDb :DatabaseEntity<Tenant>,
+    landlordsDb: DatabaseEntity<Landlord>,
+}
 
-        if (!tenant.data) {
-            throw new Error(`Such tenant user is not yet created on the database. Id: ${id}`);
+export default function takeUserCreator({ tenantsDb, landlordsDb }: TakeUserInterface ) {
+    return async function takeUser(obj: { id: string, type: UserType }): Promise<Required<UserExtended>> {
+        const strategies = {
+            [UserType.LANDLORD]: async (id: string) => landlordsDb.findById({id}),
+            [UserType.TENANT]: async (id: string) => tenantsDb.findById({id})
+        }
+        console.log(strategies[UserType.TENANT].name);
+        const user = await strategies[obj.type](obj.id);
+
+        if (!user.data) {
+            throw new Error(`Such user is not yet created on the database. Id: ${obj.id}`);
         }
 
-        return tenant.data;
+        return user.data;
     }
 }

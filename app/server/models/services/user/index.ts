@@ -1,5 +1,5 @@
 import createAddTenant from "./tenant/create-tenant.service";
-import {tenantsDb, landlordsDb,authVerify} from "../../../database";
+import {authVerify, landlordsDb, tenantsDb} from "../../../database";
 import createAddLandlord from "./landlord/create-landlord.service";
 
 import takeUserCreator from "./take-user.service";
@@ -9,7 +9,8 @@ import firebaseLogin from "../../../functions/src/authentication/firebase-login"
 
 const createTenant = createAddTenant({ tenantsDb });
 const createLandlord = createAddLandlord({landlordsDb});
-const takeUser = takeUserCreator({ tenantsDb });
+const takeUser = takeUserCreator({ tenantsDb, landlordsDb });
+
 const checkTakeUser = checkTakeUserCreator({ takeUser, checkAuth: authVerify });
 const login = loginUserCreator({takeUser, loginCheck: firebaseLogin});
 
@@ -19,9 +20,10 @@ const login = loginUserCreator({takeUser, loginCheck: firebaseLogin});
 const commonService = Object.freeze({
     createTenant,
     takeUser,
+    createLandlord,
     checkTakeUser,
     login
 });
 
 export default commonService;
-export { createTenant,createLandlord, checkTakeUser, takeUser, login };
+export { createTenant, createLandlord, checkTakeUser, takeUser, login };
