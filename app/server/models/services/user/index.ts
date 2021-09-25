@@ -1,7 +1,7 @@
 import createAddTenant from "./tenant/create-tenant.service";
-import {authVerify, landlordsDb, tenantsDb} from "../../../database";
+import {authVerify, landlordsDb, tenantsDb,adminsDb} from "../../../database";
 import createAddLandlord from "./landlord/create-landlord.service";
-
+import createAddAdmin from "./admin/create-admin.service";
 import takeUserCreator from "./take-user.service";
 import checkTakeUserCreator from "./check-take-user.service";
 import loginUserCreator from "./login.service";
@@ -9,7 +9,8 @@ import firebaseLogin from "../../../functions/src/authentication/firebase-login"
 
 const createTenant = createAddTenant({ tenantsDb });
 const createLandlord = createAddLandlord({landlordsDb});
-const takeUser = takeUserCreator({ tenantsDb, landlordsDb });
+const createAdmin = createAddAdmin({adminsDb});
+const takeUser = takeUserCreator({ tenantsDb, landlordsDb ,adminsDb});
 
 const checkTakeUser = checkTakeUserCreator({ takeUser, checkAuth: authVerify });
 const login = loginUserCreator({takeUser, loginCheck: firebaseLogin});

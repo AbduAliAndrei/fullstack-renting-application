@@ -16,12 +16,23 @@ export default function loginUserCreator({ takeUser, loginCheck } : LoginUserCre
             throw new Error(`Login Tenant error:  ${loginDataError}`);
         }
 
-        let [user, takeError] = await asyncF<Required<UserExtended>>(takeUser({id: loginData.uid, type: UserType.TENANT}), true);
+        let [user, takeError] = await asyncF<Required<UserExtended>>(takeUser({id: loginData.uid, type: UserType.TENANT}));
+       
         if (takeError) {
             console.log('redirecting to take landlord');
-            const [landLord, takeErrorLandlord] = await asyncF<Required<UserExtended>>(takeUser({id: loginData.uid, type: UserType.LANDLORD}), true);
+            const [landLord, takeErrorLandlord] = await asyncF<Required<UserExtended>>(takeUser({id: loginData.uid, type: UserType.LANDLORD}));
+
             if (takeErrorLandlord) {
-                throw new Error(`Landlord or tenant with such id was not found in database. Got ${loginData.uid}.`);
+                console.log('redirecting to take admin');
+
+                const [admin, takeErrorAdmin] = await asyncF<Required<UserExtended>>(takeUser({id: loginData.uid, type: UserType.ADMIN}));
+                
+                if(takeErrorAdmin){
+                    
+                    throw new Error(`No Admin, Landlord nor tenant with such id was not found in database. Got ${loginData.uid}.`);
+                }
+                user= admin;
+                return [user, loginData.idToken];
             }
 
             user = landLord;

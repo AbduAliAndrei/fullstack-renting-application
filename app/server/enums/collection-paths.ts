@@ -1,4 +1,5 @@
 export enum CollectionPaths {
     TENANT = 'tenants',
-    LANDLORD = 'landlords'
+    LANDLORD = 'landlords',
+    ADMIN = 'Admins'
 }

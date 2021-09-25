@@ -16,13 +16,20 @@ export default function checkTakeUserCreator({ takeUser, checkAuth }: CheckTakeU
             throw new Error(`Check Tenant uid error:  ${uidError}`);
         }
 
-        const [tenant, takeError] = await asyncF<Required<UserExtended>>(takeUser({id: uid, type: UserType.TENANT }), true);
+        const [tenant, takeError] = await asyncF<Required<UserExtended>>(takeUser({id: uid, type: UserType.TENANT }));
 
         if (takeError) {
             console.log('redirecting to take landlord');
-            const [landLord, takeErrorLandlord] = await asyncF<Required<UserExtended>>(takeUser({id: uid, type: UserType.LANDLORD}), true);
+            const [landLord, takeErrorLandlord] = await asyncF<Required<UserExtended>>(takeUser({id: uid, type: UserType.LANDLORD}));
             if (takeErrorLandlord) {
-                throw new Error(`Landlord or tenant with such id was not found in database. Got ${uid}.`);
+                console.log(`redirecting to take admin`);
+                const [admin, takeErrorAdmin] = await asyncF<Required<UserExtended>>(takeUser({id: uid, type: UserType.ADMIN}));
+                
+                if(takeErrorAdmin){
+                    
+                    Error(`No Admin, Landlord nor tenant with such id was not found in database. Got ${uid}.`);
+                }
+                return admin;
             }
 
             return landLord;
