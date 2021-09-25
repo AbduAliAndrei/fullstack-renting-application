@@ -981,6 +981,587 @@
   }
 }
 
+.Login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
+}
+
+.Login .header-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 50%;
+  height: 100vh;
+}
+
+.Login .header-form .login-form-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.Login .header-form .login-form-header .logo {
+  cursor: pointer;
+}
+
+.Login .header-form .login-form-header .logo a {
+  color: #363636;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.Login .header-form .login-form-header .back-home-btn button {
+  background-color: transparent;
+  border: none;
+}
+
+.Login .header-form .login-form-header .back-home-btn button:hover {
+  color: #5b5f97;
+}
+
+.Login .header-form .login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+
+.Login .header-form .login-form .input-field {
+  width: 100%;
+}
+
+.Login .header-form .login-form .input-field .email,
+.Login .header-form .login-form .input-field .password {
+  position: relative;
+  padding: 15px 0 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.Login .header-form .login-form .input-field .email .form__field,
+.Login .header-form .login-form .input-field .password .form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #363636;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #363636;
+  padding: 7px 0;
+  background: transparent;
+  -webkit-transition: border-color 0.2s;
+  transition: border-color 0.2s;
+  margin-bottom: 50px;
+}
+
+.Login .header-form .login-form .input-field .email .form__field::-webkit-input-placeholder,
+.Login .header-form .login-form .input-field .password .form__field::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.Login .header-form .login-form .input-field .email .form__field:-ms-input-placeholder,
+.Login .header-form .login-form .input-field .password .form__field:-ms-input-placeholder {
+  color: transparent;
+}
+
+.Login .header-form .login-form .input-field .email .form__field::-ms-input-placeholder,
+.Login .header-form .login-form .input-field .password .form__field::-ms-input-placeholder {
+  color: transparent;
+}
+
+.Login .header-form .login-form .input-field .email .form__field::placeholder,
+.Login .header-form .login-form .input-field .password .form__field::placeholder {
+  color: transparent;
+}
+
+.Login .header-form .login-form .input-field .email .form__field:placeholder-shown ~ .form__label,
+.Login .header-form .login-form .input-field .password .form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.Login .header-form .login-form .input-field .email .form__label,
+.Login .header-form .login-form .input-field .password .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #363636;
+}
+
+.Login .header-form .login-form .input-field .email .form__field:focus,
+.Login .header-form .login-form .input-field .password .form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  -o-border-image: #5b5f97;
+     border-image: #5b5f97;
+  border-image-slice: 1;
+}
+
+.Login .header-form .login-form .input-field .email .form__field:focus ~ .form__label,
+.Login .header-form .login-form .input-field .password .form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #5b5f97;
+  font-weight: 700;
+}
+
+.Login .header-form .login-form .input-field .email .form__field:required, .Login .header-form .login-form .input-field .email .form__field:invalid,
+.Login .header-form .login-form .input-field .password .form__field:required,
+.Login .header-form .login-form .input-field .password .form__field:invalid {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.Login .header-form .login-form .login-register-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 50px;
+  width: 80%;
+}
+
+.Login .header-form .login-form .login-register-btns .register-forgotPass button {
+  background-color: transparent;
+  border: none;
+  margin-right: 20px;
+}
+
+.Login .header-form .login-form .login-register-btns .register-forgotPass button:hover {
+  color: #5b5f97;
+}
+
+.Login .header-form .login-form .login-register-btns #login-btn {
+  background-color: #5b5f97;
+  border: none;
+  border: #fffffb;
+  outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
+  color: #fffffb;
+  border: solid #fffffb 0.5px;
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.Login .header-form .login-form .login-register-btns #login-btn:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #484b77;
+}
+
+.Login .header-form .login-form .login-with {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.Login .header-form .login-form .login-with span {
+  margin-left: 20px;
+}
+
+.Login .login-img {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
+}
+
+.Register form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Register .header-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 50%;
+  height: 100vh;
+}
+
+.Register .header-form .register-form-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.Register .header-form .register-form-header .logo {
+  cursor: pointer;
+}
+
+.Register .header-form .register-form-header .logo a {
+  color: #363636;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.Register .header-form .register-form-header .back-home-btn button {
+  background-color: transparent;
+  border: none;
+}
+
+.Register .header-form .register-form-header .back-home-btn button:hover {
+  color: #5b5f97;
+}
+
+.Register .header-form .register-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  height: 50%;
+}
+
+.Register .header-form .register-form .input-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.Register .header-form .register-form .input-field .type-names {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 30px;
+  height: 100%;
+  width: 40%;
+}
+
+.Register .header-form .register-form .input-field .type-names .type,
+.Register .header-form .register-form .input-field .type-names .first-name,
+.Register .header-form .register-form .input-field .type-names .last-name {
+  width: 100%;
+}
+
+.Register .header-form .register-form .input-field .gender-email-pass {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 30px;
+  height: 100%;
+  width: 40%;
+}
+
+.Register .header-form .register-form .input-field .gender-email-pass .gender,
+.Register .header-form .register-form .input-field .gender-email-pass .email,
+.Register .header-form .register-form .input-field .gender-email-pass .password {
+  width: 100%;
+}
+
+.Register .header-form .register-form .input-field input,
+.Register .header-form .register-form .input-field select {
+  border: none;
+  outline: none;
+  padding: 15px;
+  margin: 5px 0;
+  background-color: #fff;
+  width: 100%;
+}
+
+.Register .header-form .register-form .register-btn-container {
+  margin-top: 60px;
+}
+
+.Register .header-form .register-form .register-btn-container #register-btn {
+  background-color: #5b5f97;
+  border: none;
+  border: #fffffb;
+  outline: none;
+  padding: 10px 20px;
+  color: #fffffb;
+  color: #fffffb;
+  border: solid #fffffb 0.5px;
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.Register .header-form .register-form .register-btn-container #register-btn:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #484b77;
+}
+
+.Register .header-form .register-with {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.Register .header-form .register-with span {
+  margin-left: 20px;
+}
+
+.Register .login-img {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

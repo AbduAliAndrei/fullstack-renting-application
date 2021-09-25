@@ -1,0 +1,137 @@
+.Login {
+  @include flex(row);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(240, 240, 240);
+
+  .header-form {
+    @include flex(column);
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 100vh;
+    .login-form-header {
+      @include flex(row);
+      justify-content: space-around;
+      width: 100%;
+      .logo {
+        cursor: pointer;
+        a {
+          color: $main-black;
+          font-size: 40px;
+          text-decoration: none;
+        }
+      }
+      .back-home-btn {
+        button {
+          @include no-style-btn();
+        }
+      }
+    }
+    .login-form {
+      @include flex(column);
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      width: 100%;
+
+      .input-field {
+        width: 100%;
+        .email,
+        .password {
+          position: relative;
+          padding: 15px 0 0;
+          width: 80%;
+          margin: 0 auto;
+          .form__field {
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid $main-black;
+            outline: 0;
+            font-size: 1.3rem;
+            color: $main-black;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+            margin-bottom: 50px;
+            &::placeholder {
+              color: transparent;
+            }
+
+            &:placeholder-shown ~ .form__label {
+              font-size: 1.3rem;
+              cursor: text;
+              top: 20px;
+            }
+          }
+
+          .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: $main-black;
+          }
+
+          .form__field:focus {
+            ~ .form__label {
+              position: absolute;
+              top: 0;
+              display: block;
+              transition: 0.2s;
+              font-size: 1rem;
+              color: $main-color2;
+              font-weight: 700;
+            }
+            padding-bottom: 6px;
+            font-weight: 700;
+            border-width: 3px;
+            border-image: $main-color2;
+            border-image-slice: 1;
+          }
+          .form__field {
+            &:required,
+            &:invalid {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+      .login-register-btns {
+        @include flex(row);
+        justify-content: space-between;
+        margin-bottom: 50px;
+        width: 80%;
+        .register-forgotPass {
+          button {
+            @include no-style-btn();
+            margin-right: 20px;
+          }
+        }
+        #login-btn {
+          @include btn($main-color2, $main-color3);
+        }
+      }
+      .login-with {
+        @include flex(row);
+        width: 100%;
+        justify-content: space-around;
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  .login-img {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin-right: 5px;
+    object-fit: cover;
+    .ld-img {
+    }
+  }
+}

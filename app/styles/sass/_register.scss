@@ -1,0 +1,99 @@
+.Register {
+  @include flex(row);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(240, 240, 240);
+
+  form {
+    @include flex(column);
+  }
+  .header-form {
+    @include flex(column);
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 100vh;
+    .register-form-header {
+      @include flex(row);
+      justify-content: space-around;
+      width: 100%;
+      .logo {
+        cursor: pointer;
+        a {
+          color: $main-black;
+          font-size: 40px;
+          text-decoration: none;
+        }
+      }
+      .back-home-btn {
+        button {
+          @include no-style-btn();
+        }
+      }
+    }
+    .register-form {
+      @include flex(column);
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 50%;
+      .input-field {
+        @include flex(row);
+        width: 100%;
+        height: 100%;
+        justify-content: space-around;
+        .type-names {
+          @include flex(column);
+          gap: 30px;
+          height: 100%;
+          width: 40%;
+          .type,
+          .first-name,
+          .last-name {
+            width: 100%;
+          }
+        }
+        .gender-email-pass {
+          @include flex(column);
+          gap: 30px;
+          height: 100%;
+          width: 40%;
+          .gender,
+          .email,
+          .password {
+            width: 100%;
+          }
+        }
+        input,
+        select {
+          @include input2();
+        }
+      }
+      .register-btn-container {
+        margin-top: 60px;
+        #register-btn {
+          @include btn($main-color2, $main-color3);
+        }
+      }
+    }
+    .register-with {
+      @include flex(row);
+      width: 100%;
+      justify-content: space-around;
+      span {
+        margin-left: 20px;
+      }
+    }
+  }
+  .login-img {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin-right: 5px;
+    object-fit: cover;
+    .ld-img {
+    }
+  }
+}

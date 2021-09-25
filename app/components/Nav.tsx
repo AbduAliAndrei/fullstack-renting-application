@@ -35,7 +35,7 @@ export default function Nav({ }: NavLinkProps) {
       <div className="login_signin">
         <div className="login">
           <FontAwesomeIcon icon={faSignInAlt} />
-          <span>Login</span>
+          <Link href="/login"><a>Log In</a></Link>
         </div>
         <div className="signin">
           <p>Dont have account? <Link href="/"><a>Sign In</a></Link></p>
