@@ -20,11 +20,12 @@ const login = loginUserCreator({takeUser, loginCheck: firebaseLogin});
 
 const commonService = Object.freeze({
     createTenant,
-    takeUser,
     createLandlord,
+    createAdmin,
+    takeUser,
     checkTakeUser,
     login
 });
 
 export default commonService;
-export { createTenant, createLandlord, checkTakeUser, takeUser, login };
+export { createTenant, createAdmin, createLandlord ,checkTakeUser, takeUser, login };
