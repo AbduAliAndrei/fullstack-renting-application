@@ -80,7 +80,7 @@ const Register = () => {
           <div className="input-field">
             <div className="type-names">
               <div className="type">
-                <label htmlFor={"userType"}>
+                <label className="form__label" htmlFor={"userType"}>
                   Are you a landlord or a tenant?
                 </label>
                 <select id={"userType"}>
@@ -98,21 +98,25 @@ const Register = () => {
                 </select>
               </div>
               <div className="first-name">
-                <label htmlFor={"userGender"}>First Name</label>
+                <label className="form__label" htmlFor={"userGender"}>
+                  First Name
+                </label>
                 <input
                   type={"text"}
                   name={"firstName"}
-                  placeholder={"firstName"}
+                  placeholder={"Enter your firstName"}
                   onChange={onInputChange}
                   value={registeringUser.firstName}
                 />
               </div>
               <div className="last-name">
-                <label htmlFor={"userGender"}>Last Name</label>
+                <label className="form__label" htmlFor={"userGender"}>
+                  Last Name
+                </label>
                 <input
                   type={"text"}
                   name={"lastName"}
-                  placeholder={"lastName"}
+                  placeholder={"Enter your lastName"}
                   onChange={onInputChange}
                   value={registeringUser.lastName}
                 />
@@ -120,7 +124,9 @@ const Register = () => {
             </div>
             <div className="gender-email-pass">
               <div className="gender">
-                <label htmlFor={"userGender"}>Gender</label>
+                <label className="form__label" htmlFor={"userGender"}>
+                  Gender
+                </label>
                 <select id={"userGender"}>
                   {userGenders.map((userGender, index) => (
                     <option
@@ -136,39 +142,30 @@ const Register = () => {
                 </select>
               </div>
               <div className="email">
-                <label htmlFor={"userGender"}>Email</label>
+                <label className="form__label" htmlFor={"userGender"}>
+                  Email
+                </label>
                 <input
                   type={"text"}
                   name={"email"}
-                  placeholder={"email"}
+                  placeholder={"Enter your email"}
                   onChange={onInputChange}
                   value={registeringUser.email}
                 />
               </div>
               <div className="password">
-                <label htmlFor={"userGender"}>Password</label>
+                <label className="form__label" htmlFor={"userGender"}>
+                  Password
+                </label>
                 <input
                   type={"password"}
                   name={"password"}
-                  placeholder={"password"}
+                  placeholder={"Enter your password"}
                   onChange={onInputChange}
                   value={registeringUser.password}
                 />
               </div>
             </div>
-
-            {/*    <input
-              type={"radio"}
-              name={"verified"}
-              onChange={onInputChange}
-              checked={registeringUser.verified}
-            />
-            <input
-              type={"radio"}
-              name={"verified"}
-              onChange={onInputChange}
-              checked={!registeringUser.verified}
-            /> */}
           </div>
           <div className="register-btn-container">
             <button id="register-btn" type={"submit"}>

@@ -1,9 +1,9 @@
-import Card from '../components/Card'
-import FilterTool from '../components/FilterTool'
+import ImagesLandlordDetails from "../components/OfferDetails/ImagesLandlordDetails";
+
 export default function OfferDetails() {
-    return (
-        <div className="OfferDetails">
-            <p>Offer Details</p>
-        </div>
-    )
+  return (
+    <div className="OfferDetails">
+      <ImagesLandlordDetails />
+    </div>
+  );
 }

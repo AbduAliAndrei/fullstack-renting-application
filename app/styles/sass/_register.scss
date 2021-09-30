@@ -53,6 +53,11 @@
           .first-name,
           .last-name {
             width: 100%;
+            .form__label {
+              font-size: 1rem;
+              color: #8a8a8a;
+              margin-left: 10px;
+            }
           }
         }
         .gender-email-pass {
@@ -64,11 +69,16 @@
           .email,
           .password {
             width: 100%;
+            .form__label {
+              font-size: 1rem;
+              color: #8a8a8a;
+              margin-left: 10px;
+            }
           }
         }
         input,
         select {
-          @include input2();
+          @include input();
         }
       }
       .register-btn-container {

@@ -3,6 +3,8 @@ import { useCookies } from "react-cookie";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState<{
@@ -65,30 +67,44 @@ const Login = () => {
         <form className="login-form" onSubmit={onSubmit}>
           <div className="input-field">
             <div className="email">
-              <input
-                type={"string"}
-                className="form__field"
-                placeholder={"Email"}
-                required
-                onChange={changeLoginInfo}
-                value={loginUser.email}
-                name={"email"}
-                id="email"
-              />
               <label className="form__label">Email</label>
+              <div className="icon-emailInput">
+                <div className="email-icon">
+                  <FontAwesomeIcon
+                    icon={faUserCircle}
+                    color="#bdbdbd"
+                    size="2x"
+                  />
+                </div>
+                <input
+                  type={"string"}
+                  className="form__field"
+                  placeholder={"Enter your Email"}
+                  required
+                  onChange={changeLoginInfo}
+                  value={loginUser.email}
+                  name={"email"}
+                  id="email"
+                />
+              </div>
             </div>
             <div className="password">
-              <input
-                type={"password"}
-                className="form__field"
-                onChange={changeLoginInfo}
-                value={loginUser.password}
-                name={"password"}
-                id="password"
-                placeholder={"Password"}
-                required
-              />
               <label className="form__label">Password</label>
+              <div className="icon-passInput">
+                <div className="pass-icon">
+                  <FontAwesomeIcon icon={faEye} color="#bdbdbd" size="2x" />
+                </div>
+                <input
+                  type={"password"}
+                  className="form__field"
+                  onChange={changeLoginInfo}
+                  value={loginUser.password}
+                  name={"password"}
+                  id="password"
+                  placeholder={"Enter your Password"}
+                  required
+                />
+              </div>
             </div>
           </div>
           <div className="login-register-btns">

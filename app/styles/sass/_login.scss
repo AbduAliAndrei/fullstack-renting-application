@@ -33,78 +33,52 @@
     .login-form {
       @include flex(column);
       flex-wrap: nowrap;
-      justify-content: space-evenly;
       width: 100%;
-
       .input-field {
         width: 100%;
         .email,
         .password {
           position: relative;
           padding: 15px 0 0;
-          width: 80%;
-          margin: 0 auto;
-          .form__field {
-            font-family: inherit;
+          width: 50%;
+          margin: 15px auto;
+          .icon-emailInput,
+          .icon-passInput {
+            @include flex(row);
+            justify-content: flex-start;
+            background-color: #fff;
+            border-radius: 10px;
             width: 100%;
-            border: 0;
-            border-bottom: 2px solid $main-black;
-            outline: 0;
-            font-size: 1.3rem;
-            color: $main-black;
-            padding: 7px 0;
-            background: transparent;
-            transition: border-color 0.2s;
-            margin-bottom: 50px;
-            &::placeholder {
-              color: transparent;
-            }
+            // margin: 0 auto;
 
-            &:placeholder-shown ~ .form__label {
-              font-size: 1.3rem;
-              cursor: text;
-              top: 20px;
+            .email-icon,
+            .pass-icon {
+              padding-left: 10px;
+            }
+            .pass-icon {
+              cursor: pointer;
+            }
+            .form__field {
+              @include input2();
+              font-size: 20px;
+
+              &::placeholder {
+                font-size: 20px;
+              }
             }
           }
-
           .form__label {
-            position: absolute;
-            top: 0;
-            display: block;
-            transition: 0.2s;
-            font-size: 1rem;
-            color: $main-black;
-          }
-
-          .form__field:focus {
-            ~ .form__label {
-              position: absolute;
-              top: 0;
-              display: block;
-              transition: 0.2s;
-              font-size: 1rem;
-              color: $main-color2;
-              font-weight: 700;
-            }
-            padding-bottom: 6px;
-            font-weight: 700;
-            border-width: 3px;
-            border-image: $main-color2;
-            border-image-slice: 1;
-          }
-          .form__field {
-            &:required,
-            &:invalid {
-              box-shadow: none;
-            }
+            font-size: 0.5rem;
+            color: #bdbdbd;
+            margin-left: 10px;
           }
         }
       }
       .login-register-btns {
         @include flex(row);
-        justify-content: space-between;
-        margin-bottom: 50px;
-        width: 80%;
+        justify-content: space-around;
+        margin-bottom: 150px;
+        width: 50%;
         .register-forgotPass {
           button {
             @include no-style-btn();
@@ -117,7 +91,7 @@
       }
       .login-with {
         @include flex(row);
-        width: 100%;
+        width: 50%;
         justify-content: space-around;
         span {
           margin-left: 20px;

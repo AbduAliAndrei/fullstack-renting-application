@@ -255,7 +255,7 @@
   font-size: 15px;
   height: 40px;
   width: 120px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -278,7 +278,7 @@
   font-size: 15px;
   height: 40px;
   width: 120px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -905,8 +905,11 @@
 .FilterTool .property-type input {
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 15px;
   margin: 5px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .FilterTool .drop-down {
@@ -937,7 +940,7 @@
   font-size: 15px;
   height: 40px;
   width: 120px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -1090,9 +1093,6 @@
       flex-wrap: wrap;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   width: 100%;
 }
 
@@ -1104,91 +1104,102 @@
 .Login .header-form .login-form .input-field .password {
   position: relative;
   padding: 15px 0 0;
-  width: 80%;
-  margin: 0 auto;
+  width: 50%;
+  margin: 15px auto;
 }
 
-.Login .header-form .login-form .input-field .email .form__field,
-.Login .header-form .login-form .input-field .password .form__field {
-  font-family: inherit;
+.Login .header-form .login-form .input-field .email .icon-emailInput,
+.Login .header-form .login-form .input-field .email .icon-passInput,
+.Login .header-form .login-form .input-field .password .icon-emailInput,
+.Login .header-form .login-form .input-field .password .icon-passInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 10px;
   width: 100%;
-  border: 0;
-  border-bottom: 2px solid #363636;
-  outline: 0;
-  font-size: 1.3rem;
-  color: #363636;
-  padding: 7px 0;
-  background: transparent;
-  -webkit-transition: border-color 0.2s;
-  transition: border-color 0.2s;
-  margin-bottom: 50px;
 }
 
-.Login .header-form .login-form .input-field .email .form__field::-webkit-input-placeholder,
-.Login .header-form .login-form .input-field .password .form__field::-webkit-input-placeholder {
-  color: transparent;
+.Login .header-form .login-form .input-field .email .icon-emailInput .email-icon,
+.Login .header-form .login-form .input-field .email .icon-emailInput .pass-icon,
+.Login .header-form .login-form .input-field .email .icon-passInput .email-icon,
+.Login .header-form .login-form .input-field .email .icon-passInput .pass-icon,
+.Login .header-form .login-form .input-field .password .icon-emailInput .email-icon,
+.Login .header-form .login-form .input-field .password .icon-emailInput .pass-icon,
+.Login .header-form .login-form .input-field .password .icon-passInput .email-icon,
+.Login .header-form .login-form .input-field .password .icon-passInput .pass-icon {
+  padding-left: 10px;
 }
 
-.Login .header-form .login-form .input-field .email .form__field:-ms-input-placeholder,
-.Login .header-form .login-form .input-field .password .form__field:-ms-input-placeholder {
-  color: transparent;
+.Login .header-form .login-form .input-field .email .icon-emailInput .pass-icon,
+.Login .header-form .login-form .input-field .email .icon-passInput .pass-icon,
+.Login .header-form .login-form .input-field .password .icon-emailInput .pass-icon,
+.Login .header-form .login-form .input-field .password .icon-passInput .pass-icon {
+  cursor: pointer;
 }
 
-.Login .header-form .login-form .input-field .email .form__field::-ms-input-placeholder,
-.Login .header-form .login-form .input-field .password .form__field::-ms-input-placeholder {
-  color: transparent;
+.Login .header-form .login-form .input-field .email .icon-emailInput .form__field,
+.Login .header-form .login-form .input-field .email .icon-passInput .form__field,
+.Login .header-form .login-form .input-field .password .icon-emailInput .form__field,
+.Login .header-form .login-form .input-field .password .icon-passInput .form__field {
+  border: none;
+  outline: none;
+  padding: 15px;
+  margin: 5px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 80px;
+  font-size: 20px;
 }
 
-.Login .header-form .login-form .input-field .email .form__field::placeholder,
-.Login .header-form .login-form .input-field .password .form__field::placeholder {
-  color: transparent;
+.Login .header-form .login-form .input-field .email .icon-emailInput .form__field::-webkit-input-placeholder,
+.Login .header-form .login-form .input-field .email .icon-passInput .form__field::-webkit-input-placeholder,
+.Login .header-form .login-form .input-field .password .icon-emailInput .form__field::-webkit-input-placeholder,
+.Login .header-form .login-form .input-field .password .icon-passInput .form__field::-webkit-input-placeholder {
+  font-size: 20px;
 }
 
-.Login .header-form .login-form .input-field .email .form__field:placeholder-shown ~ .form__label,
-.Login .header-form .login-form .input-field .password .form__field:placeholder-shown ~ .form__label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
+.Login .header-form .login-form .input-field .email .icon-emailInput .form__field:-ms-input-placeholder,
+.Login .header-form .login-form .input-field .email .icon-passInput .form__field:-ms-input-placeholder,
+.Login .header-form .login-form .input-field .password .icon-emailInput .form__field:-ms-input-placeholder,
+.Login .header-form .login-form .input-field .password .icon-passInput .form__field:-ms-input-placeholder {
+  font-size: 20px;
+}
+
+.Login .header-form .login-form .input-field .email .icon-emailInput .form__field::-ms-input-placeholder,
+.Login .header-form .login-form .input-field .email .icon-passInput .form__field::-ms-input-placeholder,
+.Login .header-form .login-form .input-field .password .icon-emailInput .form__field::-ms-input-placeholder,
+.Login .header-form .login-form .input-field .password .icon-passInput .form__field::-ms-input-placeholder {
+  font-size: 20px;
+}
+
+.Login .header-form .login-form .input-field .email .icon-emailInput .form__field::placeholder,
+.Login .header-form .login-form .input-field .email .icon-passInput .form__field::placeholder,
+.Login .header-form .login-form .input-field .password .icon-emailInput .form__field::placeholder,
+.Login .header-form .login-form .input-field .password .icon-passInput .form__field::placeholder {
+  font-size: 20px;
 }
 
 .Login .header-form .login-form .input-field .email .form__label,
 .Login .header-form .login-form .input-field .password .form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #363636;
-}
-
-.Login .header-form .login-form .input-field .email .form__field:focus,
-.Login .header-form .login-form .input-field .password .form__field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  -o-border-image: #5b5f97;
-     border-image: #5b5f97;
-  border-image-slice: 1;
-}
-
-.Login .header-form .login-form .input-field .email .form__field:focus ~ .form__label,
-.Login .header-form .login-form .input-field .password .form__field:focus ~ .form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #5b5f97;
-  font-weight: 700;
-}
-
-.Login .header-form .login-form .input-field .email .form__field:required, .Login .header-form .login-form .input-field .email .form__field:invalid,
-.Login .header-form .login-form .input-field .password .form__field:required,
-.Login .header-form .login-form .input-field .password .form__field:invalid {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  font-size: 0.5rem;
+  color: #bdbdbd;
+  margin-left: 10px;
 }
 
 .Login .header-form .login-form .login-register-btns {
@@ -1207,11 +1218,10 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 50px;
-  width: 80%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 150px;
+  width: 50%;
 }
 
 .Login .header-form .login-form .login-register-btns .register-forgotPass button {
@@ -1236,7 +1246,7 @@
   font-size: 15px;
   height: 40px;
   width: 120px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -1263,7 +1273,7 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%;
+  width: 50%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -1464,6 +1474,14 @@
   width: 100%;
 }
 
+.Register .header-form .register-form .input-field .type-names .type .form__label,
+.Register .header-form .register-form .input-field .type-names .first-name .form__label,
+.Register .header-form .register-form .input-field .type-names .last-name .form__label {
+  font-size: 1rem;
+  color: #8a8a8a;
+  margin-left: 10px;
+}
+
 .Register .header-form .register-form .input-field .gender-email-pass {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1491,6 +1509,14 @@
   width: 100%;
 }
 
+.Register .header-form .register-form .input-field .gender-email-pass .gender .form__label,
+.Register .header-form .register-form .input-field .gender-email-pass .email .form__label,
+.Register .header-form .register-form .input-field .gender-email-pass .password .form__label {
+  font-size: 1rem;
+  color: #8a8a8a;
+  margin-left: 10px;
+}
+
 .Register .header-form .register-form .input-field input,
 .Register .header-form .register-form .input-field select {
   border: none;
@@ -1498,6 +1524,7 @@
   padding: 15px;
   margin: 5px 0;
   background-color: #fff;
+  border-radius: 10px;
   width: 100%;
 }
 
@@ -1517,7 +1544,7 @@
   font-size: 15px;
   height: 40px;
   width: 120px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -1560,6 +1587,74 @@
   margin-right: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.ImagesLandlordDetails {
+  background-color: #f0f0f0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.ImagesLandlordDetails .landlord-details {
+  background-color: #fff;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 50px;
+  padding: 30px 50px;
+}
+
+.ImagesLandlordDetails .landlord-details .image-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.ImagesLandlordDetails .landlord-details .image-name .img {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-right: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.ImagesLandlordDetails .landlord-details .image-name .img .ld-img {
+  border-radius: 50px;
+}
+
+.ImagesLandlordDetails .landlord-details .contacts {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 50px 0;
+}
+
+.ImagesLandlordDetails .landlord-details .message {
+  height: 240px;
+  width: 100%;
+}
+
+.ImagesLandlordDetails .landlord-details .message #msg {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: #f0f0f0;
 }
 
 * {
