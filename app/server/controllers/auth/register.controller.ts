@@ -2,7 +2,7 @@ import {HttpRequest} from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
 import {UseType} from "../../../enums/use-type";
 import {Tenant} from "../../../interfaces/tenant";
-import Landlord from "../../../interfaces/landlord";
+import {Landlord} from "../../../interfaces/landlord";
 import {postTenant} from "../tenant";
 import Controller from "../../interfaces/controller";
 import {DatabaseObject} from "../../interfaces/database-entity";
