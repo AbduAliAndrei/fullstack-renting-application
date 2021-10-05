@@ -1,4 +1,4 @@
-import {BaseSyntheticEvent, useCallback, useEffect, useState} from "react";
+import {BaseSyntheticEvent, useCallback, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/dist/client/router";
 
@@ -11,7 +11,6 @@ const Login = () => {
     }, [loginUser]);
 
     const [xsrfToken] = useCookies(['XSRF-TOKEN']);
-    const [sessionCookie] = useCookies(['session']);
     const router = useRouter();
 
 
@@ -29,16 +28,10 @@ const Login = () => {
         return await data.json();
     }
 
-    useEffect(() => {
-        console.log(sessionCookie, xsrfToken, document.cookie);
-    },[]);
-
     const onSubmit = async (e: BaseSyntheticEvent) => {
         e.preventDefault();
 
         const user = await register();
-        console.log(user, sessionCookie, document.cookie);
-        debugger;
         if (user) {
             await router.push('/profile');
         }

@@ -5,6 +5,7 @@ import firebaseAuth from "../functions/src/authentication/firebase-auth";
 import firebaseAuthVerify from "../functions/src/authentication/firebase-auth-verify";
 import firebaseAuthCreate from "../functions/src/authentication/firebase-auth-create";
 import firebaseAuthRemove from "../functions/src/authentication/firebase-auth-remove";
+import firebaseSignOut from "../functions/src/authentication/firebase-sign-out";
 
 export const tenantsDb = makeTenantsDb({ db });
 export const landlordsDb = makeLandlordsDb({ db });
@@ -16,3 +17,4 @@ export const authVerify = async ({ sessionCookie }: {sessionCookie: string}) => 
 };
 export const authCreate = firebaseAuthCreate;
 export const authRemove = firebaseAuthRemove;
+export const authLogout = firebaseSignOut;
