@@ -5,12 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
+import {makeStyles} from "@material-ui/core";
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: 'red',
+    color: (props: { color: string}) => props.color,
+  },
+});
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState<{
     email: string;
     password: string;
   }>({ email: "andrei@gmail.com", password: "123456" });
+  const styles = useStyles({ color: '#ff0000' });
 
   const changeLoginInfo = useCallback(
     (e: BaseSyntheticEvent) => {
@@ -39,7 +48,7 @@ const Login = () => {
 
   useEffect(() => {
     console.log(sessionCookie, xsrfToken, document.cookie);
-  }, []);
+  }, [sessionCookie, xsrfToken]);
 
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
