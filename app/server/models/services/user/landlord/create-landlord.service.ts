@@ -1,9 +1,11 @@
-import { LandlordDatabase } from "../../../interfaces/DatabaseLandlords";
-import Landlord from "../../../../interfaces/Landlord";
-import makeLandlord from "../../entities/landlord";
+import { DatabaseEntity, DatabaseFunction, DatabaseObject } from "../../../../interfaces/database-entity";
+import { Landlord } from '../../../../../interfaces/landlord';
+import {makeLandlord} from "../../../entities/user";
 
-export default function createAddLandlord({ landlordsDb }: { landlordsDb: LandlordDatabase }) {
-    return async function addLandlord(landlordInfo: Landlord) {
+
+export default function createAddLandlord({ landlordsDb }: { landlordsDb: DatabaseEntity<Landlord> }) {
+
+    return async function addLandlord(landlordInfo: Landlord): Promise<DatabaseFunction<DatabaseObject<Required<Landlord>>>> {
         const landlord = makeLandlord(landlordInfo);
         try {
             const exists = await landlordsDb.findById({ id: landlord.getId() });
@@ -11,26 +13,28 @@ export default function createAddLandlord({ landlordsDb }: { landlordsDb: Landlo
             if (exists.data) {
                 return { data: { writeTime: exists.data.createdAt, data: exists.data } };
             }
-
             return landlordsDb.add({
                 id: landlord.getId(),
-                idType: landlord.getIdType(),
+                email: landlord.getEmail(),
                 firstName: landlord.getFirstName(),
                 lastName: landlord.getLastName(),
                 userName: landlord.getUsername(),
-                email: landlord.getEmail(),
                 password: landlord.getPassword(),
                 createdAt: landlord.getCreatedAt(),
                 updatedAt: landlord.getUpdatedAt(),
                 verified: landlord.getVerified(),
                 bio: landlord.getBio(),
+                trusted: landlord.isTrusted(),
                 gender: landlord.getGender(),
                 picture: landlord.getPicture(),
-                offersList: undefined,
-                trusted: undefined
-            });
+                offersList: landlord.getOffersList(),
+            })
         } catch (e) {
-            console.error(e);
+            console.log(e);
         }
     }
 }
+
+
+
+

@@ -1,4 +1,4 @@
-import { Landlord } from "../../../../interfaces/landlord";
+import {Landlord} from "../../../../interfaces/landlord";
 
 export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?: any }) {
     return function makeLandlord({
@@ -12,13 +12,10 @@ export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?
         verified = false,
         password,
         picture,
-        bio,
-        offersList,
+        bio = '',
+        offersList = [],
         trusted,
-        gender,
-
-
-
+        gender
     }: Landlord) {
         if (!email) {
             throw new Error('Landlord must have email')
@@ -32,10 +29,7 @@ export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?
             throw new Error('Landlord password is required');
         }
         if (!picture) {
-            throw new Error('Tenant must provide a picture')
-        }
-        if (!bio) {
-            throw new Error('Tenant must provide a short bio')
+            throw new Error('Landlord must provide a picture')
         }
 
         return Object.freeze({
@@ -53,9 +47,6 @@ export default function buildMakeLandlord({ Id, validate }: { Id: any, validate?
             getPicture:() => picture,
             getEmail: ()  => email,
             getBio: () => bio,
-
-
-
         })
     }
 }

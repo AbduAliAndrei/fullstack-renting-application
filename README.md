@@ -13,6 +13,7 @@ Project parts:
     - Server: NodeJS (Typescript supersetted) 
     - Client: JS (Typescript supersetted)
 - Frameworks:
-    - Server: ExpressJS + Firebase
+    - Server: NodeJs + ExpressJS 
+    - Database: Firebase
     - Client: NextJS + ReactJS
     

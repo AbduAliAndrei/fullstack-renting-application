@@ -77,6 +77,8 @@ export default function makeTenantsDb ( { db } : { db: Firestore }): DatabaseEnt
                 bio: data.data().bio,
                 picture: data.data().picture
             })
+
+            index++;
         })
 
         return ({data: tenant, id});
