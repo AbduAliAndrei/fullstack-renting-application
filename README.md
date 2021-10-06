@@ -6,6 +6,7 @@ This repository contains the backend and frontend parts
 Project parts:
 - [X] application backend 
 - [X] application frontend 
+- [X] application database 
 
 ## Technologies 
 
