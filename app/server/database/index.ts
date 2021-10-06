@@ -12,6 +12,9 @@ export const landlordsDb = makeLandlordsDb({ db });
 
 export const registerDb = firebaseAuth;
 export const authVerify = async ({ sessionCookie }: {sessionCookie: string}) => {
+    if (sessionCookie === "") {
+        throw new Error('Session cookie invalid');
+    }
     const decoded = await firebaseAuthVerify({sessionCookie});
     return decoded.uid;
 };

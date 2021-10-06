@@ -12,10 +12,14 @@ export default async function authMiddleware(req: Request, res: Response): Promi
 
     // @ts-ignore
     res.cookie("XSRF-Token", req.csrfToken());
-    const [, error] = await asyncF(authVerify({ sessionCookie: req.cookies.session }));
-    if (error) {
-        res.redirect(PublicOnlyRoutes.LOGIN);
-    } else if (publicOnlyRoutes.includes(req.url)) {
+    const [data, error] = await asyncF(authVerify({ sessionCookie: req.cookies.session ?? '' }), true);
+
+    if (publicOnlyRoutes.includes(req.url) && data) {
         res.redirect(PrivateRoutes.HOME);
+        return;
+    }
+
+    if (error && !publicOnlyRoutes.includes(req.url)) {
+        res.redirect(PublicOnlyRoutes.LOGIN);
     }
 }
