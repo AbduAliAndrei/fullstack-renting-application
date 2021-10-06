@@ -1,9 +1,9 @@
 import {HttpRequest} from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
-import {UseType} from "../../../enums/use-type";
+import {UserType} from "../../../enums/use-type";
 import {Tenant} from "../../../interfaces/tenant";
 import {Landlord} from "../../../interfaces/landlord";
-import {postTenant} from "../tenant";
+import controller from "../index";
 import Controller from "../../interfaces/controller";
 import {DatabaseObject} from "../../interfaces/database-entity";
 import {UserExtended} from "../../../interfaces/user-extended";
@@ -17,7 +17,7 @@ export default function createRegisterAttempt
       })
 {
     return async function registerAttempt(httpRequest: HttpRequest) {
-        const { source = {}, ...loginInfo } : { source: {}, userType: UseType, user: Tenant | Landlord } = httpRequest.body;
+        const { source = {}, ...loginInfo } : { source: {}, userType: UserType, user: Tenant | Landlord } = httpRequest.body;
 
         const [created, createdError] = await asyncF(createUser({password: loginInfo.user.password, email: loginInfo.user.email}));
         const expiresIn = 60 * 60 * 24 * 5 * 1000;
@@ -49,26 +49,25 @@ export default function createRegisterAttempt
                     error: `Unauthorized, ${sessionCookieError}`
                 }
             }
-        } else if (loginInfo.userType === UseType.TENANT) {
+        } else if (loginInfo.userType === UserType.TENANT) {
             loginInfo.user.id = created.uid;
             httpRequest.body = { source, user: loginInfo.user }
-            result = await postTenant(httpRequest);
+            result = await controller.postTenant(httpRequest);
             if (result.body.error) {
                 await authRemove({uid: created.uid});
                 return result;
             }
-            result.cookie = { name: 'session', value: sessionCookie, options }
+            result = {...result, cookie: { name: 'session', value: sessionCookie, options }}
         } else {
-            await authRemove({uid: created.uid});
-            result = {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                statusCode: 503,
-                body: {
-                    error: 'Feature is not available yet. Landlord user type is unavailable.'
-                }
+            loginInfo.user.id = created.uid;
+            httpRequest.body = { source, user: loginInfo.user };
+            result = await controller.postLandlord(httpRequest);
+            if (result.body.error) {
+                await authRemove({uid: created.uid});
+                return result;
             }
+
+            result = {...result, cookie: { name: 'session', options, value: sessionCookie }};
         }
 
         return result;

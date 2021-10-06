@@ -1,14 +1,13 @@
 import {BaseSyntheticEvent, useEffect, useState} from "react";
-import {UseType} from "../enums/use-type";
-import {Tenant} from "../interfaces/tenant";
-import Landlord from "../interfaces/landlord";
+import {UserType} from "../enums/use-type";
 
 import {useCookies} from "react-cookie";
+import {UserExtended} from "../interfaces/user-extended";
 
 
 const Register = () => {
-    const [userType, setUserType] = useState<UseType>(UseType.TENANT);
-    const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
+    const [userType, setUserType] = useState<UserType>(UserType.TENANT);
+    const [registeringUser, setRegisteringUser] = useState<UserExtended>({
         email: 'andrei.cristea@gmail.com',
         trusted: false,
         firstName: 'Andrei',
@@ -25,7 +24,7 @@ const Register = () => {
     const [xsrfToken] = useCookies(['XSRF-TOKEN']);
     const [sessionCookie] = useCookies(['sessionCookie']);
 
-    const [userTypes] =  useState<UseType[]>(Object.values(UseType));
+    const [userTypes] =  useState<UserType[]>(Object.values(UserType));
 
     const onInputChange = (event: BaseSyntheticEvent) =>
         setRegisteringUser({...registeringUser, [event.currentTarget.name]: event.currentTarget.value});
@@ -62,7 +61,7 @@ const Register = () => {
             <select id={'userType'}>
                 {
                     userTypes.map((userType, index) => (
-                            <option value={userType} key={index} onSelect={(e) => setUserType(e.currentTarget.value as UseType)}>
+                            <option value={userType} key={index} onSelect={(e) => setUserType(e.currentTarget.value as UserType)}>
                                 {userType}
                             </option>
                         )

@@ -1,4 +1,4 @@
-export enum UseType {
+export enum UserType {
     TENANT = 'Tenant',
     LANDLORD = 'Landlord'
 }

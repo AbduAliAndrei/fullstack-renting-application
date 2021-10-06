@@ -1,3 +1,13 @@
 import firebase from "firebase";
 
-export default (): Promise<void> => firebase.auth().signOut();
+
+const firebaseSignOut = (): Promise<boolean> =>
+  firebase.auth().signOut().then(() => {
+    return true;
+  }).catch((error) => {
+    console.log(error);
+    throw new Error(`Sign out error: ${error}`);
+  });
+
+
+export default firebaseSignOut;

@@ -1,18 +1,15 @@
 import express from "express";
 import createExpressCallback from "../express-callback";
-import {postTenant} from "../controllers/tenant";
-import {postLandlord} from "../controllers/landlord";
-import {getCheckedUser, postLogin, postRegisterAttempt} from "../controllers/auth";
+import controller from "../controllers";
 import {UserExtended} from "../../interfaces/user-extended";
 
 const router = express.Router();
 
-function routes() {
-    router.get('/auth/check', createExpressCallback<UserExtended>(getCheckedUser));
-    router.post('/auth/register', createExpressCallback(postRegisterAttempt));
-    router.post('/auth/tenant', createExpressCallback(postTenant));
-    router.post('/auth/landlord', createExpressCallback(postLandlord));
-    router.post('/auth/login', createExpressCallback(postLogin));
+function routes () {
+    router.get('/auth/check', createExpressCallback<UserExtended>(controller.getCheckedUser));
+    router.post('/auth/register', createExpressCallback(controller.postRegisterAttempt));
+    router.post('/auth/login', createExpressCallback(controller.postLogin));
+    router.post('/auth/logout',  createExpressCallback(controller.postLogout));
 
     return router;
 }
