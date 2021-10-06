@@ -73,7 +73,7 @@ const Login = () => {
                   <FontAwesomeIcon
                     icon={faUserCircle}
                     color="#bdbdbd"
-                    size="2x"
+                    size="lg"
                   />
                 </div>
                 <input
@@ -92,7 +92,7 @@ const Login = () => {
               <label className="form__label">Password</label>
               <div className="icon-passInput">
                 <div className="pass-icon">
-                  <FontAwesomeIcon icon={faEye} color="#bdbdbd" size="2x" />
+                  <FontAwesomeIcon icon={faEye} color="#bdbdbd" size="lg" />
                 </div>
                 <input
                   type={"password"}
