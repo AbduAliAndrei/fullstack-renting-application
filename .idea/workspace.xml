@@ -1,7 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48e12d91-ba7e-49da-ae37-83049683a49e" name="Changes" comment="" />
+    <list default="true" id="48e12d91-ba7e-49da-ae37-83049683a49e" name="Changes" comment="refactor: directories structure">
+      <change afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Summer_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Summer_Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env.development" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env.production" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.github/workflows/node.js.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/summer_project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/FilterTool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/FilterTool.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/LandingPage/ForLandlords.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LandingPage/ForLandlords.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/LandingPage/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LandingPage/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/LandingPage/RecentOffers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LandingPage/RecentOffers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/OfferDetails/ImagesLandlordDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/OfferDetails/ImagesLandlordDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/enums/use-gender.ts" beforeDir="false" afterPath="$PROJECT_DIR$/enums/use-gender.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/enums/use-type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/enums/use-type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/landlord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/landlord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/privilege.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/privilege.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/tenant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/user-extended.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/user-extended.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/nodemon.json" beforeDir="false" afterPath="$PROJECT_DIR$/nodemon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/api/loginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/loginUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/offer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/offer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/offerDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/offerDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/offers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/offers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/DSC_2778.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/DSC_2778.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/service1.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/service1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/vercel.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/vercel.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/.firebaserc" beforeDir="false" afterPath="$PROJECT_DIR$/server/.firebaserc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/auth/check-user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth/check-user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/auth/login.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth/login.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/auth/logout.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth/logout.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/auth/register.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth/register.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/tenant/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/tenant/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/user/post-landlord.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user/post-landlord.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/controllers/user/post-tenant.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user/post-tenant.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/database/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/database/landlords.db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/landlords.db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/database/tenants.db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/tenants.db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/enums/collection-paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/enums/collection-paths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/enums/private-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/enums/private-routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/express-callback/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/express-callback/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/firebase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/firestore.indexes.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/firestore.indexes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/firestore.rules" beforeDir="false" afterPath="$PROJECT_DIR$/server/firestore.rules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/lib/service-account.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/lib/service-account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/authentication/firebase-auth-create.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/authentication/firebase-auth-create.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/authentication/firebase-auth-remove.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/authentication/firebase-auth-remove.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/authentication/firebase-auth-verify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/authentication/firebase-auth-verify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/authentication/firebase-auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/authentication/firebase-auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/authentication/firebase-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/authentication/firebase-login.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/authentication/firebase-sign-out.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/authentication/firebase-sign-out.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/firebase-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/firebase-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/src/service-account.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/src/service-account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/tsconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/tsconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/functions/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/functions/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/interfaces/controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/interfaces/controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/interfaces/database-entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/interfaces/database-entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/interfaces/http-request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/interfaces/http-request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/auth.middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/entities/landlord/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/entities/landlord/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/entities/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/entities/user/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/entities/user/landlord.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/entities/user/landlord.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/entities/user/tenant.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/entities/user/tenant.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/check-take-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/check-take-user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/create-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/create-user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/landlord/create-landlord.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/landlord/create-landlord.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/logout.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/logout.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/take-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/take-user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/services/user/tenant/create-tenant.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/services/user/tenant/create-tenant.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/models/use-cases/user/check-take-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/use-cases/user/check-take-user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/App.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_ImagesLandlordDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_ImagesLandlordDetails.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_config.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_config.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_filterTool.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_filterTool.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_forLandlords.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_forLandlords.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_offers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_offers.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_recentOffers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_recentOffers.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/sass/_register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/sass/_register.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/theme/kaifstoreColors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/theme/kaifstoreColors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/theme/kaifstoreTheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/theme/kaifstoreTheme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ts-utils/merge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts-utils/merge.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/async-f.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/async-f.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/id.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/id.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,9 +155,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/app/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -35,10 +174,26 @@
       <option name="presentableId" value="Default" />
       <updated>1632604521523</updated>
       <workItem from="1632604528171" duration="228000" />
+      <workItem from="1633631863952" duration="1572000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor: directories structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: directories structure" />
   </component>
 </project>

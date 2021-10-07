@@ -1,0 +1,68 @@
+.ForLandlords {
+  @include flex(row);
+  width: 100vw;
+  margin-bottom: 100px;
+  padding: 20px;
+  min-height: 70vh;
+  justify-content: space-around;
+  .features {
+    @include flex(column);
+    height: 100%;
+    gap: 20px;
+    width: 40%;
+    .feature {
+      background-color: transparent;
+      padding: 20px 100px 20px 20px;
+      border-radius: 20px;
+      border: solid $main-black 1px;
+      .feature-title {
+        color: $main-color2;
+        margin: 10px 0;
+      }
+      .sub-features {
+        color: $main-black;
+        font-size: 20px;
+      }
+    }
+  }
+  .feature-view {
+    width: 40%;
+    height: 100%;
+    // background-color: transparent;
+    border-radius: 20px;
+    border: solid $main-black 1px;
+    padding: 20px;
+    .right-btn {
+      float: right;
+    }
+    .feature-view-title {
+      margin: 20px 0;
+      color: $main-color2;
+    }
+    .feature-image-description {
+      @include flex(row);
+      height: 200px;
+      width: 100%;
+      flex-wrap: nowrap;
+      .image-preview {
+        position: relative;
+        width: 50%;
+        height: 100%;
+        margin-right: 5px;
+        object-fit: cover;
+        .ld-img {
+          border-radius: 50px;
+        }
+      }
+      .feature-description {
+        width: 50%;
+
+        p {
+          color: $main-black;
+        }
+      }
+    }
+    .left-btn {
+    }
+  }
+}
