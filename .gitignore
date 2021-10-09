@@ -90,3 +90,6 @@ lerna-debug.log
 .DS_Store
 Thumbs.db
 @aolveramx
+
+#cache files
+*.cache
