@@ -1,0 +1,42 @@
+#!/bin/bash -e
+
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# Goal:
+#   Automatic version numbering from the latest tag on the branch.
+#   The output format is <date in YYYYMMDD>.<last_commit-hash>
+
+
+# Init
+version_file=.version
+
+
+
+# Always work in git repo root
+repo_root="$(git rev-parse --show-toplevel)"
+cd "${repo_root}"
+
+
+# Stay up-to-date with origin
+echo 'Fetch latest from origin...'
+git fetch --quiet
+
+
+# Version number with the format <YYMMDD>.<commit-hash>
+version_number="$(date +"%Y%m%d").$(git log --pretty=format:'%h' -n 1)"
+
+
+# Find the merge base
+merge_base="$(git merge-base --fork-point origin/master HEAD)"
+
+# Go through folders and if there is a change compared to master, bump its version
+
+# Commit the changes, if any
+if git diff --cached --quiet; then
+  echo 'No changes found.'
+else
+  echo 'Commit the version changes...'
+  git commit --amend --no-edit
+fi
