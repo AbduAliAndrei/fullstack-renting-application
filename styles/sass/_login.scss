@@ -1,0 +1,111 @@
+.Login {
+  @include flex(row);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(240, 240, 240);
+
+  .header-form {
+    @include flex(column);
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 100vh;
+    .login-form-header {
+      @include flex(row);
+      justify-content: space-around;
+      width: 100%;
+      .logo {
+        cursor: pointer;
+        a {
+          color: $main-black;
+          font-size: 40px;
+          text-decoration: none;
+        }
+      }
+      .back-home-btn {
+        button {
+          @include no-style-btn();
+        }
+      }
+    }
+    .login-form {
+      @include flex(column);
+      flex-wrap: nowrap;
+      width: 100%;
+      .input-field {
+        width: 100%;
+        .email,
+        .password {
+          position: relative;
+          padding: 15px 0 0;
+          width: 50%;
+          margin: 15px auto;
+          .icon-emailInput,
+          .icon-passInput {
+            @include flex(row);
+            justify-content: flex-start;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 100%;
+            // margin: 0 auto;
+
+            .email-icon,
+            .pass-icon {
+              padding-left: 10px;
+            }
+            .pass-icon {
+              cursor: pointer;
+            }
+            .form__field {
+              @include input2();
+              font-size: 20px;
+
+              &::placeholder {
+                font-size: 20px;
+              }
+            }
+          }
+          .form__label {
+            font-size: 0.5rem;
+            color: #bdbdbd;
+            margin-left: 10px;
+          }
+        }
+      }
+      .login-register-btns {
+        @include flex(row);
+        justify-content: space-around;
+        margin-bottom: 150px;
+        width: 50%;
+        .register-forgotPass {
+          button {
+            @include no-style-btn();
+            margin-right: 20px;
+          }
+        }
+        #login-btn {
+          @include btn($main-color2, $main-color3);
+        }
+      }
+      .login-with {
+        @include flex(row);
+        width: 50%;
+        justify-content: space-around;
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  .login-img {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin-right: 5px;
+    object-fit: cover;
+    .ld-img {
+    }
+  }
+}
