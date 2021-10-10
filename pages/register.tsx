@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
 import {UserType} from "../enums/use-type";
+import {useRouter} from "next/dist/client/router";
 
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
@@ -23,6 +24,7 @@ const Register = () => {
     idType: "passport",
     picture: "svg.net",
   });
+  const router = useRouter();
 
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
 
@@ -57,7 +59,9 @@ const Register = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     const res = await register();
-    console.log(res);
+    if (res.status === 201) {
+      await router.push('/profile');
+    }
   };
 
   return (
