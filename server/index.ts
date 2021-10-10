@@ -24,15 +24,14 @@ app
     server.use(csrfMiddleware);
 
     server.all("*", (req, res, next) => {
-        // @ts-ignore
-        res.cookie("XSRF-Token", req.csrfToken());
-        next();
+      res.cookie("XSRF-Token", req.csrfToken());
+      next();
     });
 
     server.use((_, res, next) => {
-      res.set({ Tk: '!' })
-      next()
-    })
+      res.set({ Tk: "!" });
+      next();
+    });
     server.use("/api", showRoutes());
 
     server.get("*", async (req, res) => {
