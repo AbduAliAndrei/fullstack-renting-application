@@ -1,9 +1,9 @@
 type LogoutServiceParams = {
-    authLogout: () => Promise<boolean>;
-}
+  authLogout: () => Promise<boolean>;
+};
 
-export default function logoutService({ authLogout } : LogoutServiceParams) {
-    return async function logout(): Promise<boolean> {
-        return await authLogout();
-    }
+export default function logoutService({ authLogout }: LogoutServiceParams) {
+  return async function logout(): Promise<boolean> {
+    return await authLogout();
+  };
 }

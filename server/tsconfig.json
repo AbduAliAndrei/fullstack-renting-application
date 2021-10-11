@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": false,
+    "strict": false,
+    "esModuleInterop": true
   },
-  "include": ["server"]
+  "include": ["server"],
 }

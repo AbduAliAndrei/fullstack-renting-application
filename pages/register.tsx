@@ -1,15 +1,15 @@
-import { BaseSyntheticEvent, useEffect, useState } from "react";
-import { UseGender } from "../enums/use-gender";
+import { BaseSyntheticEvent, useCallback, useState } from "react";
+import { UserGender } from "../enums/user-gender";
 import { Tenant } from "../interfaces/tenant";
-import {Landlord} from "../interfaces/landlord";
+import { Landlord } from "../interfaces/landlord";
 import Image from "next/image";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
-import {UserType} from "../enums/use-type";
+import { UserType } from "../enums/user-type";
+import { useRouter } from "next/dist/client/router";
 
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
-  const [userGender, setUserGender] = useState<UseGender>(UseGender.Male);
   const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
     email: "andrei.cristea@gmail.com",
     trusted: false,
@@ -19,25 +19,26 @@ const Register = () => {
     userName: "Andrei Cristea",
     offersList: [],
     verified: false,
-    gender: "male",
+    gender: UserGender.MALE,
     idType: "passport",
     picture: "svg.net",
   });
+  const router = useRouter();
 
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
-  const [sessionCookie] = useCookies(["sessionCookie"]);
 
   const [userTypes] = useState<UserType[]>(Object.values(UserType));
-  const [userGenders] = useState<UseGender[]>(Object.values(UseGender));
+  const [userGenders] = useState<UserGender[]>(Object.values(UserGender));
 
-  const onInputChange = (event: BaseSyntheticEvent) =>
+  const onInputChange = (event: BaseSyntheticEvent) => {
     setRegisteringUser({
       ...registeringUser,
-      [event.currentTarget.name]: event.currentTarget.value,
+      [event.target.name]: event.target.value,
     });
+  };
 
-  useEffect(() => {
-    // console.log(xsrfToken['XSRF-Token']);
+  const onUserTypeChange = useCallback((e: BaseSyntheticEvent) => {
+    setUserType(e.target.value as UserType);
   }, []);
 
   const register = () => {
@@ -58,7 +59,9 @@ const Register = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     const res = await register();
-    console.log(res);
+    if (res.status === 201) {
+      await router.push("/profile");
+    }
   };
 
   return (
@@ -84,15 +87,13 @@ const Register = () => {
                 <label className="form__label" htmlFor={"userType"}>
                   Are you a landlord or a tenant?
                 </label>
-                <select id={"userType"}>
+                <select
+                  id={"userType"}
+                  value={userType}
+                  onChange={onUserTypeChange}
+                >
                   {userTypes.map((userType, index) => (
-                    <option
-                      value={userType}
-                      key={index}
-                      onSelect={(e) =>
-                        setUserType(e.currentTarget.value as UserType)
-                      }
-                    >
+                    <option value={userType} key={index}>
                       {userType}
                     </option>
                   ))}
@@ -128,15 +129,14 @@ const Register = () => {
                 <label className="form__label" htmlFor={"userGender"}>
                   Gender
                 </label>
-                <select id={"userGender"}>
+                <select
+                  value={registeringUser.gender}
+                  onChange={(e) => onInputChange(e)}
+                  name={"gender"}
+                  id={"userGender"}
+                >
                   {userGenders.map((userGender, index) => (
-                    <option
-                      value={userType}
-                      key={index}
-                      onSelect={(e) =>
-                        setUserGender(e.currentTarget.value as UseGender)
-                      }
-                    >
+                    <option value={userGender} key={index}>
                       {userGender}
                     </option>
                   ))}
