@@ -1,13 +1,7 @@
 import { Admin } from "../../../../interfaces/admin";
 import { AdminModel } from "../../../interfaces/models/admin.type";
 
-export default function buildMakeAdmin({
-  Id,
-  validate,
-}: {
-  Id: any;
-  validate?: any;
-}) {
+export default function buildMakeAdmin({ Id }: { Id: any; validate?: any }) {
   return function makeAdmin({
     firstName,
     lastName,

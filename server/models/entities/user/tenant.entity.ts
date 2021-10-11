@@ -1,13 +1,7 @@
 import { Tenant } from "../../../../interfaces/tenant";
 import { TenantModel } from "../../../interfaces/models/tenant.type";
 
-export default function buildMakeTenant({
-  Id,
-  validate,
-}: {
-  Id: any;
-  validate?: any;
-}) {
+export default function buildMakeTenant({ Id }: { Id: any; validate?: any }) {
   return function makeTenant({
     firstName,
     createdAt = new Date(),
