@@ -4,7 +4,7 @@ import {
 } from "../../../interfaces/database-entity";
 import { Tenant } from "../../../../interfaces/tenant";
 import { Landlord } from "../../../../interfaces/landlord";
-import { UserType } from "../../../../enums/use-type";
+import { UserType } from "../../../../enums/user-type";
 import { UserExtended } from "../../../../interfaces/user-extended";
 import { Admin } from "../../../../interfaces/admin";
 

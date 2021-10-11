@@ -9,7 +9,7 @@ import { Admin } from "../../../../interfaces/admin";
 import createAddTenant from "./tenant/create-tenant.service";
 import createAddLandlord from "./landlord/create-landlord.service";
 import createAddAdmin from "./admin/create-admin.service";
-import { UserType } from "../../../../enums/use-type";
+import { UserType } from "../../../../enums/user-type";
 import { UserExtended } from "../../../../interfaces/user-extended";
 
 export default function createUserCreator({

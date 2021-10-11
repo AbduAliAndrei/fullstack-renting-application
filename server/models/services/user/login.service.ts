@@ -1,6 +1,6 @@
 import { UserExtended } from "../../../../interfaces/user-extended";
 import asyncF from "../../../../utils/async-f";
-import { UserType } from "../../../../enums/use-type";
+import { UserType } from "../../../../enums/user-type";
 import { LoginUserCreatorParams } from "../../../interfaces/services/login.type";
 
 export default function loginUserCreator({

@@ -1,6 +1,6 @@
 import asyncF from "../../../../utils/async-f";
 import { UserExtended } from "../../../../interfaces/user-extended";
-import { UserType } from "../../../../enums/use-type";
+import { UserType } from "../../../../enums/user-type";
 import { CheckTakeUserCreatorParams } from "../../../interfaces/services/check-take-user.type";
 
 export default function checkTakeUserCreator({

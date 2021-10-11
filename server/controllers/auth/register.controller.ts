@@ -1,6 +1,6 @@
 import { HttpRequest } from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
-import { UserType } from "../../../enums/use-type";
+import { UserType } from "../../../enums/user-type";
 import { Tenant } from "../../../interfaces/tenant";
 import { Landlord } from "../../../interfaces/landlord";
 import { Admin } from "../../../interfaces/admin";
@@ -83,6 +83,8 @@ export default function createRegisterAttempt({
       loginInfo.user.id = created.uid;
       httpRequest.body = { source, user: loginInfo.user };
       result = await controller.postTenant(httpRequest);
+
+      console.log("login tenant");
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;
@@ -95,6 +97,8 @@ export default function createRegisterAttempt({
       loginInfo.user.id = created.uid;
       httpRequest.body = { source, user: loginInfo.user };
       result = await controller.postLandlord(httpRequest);
+
+      console.log("login landlord");
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;
@@ -108,6 +112,8 @@ export default function createRegisterAttempt({
       loginInfo.user.id = created.uid;
       httpRequest.body = { source, user: loginInfo.user };
       result = await controller.postAdmin(httpRequest);
+
+      console.log("login admin");
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;

@@ -1,4 +1,4 @@
-import { UserType } from "../../../enums/use-type";
+import { UserType } from "../../../enums/user-type";
 import { UserExtended } from "../../../interfaces/user-extended";
 
 export type CheckTakeUserCreatorParams = {

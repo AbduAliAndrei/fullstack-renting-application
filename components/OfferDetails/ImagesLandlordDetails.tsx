@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ImagesLandlordDetails() {
   return (
     <div className="ImagesLandlordDetails">
-      <div className="offer-images"/>
+      <div className="offer-images" />
       <div className="landlord-details">
         <div className="image-name">
           <div className="img">
@@ -41,11 +41,7 @@ export default function ImagesLandlordDetails() {
           <h2>Send a message to Abdulla</h2>
         </div>
         <div className="message">
-          <textarea
-            name=""
-            id="msg"
-            placeholder="Write your message here..."
-          ></textarea>
+          <textarea name="" id="msg" placeholder="Write your message here..." />
         </div>
       </div>
     </div>
