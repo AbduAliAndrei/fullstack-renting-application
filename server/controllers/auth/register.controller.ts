@@ -84,7 +84,6 @@ export default function createRegisterAttempt({
       httpRequest.body = { source, user: loginInfo.user };
       result = await controller.postTenant(httpRequest);
 
-      console.log("login tenant");
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;
@@ -98,7 +97,6 @@ export default function createRegisterAttempt({
       httpRequest.body = { source, user: loginInfo.user };
       result = await controller.postLandlord(httpRequest);
 
-      console.log("login landlord");
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;
@@ -113,7 +111,6 @@ export default function createRegisterAttempt({
       httpRequest.body = { source, user: loginInfo.user };
       result = await controller.postAdmin(httpRequest);
 
-      console.log("login admin");
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;
