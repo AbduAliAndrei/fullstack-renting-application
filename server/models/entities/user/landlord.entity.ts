@@ -1,13 +1,7 @@
 import { Landlord } from "../../../../interfaces/landlord";
 import { LandlordType } from "../../../interfaces/models/landlord.type";
 
-export default function buildMakeLandlord({
-  Id,
-  validate,
-}: {
-  Id: any;
-  validate?: any;
-}) {
+export default function buildMakeLandlord({ Id }: { Id: any; validate?: any }) {
   return function makeLandlord({
     firstName,
     lastName,
