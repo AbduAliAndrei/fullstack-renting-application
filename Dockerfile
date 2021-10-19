@@ -1,19 +1,20 @@
 FROM node:12
 
-WORKDIR /usr/src
-
-ENV PORT 8080
-ENV HOST 0.0.0.0
+WORKDIR /
 
 COPY package*.json ./
 
-RUN npm install --only=production
+RUN npm install
 
-# copy local next code to the container
+# copy local src code to the container
 COPY . .
 
+
+ENV PORT 8080
+
+EXPOSE 8080
 # build prod app
 RUN npm run build
 
 # start the service
-CMD npm start
+CMD ["npm" ,"start"]
