@@ -2,7 +2,7 @@ name: Node CI
 
 on:
   push:
-    branches: [**]
+    branches: [main,cicd-actions]
   pull_request:
     branches: [main]
 
