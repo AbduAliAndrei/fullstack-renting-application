@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint --fix . --ext .ts"
+    "lint:fix": "eslint --fix . --ext .ts",
+    "test" : "mocha"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",

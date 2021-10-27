@@ -7,7 +7,21 @@ on:
     branches: [main]
 
 jobs:
+  robot_tests:
+    name: robot-tests
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest,macOS-latest]
+    steps:
+      - name: install robotframework
+      - run: pip3 install robotframework
+      # - name: run testcases 
+      # - run: sh ./run_script.sh
+  
   test_pull_request:
+    name: test_prs
+    needs: robot-tests
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
@@ -17,10 +31,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: pip3 install robotframework
-      - run: sh ./run_script.sh
+      - name: Install dependencies
       - run: npm ci
+      - name: Test dependencies
       - run: npm test
+      - name: Build dependencies
       - run: npm run build
   # docker:
   #   name: Docker build  
