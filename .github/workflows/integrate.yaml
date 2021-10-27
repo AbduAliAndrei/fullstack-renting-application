@@ -15,7 +15,7 @@ jobs:
         os: [ubuntu-latest, macOS-latest]
     steps:
       - run: pip3 install robotframework
-      - run: ./run_script.sh
+      - run: sh ./run_script.sh
           
 
   test_pull_request:
