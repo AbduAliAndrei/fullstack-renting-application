@@ -16,8 +16,7 @@ jobs:
     steps:
       - name: install robotframework
       - run: pip3 install robotframework
-      # - name: run testcases 
-      # - run: sh ./run_script.sh
+      
   
   test_pull_request:
     name: test_prs
