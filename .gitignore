@@ -93,3 +93,10 @@ Thumbs.db
 
 #cache files
 *.cache
+
+
+#kubelet
+kubectl
+kubectl.*
+
+
