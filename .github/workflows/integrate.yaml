@@ -17,7 +17,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run : ./run_script.sh
+      - run: pip3 install robotframework
+      - run: sh ./run_script.sh
       - run: npm ci
       - run: npm test
       - run: npm run build
