@@ -20,8 +20,8 @@ jobs:
         run: sh ./run_script.sh
   
   test_pull_request:
-    name: test_prs
-    needs: robot-tests
+    name: test_pullrequests
+    needs: robot_tests
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
