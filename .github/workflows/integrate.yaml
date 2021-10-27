@@ -2,7 +2,7 @@ name: Node CI
 
 on:
   push:
-    branches: [main,cicd-actions]
+    branches: [main, cicd-actions]
   pull_request:
     branches: [main]
 
@@ -12,21 +12,18 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest,macOS-latest]
+        os: [ubuntu-latest, macOS-latest]
     steps:
-      - name: Install robotframework
-        run: pip3 install robotframework
-      - name: Run testcases 
-        run: ./run_script.sh
-        
-  
+      - run: pip3 install robotframework
+      - run: sh ./run_script.sh
+
   test_pull_request:
     name: test_pullrequests
     needs: robot_tests
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest,macOS-latest]
+        os: [ubuntu-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -39,7 +36,7 @@ jobs:
       - name: Build dependencies
         run: npm run build
   # docker:
-  #   name: Docker build  
+  #   name: Docker build
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Build and Push Docker Image
