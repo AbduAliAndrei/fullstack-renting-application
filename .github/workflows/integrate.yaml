@@ -27,7 +27,7 @@ jobs:
       - run: npm ci
       - run: npm install --silent
       - run: npm install --global mocha 
-      - run: npm test
+      # - run: npm test -> to be added
       - run: npm run build
   docker:
     name: Docker build image
