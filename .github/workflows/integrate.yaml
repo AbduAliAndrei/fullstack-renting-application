@@ -1,7 +1,7 @@
 name: Node CI
 on:
   push:
-    branches: [main, cicd-actions]
+    branches: [main,robot-testing]
   pull_request:
     branches: [main]
 jobs:
