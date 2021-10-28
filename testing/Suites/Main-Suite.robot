@@ -1,23 +1,58 @@
 *** Settings ***
-Suite Setup     begin
-Suite Teardown  end
+Suite Setup       Open Browser    ${URL}    ${BROWSER}
+Suite Teardown    Close All Browsers
+Library           SeleniumLibrary
+
+ 
+
+*** Variables ***
+${URL}            http://localhost:3001
+${BROWSER}        Chrome
+
+ 
+
 *** Test Cases ***
 t1
-    Run Project
-    Test User Cant Go To Private Routes
-    Register A New User
-    Test User Can Login
-    Test User Can Go To Private Routes
-    Test User Can Login Out
-    Delete Project
-    Close All Connections
+    Check Private Route Redirects To Login
+    #    Test User Can Login
+    #    Test User Can Go To Private Routes
+    #    Test User Can Login Out
 
-t2
-    Log    Hell
+ 
 
 *** Keywords ***
-begin
-    Log     begin
+Check Private Route Redirects To Login
+    Go To    ${URL}/profile
+    ${ur}=    Get Location
+    Should Be Equal As Strings    ${ur}    ${URL}/login
 
-end
-    Log     end
+ 
+
+Test User Can Login
+    Go To    ${URL}/login
+    Enter Email    andrei@gmail.com
+    Enter Password    123456
+
+ 
+
+Test User Can Go To Private Routes
+    Go To    ${URL}/profile
+    ${ur}=    Get Location
+    Should Be Equal As Strings    ${ur}    ${URL}/profile
+
+ 
+
+Enter Email
+    [Arguments]    ${email}
+    Input Text    email    ${email}
+
+ 
+
+Enter Password
+    [Arguments]    ${password}
+    Input Text    password    ${password}
+
+ 
+
+Submit Details
+    Click Button    login-btn
