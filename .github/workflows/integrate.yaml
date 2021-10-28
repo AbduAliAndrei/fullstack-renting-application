@@ -7,17 +7,14 @@ on:
     branches: [main]
 
 jobs:
-  robot_tests:
-    name: robot-tests
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macOS-latest]
-    steps:
-      - run: pip3 install robotframework
-      - run: sh ./run_script.sh
-          
-
+  # robot-testing:
+  #     needs: [test_pull_request, docker]
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #     - run: pip3 install robotframework
+  #     - run: ls -l
+  #     - run: sh .github/scripts/run_script.sh
+  #       shell: bash
   test_pull_request:
     name: test_pullrequests
     needs: robot_tests
@@ -53,11 +50,3 @@ jobs:
         with:
           push: true
           tags: abdualiandrei/fullstack-renting-application:latest
-  # robot-testing:
-  #     needs: [test_pull_request, docker]
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #     - run: pip3 install robotframework
-  #     - run: ls -l
-  #     - run: sh .github/scripts/run_script.sh
-  #       shell: bash
