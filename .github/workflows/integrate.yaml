@@ -26,6 +26,7 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm install --silent
+      - run: npm install --global mocha 
       - run: npm test
       - run: npm run build
   docker:
