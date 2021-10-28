@@ -7,6 +7,14 @@ on:
     branches: [main]
 
 jobs:
+  # robot-testing:
+  #     needs: [test_pull_request, docker]
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #     - run: pip3 install robotframework
+  #     - run: ls -l
+  #     - run: sh .github/scripts/run_script.sh
+  #       shell: bash
   test_pull_request:
     runs-on: ${{matrix.os}}
     strategy:
@@ -24,7 +32,6 @@ jobs:
     name: Docker build image
     runs-on: ubuntu-latest
     steps:
-    
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       
@@ -40,11 +47,3 @@ jobs:
         with:
           push: true
           tags: abdualiandrei/fullstack-renting-application:latest
-  # robot-testing:
-  #     needs: [test_pull_request, docker]
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #     - run: pip3 install robotframework
-  #     - run: ls -l
-  #     - run: sh .github/scripts/run_script.sh
-  #       shell: bash
