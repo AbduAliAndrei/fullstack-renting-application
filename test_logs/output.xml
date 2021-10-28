@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211028 12:16:31.154" rpa="false" schemaversion="2">
+<suite id="s1" name="Suites" source="/home/ali/Desktop/fullstack-renting-application/testing/Suites">
+<suite id="s1-s1" name="Main-Suite" source="/home/ali/Desktop/fullstack-renting-application/testing/Suites/Main-Suite.robot">
+<kw name="begin" type="SETUP">
+<kw name="Log" library="BuiltIn">
+<arg>begin</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211028 12:16:31.177" level="INFO">begin</msg>
+<status status="PASS" starttime="20211028 12:16:31.177" endtime="20211028 12:16:31.177"/>
+</kw>
+<status status="PASS" starttime="20211028 12:16:31.177" endtime="20211028 12:16:31.177"/>
+</kw>
+<test id="s1-s1-t1" name="t1">
+<kw name="Run Project">
+<msg timestamp="20211028 12:16:31.179" level="FAIL">No keyword with name 'Run Project' found.</msg>
+<status status="FAIL" starttime="20211028 12:16:31.179" endtime="20211028 12:16:31.179"/>
+</kw>
+<kw name="Test User Cant Go To Private Routes">
+<status status="NOT RUN" starttime="20211028 12:16:31.180" endtime="20211028 12:16:31.180"/>
+</kw>
+<kw name="Register A New User">
+<status status="NOT RUN" starttime="20211028 12:16:31.182" endtime="20211028 12:16:31.182"/>
+</kw>
+<kw name="Test User Can Login">
+<status status="NOT RUN" starttime="20211028 12:16:31.183" endtime="20211028 12:16:31.183"/>
+</kw>
+<kw name="Test User Can Go To Private Routes">
+<status status="NOT RUN" starttime="20211028 12:16:31.184" endtime="20211028 12:16:31.184"/>
+</kw>
+<kw name="Test User Can Login Out">
+<status status="NOT RUN" starttime="20211028 12:16:31.185" endtime="20211028 12:16:31.185"/>
+</kw>
+<kw name="Delete Project">
+<status status="NOT RUN" starttime="20211028 12:16:31.186" endtime="20211028 12:16:31.186"/>
+</kw>
+<kw name="Close All Connections">
+<status status="NOT RUN" starttime="20211028 12:16:31.187" endtime="20211028 12:16:31.187"/>
+</kw>
+<status status="FAIL" starttime="20211028 12:16:31.177" endtime="20211028 12:16:31.188">No keyword with name 'Run Project' found.</status>
+</test>
+<test id="s1-s1-t2" name="t2">
+<kw name="Log" library="BuiltIn">
+<arg>Hell</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211028 12:16:31.188" level="INFO">Hell</msg>
+<status status="PASS" starttime="20211028 12:16:31.188" endtime="20211028 12:16:31.188"/>
+</kw>
+<status status="PASS" starttime="20211028 12:16:31.188" endtime="20211028 12:16:31.189"/>
+</test>
+<kw name="end" type="TEARDOWN">
+<kw name="Log" library="BuiltIn">
+<arg>end</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211028 12:16:31.190" level="INFO">end</msg>
+<status status="PASS" starttime="20211028 12:16:31.189" endtime="20211028 12:16:31.190"/>
+</kw>
+<status status="PASS" starttime="20211028 12:16:31.189" endtime="20211028 12:16:31.190"/>
+</kw>
+<status status="FAIL" starttime="20211028 12:16:31.175" endtime="20211028 12:16:31.190"/>
+</suite>
+<status status="FAIL" starttime="20211028 12:16:31.155" endtime="20211028 12:16:31.190"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="1" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="1" fail="1" skip="0" id="s1-s1" name="Main-Suite">Suites.Main-Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
