@@ -93,3 +93,7 @@ Thumbs.db
 
 #cache files
 *.cache
+
+#kubectl
+kubectl
+*.sha256
