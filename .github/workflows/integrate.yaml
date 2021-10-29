@@ -15,8 +15,7 @@ jobs:
       - run: chmod u+x run_tests.sh
       - run: npm install --silent
       - run: |
-          npm run build
-          npm run start&
+          ttab npm run dev
           sh ./run_tests.sh
         shell: bash
   test_pull_request:
@@ -34,7 +33,6 @@ jobs:
       - run: npm ci
       - run: npm install --silent
       - run: npm install --global mocha
-      # - run: npm test -> to be added
       - run: npm run build
   docker:
     name: Docker build image
