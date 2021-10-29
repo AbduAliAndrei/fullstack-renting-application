@@ -37,7 +37,8 @@ Test User Can Login
     Enter Email    ${USER_EMAIL}
     Enter Password    ${USER_PASSWORD}
     Submit Details    login-btn
-
+    ${current_url}=    Get Location
+    Should Be Equal As Strings    ${current_url}    ${URL}/profile
  
 
 Test User Can Go To Private Routes
