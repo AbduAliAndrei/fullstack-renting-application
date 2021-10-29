@@ -14,8 +14,9 @@ jobs:
       - run: pip3 install --upgrade robotframework-seleniumlibrary
       - run: chmod u+x run_tests.sh
       - run: npm install --silent
-      - run: npm run dev
-      - run: sh ./run_tests.sh
+      - run: | 
+          npm run watch
+          sh ./run_tests.sh
         shell: bash
   test_pull_request:
     name: test_pullrequests
