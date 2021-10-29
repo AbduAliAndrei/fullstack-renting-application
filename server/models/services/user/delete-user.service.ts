@@ -1,7 +1,6 @@
 import { UserType } from "../../../../enums/user-type";
 import {
   DatabaseEntity,
-  DatabaseFunction,
   DatabaseObject,
 } from "../../../interfaces/database-entity";
 import { Tenant } from "../../../../interfaces/tenant";
@@ -22,13 +21,17 @@ export default function deleteUserService({
   return async function deleteUser(
     id: string,
     type: UserType
-  ): Promise<DatabaseFunction<DatabaseObject<string>>> {
+  ): Promise<DatabaseObject<string>> {
     const strategies = {
       [UserType.LANDLORD]: landlordsDb,
       [UserType.TENANT]: tenantsDb,
       [UserType.ADMIN]: adminsDb,
     };
 
-    return await strategies[type].remove({ id });
+    const removeRes = await strategies[type].remove({ id });
+    if (!removeRes.data) {
+      throw new Error("User was not deleted. Uncaught error.");
+    }
+    return removeRes.data;
   };
 }
