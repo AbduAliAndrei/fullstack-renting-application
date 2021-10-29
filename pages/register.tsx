@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useCookies } from "react-cookie";
 import { UserType } from "../enums/user-type";
 import { useRouter } from "next/dist/client/router";
+import { UserExtended } from "../interfaces/user-extended";
 
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
@@ -60,6 +61,10 @@ const Register = () => {
     e.preventDefault();
     const res = await register();
     if (res.status === 201) {
+      // TODO: fix from localhost later.
+      const user: { res: { data: UserExtended } } = await res.json();
+
+      window.localStorage.setItem("user", JSON.stringify(user.res.data));
       await router.push("/profile");
     }
   };
@@ -147,6 +152,7 @@ const Register = () => {
                   Email
                 </label>
                 <input
+                  id={"email"}
                   type={"text"}
                   name={"email"}
                   placeholder={"Enter your email"}
@@ -159,6 +165,7 @@ const Register = () => {
                   Password
                 </label>
                 <input
+                  id={"password"}
                   type={"password"}
                   name={"password"}
                   placeholder={"Enter your password"}

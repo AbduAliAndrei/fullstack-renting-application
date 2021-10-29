@@ -1,12 +1,11 @@
 *** Settings ***
-Suite Setup       Open Browser    ${URL}    ${BROWSER}
+Suite Setup       Wait Until Keyword Succeeds    10x    10s    Open Browser    ${URL}    ${BROWSER}
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-
  
 
 *** Variables ***
-${URL}            http://localhost:3000
+${URL}            http://localhost:3001
 ${BROWSER}        Chrome
 ${USER_EMAIL}     abduabdu123@gmail.com
 ${USER_PASSWORD}    1234566

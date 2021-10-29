@@ -1,11 +1,23 @@
 import Auth from "../components/Auth";
-import { FormEvent, useCallback } from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
+import { UserExtended } from "../interfaces/user-extended";
+import { UserType } from "../enums/user-type";
 
 const Profile = () => {
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
   const router = useRouter();
+  const [id, setId] = useState<string>("");
+
+  useEffect(() => {
+    const user: UserExtended | undefined = JSON.parse(
+      window.localStorage.getItem("user")
+    );
+    if (user && user.id) {
+      setId(() => user.id);
+    }
+  }, [id, setId]);
 
   const onLogout = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -27,12 +39,36 @@ const Profile = () => {
     [router, xsrfToken]
   );
 
+  const onDeleteAccount = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log("delete");
+      const res = await fetch("api/auth", {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "CSRF-Token": xsrfToken["XSRF-Token"],
+        },
+        body: JSON.stringify({ id, type: UserType.TENANT }),
+      });
+      if (res.status === 204) {
+        await router.push("/login");
+      }
+      console.log(res.status);
+    },
+    [router, xsrfToken, id]
+  );
+
   return (
     <Auth>
       <div>
         Profile
         <form onSubmit={onLogout}>
-          <button>Logout</button>
+          <button id={"logout-btn"}>Logout</button>
+        </form>
+        <form onSubmit={onDeleteAccount}>
+          <button id={"delete-account-btn"}>Delete Account</button>
         </form>
       </div>
     </Auth>
