@@ -13,8 +13,8 @@ jobs:
       - run: pip3 install robotframework
       - run: pip3 install --upgrade robotframework-seleniumlibrary
       - run: chmod u+x run_tests.sh
-      - run: npm install --silent
-      - run: npm install ttab -g
+      - run: sudo npm install ttab -g
+      - run: sudo npm install --silent
       - run: |
           ttab npm run dev
           sh ./run_tests.sh
