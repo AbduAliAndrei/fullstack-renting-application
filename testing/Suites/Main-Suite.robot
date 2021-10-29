@@ -18,43 +18,26 @@ Check Private Route Redirects To Login
     ${current_url}=    Get Location
     Should Be Equal As Strings    ${current_url}    ${URL}/login
 
- 
-
-Test User Can Register
-    Go To    ${URL}/register
-    Enter Email    ${USER_EMAIL}
-    Enter Password    ${USER_PASSWORD}
-    Submit Details    register-btn
-    ${current_url}=    Get Location
-    Should Be Equal As Strings    ${current_url}    ${URL}/profile
-    Click Button    logout-btn
-
- 
-
 Test User Can Login
+    Set Selenium Speed	2 seconds
     Go To    ${URL}/login
     Enter Email    ${USER_EMAIL}
     Enter Password    ${USER_PASSWORD}
     Submit Details    login-btn
 
+Test User Can Go To Private Routes
+    Set Selenium Speed	2 seconds
+    Go To    ${URL}/profile
+    ${current_url}=    Get Location
+    Wait Until Keyword Succeeds    10x    5s    Wait Until profile
  
 
-Test User Can Go To Private Routes
-    Go To    ${URL}/profile
+*** Keywords ***
+Wait Until profile
     ${current_url}=    Get Location
     Should Be Equal As Strings    ${current_url}    ${URL}/profile
 
  
-
-Test User Can Delete Account
-    Go To    ${URL}/profile
-    Click Button    delete-account-btn
-    ${current_url}=    Get Location
-    Should Be Equal As Strings    ${current_url}    ${URL}/login
-
- 
-
-*** Keywords ***
 Enter Email
     [Arguments]    ${email}
     Input Text    email    ${email}
