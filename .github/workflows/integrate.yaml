@@ -15,6 +15,7 @@ jobs:
       - run: chmod u+x run_tests.sh
       - run: sudo npm install ttab -g
       - run: sudo npm install --silent
+      - run : sudo apt-get install gnome-terminal
       - run: |
           ttab npm run dev
           sh ./run_tests.sh
