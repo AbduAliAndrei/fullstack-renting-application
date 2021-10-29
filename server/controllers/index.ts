@@ -17,6 +17,7 @@ import createLogout from "./auth/logout.controller";
 
 import createPostAdmin from "./user/post-admin.controller";
 import createDeleteUser from "./user/delete-user.controller";
+
 const postTenant = createPostTenant({ createTenant });
 const postLandlord = createPostLandlord({ createLandlord });
 const postAdmin = createPostAdmin({ createAdmin });
@@ -28,7 +29,10 @@ const postRegisterAttempt = createRegisterAttempt({
 const getCheckedUser = createGetCheckedUser({ checkTakeUser });
 const postLogin = createLogin({ loginUser: login, authCreate });
 const postLogout = createLogout({ logoutService: logout });
-const deleteUser = createDeleteUser({ deleteUser: deleteUserService });
+const deleteUser = createDeleteUser({
+  deleteUser: deleteUserService,
+  authRemove,
+});
 
 const controller = Object.freeze({
   postTenant,

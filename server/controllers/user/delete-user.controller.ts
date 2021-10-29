@@ -3,9 +3,15 @@ import { DatabaseObject } from "../../interfaces/database-entity";
 import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
 import asyncF from "../../../utils/async-f";
+import { authRemove } from "../../database";
 
 export default function createDeleteUser(services: {
-  deleteUser: (id: string, type: UserType) => Promise<DatabaseObject<string>>;
+  deleteUser: (
+    id: string,
+    type: UserType,
+    authRemove: ({ uid }: { uid: string }) => Promise<void>
+  ) => Promise<DatabaseObject<string>>;
+  authRemove: ({ uid }: { uid: string }) => Promise<void>;
 }): (h: HttpRequest) => Promise<Controller<DatabaseObject<string>>> {
   return async function (
     httpRequest: HttpRequest
@@ -24,7 +30,9 @@ export default function createDeleteUser(services: {
       };
     }
 
-    const [data, error] = await asyncF(services.deleteUser(id, type));
+    const [data, error] = await asyncF(
+      services.deleteUser(id, type, authRemove)
+    );
 
     if (error) {
       return {
