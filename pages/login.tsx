@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
 import { makeStyles } from "@material-ui/core";
+import { UserExtended } from "../interfaces/user-extended";
 
 const useStyles = makeStyles({
   root: {
@@ -48,9 +49,10 @@ const Login = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
 
-    const user = await register();
+    const user : {res: UserExtended}= await register();
+
     // TODO: fix from localhost later.
-    window.localStorage.setItem("user", JSON.stringify(user));
+    window.localStorage.setItem("user", JSON.stringify(user.res));
     if (user) {
       await router.push("/profile");
     }
