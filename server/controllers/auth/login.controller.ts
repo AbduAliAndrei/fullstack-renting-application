@@ -43,6 +43,8 @@ export default function createLogin({
       authCreate({ idToken: checked[1], expire: expiresIn })
     );
 
+    console.log("checked error", !!checkedError);
+
     if (sessionCookieError || !sessionCookie) {
       result = {
         headers: {
@@ -53,7 +55,7 @@ export default function createLogin({
           error: `Error with session cookie. ${sessionCookieError}`,
         },
       };
-    } else if (checkedError) {
+    } else if (!!checkedError) {
       result = {
         headers: {
           "Content-Type": "application/json",

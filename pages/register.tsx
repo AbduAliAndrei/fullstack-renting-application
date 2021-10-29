@@ -147,6 +147,7 @@ const Register = () => {
                   Email
                 </label>
                 <input
+                  id={"email"}
                   type={"text"}
                   name={"email"}
                   placeholder={"Enter your email"}
@@ -159,6 +160,7 @@ const Register = () => {
                   Password
                 </label>
                 <input
+                  id={"password"}
                   type={"password"}
                   name={"password"}
                   placeholder={"Enter your password"}
