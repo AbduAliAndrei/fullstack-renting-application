@@ -11,10 +11,12 @@ const Profile = () => {
   const [id, setId] = useState<string>("");
 
   useEffect(() => {
-    const parsedUser: UserExtended = JSON.parse(
+    const user: UserExtended | undefined = JSON.parse(
       window.localStorage.getItem("user")
-    ).res;
-    setId(() => parsedUser.id);
+    );
+    if (user.id) {
+      setId(() => user.id);
+    }
   }, [id, setId]);
 
   const onLogout = useCallback(

@@ -59,6 +59,8 @@ const Register = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     const res = await register();
+    // TODO: fix from localhost later.
+    window.localStorage.setItem("user", JSON.stringify(res.json()));
     if (res.status === 201) {
       await router.push("/profile");
     }
