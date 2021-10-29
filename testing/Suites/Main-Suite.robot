@@ -53,4 +53,3 @@ Enter Password
 Submit Details
     [Arguments]    ${btn-locator}
     Click Button    ${btn-locator}
- 
