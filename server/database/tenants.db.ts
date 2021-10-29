@@ -111,6 +111,7 @@ export default function makeTenantsDb({
     return { data: tenant, id };
   }
 
+  // TODO: update is wrong
   async function update({
     id,
     data,
@@ -129,8 +130,15 @@ export default function makeTenantsDb({
   }: {
     id: string;
   }): Promise<DatabaseFunction<DatabaseObject<string>>> {
-    const result = await db.collection(CollectionPaths.TENANT).doc(id).delete();
+    const result = await db
+      .collection(CollectionPaths.TENANT)
+      .where("id", "==", id)
+      .get();
 
-    return { data: { writeTime: result.writeTime.toDate(), data: id } };
+    result.forEach((el) => {
+      el.ref.delete();
+    });
+
+    return { data: { writeTime: new Date(), data: id } };
   }
 }

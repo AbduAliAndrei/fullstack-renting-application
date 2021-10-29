@@ -60,11 +60,11 @@ const Register = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     const res = await register();
-    // TODO: fix from localhost later.
-    const user: { res: { data: UserExtended} } = await res.json();
-
-    window.localStorage.setItem("user", JSON.stringify(user.res.data));
     if (res.status === 201) {
+      // TODO: fix from localhost later.
+      const user: { res: { data: UserExtended } } = await res.json();
+
+      window.localStorage.setItem("user", JSON.stringify(user.res.data));
       await router.push("/profile");
     }
   };

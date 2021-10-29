@@ -31,6 +31,7 @@ export default function deleteUserService({
     };
 
     const removeRes = await strategies[type].remove({ id });
+    console.log(removeRes);
     if (!removeRes.data) {
       throw new Error("User was not deleted. Uncaught error.");
     }
