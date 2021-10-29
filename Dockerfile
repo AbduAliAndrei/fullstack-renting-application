@@ -1,19 +1,29 @@
-FROM node:12
+FROM node:12 
 
-WORKDIR /usr/src
+WORKDIR /
 
-ENV PORT 8080
-ENV HOST 0.0.0.0
+ENV PORT 8080 
+ENV PATH node_modules/.bin:$PATH
+EXPOSE 8080 
 
-COPY package*.json ./
+COPY package*.json ./ 
 
-RUN npm install --only=production
+RUN npm install --silent
 
-# copy local next code to the container
-COPY . .
+# copy local src code to the container 
+COPY . . 
 
-# build prod app
+# next serve 
+# RUN npm run serve
+
+#  next build 
 RUN npm run build
 
-# start the service
-CMD npm start
+# next start 
+# RUN npm run start
+
+# build "cross-env NODE_ENV=development && nodemon server/index.ts" 
+# RUN npm run dev
+
+# start the service 
+CMD ["npm" ,"start"]
