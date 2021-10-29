@@ -15,7 +15,8 @@ jobs:
       - run: chmod u+x run_tests.sh
       - run: npm install --silent
       - run: |
-          npm run start 
+          npm run build
+          npm run start&
           sh ./run_tests.sh
         shell: bash
   test_pull_request:
