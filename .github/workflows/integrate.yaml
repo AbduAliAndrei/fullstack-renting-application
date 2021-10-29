@@ -13,10 +13,13 @@ jobs:
       - run: pip3 install robotframework
       - run: pip3 install --upgrade robotframework-seleniumlibrary
       - run: chmod u+x run_tests.sh
+      - run: npm install --silent
+      - run: npm run dev
       - run: sh ./run_tests.sh
         shell: bash
   test_pull_request:
     name: test_pullrequests
+    needs: robot-testing
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
@@ -33,6 +36,7 @@ jobs:
       - run: npm run build
   docker:
     name: Docker build image
+    needs: test_pull_request
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
