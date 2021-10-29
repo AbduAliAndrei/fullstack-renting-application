@@ -34,7 +34,7 @@ export default function checkTakeUserCreator({
         );
 
         if (takeErrorAdmin) {
-          Error(
+          throw new Error(
             `No Admin, Landlord nor tenant with such id was not found in database. Got ${uid}.`
           );
         }
