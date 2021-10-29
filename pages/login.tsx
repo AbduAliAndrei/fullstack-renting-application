@@ -49,6 +49,8 @@ const Login = () => {
     e.preventDefault();
 
     const user = await register();
+    // TODO: fix from localhost later.
+    window.localStorage.setItem("user", JSON.stringify(user));
     if (user) {
       await router.push("/profile");
     }
