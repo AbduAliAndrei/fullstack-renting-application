@@ -6,7 +6,7 @@ Library           SeleniumLibrary
  
 
 *** Variables ***
-${URL}            http://localhost:3001
+${URL}            http://localhost:3000
 ${BROWSER}        Chrome
 
  
