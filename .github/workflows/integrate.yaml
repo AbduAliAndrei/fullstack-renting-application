@@ -13,11 +13,11 @@ jobs:
       - run: sudo pip3 install robotframework
       - run: sudo npm install -g webdriver-manager
       - run: sudo webdriver-manager update
-      - run: sudo webdriver-manager start
+      - run: sudo nohup webdriver-manager start &
       - run: sudo pip3 install --upgrade robotframework-seleniumlibrary
       - run: sudo chmod u+x run_tests.sh
       - run: sudo npm install --silent
-      - run: nohup npm run dev &
+      - run: sudo nohup npm run dev &
       - run: sudo ./run_tests.sh
         shell: bash
   test_pull_request:
