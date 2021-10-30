@@ -11,7 +11,9 @@ jobs:
       - uses: actions/checkout@v2
       - run: sudo apt install chromium-chromedriver
       - run: sudo pip3 install robotframework
-      - run: sudo pip3 install -U selenium
+      - run: sudo npm install -g webdriver-manager
+      - run: sudo webdriver-manager update
+      - run: sudo webdriver-manager start
       - run: sudo pip3 install --upgrade robotframework-seleniumlibrary
       - run: sudo chmod u+x run_tests.sh
       - run: sudo npm install --silent
