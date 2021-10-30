@@ -15,7 +15,8 @@ jobs:
       - run: chmod u+x run_tests.sh
       - run: sudo npm install ttab -g
       - run: sudo npm install --silent
-      - run : nohup npm run dev && sh ./run_tests.sh
+      - run : nohup npm run dev 
+      - run : sh ./run_tests.sh
         shell: bash
   test_pull_request:
     name: test_pullrequests
