@@ -1,7 +1,7 @@
 name: Node CI
 on:
   push:
-    branches: [main,robot-testing]
+    branches: [main, robot-testing]
   pull_request:
     branches: [main]
 jobs:
@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run : sudo apt install chromium-chromedriver
+      - run: apt install chromium-chromedriver
       - run: pip3 install robotframework
       - run: pip3 install --upgrade robotframework-seleniumlibrary
       - run: chmod u+x run_tests.sh
       - run: sudo npm install --silent
-      - run : nohup npm run dev &
-      - run : sh ./run_tests.sh
+      - run: nohup npm run dev &
+      - run: sh ./run_tests.sh
         shell: bash
   test_pull_request:
     name: test_pullrequests
