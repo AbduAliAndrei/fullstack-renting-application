@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix . --ext .ts",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "test" : "mocha-test"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
