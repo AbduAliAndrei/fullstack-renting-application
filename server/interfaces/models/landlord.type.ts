@@ -1,6 +1,6 @@
 import { UserModel } from "./user.type";
 
-export type LandlordType = UserModel & {
-  getOfferList(): [];
+export type LandlordModel = UserModel & {
+  getOffersList(): [];
   isTrusted(): boolean;
 };

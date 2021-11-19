@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "install:all": "npm i && cd ./server/functions && npm i",
     "serve": "next dev",
     "dev": "cross-env NODE_ENV=development && nodemon server/index.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:next": "next lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -49,6 +52,7 @@
     "swr": "^0.5.7"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^11.0.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/express": "^4.17.12",
     "@types/react": "17.0.11",

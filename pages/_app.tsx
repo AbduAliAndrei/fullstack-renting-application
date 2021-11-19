@@ -2,7 +2,7 @@ import "../styles/App.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import { CookiesProvider } from "react-cookie";
-import kaifstoreTheme from "../theme/kaifstoreTheme";
+import appTheme from "../theme/appTheme";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Head from "next/head";
 import axios from "axios";
@@ -20,7 +20,7 @@ const fetcher = async (url) => {
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const { data, error } = useSWR('api/');
-  const theme = createTheme(kaifstoreTheme);
+  const theme = createTheme(appTheme);
 
   return (
     <>

@@ -1,9 +1,8 @@
-import { ThemeOptions } from '@mui/material';
-import appColors from "./kaifstoreColors";
-
+import { ThemeOptions } from "@mui/material";
+import appColors from "./appColors";
 
 // TODO Abdulla put our theme theme
-const kaifstoreTheme: ThemeOptions = {
+const appTheme: ThemeOptions = {
   palette: {
     primary: {
       light: appColors.violetLight,
@@ -31,46 +30,46 @@ const kaifstoreTheme: ThemeOptions = {
   },
   typography: {
     allVariants: {
-      letterSpacing: 'normal',
+      letterSpacing: "normal",
     },
-    fontFamily: ['Coolvetica', 'sans-serif'].join(','),
+    fontFamily: ["Coolvetica", "sans-serif"].join(","),
     h1: {
-      fontWeight: 'bold',
-      fontSize: '2.5rem',
+      fontWeight: "bold",
+      fontSize: "2.5rem",
       lineHeight: 1.2,
       color: appColors.white,
-      letterSpacing: '0.2rem',
+      letterSpacing: "0.2rem",
     },
     h2: {
-      fontWeight: 'bold',
-      fontSize: '2.25rem',
+      fontWeight: "bold",
+      fontSize: "2.25rem",
       lineHeight: 1.3,
       color: appColors.white,
     },
     h3: {
-      fontWeight: 'normal',
-      fontSize: '1.875rem',
+      fontWeight: "normal",
+      fontSize: "1.875rem",
       lineHeight: 1.5,
       color: appColors.white,
     },
     h4: {
-      fontWeight: 'normal',
-      fontSize: '1.5rem',
+      fontWeight: "normal",
+      fontSize: "1.5rem",
       lineHeight: 1.5,
     },
     h5: {
-      fontWeight: 'normal',
-      fontSize: '1rem',
+      fontWeight: "normal",
+      fontSize: "1rem",
       lineHeight: 1.5,
     },
     h6: {
-      fontWeight: 'bold',
-      fontSize: '0.874rem',
+      fontWeight: "bold",
+      fontSize: "0.874rem",
       lineHeight: 1.5,
     },
     subtitle1: {
-      fontWeight: 'normal',
-      fontSize: '0.5rem',
+      fontWeight: "normal",
+      fontSize: "0.5rem",
       lineHeight: 1.5,
     },
   },
@@ -78,7 +77,7 @@ const kaifstoreTheme: ThemeOptions = {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          height: '100vh',
+          height: "100vh",
           color: appColors.white,
         },
       },
@@ -86,11 +85,11 @@ const kaifstoreTheme: ThemeOptions = {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          fontFamily: ['Coolvetica', 'sans-serif'].join(','),
+          fontFamily: ["Coolvetica", "sans-serif"].join(","),
         },
       },
     },
   },
 };
 
-export default kaifstoreTheme;
+export default appTheme;
