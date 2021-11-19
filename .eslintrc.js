@@ -1,3 +1,4 @@
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -9,6 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     "next",
     "next/core-web-vitals",
+    "plugin:prettier/recommended",
   ],
   root: true,
   env: {
