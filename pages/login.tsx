@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
 import { makeStyles } from "@material-ui/core";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useStyles = makeStyles({
   root: {
     backgroundColor: "red",
@@ -19,7 +20,7 @@ const Login = () => {
     email: string;
     password: string;
   }>({ email: "andrei@gmail.com", password: "123456" });
-  const styles = useStyles({ color: "#ff0000" });
+  // const styles = useStyles({ color: "#ff0000" });
 
   const changeLoginInfo = useCallback(
     (e: BaseSyntheticEvent) => {

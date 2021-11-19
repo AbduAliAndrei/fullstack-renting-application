@@ -1,11 +1,11 @@
 import { BaseSyntheticEvent, useEffect, useState } from "react";
 import { UseGender } from "../enums/use-gender";
 import { Tenant } from "../interfaces/tenant";
-import {Landlord} from "../interfaces/landlord";
+import { Landlord } from "../interfaces/landlord";
 import Image from "next/image";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
-import {UserType} from "../enums/use-type";
+import { UserType } from "../enums/use-type";
 
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
