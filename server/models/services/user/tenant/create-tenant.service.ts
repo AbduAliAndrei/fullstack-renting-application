@@ -34,7 +34,7 @@ export default function createAddTenant({
         password: tenant.getPassword(),
         createdAt: tenant.getCreatedAt(),
         updatedAt: tenant.getUpdatedAt(),
-        verified: tenant.getVerified(),
+        verified: tenant.isVerified(),
         bio: tenant.getBio(),
         gender: tenant.getGender(),
         picture: tenant.getPicture(),

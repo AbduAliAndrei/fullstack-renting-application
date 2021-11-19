@@ -32,7 +32,7 @@ export default function createAddLandlord({
         password: landlord.getPassword(),
         createdAt: landlord.getCreatedAt(),
         updatedAt: landlord.getUpdatedAt(),
-        verified: landlord.getVerified(),
+        verified: landlord.isVerified(),
         bio: landlord.getBio(),
         trusted: landlord.isTrusted(),
         gender: landlord.getGender(),
