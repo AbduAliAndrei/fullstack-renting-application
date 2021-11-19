@@ -23,7 +23,7 @@ export default function updateUserService({
   return async function updateUser(
     user: UserExtended,
     type: UserType
-  ): Promise<DatabaseFunction<DatabaseObject<UserExtended>>> {
+  ): Promise<DatabaseFunction<DatabaseObject<Required<UserExtended>>>> {
     const strategies = {
       [UserType.LANDLORD]: landlordsDb,
       [UserType.TENANT]: tenantsDb,
@@ -32,7 +32,7 @@ export default function updateUserService({
 
     return await strategies[type].update({
       id: user.id,
-      data: user as Required<Tenant & Landlord & Admin>,
+      data: user as Required<Tenant & Admin & Landlord>,
     });
   };
 }
