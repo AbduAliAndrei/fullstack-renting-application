@@ -91,7 +91,8 @@ export default function makeUsersDb({
     if (data.empty || data.size === 0) {
       return { fetchedData: null };
     }
-    return { fetchedData: createUserFromDb(data[0]), id };
+
+    return { fetchedData: createUserFromDb(data.docs[0]), id };
   }
 
   async function update({

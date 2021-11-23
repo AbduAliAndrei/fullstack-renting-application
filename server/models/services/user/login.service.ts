@@ -29,12 +29,12 @@ export default function loginUserCreator({
     }>(loginCheck({ email, password }));
 
     if (loginDataError) {
-      throw new Error(`Login Tenant error:  ${loginDataError}`);
+      throw new Error(`Login User error:  ${loginDataError}`);
     }
     const [user, takeError] = await asyncF<Required<User>>(
-      takeUser({ id: loginData.uid }),
-      true
+      takeUser({ id: loginData.uid })
     );
+
     if (takeError) {
       throw new Error(
         `No user with such id was found in database. Got ${loginData.uid}.`
