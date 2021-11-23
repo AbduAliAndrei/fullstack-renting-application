@@ -1,8 +1,8 @@
 export enum PrivateRoutes {
-    HOME = "/profile",
+  HOME = "/profile",
 }
 
 export enum PublicOnlyRoutes {
-    LOGIN = "/login",
-    REGISTER = "/register"
+  LOGIN = "/login",
+  REGISTER = "/register",
 }

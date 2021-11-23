@@ -1,4 +1,4 @@
-import db from '../functions/src';
+import db from "../functions/src";
 import makeTenantsDb from "./tenants.db";
 import makeLandlordsDb from "./landlords.db";
 import firebaseAuth from "../functions/src/authentication/firebase-auth";
@@ -11,12 +11,16 @@ export const tenantsDb = makeTenantsDb({ db });
 export const landlordsDb = makeLandlordsDb({ db });
 
 export const registerDb = firebaseAuth;
-export const authVerify = async ({ sessionCookie }: {sessionCookie: string}) => {
-    if (sessionCookie === "") {
-        throw new Error('Session cookie invalid');
-    }
-    const decoded = await firebaseAuthVerify({sessionCookie});
-    return decoded.uid;
+export const authVerify = async ({
+  sessionCookie,
+}: {
+  sessionCookie: string;
+}): Promise<string> => {
+  if (sessionCookie === "") {
+    throw new Error("Session cookie invalid");
+  }
+  const decoded = await firebaseAuthVerify({ sessionCookie });
+  return decoded.uid;
 };
 export const authCreate = firebaseAuthCreate;
 export const authRemove = firebaseAuthRemove;

@@ -5,12 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
-import {makeStyles} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'red',
-    color: (props: { color: string}) => props.color,
+    backgroundColor: "red",
+    color: (props: { color: string }) => props.color,
   },
 });
 
@@ -19,7 +20,7 @@ const Login = () => {
     email: string;
     password: string;
   }>({ email: "andrei@gmail.com", password: "123456" });
-  const styles = useStyles({ color: '#ff0000' });
+  // const styles = useStyles({ color: "#ff0000" });
 
   const changeLoginInfo = useCallback(
     (e: BaseSyntheticEvent) => {
@@ -45,14 +46,14 @@ const Login = () => {
     return await data.json();
   };
 
-    const onSubmit = async (e: BaseSyntheticEvent) => {
-        e.preventDefault();
+  const onSubmit = async (e: BaseSyntheticEvent) => {
+    e.preventDefault();
 
-        const user = await register();
-        if (user) {
-            await router.push('/profile');
-        }
+    const user = await register();
+    if (user) {
+      await router.push("/profile");
     }
+  };
 
   return (
     <div className="Login">
