@@ -3,36 +3,23 @@ import {
   DatabaseEntity,
   DatabaseObject,
 } from "../../../interfaces/database-entity";
-import { Tenant } from "../../../../interfaces/tenant";
-import { Landlord } from "../../../../interfaces/landlord";
-import { Admin } from "../../../../interfaces/admin";
 import asyncF from "../../../../utils/async-f";
+import { User } from "../../../../interfaces/user";
+import { UserModel } from "../../../interfaces/models/user.type";
 
 export type DeleteUserService = {
-  tenantsDb: DatabaseEntity<Tenant>;
-  landlordsDb: DatabaseEntity<Landlord>;
-  adminsDb: DatabaseEntity<Admin>;
+  usersDb: DatabaseEntity<User, UserModel>;
 };
 
-export default function deleteUserService({
-  tenantsDb,
-  landlordsDb,
-  adminsDb,
-}: DeleteUserService) {
+export default function deleteUserService({ usersDb }: DeleteUserService) {
   return async function deleteUser(
     id: string,
     type: UserType,
     authRemove: ({ uid }: { uid: string }) => Promise<void>
   ): Promise<DatabaseObject<string>> {
-    const strategies = {
-      [UserType.LANDLORD]: landlordsDb,
-      [UserType.TENANT]: tenantsDb,
-      [UserType.ADMIN]: adminsDb,
-    };
-
-    const removeRes = await strategies[type].remove({ id });
+    const removeRes = await usersDb.remove({ id });
     console.log(removeRes);
-    if (!removeRes.data) {
+    if (!removeRes.fetchedData) {
       throw new Error("User was not deleted. Uncaught error.");
     }
 
@@ -40,6 +27,6 @@ export default function deleteUserService({
     if (error) {
       throw new Error(`Database error occurred. Please consider: ${error}`);
     }
-    return removeRes.data;
+    return removeRes.fetchedData;
   };
 }

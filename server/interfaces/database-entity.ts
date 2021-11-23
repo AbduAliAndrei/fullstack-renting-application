@@ -1,12 +1,12 @@
-export interface DatabaseEntity<T> {
+export interface DatabaseEntity<T, TModel> {
   add: (
-    info: Required<T>
+    info: Required<TModel>
   ) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
   findAll: ({
-    name,
+    userName,
   }: {
-    name?: string;
-  }) => Promise<DatabaseFunction<Required<T>[]> & { _name: string }>;
+    userName?: string;
+  }) => Promise<DatabaseFunction<Required<T>[]> & { _userName: string }>;
   findById: ({
     id,
   }: {
@@ -27,7 +27,7 @@ export interface DatabaseEntity<T> {
 }
 
 export type DatabaseFunction<T> = {
-  data: T;
+  fetchedData: T;
 };
 
 export interface DatabaseObject<T> {

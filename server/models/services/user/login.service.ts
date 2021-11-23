@@ -1,14 +1,8 @@
-import { UserExtended } from "../../../../interfaces/user-extended";
 import asyncF from "../../../../utils/async-f";
-import { UserType } from "../../../../enums/use-type";
+import { User } from "../../../../interfaces/user";
 
 type LoginUserCreatorParams = {
-  takeUser: ({
-    id,
-  }: {
-    id: string;
-    type: UserType;
-  }) => Promise<Required<UserExtended>>;
+  takeUser: ({ id }: { id: string }) => Promise<Required<User>>;
   loginCheck: ({
     email,
     password,
@@ -28,35 +22,24 @@ export default function loginUserCreator({
   }: {
     email: string;
     password: string;
-  }): Promise<[Required<UserExtended>, string]> {
+  }): Promise<[Required<User>, string]> {
     const [loginData, loginDataError] = await asyncF<{
       idToken: string;
       uid: string;
     }>(loginCheck({ email, password }));
 
     if (loginDataError) {
-      throw new Error(`Login Tenant error:  ${loginDataError}`);
+      throw new Error(`Login User error:  ${loginDataError}`);
     }
-
-    // eslint-disable-next-line prefer-const
-    let [user, takeError] = await asyncF<Required<UserExtended>>(
-      takeUser({ id: loginData.uid, type: UserType.TENANT }),
-      true
+    const [user, takeError] = await asyncF<Required<User>>(
+      takeUser({ id: loginData.uid })
     );
+
     if (takeError) {
-      console.log("redirecting to take landlord");
-      const [landLord, takeErrorLandlord] = await asyncF<
-        Required<UserExtended>
-      >(takeUser({ id: loginData.uid, type: UserType.LANDLORD }), true);
-      if (takeErrorLandlord) {
-        throw new Error(
-          `Landlord or tenant with such id was not found in database. Got ${loginData.uid}.`
-        );
-      }
-
-      user = landLord;
+      throw new Error(
+        `No user with such id was found in database. Got ${loginData.uid}.`
+      );
     }
-
     return [user, loginData.idToken];
   };
 }

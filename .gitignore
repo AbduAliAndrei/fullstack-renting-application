@@ -91,5 +91,8 @@ lerna-debug.log
 Thumbs.db
 @aolveramx
 
-#cache files
+
+
+#cache
+
 *.cache

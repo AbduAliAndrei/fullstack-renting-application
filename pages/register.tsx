@@ -1,34 +1,30 @@
 import { BaseSyntheticEvent, useEffect, useState } from "react";
-import { UseGender } from "../enums/use-gender";
-import { Tenant } from "../interfaces/tenant";
-import { Landlord } from "../interfaces/landlord";
+import { UserGender } from "../enums/user-gender";
 import Image from "next/image";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
-import { UserType } from "../enums/use-type";
-
+import { UserType } from "../enums/user-type";
+import { User } from "../interfaces/user";
+import { useRouter } from "next/router";
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
-  const [userGender, setUserGender] = useState<UseGender>(UseGender.Male);
-  const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
+  const [userGender, setUserGender] = useState<UserGender>(UserGender.MALE);
+  const [registeringUser, setRegisteringUser] = useState<User>({
     email: "andrei.cristea@gmail.com",
-    trusted: false,
     firstName: "Andrei",
     lastName: "Cristea",
     password: "123456",
     userName: "Andrei Cristea",
-    offersList: [],
     verified: false,
     gender: "male",
-    idType: "passport",
     picture: "svg.net",
   });
 
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
-  const [sessionCookie] = useCookies(["sessionCookie"]);
 
   const [userTypes] = useState<UserType[]>(Object.values(UserType));
-  const [userGenders] = useState<UseGender[]>(Object.values(UseGender));
+  const [userGenders] = useState<UserGender[]>(Object.values(UserGender));
+  const router = useRouter();
 
   const onInputChange = (event: BaseSyntheticEvent) =>
     setRegisteringUser({
@@ -58,7 +54,9 @@ const Register = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     const res = await register();
-    console.log(res);
+    if (res.status === 201) {
+      await router.push("./profile");
+    }
   };
 
   return (
@@ -134,7 +132,7 @@ const Register = () => {
                       value={userType}
                       key={index}
                       onSelect={(e) =>
-                        setUserGender(e.currentTarget.value as UseGender)
+                        setUserGender(e.currentTarget.value as UserGender)
                       }
                     >
                       {userGender}
