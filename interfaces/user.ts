@@ -13,5 +13,5 @@ export interface User {
   bio?: string;
   createdAt?: Date;
   updatedAt?: Date;
-  role: Role;
+  role?: Role;
 }
