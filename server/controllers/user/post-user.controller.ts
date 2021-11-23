@@ -5,14 +5,15 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../../interfaces/database-entity";
-import { UserModel } from "../../interfaces/models/user.type";
 import { User } from "../../../interfaces/user";
+import { UserType } from "../../../enums/user-type";
 
 export default function createPostUser({
   createUser,
 }: {
   createUser: (
-    userInfo: UserModel
+    userInfo: User,
+    userType: UserType
   ) => Promise<DatabaseFunction<DatabaseObject<Required<User>>>>;
 }): (h: HttpRequest) => Promise<Controller<DatabaseObject<Required<User>>>> {
   return async function postUser(
@@ -21,17 +22,19 @@ export default function createPostUser({
     const postProcess = async (): Promise<
       DatabaseFunction<DatabaseObject<Required<User>>>
     > => {
-      const { source = {}, user } = httpRequest.body;
+      const { source = {}, user, userType } = httpRequest.body;
       source.ip = httpRequest.ip;
       source.browser = httpRequest.headers["User-Agent"];
       if (httpRequest.headers["Referer"]) {
         source.referer = httpRequest.headers["Referer"];
       }
 
-      return await createUser({
-        ...user,
-        source,
-      });
+      return await createUser(
+        {
+          ...user,
+        },
+        userType
+      );
     };
 
     const [data, error] = await asyncF<

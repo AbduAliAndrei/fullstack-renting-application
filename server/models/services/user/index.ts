@@ -6,8 +6,9 @@ import loginUserCreator from "./login.service";
 import firebaseLogin from "../../../functions/src/authentication/firebase-login";
 import logoutService from "./logout.service";
 import createUserCreator from "./create-user.service";
+import { makeUser } from "../../entities/user";
 
-const createUser = createUserCreator({ db: usersDb });
+const createUser = createUserCreator({ db: usersDb, makeUser: makeUser });
 const takeUser = takeUserCreator({ usersDb });
 
 const checkTakeUser = checkTakeUserCreator({ takeUser, checkAuth: authVerify });

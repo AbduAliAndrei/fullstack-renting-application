@@ -21,7 +21,6 @@ const Register = () => {
   });
 
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
-  const [sessionCookie] = useCookies(["sessionCookie"]);
 
   const [userTypes] = useState<UserType[]>(Object.values(UserType));
   const [userGenders] = useState<UserGender[]>(Object.values(UserGender));

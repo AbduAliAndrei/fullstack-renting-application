@@ -51,15 +51,18 @@ export default function buildMakeUser({
       userPick === UserType.TENANT
         ? {
             idType: IdType.UNKNOWN,
+            role: userPick,
           }
         : userPick === UserType.LANDLORD
         ? {
             offerList: [],
             trusted: false,
             idType: IdType.UNKNOWN,
+            role: userPick,
           }
         : {
             admin: true,
+            role: userPick,
           };
 
     return Object.freeze({
