@@ -55,7 +55,7 @@ const Register = () => {
     e.preventDefault();
     const res = await register();
     if (res.status === 201) {
-      router.push('./profile')
+      await router.push("./profile");
     }
   };
 
