@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCookies } from "react-cookie";
 import { UserType } from "../enums/user-type";
 import { User } from "../interfaces/user";
-
+import { useRouter } from "next/router";
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
   const [userGender, setUserGender] = useState<UserGender>(UserGender.MALE);
@@ -24,6 +24,7 @@ const Register = () => {
 
   const [userTypes] = useState<UserType[]>(Object.values(UserType));
   const [userGenders] = useState<UserGender[]>(Object.values(UserGender));
+  const router = useRouter();
 
   const onInputChange = (event: BaseSyntheticEvent) =>
     setRegisteringUser({
@@ -53,7 +54,9 @@ const Register = () => {
   const onSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     const res = await register();
-    console.log(res);
+    if (res.status === 201) {
+      router.push('./profile')
+    }
   };
 
   return (

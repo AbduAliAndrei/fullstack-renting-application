@@ -28,6 +28,9 @@ export default function makeUsersDb({
   async function add(
     userInfo: Required<UserModel>
   ): Promise<DatabaseFunction<DatabaseObject<Required<User>>>> {
+    console.log(userInfo.getId());
+    console.log(toUserFromModel(userInfo));
+
     const result = await db
       .collection(CollectionPaths.USER)
       .doc()
