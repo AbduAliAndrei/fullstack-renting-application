@@ -1,4 +1,3 @@
-import { UserType } from "../../../enums/user-type";
 import { DatabaseObject } from "../../interfaces/database-entity";
 import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
@@ -8,7 +7,6 @@ import { authRemove } from "../../database";
 export default function createDeleteUser(services: {
   deleteUser: (
     id: string,
-    type: UserType,
     authRemove: ({ uid }: { uid: string }) => Promise<void>
   ) => Promise<DatabaseObject<string>>;
   authRemove: ({ uid }: { uid: string }) => Promise<void>;
@@ -16,9 +14,9 @@ export default function createDeleteUser(services: {
   return async function (
     httpRequest: HttpRequest
   ): Promise<Controller<DatabaseObject<Required<string>>>> {
-    const { id, type }: { id: string; type: UserType } = httpRequest.body;
+    const { id }: { id: string } = httpRequest.body;
 
-    if (!id || !type) {
+    if (!id) {
       return {
         headers: {
           "Content-Type": "application/json",
@@ -30,9 +28,7 @@ export default function createDeleteUser(services: {
       };
     }
 
-    const [data, error] = await asyncF(
-      services.deleteUser(id, type, authRemove)
-    );
+    const [data, error] = await asyncF(services.deleteUser(id, authRemove));
 
     if (error) {
       return {

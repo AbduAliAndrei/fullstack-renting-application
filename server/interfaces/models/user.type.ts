@@ -1,3 +1,5 @@
+import { Role } from "../../../interfaces/role";
+
 export type UserModel = {
   getFirstName(): string;
   getLastName(): string;
@@ -11,4 +13,5 @@ export type UserModel = {
   getEmail(): string;
   getBio(): string;
   isVerified(): boolean;
+  getRole(): Role;
 };

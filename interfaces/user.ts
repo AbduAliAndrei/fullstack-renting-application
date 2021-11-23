@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export interface User {
   email: string;
   password: string;
@@ -11,4 +13,5 @@ export interface User {
   bio?: string;
   createdAt?: Date;
   updatedAt?: Date;
+  role: Role;
 }

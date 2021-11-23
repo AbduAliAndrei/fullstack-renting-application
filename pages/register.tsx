@@ -5,12 +5,12 @@ import { Landlord } from "../interfaces/landlord";
 import Image from "next/image";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
-import { UserType } from "../enums/use-type";
+import { UserType } from "../enums/user-type";
 
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
   const [userGender, setUserGender] = useState<UseGender>(UseGender.Male);
-  const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
+  const [registeringUser, setRegisteringUser] = useState<User>({
     email: "andrei.cristea@gmail.com",
     trusted: false,
     firstName: "Andrei",

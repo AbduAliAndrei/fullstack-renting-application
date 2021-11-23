@@ -1,4 +1,3 @@
-import { Admin } from "../../../interfaces/admin";
 import asyncF from "../../../utils/async-f";
 import Controller from "../../interfaces/controller";
 import { HttpRequest } from "../../interfaces/http-request";
@@ -6,19 +5,21 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../../interfaces/database-entity";
+import { UserModel } from "../../interfaces/models/user.type";
+import { User } from "../../../interfaces/user";
 
-export default function createPostAdmin({
-  createAdmin,
+export default function createPostUser({
+  createUser,
 }: {
-  createAdmin: (
-    adminInfo: Admin
-  ) => Promise<DatabaseFunction<DatabaseObject<Required<Admin>>>>;
-}): (h: HttpRequest) => Promise<Controller<DatabaseObject<Required<Admin>>>> {
-  return async function postAdmin(
+  createUser: (
+    userInfo: UserModel
+  ) => Promise<DatabaseFunction<DatabaseObject<Required<User>>>>;
+}): (h: HttpRequest) => Promise<Controller<DatabaseObject<Required<User>>>> {
+  return async function postUser(
     httpRequest: HttpRequest
-  ): Promise<Controller<DatabaseObject<Required<Admin>>>> {
+  ): Promise<Controller<DatabaseObject<Required<User>>>> {
     const postProcess = async (): Promise<
-      DatabaseFunction<DatabaseObject<Required<Admin>>>
+      DatabaseFunction<DatabaseObject<Required<User>>>
     > => {
       const { source = {}, user } = httpRequest.body;
       source.ip = httpRequest.ip;
@@ -26,16 +27,17 @@ export default function createPostAdmin({
       if (httpRequest.headers["Referer"]) {
         source.referer = httpRequest.headers["Referer"];
       }
-      return await createAdmin({
+
+      return await createUser({
         ...user,
         source,
       });
     };
 
     const [data, error] = await asyncF<
-      DatabaseFunction<DatabaseObject<Required<Admin>>>
+      DatabaseFunction<DatabaseObject<Required<User>>>
     >(postProcess());
-    let result!: Controller<DatabaseObject<Required<Admin>>>;
+    let result!: Controller<DatabaseObject<Required<User>>>;
     if (error) {
       result = {
         headers: {
@@ -50,10 +52,10 @@ export default function createPostAdmin({
       result = {
         headers: {
           "Content-Type": "application/json",
-          "Last-Modified": new Date(data.data.writeTime).toUTCString(),
+          "Last-Modified": new Date(data.fetchedData.writeTime).toUTCString(),
         },
         statusCode: 201,
-        body: { res: data.data },
+        body: { res: data.fetchedData },
       };
     }
 
