@@ -1,7 +1,7 @@
-import { UserExtended } from "../../../interfaces/user-extended";
 import { HttpRequest } from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
 import Controller from "../../interfaces/controller";
+import { User } from "../../../interfaces/user";
 
 export default function createLogin({
   loginUser,
@@ -13,7 +13,7 @@ export default function createLogin({
   }: {
     email: string;
     password: string;
-  }) => Promise<[Required<UserExtended>, string]>;
+  }) => Promise<[Required<User>, string]>;
   authCreate: ({
     idToken,
     expire,
@@ -24,18 +24,18 @@ export default function createLogin({
 }) {
   return async function login(
     httpRequest: HttpRequest
-  ): Promise<Controller<Required<UserExtended>>> {
+  ): Promise<Controller<Required<User>>> {
     const {
       source = {},
       ...loginInfo
-    }: { source: Record<string, unknown>; email: string; password: string } =
-      httpRequest.body;
+    }: // eslint-disable-next-line @typescript-eslint/ban-types
+    { source: {}; email: string; password: string } = httpRequest.body;
 
     const [checked, checkedError] = await asyncF(
       loginUser({ email: loginInfo.email, password: loginInfo.password })
     );
 
-    let result: Controller<Required<UserExtended>>;
+    let result: Controller<Required<User>>;
     const expiresIn = 60 * 60 * 24 * 5 * 1000;
     const options = { maxAge: expiresIn, httpOnly: true, secure: false };
 

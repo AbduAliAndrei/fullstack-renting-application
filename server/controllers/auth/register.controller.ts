@@ -1,13 +1,9 @@
 import { HttpRequest } from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
-import { UserType } from "../../../enums/user-type";
-import { Tenant } from "../../../interfaces/tenant";
-import { Landlord } from "../../../interfaces/landlord";
-import { Admin } from "../../../interfaces/admin";
 import controller from "../index";
 import Controller from "../../interfaces/controller";
 import { DatabaseObject } from "../../interfaces/database-entity";
-import { UserExtended } from "../../../interfaces/user-extended";
+import { User } from "../../../interfaces/user";
 
 export default function createRegisterAttempt({
   createUser,
@@ -32,15 +28,12 @@ export default function createRegisterAttempt({
 }) {
   return async function registerAttempt(
     httpRequest: HttpRequest
-  ): Promise<Controller<DatabaseObject<Required<UserExtended>>>> {
+  ): Promise<Controller<DatabaseObject<Required<User>>>> {
     const {
       source = {},
       ...loginInfo
-    }: {
-      source: Record<string, unknown>;
-      userType: UserType;
-      user: Tenant | Landlord | Admin;
-    } = httpRequest.body;
+    }: // eslint-disable-next-line @typescript-eslint/ban-types
+    { source: {}; user: User } = httpRequest.body;
 
     const [created, createdError] = await asyncF(
       createUser({
@@ -66,7 +59,7 @@ export default function createRegisterAttempt({
       authCreate({ idToken: created.idToken, expire: expiresIn })
     );
 
-    let result: Controller<DatabaseObject<Required<UserExtended>>>;
+    let result: Controller<DatabaseObject<Required<User>>>;
     const options = { maxAge: expiresIn, httpOnly: true };
 
     if (sessionCookieError) {
@@ -79,42 +72,19 @@ export default function createRegisterAttempt({
           error: `Unauthorized, ${sessionCookieError}`,
         },
       };
-    } else if (loginInfo.userType === UserType.TENANT) {
+    } else {
       loginInfo.user.id = created.uid;
-      httpRequest.body = { source, user: loginInfo.user };
-      result = await controller.postTenant(httpRequest);
+      result = await controller.postUser(httpRequest);
 
       if (result.body.error) {
         await authRemove({ uid: created.uid });
         return result;
       }
+
       result = {
         ...result,
         cookie: { name: "session", value: sessionCookie, options },
       };
-    } else if (loginInfo.userType === UserType.LANDLORD) {
-      loginInfo.user.id = created.uid;
-      httpRequest.body = { source, user: loginInfo.user };
-      result = await controller.postLandlord(httpRequest);
-
-      if (result.body.error) {
-        await authRemove({ uid: created.uid });
-        return result;
-      }
-
-      result = {
-        ...result,
-        cookie: { name: "session", options, value: sessionCookie },
-      };
-    } else if (loginInfo.userType === UserType.ADMIN) {
-      loginInfo.user.id = created.uid;
-      httpRequest.body = { source, user: loginInfo.user };
-      result = await controller.postAdmin(httpRequest);
-
-      if (result.body.error) {
-        await authRemove({ uid: created.uid });
-        return result;
-      }
     }
 
     return result;

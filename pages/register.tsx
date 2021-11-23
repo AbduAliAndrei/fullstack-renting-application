@@ -1,44 +1,39 @@
-import { BaseSyntheticEvent, useCallback, useState } from "react";
+import { BaseSyntheticEvent, useEffect, useState } from "react";
 import { UserGender } from "../enums/user-gender";
-import { Tenant } from "../interfaces/tenant";
-import { Landlord } from "../interfaces/landlord";
 import Image from "next/image";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
 import { UserType } from "../enums/user-type";
-import { useRouter } from "next/dist/client/router";
-
+import { User } from "../interfaces/user";
+import { useRouter } from "next/router";
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
-  const [registeringUser, setRegisteringUser] = useState<Tenant | Landlord>({
+  const [userGender, setUserGender] = useState<UserGender>(UserGender.MALE);
+  const [registeringUser, setRegisteringUser] = useState<User>({
     email: "andrei.cristea@gmail.com",
-    trusted: false,
     firstName: "Andrei",
     lastName: "Cristea",
     password: "123456",
     userName: "Andrei Cristea",
-    offersList: [],
     verified: false,
-    gender: UserGender.MALE,
-    idType: "passport",
+    gender: "male",
     picture: "svg.net",
   });
-  const router = useRouter();
 
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
 
   const [userTypes] = useState<UserType[]>(Object.values(UserType));
   const [userGenders] = useState<UserGender[]>(Object.values(UserGender));
+  const router = useRouter();
 
-  const onInputChange = (event: BaseSyntheticEvent) => {
+  const onInputChange = (event: BaseSyntheticEvent) =>
     setRegisteringUser({
       ...registeringUser,
-      [event.target.name]: event.target.value,
+      [event.currentTarget.name]: event.currentTarget.value,
     });
-  };
 
-  const onUserTypeChange = useCallback((e: BaseSyntheticEvent) => {
-    setUserType(e.target.value as UserType);
+  useEffect(() => {
+    // console.log(xsrfToken['XSRF-Token']);
   }, []);
 
   const register = () => {
@@ -60,7 +55,7 @@ const Register = () => {
     e.preventDefault();
     const res = await register();
     if (res.status === 201) {
-      await router.push("/profile");
+      await router.push("./profile");
     }
   };
 
@@ -87,13 +82,15 @@ const Register = () => {
                 <label className="form__label" htmlFor={"userType"}>
                   Are you a landlord or a tenant?
                 </label>
-                <select
-                  id={"userType"}
-                  value={userType}
-                  onChange={onUserTypeChange}
-                >
+                <select id={"userType"}>
                   {userTypes.map((userType, index) => (
-                    <option value={userType} key={index}>
+                    <option
+                      value={userType}
+                      key={index}
+                      onSelect={(e) =>
+                        setUserType(e.currentTarget.value as UserType)
+                      }
+                    >
                       {userType}
                     </option>
                   ))}
@@ -129,14 +126,15 @@ const Register = () => {
                 <label className="form__label" htmlFor={"userGender"}>
                   Gender
                 </label>
-                <select
-                  value={registeringUser.gender}
-                  onChange={(e) => onInputChange(e)}
-                  name={"gender"}
-                  id={"userGender"}
-                >
+                <select id={"userGender"}>
                   {userGenders.map((userGender, index) => (
-                    <option value={userGender} key={index}>
+                    <option
+                      value={userType}
+                      key={index}
+                      onSelect={(e) =>
+                        setUserGender(e.currentTarget.value as UserGender)
+                      }
+                    >
                       {userGender}
                     </option>
                   ))}

@@ -80,7 +80,7 @@ export default function Card() {
             <FontAwesomeIcon icon={faArrowUp} color="#5b5f97" />
           </div>
         </div>
-        <div className="line" />
+        <div className="line"></div>
         <div className="landlord-facilities">
           <div className="landlord">
             <div className="landlord-img">

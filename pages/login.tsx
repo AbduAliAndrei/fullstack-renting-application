@@ -19,7 +19,7 @@ const Login = () => {
     email: string;
     password: string;
   }>({ email: "andrei@gmail.com", password: "123456" });
-  const styles = useStyles({ color: "#ff0000" });
+  // const styles = useStyles({ color: "#ff0000" });
 
   const changeLoginInfo = useCallback(
     (e: BaseSyntheticEvent) => {

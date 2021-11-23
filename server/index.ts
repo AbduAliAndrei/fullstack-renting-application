@@ -24,6 +24,8 @@ app
     server.use(csrfMiddleware);
 
     server.all("*", (req, res, next) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       res.cookie("XSRF-Token", req.csrfToken());
       next();
     });

@@ -11,6 +11,6 @@ export interface HttpRequest {
   ip: string;
   method: string;
   path: string;
-  headers: Record<string, string | undefined>;
+  headers: Record<string, string>;
   cookies: any;
 }

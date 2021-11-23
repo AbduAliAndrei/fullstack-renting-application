@@ -15,6 +15,8 @@ export default async function authMiddleware(
     return true;
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   res.cookie("XSRF-Token", req.csrfToken());
   const [data, error] = await asyncF(
     authVerify({ sessionCookie: req.cookies.session ?? "" }),

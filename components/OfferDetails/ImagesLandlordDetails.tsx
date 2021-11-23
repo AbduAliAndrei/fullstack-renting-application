@@ -41,7 +41,11 @@ export default function ImagesLandlordDetails() {
           <h2>Send a message to Abdulla</h2>
         </div>
         <div className="message">
-          <textarea name="" id="msg" placeholder="Write your message here..." />
+          <textarea
+            name=""
+            id="msg"
+            placeholder="Write your message here..."
+          ></textarea>
         </div>
       </div>
     </div>

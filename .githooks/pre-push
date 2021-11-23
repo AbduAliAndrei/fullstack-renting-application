@@ -40,3 +40,4 @@ else
   echo 'Commit the version changes...'
   git commit --amend --no-edit
 fi
+

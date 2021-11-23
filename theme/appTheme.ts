@@ -1,8 +1,8 @@
 import { ThemeOptions } from "@mui/material";
-import appColors from "./kaifstoreColors";
+import appColors from "./appColors";
 
 // TODO Abdulla put our theme theme
-const kaifstoreTheme: ThemeOptions = {
+const appTheme: ThemeOptions = {
   palette: {
     primary: {
       light: appColors.violetLight,
@@ -92,4 +92,4 @@ const kaifstoreTheme: ThemeOptions = {
   },
 };
 
-export default kaifstoreTheme;
+export default appTheme;
