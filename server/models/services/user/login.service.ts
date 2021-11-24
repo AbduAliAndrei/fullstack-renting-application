@@ -1,8 +1,8 @@
 import asyncF from "../../../../utils/async-f";
-import { User } from "../../../../interfaces/user";
+import { SecuredUser } from "../../../../interfaces/user";
 
 type LoginUserCreatorParams = {
-  takeUser: ({ id }: { id: string }) => Promise<Required<User>>;
+  takeUser: ({ id }: { id: string }) => Promise<Required<SecuredUser>>;
   loginCheck: ({
     email,
     password,
@@ -22,7 +22,7 @@ export default function loginUserCreator({
   }: {
     email: string;
     password: string;
-  }): Promise<[Required<User>, string]> {
+  }): Promise<[Required<SecuredUser>, string]> {
     const [loginData, loginDataError] = await asyncF<{
       idToken: string;
       uid: string;
@@ -31,7 +31,7 @@ export default function loginUserCreator({
     if (loginDataError) {
       throw new Error(`Login User error:  ${loginDataError}`);
     }
-    const [user, takeError] = await asyncF<Required<User>>(
+    const [user, takeError] = await asyncF<Required<SecuredUser>>(
       takeUser({ id: loginData.uid })
     );
 

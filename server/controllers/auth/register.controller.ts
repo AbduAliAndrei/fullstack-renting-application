@@ -3,7 +3,7 @@ import asyncF from "../../../utils/async-f";
 import controller from "../index";
 import Controller from "../../interfaces/controller";
 import { DatabaseObject } from "../../interfaces/database-entity";
-import { User } from "../../../interfaces/user";
+import { SecuredUser, User } from "../../../interfaces/user";
 
 export default function createRegisterAttempt({
   createUser,
@@ -28,7 +28,7 @@ export default function createRegisterAttempt({
 }) {
   return async function registerAttempt(
     httpRequest: HttpRequest
-  ): Promise<Controller<DatabaseObject<Required<User>>>> {
+  ): Promise<Controller<DatabaseObject<Required<SecuredUser>>>> {
     const {
       source = {},
       ...loginInfo
@@ -59,7 +59,7 @@ export default function createRegisterAttempt({
       authCreate({ idToken: created.idToken, expire: expiresIn })
     );
 
-    let result: Controller<DatabaseObject<Required<User>>>;
+    let result: Controller<DatabaseObject<Required<SecuredUser>>>;
     const options = { maxAge: expiresIn, httpOnly: true };
 
     if (sessionCookieError) {

@@ -1,5 +1,7 @@
 import { Role } from "./role";
 
+export type SecuredUser = Omit<User, "password">;
+
 export interface User {
   email: string;
   password: string;

@@ -5,7 +5,7 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../../interfaces/database-entity";
-import { User } from "../../../interfaces/user";
+import { SecuredUser, User } from "../../../interfaces/user";
 import { UserType } from "../../../enums/user-type";
 
 export default function createPostUser({
@@ -14,13 +14,15 @@ export default function createPostUser({
   createUser: (
     userInfo: User,
     userType: UserType
-  ) => Promise<DatabaseFunction<DatabaseObject<Required<User>>>>;
-}): (h: HttpRequest) => Promise<Controller<DatabaseObject<Required<User>>>> {
+  ) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
+}): (
+  h: HttpRequest
+) => Promise<Controller<DatabaseObject<Required<SecuredUser>>>> {
   return async function postUser(
     httpRequest: HttpRequest
-  ): Promise<Controller<DatabaseObject<Required<User>>>> {
+  ): Promise<Controller<DatabaseObject<Required<SecuredUser>>>> {
     const postProcess = async (): Promise<
-      DatabaseFunction<DatabaseObject<Required<User>>>
+      DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
     > => {
       const { source = {}, user, userType } = httpRequest.body;
       source.ip = httpRequest.ip;
@@ -38,9 +40,9 @@ export default function createPostUser({
     };
 
     const [data, error] = await asyncF<
-      DatabaseFunction<DatabaseObject<Required<User>>>
+      DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
     >(postProcess());
-    let result!: Controller<DatabaseObject<Required<User>>>;
+    let result!: Controller<DatabaseObject<Required<SecuredUser>>>;
     if (error) {
       result = {
         headers: {

@@ -7,7 +7,6 @@ export type UserModel = {
   getId(): string;
   getUpdatedAt(): Date;
   getUsername(): string;
-  getPassword(): string;
   getGender(): string;
   getPicture(): string;
   getEmail(): string;
