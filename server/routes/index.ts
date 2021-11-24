@@ -1,14 +1,14 @@
 import express, { Router } from "express";
 import createExpressCallback from "../express-callback";
 import controller from "../controllers";
-import { User } from "../../interfaces/user";
+import { SecuredUser } from "../../interfaces/user";
 
 const router = express.Router();
 
 function routes(): Router {
   router.get(
     "/auth/check",
-    createExpressCallback<User>(controller.getCheckedUser)
+    createExpressCallback<SecuredUser>(controller.getCheckedUser)
   );
   router.post(
     "/auth/register",

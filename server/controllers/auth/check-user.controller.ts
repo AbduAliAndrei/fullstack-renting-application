@@ -1,7 +1,7 @@
 import { HttpRequest } from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
 import Controller from "../../interfaces/controller";
-import { User } from "../../../interfaces/user";
+import { SecuredUser } from "../../../interfaces/user";
 
 export default function createUserChecker({
   checkTakeUser,
@@ -10,21 +10,21 @@ export default function createUserChecker({
     sessionCookie,
   }: {
     sessionCookie: string;
-  }) => Promise<Required<User>>;
+  }) => Promise<Required<SecuredUser>>;
 }) {
   return async function checkAttempt(
     httpRequest: HttpRequest
-  ): Promise<Controller<Required<User>>> {
+  ): Promise<Controller<Required<SecuredUser>>> {
     const {
       source: {},
       ...data
     }: // eslint-disable-next-line @typescript-eslint/ban-types
     { source: {}; sessionCookie: string } = httpRequest.body;
-    const [user, userError] = await asyncF<Required<User>>(
+    const [user, userError] = await asyncF<Required<SecuredUser>>(
       checkTakeUser({ sessionCookie: data.sessionCookie })
     );
 
-    let result!: Controller<Required<User>>;
+    let result!: Controller<Required<SecuredUser>>;
     if (userError) {
       result = {
         headers: {

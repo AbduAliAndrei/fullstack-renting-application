@@ -1,4 +1,4 @@
-import { User } from "../../../../interfaces/user";
+import { SecuredUser, User } from "../../../../interfaces/user";
 import { UserType } from "../../../../enums/user-type";
 import { UserModel } from "../../../interfaces/models/user.type";
 import { Role } from "../../../../interfaces/role";
@@ -83,10 +83,9 @@ export default function buildMakeUser({
   };
 }
 
-export function toUserFromModel(userModel: UserModel): Required<User> {
+export function toUserFromModel(userModel: UserModel): Required<SecuredUser> {
   return {
     email: userModel.getEmail(),
-    password: userModel.getPassword(),
     firstName: userModel.getFirstName(),
     lastName: userModel.getLastName(),
     userName: userModel.getUsername(),
