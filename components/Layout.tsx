@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 export default function Layout({ children }) {
   const router = useRouter();
-  let showNavFooter =
+  const showNavFooter =
     router.asPath !== "/login" && router.asPath !== "/register";
 
   return (

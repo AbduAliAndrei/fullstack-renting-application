@@ -42,10 +42,10 @@ export default function LandlordDetails() {
           </div>
           <form className="message">
             <textarea
-              name=""
+              name="message"
               id="msg"
               placeholder="Write your message here..."
-            ></textarea>
+            />
             <Button
               size="large"
               id="sendMessageBtn"

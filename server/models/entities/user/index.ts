@@ -1,8 +1,6 @@
-import Id from '../../../../utils/id'
-import buildMakeTenant from "../user/tenant.entity";
-import buildMakeLandlord from "../user/landlord.entity";
+import Id from "../../../../utils/id";
+import buildMakeUser from "./user.entity";
 
-const makeLandlord = buildMakeLandlord({Id});
+const makeUser = buildMakeUser({ Id });
 
-const makeTenant = buildMakeTenant({Id});
-export {makeTenant, makeLandlord};
+export { makeUser };
