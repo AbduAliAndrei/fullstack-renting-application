@@ -570,24 +570,6 @@
   margin: 70px auto;
 }
 
-@media screen and (max-width: 1648px) {
-  .Offers .offers-container {
-    -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 60px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .Offers .offers-container {
-    gap: 10px;
-    width: 100%;
-    padding: 10px;
-    -ms-grid-columns: (minmax(40%, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
-  }
-}
-
 .Card {
   height: 520px;
   min-width: 350px;
@@ -875,6 +857,7 @@
   background-color: #fffffb;
   text-align: center;
   height: 100vh;
+  background-color: red;
 }
 
 .FilterTool .title-arrow {
@@ -1687,6 +1670,10 @@
   width: 90%;
   margin: 0 auto;
   flex-wrap: wrap;
+  min-height: 70vh;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .OfferSpecification .specification {
@@ -1705,10 +1692,16 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 60px;
 }
 
 .OfferSpecification .specification .offerHeader {
   position: relative;
+}
+
+.OfferSpecification .specification .offerHeader .offer-duration .offerTitleH1 {
+  font-weight: bolder;
+  color: #0339a6;
 }
 
 .OfferSpecification .specification .offerHeader .offer-price .offerPriceH1 {
@@ -1728,9 +1721,137 @@
   font-size: 24px;
 }
 
+.OfferSpecification .specification .mainDetails {
+  width: 100%;
+  margin-top: 40px;
+  font-size: 25px;
+}
+
+.OfferSpecification .specification .mainDetails .location-features {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .location-flatInfo .locationH1 {
+  font-weight: bolder;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 35%;
+  font-size: 20px;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .uniTitle,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportationType,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .uniTitle,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportationType {
+  font-weight: bolder;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation .icon-uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation .icon-transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university .icon-uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university .icon-transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation .icon-uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation .icon-transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university .icon-uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university .icon-transportationName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation .icon-uniName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation .icon-uniName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation .icon-transportationName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .transportation .icon-transportationName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university .icon-uniName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university .icon-uniName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university .icon-transportationName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .universities .university .icon-transportationName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation .icon-uniName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation .icon-uniName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation .icon-transportationName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .transportation .icon-transportationName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university .icon-uniName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university .icon-uniName .transportationName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university .icon-transportationName .uniName,
+.OfferSpecification .specification .mainDetails .location-features .locationAdvantages .transportations .university .icon-transportationName .transportationName {
+  margin-left: 3px;
+}
+
+.OfferSpecification .specification .mainDetails .offerFeatures {
+  width: 100%;
+}
+
+.OfferSpecification .specification .mainDetails .offerFeatures .featuresH4 {
+  font-weight: bolder;
+}
+
 .OfferSpecification .map {
-  background-color: green;
-  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 60px;
 }
 
 * {

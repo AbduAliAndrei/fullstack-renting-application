@@ -5,7 +5,7 @@ import { CookiesProvider } from "react-cookie";
 import appTheme from "../theme/appTheme";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Head from "next/head";
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
 import { SWRConfig } from "swr";
 import "@fontsource/roboto/300.css";

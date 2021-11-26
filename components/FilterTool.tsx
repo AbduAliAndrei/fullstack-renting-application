@@ -2,7 +2,10 @@
 import React from "react";
 import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 export default function FilterTool() {
+  let label = "";
   return (
     <div className="FilterTool">
       <div className="options">
@@ -35,16 +38,19 @@ export default function FilterTool() {
               <span>50,000 - 100,000</span>
             </div>
             <div>
-              <input type="checkbox" />
-              <span>100,000 - 150,000</span>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="100,000 - 150,000"
+              />
             </div>
             <div>
-              <input type="checkbox" />
-              <span>150,000 - 250,000</span>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="150,000 - 250,000"
+              />
             </div>
             <div className="all-included">
-              <input type="checkbox" />
-              <span>All included</span>
+              <FormControlLabel control={<Checkbox />} label="All included" />
             </div>
           </div>
         </div>
