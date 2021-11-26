@@ -1,9 +1,8 @@
 import Image from "next/image";
-
-export default function ImagesLandlordDetails() {
+import Button from "@material-ui/core/Button";
+export default function LandlordDetails() {
   return (
-    <div className="ImagesLandlordDetails">
-      <div className="offer-images"/>
+    <div className="LandlordDetails">
       <div className="landlord-details">
         <div className="image-name">
           <div className="img">
@@ -37,15 +36,25 @@ export default function ImagesLandlordDetails() {
             <p>F G H</p>
           </div>
         </div>
-        <div className="message-title">
-          <h2>Send a message to Abdulla</h2>
-        </div>
-        <div className="message">
-          <textarea
-            name=""
-            id="msg"
-            placeholder="Write your message here..."
-          ></textarea>
+        <div className="message-form">
+          <div className="message-title">
+            <h2>Send a message to Abdulla</h2>
+          </div>
+          <form className="message">
+            <textarea
+              name=""
+              id="msg"
+              placeholder="Write your message here..."
+            ></textarea>
+            <Button
+              size="large"
+              id="sendMessageBtn"
+              variant="contained"
+              color="primary"
+            >
+              Send Message
+            </Button>
+          </form>
         </div>
       </div>
     </div>

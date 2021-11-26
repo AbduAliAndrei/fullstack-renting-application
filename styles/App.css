@@ -1589,13 +1589,13 @@
      object-fit: cover;
 }
 
-.ImagesLandlordDetails {
+.LandlordDetails {
   background-color: #f0f0f0;
   height: 100vh;
   width: 100vw;
 }
 
-.ImagesLandlordDetails .landlord-details {
+.LandlordDetails .landlord-details {
   background-color: #fff;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1604,7 +1604,7 @@
   padding: 30px 50px;
 }
 
-.ImagesLandlordDetails .landlord-details .image-name {
+.LandlordDetails .landlord-details .image-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1620,9 +1620,10 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 10px 0;
 }
 
-.ImagesLandlordDetails .landlord-details .image-name .img {
+.LandlordDetails .landlord-details .image-name .img {
   position: relative;
   width: 100px;
   height: 100px;
@@ -1631,30 +1632,105 @@
      object-fit: cover;
 }
 
-.ImagesLandlordDetails .landlord-details .image-name .img .ld-img {
+.LandlordDetails .landlord-details .image-name .img .ld-img {
   border-radius: 50px;
 }
 
-.ImagesLandlordDetails .landlord-details .contacts {
+.LandlordDetails .landlord-details .contacts {
   background-color: #f0f0f0;
   border-radius: 20px;
   padding: 20px;
-  margin: 50px 0;
+  margin: 10px 0;
 }
 
-.ImagesLandlordDetails .landlord-details .message {
-  height: 240px;
-  width: 100%;
+.LandlordDetails .landlord-details .message-form .message {
+  text-align: center;
 }
 
-.ImagesLandlordDetails .landlord-details .message #msg {
+.LandlordDetails .landlord-details .message-form .message #msg {
   width: 100%;
-  height: 100%;
+  height: 200px;
   border-radius: 20px;
   border: none;
   outline: none;
   padding: 10px;
   background-color: #f0f0f0;
+}
+
+.LandlordDetails .landlord-details .message-form #sendMessageBtn {
+  font-size: 23px;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+
+.OfferSpecification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #fffffb;
+  border-radius: 50px;
+  width: 90%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.OfferSpecification .specification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.OfferSpecification .specification .offerHeader {
+  position: relative;
+}
+
+.OfferSpecification .specification .offerHeader .offer-price .offerPriceH1 {
+  margin-right: 350px;
+}
+
+.OfferSpecification .specification .offerHeader .studentFriendly {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.OfferSpecification .specification .offerHeader .studentFriendly .studentFriendlyContainer {
+  background-color: #32ba7c;
+  color: #fffffb;
+  border-radius: 10px;
+  font-size: 24px;
+}
+
+.OfferSpecification .map {
+  background-color: green;
+  height: 100%;
 }
 
 * {
@@ -1674,10 +1750,11 @@ html {
   min-height: 100vh;
   scroll-behavior: smooth;
   background-color: #fffffb;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .children {
   min-height: 100vh;
+  background-color: #f0f0f0;
 }
 /*# sourceMappingURL=App.css.map */

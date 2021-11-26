@@ -1,0 +1,41 @@
+.OfferSpecification {
+  @include flex(row);
+  justify-content: space-between;
+  background-color: $main-color3;
+  border-radius: 50px;
+  width: 90%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  .specification {
+    @include flex(column);
+    .offerHeader {
+      position: relative;
+      .offer-title {
+        .offerTitleH1 {
+        }
+      }
+
+      .offer-price {
+        .offerPriceH1 {
+          margin-right: 350px;
+        }
+      }
+
+      .studentFriendly {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        .studentFriendlyContainer {
+          background-color: #32ba7c;
+          color: $main-color3;
+          border-radius: 10px;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .map {
+    background-color: green;
+    height: 100%;
+  }
+}
