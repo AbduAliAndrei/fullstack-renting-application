@@ -21,7 +21,7 @@ $main-black: hsl(0, 0%, 21%);
   border: none;
   border: $border-color;
   outline: none;
-  padding: 10px 20px;
+  padding: 10px 70px;
   color: $main-color3;
   @if ($bc-color == transparent) {
     color: $main-color2;
@@ -31,10 +31,8 @@ $main-black: hsl(0, 0%, 21%);
   @if ($border-color != none) {
     border: solid $border-color 0.5px;
   }
-  font-size: 15px;
-  height: 40px;
-  width: 120px;
-  border-radius: 10px;
+  font-size: 25px;
+  border-radius: 30px;
   margin: 20px 0;
   cursor: pointer;
   &:hover {

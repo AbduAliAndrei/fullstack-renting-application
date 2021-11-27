@@ -2,5 +2,5 @@
 import React from "react";
 
 export default function Offer() {
-  return <div className="Offer" />;
+  return <div className="Offer"></div>;
 }

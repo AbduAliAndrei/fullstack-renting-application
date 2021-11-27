@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 export default function Layout({ children }) {
   const router = useRouter();
   const showNavFooter =
