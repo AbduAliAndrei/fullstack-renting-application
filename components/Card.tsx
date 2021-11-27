@@ -43,14 +43,14 @@ export default function Card() {
   return (
     <div className="Card">
       <div className="offer-images">
-        <div className="btns">
+        {/* <div className="btns">
           <div className="carousel-btn prev-btn">
             <button>P</button>
           </div>
           <div className="carousel-btn next-btn">
             <button>N</button>
           </div>
-        </div>
+        </div> */}
         <div className="carousel">
           <Image
             src="/DSC_2778.jpg"
@@ -60,41 +60,51 @@ export default function Card() {
           />
           <Slider {...settings}>
             <div className="slider">
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
+              <div>
+                <Image
+                  className="im"
+                  src="/DSC_2778.jpg"
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
+              <div>
+                <Image
+                  className="im"
+                  src="/DSC_2778.jpg"
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
+              <div>
+                <Image
+                  className="im"
+                  src="/DSC_2778.jpg"
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
+              <div>
+                <Image
+                  className="im"
+                  src="/DSC_2778.jpg"
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
+              <div>
+                <Image
+                  className="im"
+                  src="/DSC_2778.jpg"
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
               <Image
                 className="im"
                 src="/DSC_2778.jpg"

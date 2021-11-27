@@ -1,7 +1,45 @@
 .Footer {
+  @include flex(row);
   width: 100vw;
-  height: 50vh;
-  background-color: $main-color2;
-  @include flex(column);
+  min-height: 50vh;
+  background-color: $main-color3;
   margin-top: auto;
+  font-size: 25px;
+  padding: 40px;
+  justify-content: space-evenly;
+  box-shadow: 1px 1px 5px #00000052;
+
+  .footerHeader-contact {
+    @include flex(column);
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    .footerHeader {
+      width: 500px;
+      .footerHeaderH2 {
+        font-weight: bold;
+        margin: 5px 0;
+      }
+    }
+    .contact {
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      .contacts {
+        font-weight: bold;
+      }
+    }
+  }
+  .pagesDetailContainer {
+    @include flex(row);
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 50%;
+    .title {
+      color: #ff0067;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  }
 }
