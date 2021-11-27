@@ -2,6 +2,7 @@ import { Request } from "express";
 import { HttpException } from "../exceptions/http-exception.exception";
 import { UserType } from "../../enums/user-type";
 import userByIdExistsHelperMiddleware from "./user-by-id-exists-helper.middleware";
+import { HttpStatus } from "../enums/http-status";
 
 export default async function landlordOnlyAccessMiddleware(
   req: Request
@@ -16,6 +17,6 @@ export default async function landlordOnlyAccessMiddleware(
 
   throw new HttpException(
     `Access Exception raised: . ${takenUser.role.role} doesnt have required rights`,
-    403
+    HttpStatus.FORBIDDEN
   );
 }

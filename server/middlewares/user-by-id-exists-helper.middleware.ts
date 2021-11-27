@@ -4,6 +4,7 @@ import asyncF from "../../utils/async-f";
 import { authVerify } from "../database";
 import { takeUser } from "../models/services/user";
 import { SecuredUser } from "../../interfaces/user";
+import { HttpStatus } from "../enums/http-status";
 
 export default async function userByIdExistsHelperMiddleware(
   req: Request
@@ -11,7 +12,7 @@ export default async function userByIdExistsHelperMiddleware(
   if (!req.body.userId) {
     throw new HttpException(
       "Access Exception raised: Access denied, userId were not provided. ",
-      403
+      HttpStatus.FORBIDDEN
     );
   }
 
@@ -29,7 +30,7 @@ export default async function userByIdExistsHelperMiddleware(
   if (errorTakingUser) {
     throw new HttpException(
       "Access Exception raised: Incorrect user id given. ",
-      403
+      HttpStatus.FORBIDDEN
     );
   }
 
