@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { HttpStatus } from "../enums/http-status";
 import { HttpException } from "../exceptions/http-exception.exception";
 import Controller from "../interfaces/controller";
 import { HttpRequest } from "../interfaces/http-request";
@@ -27,9 +28,9 @@ export default function createExpressCallback<T>(
       },
       cookies: req.cookies,
     };
-
     guard(req, res)
       .then(() => {
+        ``;
         controller(httpRequest)
           .then((httpResponse) => {
             if (httpResponse.headers) {
@@ -47,7 +48,7 @@ export default function createExpressCallback<T>(
           })
           .catch((e) => {
             res
-              .status(500)
+              .status(HttpStatus.INTERNAL_SERVER_ERROR)
               .send(`An unknown error occurred. Error message: ${e}`);
           });
       })
@@ -57,7 +58,7 @@ export default function createExpressCallback<T>(
           res.status(e.getStatus()).send(e.getResponse());
         } else {
           res
-            .status(500)
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .send(`An unknown error occurred. Error message: ${e}`);
         }
       });

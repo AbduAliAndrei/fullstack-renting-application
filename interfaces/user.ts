@@ -22,3 +22,4 @@ export interface User {
   updatedAt?: Date;
   role?: Role;
 }
+ 
