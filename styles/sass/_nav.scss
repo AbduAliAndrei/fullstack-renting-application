@@ -74,7 +74,8 @@
         text-transform: capitalize;
         color: #fff;
         font-family: roboto;
-        font-weight: bolder;
+        font-size: 25px;
+        font-weight: bold;
 
         &:hover {
           background-color: rgba(120, 165, 255, 0.829);
@@ -90,6 +91,9 @@
         border-radius: 20px;
         padding: 5px 30px;
         text-transform: capitalize;
+        font-size: 25px;
+        font-weight: bold;
+
         color: #ff0067;
         font-family: roboto;
         font-weight: bolder;

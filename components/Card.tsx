@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/link-passhref */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Typography } from "@material-ui/core";
+import Check from "@material-ui/icons/Check";
+
 export default function Card() {
   const offer = {
     title: "offer title Name",
@@ -50,49 +52,51 @@ export default function Card() {
           </div>
         </div>
         <div className="carousel">
+          <Image
+            src="/DSC_2778.jpg"
+            alt="Offer Image"
+            objectFit="cover"
+            layout="fill"
+          />
           <Slider {...settings}>
             <div className="slider">
               <Image
+                className="im"
                 src="/DSC_2778.jpg"
                 alt="Offer Image"
                 objectFit="cover"
                 layout="fill"
               />
-            </div>
-            <div className="slider">
               <Image
+                className="im"
                 src="/DSC_2778.jpg"
                 alt="Offer Image"
                 objectFit="cover"
                 layout="fill"
               />
-            </div>
-            <div className="slider">
               <Image
+                className="im"
                 src="/DSC_2778.jpg"
                 alt="Offer Image"
                 objectFit="cover"
                 layout="fill"
               />
-            </div>
-            <div className="slider">
               <Image
+                className="im"
                 src="/DSC_2778.jpg"
                 alt="Offer Image"
                 objectFit="cover"
                 layout="fill"
               />
-            </div>
-            <div>
               <Image
+                className="im"
                 src="/DSC_2778.jpg"
                 alt="Offer Image"
                 objectFit="cover"
                 layout="fill"
               />
-            </div>
-            <div>
               <Image
+                className="im"
                 src="/DSC_2778.jpg"
                 alt="Offer Image"
                 objectFit="cover"
@@ -108,14 +112,16 @@ export default function Card() {
         </Typography>
         <div className="price-rank">
           <div className="price-info">
-            <Typography variant="h4" component="h4">
-              {`${offer.price} ${offer.currency}`} / month
+            <Typography className="price" variant="h4" component="h4">
+              {`${offer.price} ${offer.currency}`} / Month
             </Typography>
             <p>all included</p>
           </div>
           <div className="offer-ranking">
-            <p>38</p>
-            <FontAwesomeIcon icon={faArrowUp} color="#5b5f97" />
+            <span>
+              <p>38</p>
+              <FontAwesomeIcon icon={faArrowUp} color="#ff0067" />
+            </span>
           </div>
         </div>
         <div className="line"></div>
@@ -130,53 +136,47 @@ export default function Card() {
                 layout="fill"
               />
             </div>
-            <div className="landlord-name">
-              <p>Abdulla Jaber</p>
+            <div className="landlord-name-username">
+              <Typography className="landlordName" variant="h5" component="h5">
+                Abdulla Jaber
+              </Typography>
+              <Typography
+                className="landlordUsername"
+                variant="h5"
+                component="h5"
+              >
+                Abdulla_alk
+              </Typography>
             </div>
           </div>
           <div className="facilities">
-            <div className="facility">
-              <div className="icon">
-                <FontAwesomeIcon icon={faCheckCircle} color="#5b5f97" />
+            <div>
+              <div className="facility">
+                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <span>Heater</span>
               </div>
-              <div className="title">
-                <p>TV</p>
-              </div>
-            </div>
-            <div className="facilitie">
-              <div className="icon">
-                <FontAwesomeIcon icon={faCheckCircle} color="#5b5f97" />
-              </div>
-              <div className="title">
-                <p>TV</p>
+              <div className="facility">
+                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <span>Fridge</span>
               </div>
             </div>
-            <div className="facilitie">
-              <div className="icon">
-                <FontAwesomeIcon icon={faCheckCircle} color="#5b5f97" />
+            <div>
+              <div className="facility">
+                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <span>TC</span>
               </div>
-              <div className="title">
-                <p>TV</p>
-              </div>
-            </div>
-            <div className="facilitie">
-              <div className="icon">
-                <FontAwesomeIcon icon={faCheckCircle} color="#5b5f97" />
-              </div>
-              <div className="title">
-                <p>TV</p>
+              <div className="facility">
+                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <span>WI-FI</span>
               </div>
             </div>
           </div>
         </div>
-        <div className="datePosted-goToOfferBtn">
+        <div className="datePosted">
           <div className="date-posted">
-            <p>{offer.datePosted}</p>
-          </div>
-          <div className="go-to-offer-btn">
-            <Link href="/offerDetails">
-              <button>Check Offer</button>
-            </Link>
+            <Typography className="date-posted" variant="h5" component="h5">
+              {offer.datePosted}
+            </Typography>
           </div>
         </div>
       </div>

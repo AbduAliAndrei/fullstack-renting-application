@@ -139,7 +139,8 @@
   text-transform: capitalize;
   color: #fff;
   font-family: roboto;
-  font-weight: bolder;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .Nav .login_signup .login .logInBtn:hover {
@@ -157,6 +158,8 @@
   border-radius: 20px;
   padding: 5px 30px;
   text-transform: capitalize;
+  font-size: 25px;
+  font-weight: bold;
   color: #ff0067;
   font-family: roboto;
   font-weight: bolder;
@@ -566,7 +569,7 @@
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
   padding: 30px;
-  min-height: 700px;
+  min-height: 650px;
 }
 
 .Card:hover {
@@ -635,13 +638,13 @@
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 50px;
 }
 
 .Card .offer-details .offer-title {
-  margin: 10px 0;
   color: gray;
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: bolder;
   text-transform: capitalize;
 }
 
@@ -668,8 +671,11 @@
 
 .Card .offer-details .price-rank .price-info {
   color: #000;
+}
+
+.Card .offer-details .price-rank .price-info .price {
+  font-size: 35px;
   font-weight: bolder;
-  font-weight: bold;
 }
 
 .Card .offer-details .price-rank .price-info p {
@@ -694,14 +700,35 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   background-color: transparent;
-  border: solid #5b5f97 2px;
-  padding: 5px 10px;
+  border: solid #ff0067 4px;
+  border-radius: 5px;
+  padding: 1px 15px;
 }
 
-.Card .offer-details .price-rank .offer-ranking p {
-  margin-right: 5px;
-  color: #5b5f97;
-  font-weight: bold;
+.Card .offer-details .price-rank .offer-ranking span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 30px;
+}
+
+.Card .offer-details .price-rank .offer-ranking span p {
+  margin: 0;
+  margin-right: 15px;
+  color: #ff0067;
+  font-weight: bolder;
 }
 
 .Card .offer-details .line {
@@ -752,8 +779,8 @@
 
 .Card .offer-details .landlord-facilities .landlord .landlord-img {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 70px;
+  height: 70px;
   margin-right: 5px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -763,8 +790,15 @@
   border-radius: 50px;
 }
 
-.Card .offer-details .landlord-facilities .landlord .landlord-name p {
-  color: #5b5f97;
+.Card .offer-details .landlord-facilities .landlord .landlord-name-username .landlordName {
+  color: #ff0067;
+  font-weight: bold;
+}
+
+.Card .offer-details .landlord-facilities .landlord .landlord-name-username .landlordUsername {
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .Card .offer-details .landlord-facilities .facilities {
@@ -783,14 +817,9 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 35%;
-  padding: 5px;
 }
 
-.Card .offer-details .landlord-facilities .facilities .facilitie {
+.Card .offer-details .landlord-facilities .facilities .facility {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -806,10 +835,13 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 5px;
+  font-size: 30px;
+  color: gray;
+  font-family: roboto;
+  font-weight: bolder;
 }
 
-.Card .offer-details .datePosted-goToOfferBtn {
+.Card .offer-details .datePosted {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -831,22 +863,10 @@
   margin-top: 10px;
 }
 
-.Card .offer-details .datePosted-goToOfferBtn .date-posted p {
-  color: rgba(163, 163, 163, 0.972);
-}
-
-.Card .offer-details .datePosted-goToOfferBtn .go-to-offer-btn button {
-  padding: 10px;
-  border: none;
-  border-radius: 20px 0 20px 0;
-  background-color: #5b5f97;
-  color: #fffffb;
-}
-
-.Card .offer-details .datePosted-goToOfferBtn .go-to-offer-btn button:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: #787bad;
+.Card .offer-details .datePosted .date-posted {
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .Card:hover {
