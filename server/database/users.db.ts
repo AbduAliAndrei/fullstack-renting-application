@@ -11,6 +11,7 @@ import {
 import { SecuredUser } from "../../interfaces/user";
 import { UserModel } from "../interfaces/models/user.type";
 import { toUserFromModel } from "../models/entities/user/user.entity";
+import { UserType } from "../../enums/user-type";
 
 export default function makeUsersDb({
   db,
@@ -103,10 +104,27 @@ export default function makeUsersDb({
     id: string;
     data: Required<SecuredUser>;
   }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
-    const tenant = await db.collection(CollectionPaths.USER).doc(id);
-    const result = await tenant.update(data);
+    const user = await db.collection(CollectionPaths.USER).doc(id);
+    const result = await user.update(data);
 
     return { fetchedData: { writeTime: result.writeTime.toDate(), data } };
+  }
+
+  async function updateRole({
+    id,
+    role,
+  }: {
+    id: string;
+    role: UserType;
+  }): Promise<DatabaseFunction<DatabaseObject<Required<UserType>>>> {
+    const userRef = await db.collection(CollectionPaths.USER).doc(id);
+    const result = await userRef.update({
+      role,
+    });
+
+    return {
+      fetchedData: { writeTime: result.writeTime.toDate(), data: role },
+    };
   }
 
   async function remove({
