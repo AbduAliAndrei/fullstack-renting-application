@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Controller from "../interfaces/controller";
 import { HttpRequest } from "../interfaces/http-request";
 
+// TODO: Pass as second argument guard and handle exception in catch part
 export default function createExpressCallback<T>(
   controller: (h: HttpRequest) => Promise<Controller<T>>
 ): (req: Request, res: Response) => void {
