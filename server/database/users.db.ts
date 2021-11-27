@@ -43,13 +43,13 @@ export default function makeUsersDb({
 
   function createUserFromDb(doc): Required<SecuredUser> {
     return {
-      id: doc.id,
+      id: doc.data().id,
       firstName: doc.data().firstName,
       lastName: doc.data().lastName,
       userName: doc.data().userName,
       email: doc.data().email,
-      createdAt: doc.data().createdDate,
-      updatedAt: doc.data().updatedDate,
+      createdAt: doc.data().createdAt,
+      updatedAt: doc.data().updatedAt,
       verified: doc.data().verified,
       role: doc.data().role,
       gender: doc.data().gender,

@@ -1,6 +1,7 @@
 export enum PrivateRoutes {
   HOME = "/profile",
-  // DUMMY = "/dummy/check-private",
+  LOGOUT = "/auth/logout",
+  DUMMY = "/dummy/check-private",
 }
 
 export enum PublicOnlyRoutes {

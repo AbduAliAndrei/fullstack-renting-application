@@ -1,3 +1,5 @@
+import { UserType } from "../enums/user-type";
+
 const isString = (fn: any): fn is string => typeof fn === "string";
 const isUndefined = (fn: any): fn is undefined => typeof fn === "undefined";
 const isNil = (fn: any): fn is null | undefined =>
@@ -6,4 +8,7 @@ const isNil = (fn: any): fn is null | undefined =>
 const isObject = (fn: any): fn is object =>
   !isNil(fn) || typeof fn === "object";
 
-export { isNil, isObject, isString, isUndefined };
+const isUserType = (fn: any): fn is UserType =>
+  fn === UserType.TENANT || fn === UserType.ADMIN || fn === UserType.LANDLORD;
+
+export { isNil, isObject, isString, isUndefined, isUserType };
