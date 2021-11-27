@@ -10,6 +10,7 @@ import {
   updateUser,
   takeUser,
   takeUsers,
+  updateUserRole,
 } from "../models/services/user";
 import createLogin from "./auth/login.controller";
 import createLogout from "./auth/logout.controller";
@@ -18,6 +19,7 @@ import createDeleteUser from "./user/delete-user.controller";
 import createUpdateUser from "./user/update-user.controller";
 import createGetUser from "./user/get-user.controller";
 import createGetUsers from "./user/get-users.controller";
+import createUpdateUserRole from "./user/update-user-role.controller";
 
 const postUser = createPostUser({ createUser });
 
@@ -37,6 +39,7 @@ const deleteUser = createDeleteUser({
 const putUser = createUpdateUser({ putUser: updateUser });
 const getUser = createGetUser({ getUser: takeUser });
 const getUsers = createGetUsers({ getUsers: takeUsers });
+const putUserRole = createUpdateUserRole({ updateRole: updateUserRole });
 
 const controller = Object.freeze({
   postUser,
@@ -48,6 +51,7 @@ const controller = Object.freeze({
   putUser,
   getUser,
   getUsers,
+  putUserRole,
 });
 
 export default controller;

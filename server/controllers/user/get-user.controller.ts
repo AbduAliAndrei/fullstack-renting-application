@@ -13,9 +13,9 @@ export default function createGetUser({
     httpRequest: HttpRequest
   ): Promise<Controller<Required<SecuredUser>>> {
     const fetchProcess = async (): Promise<Required<SecuredUser>> => {
-      const userId = httpRequest.headers['id'];
+      const userId = httpRequest.headers["id"];
       return await getUser({
-        id: userId
+        id: userId,
       });
     };
     const [data, error] = await asyncF<Required<SecuredUser>>(fetchProcess());

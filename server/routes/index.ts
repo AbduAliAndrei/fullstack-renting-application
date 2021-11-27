@@ -33,6 +33,10 @@ function routes(): Router {
     "/users",
     createExpressCallback(controller.putUser, currentOnlyAccessMiddleware)
   );
+  router.put(
+    "users/:id",
+    createExpressCallback(controller.putUserRole, currentOnlyAccessMiddleware)
+  );
 
   // router.post(
   //   "/dummy/check-private",

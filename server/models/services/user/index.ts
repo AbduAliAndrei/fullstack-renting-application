@@ -10,6 +10,7 @@ import createUserCreator from "./create-user.service";
 import deleteUserService from "./delete-user.service";
 import { makeUser } from "../../entities/user";
 import updateUserService from "./update-user.service";
+import { updateUserRoleService } from "./update-user-role.service";
 
 const createUser = createUserCreator({ db: usersDb, makeUser: makeUser });
 const takeUser = takeUserCreator({ usersDb });
@@ -20,6 +21,8 @@ const logout = logoutService({ authLogout });
 const deleteUser = deleteUserService({ usersDb });
 
 const updateUser = updateUserService({ usersDb });
+const updateUserRole = updateUserRoleService({ db: usersDb });
+
 const takeUsers = takeUsersCreator({ usersDb });
 
 const commonService = Object.freeze({
@@ -31,6 +34,7 @@ const commonService = Object.freeze({
   deleteUser,
   updateUser,
   takeUsers,
+  updateUserRole,
 });
 
 export default commonService;
@@ -43,4 +47,5 @@ export {
   deleteUser,
   updateUser,
   takeUsers,
+  updateUserRole,
 };

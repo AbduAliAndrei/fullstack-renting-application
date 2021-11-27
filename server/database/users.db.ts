@@ -4,9 +4,9 @@ import { CollectionPaths } from "../enums/collection-paths";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 import {
-  DatabaseEntity,
   DatabaseFunction,
   DatabaseObject,
+  DatabaseUserEntity,
 } from "../interfaces/database-entity";
 import { SecuredUser } from "../../interfaces/user";
 import { UserModel } from "../interfaces/models/user.type";
@@ -17,13 +17,14 @@ export default function makeUsersDb({
   db,
 }: {
   db: Firestore;
-}): DatabaseEntity<SecuredUser, UserModel> {
+}): DatabaseUserEntity<SecuredUser, UserModel> {
   return Object.freeze({
     add,
     findAll,
     findById,
     update,
     remove,
+    updateRole,
   });
 
   async function add(
