@@ -14,7 +14,7 @@ export default async function privateAccessMiddleware(
   );
   if (!privateRoutes.includes(req.url) || error) {
     const error =
-      "HttpException raised: Access denied, access to private route not allowed";
+      "HttpException raised: Access denied, access to private route not allowed. Please check your access route or authentication";
     const exception = new HttpException(error, 403);
     exception.initName();
     exception.initMessage();
