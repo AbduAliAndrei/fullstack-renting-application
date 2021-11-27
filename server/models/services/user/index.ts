@@ -1,12 +1,13 @@
 import { authLogout, authVerify, usersDb } from "../../../database";
 
 import takeUserCreator from "./take-user.service";
+import takeUsersCreator from "./take-users.service";
 import checkTakeUserCreator from "./check-take-user.service";
 import loginUserCreator from "./login.service";
 import firebaseLogin from "../../../functions/src/authentication/firebase-login";
 import logoutService from "./logout.service";
 import createUserCreator from "./create-user.service";
-import deleteUserService from "./delete-user.service"
+import deleteUserService from "./delete-user.service";
 import { makeUser } from "../../entities/user";
 import updateUserService from "./update-user.service";
 
@@ -19,6 +20,7 @@ const logout = logoutService({ authLogout });
 const deleteUser = deleteUserService({ usersDb });
 
 const updateUser = updateUserService({ usersDb });
+const takeUsers = takeUsersCreator({ usersDb });
 
 const commonService = Object.freeze({
   createUser,
@@ -27,8 +29,18 @@ const commonService = Object.freeze({
   login,
   logout,
   deleteUser,
-  updateUser
+  updateUser,
+  takeUsers,
 });
 
 export default commonService;
-export { createUser, checkTakeUser, takeUser, login, logout, deleteUser, updateUser };
+export {
+  createUser,
+  checkTakeUser,
+  takeUser,
+  login,
+  logout,
+  deleteUser,
+  updateUser,
+  takeUsers,
+};

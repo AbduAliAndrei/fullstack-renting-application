@@ -21,11 +21,19 @@ function routes(): Router {
     "/auth/logout",
     createExpressCallback(controller.postLogout, privateAccessMiddleware)
   );
-    
-  // users CRUD 
-  router.delete("/users", createExpressCallback(controller.deleteUser, currentOnlyAccessMiddleware));
-  router.put("/users", createExpressCallback(controller.putUser, currentOnlyAccessMiddleware));
-  
+
+  // users CRUD
+  router.get("/users", createExpressCallback(controller.getUsers));
+  router.get("/users/:id", createExpressCallback(controller.getUser));
+  router.delete(
+    "/users",
+    createExpressCallback(controller.deleteUser, currentOnlyAccessMiddleware)
+  );
+  router.put(
+    "/users",
+    createExpressCallback(controller.putUser, currentOnlyAccessMiddleware)
+  );
+
   // router.post(
   //   "/dummy/check-private",
   //   createExpressCallback(dummyController, privateAccessMiddleware)

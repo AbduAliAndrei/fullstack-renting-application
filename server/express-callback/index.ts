@@ -30,7 +30,6 @@ export default function createExpressCallback<T>(
     };
     guard(req, res)
       .then(() => {
-        ``;
         controller(httpRequest)
           .then((httpResponse) => {
             if (httpResponse.headers) {
