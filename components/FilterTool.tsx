@@ -2,6 +2,8 @@
 import React from "react";
 import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 export default function FilterTool() {
   return (
     <div className="FilterTool">
@@ -27,31 +29,35 @@ export default function FilterTool() {
           </div>
           <div className="drop-down">
             <div>
-              <input type="checkbox" />
-              <span>Under 50000ft</span>
+              <FormControlLabel control={<Checkbox />} label="Under 50000ft" />
             </div>
             <div>
-              <input type="checkbox" />
-              <span>50,000 - 100,000</span>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="50,000 - 100,000"
+              />
             </div>
             <div>
-              <input type="checkbox" />
-              <span>100,000 - 150,000</span>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="100,000 - 150,000"
+              />
             </div>
             <div>
-              <input type="checkbox" />
-              <span>150,000 - 250,000</span>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="150,000 - 250,000"
+              />
             </div>
             <div className="all-included">
-              <input type="checkbox" />
-              <span>All included</span>
+              <FormControlLabel control={<Checkbox />} label="All included" />
             </div>
           </div>
         </div>
         <div className="location">
           <div className="title-arrow">
             <div className="title">
-              <p>Location</p>
+              <p>District</p>
             </div>
             <FontAwesomeIcon
               className="arrow-down"
@@ -67,19 +73,10 @@ export default function FilterTool() {
             />
           </div>
           <div className="drop-down">
-            <div>
-              <input type="checkbox" />
-              <span>Shared room</span>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <span>Shared room</span>
-            </div>
-
-            <div className="all-included">
-              <input type="checkbox" />
-              <span>All included</span>
-            </div>
+            <FormControlLabel control={<Checkbox />} label="Xll" />
+            <FormControlLabel control={<Checkbox />} label="xlll" />
+            <FormControlLabel control={<Checkbox />} label="lX" />
+            <FormControlLabel control={<Checkbox />} label="lll" />
           </div>
         </div>
         <div className="date">
@@ -102,23 +99,10 @@ export default function FilterTool() {
           </div>
 
           <div className="drop-down">
-            <div>
-              <input type="checkbox" />
-              <span>Shared room</span>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <span>Shared room</span>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <span>Shared room</span>
-            </div>
-
-            <div className="all-included">
-              <input type="checkbox" />
-              <span>All included</span>
-            </div>
+            <FormControlLabel control={<Checkbox />} label="Xll" />
+            <FormControlLabel control={<Checkbox />} label="xlll" />
+            <FormControlLabel control={<Checkbox />} label="lX" />
+            <FormControlLabel control={<Checkbox />} label="lll" />
           </div>
         </div>
         <div className="property-type">
@@ -141,16 +125,16 @@ export default function FilterTool() {
           </div>
           <div className="drop-down">
             <div>
-              <input type="checkbox" />
-              <span>Shared room</span>
+              <FormControlLabel control={<Checkbox />} label="Xll" />
             </div>
             <div>
-              <input type="checkbox" />
-              <span>room</span>
+              <FormControlLabel control={<Checkbox />} label="xlll" />
             </div>
             <div>
-              <input type="checkbox" />
-              <span>studio</span>
+              <FormControlLabel control={<Checkbox />} label="lX" />
+            </div>
+            <div>
+              <FormControlLabel control={<Checkbox />} label="lll" />
             </div>
           </div>
         </div>

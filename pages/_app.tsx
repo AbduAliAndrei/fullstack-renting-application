@@ -4,19 +4,20 @@ import Layout from "../components/Layout";
 import { CookiesProvider } from "react-cookie";
 import appTheme from "../theme/appTheme";
 import { createTheme, ThemeProvider } from "@mui/material";
-import Head from "next/head";
-import axios from "axios";
 import React from "react";
-import { SWRConfig } from "swr";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
-const fetcher = async (url) => {
-  try {
-    const res = await axios.get(url);
-    return res.data;
-  } catch (err) {
-    throw err.response.data;
-  }
-};
+// const fetcher = async (url) => {
+//   try {
+//     const res = await axios.get(url);
+//     return res.data;
+//   } catch (err) {
+//     throw err.response.data;
+//   }
+// };
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const { data, error } = useSWR('api/');
@@ -24,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Renting App</title>
       </Head>
       <SWRConfig
@@ -32,15 +33,15 @@ function MyApp({ Component, pageProps }: AppProps) {
           fetcher,
           dedupingInterval: 10000,
         }}
-      >
-        <CookiesProvider>
-          <ThemeProvider theme={theme}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ThemeProvider>
-        </CookiesProvider>
-      </SWRConfig>
+      > */}
+      <CookiesProvider>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </CookiesProvider>
+      {/* </SWRConfig> */}
     </>
   );
 }

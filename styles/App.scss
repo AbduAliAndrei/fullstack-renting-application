@@ -9,7 +9,8 @@
 @import "./sass/filterTool";
 @import "./sass/login";
 @import "./sass/register";
-@import "./sass/ImagesLandlordDetails";
+@import "./sass/LandlordDetails";
+@import "./sass/OfferSpecification";
 
 * {
   box-sizing: border-box;
@@ -33,4 +34,5 @@ html {
 
 .children {
   min-height: 100vh;
+  background-color: rgb(240, 240, 240);
 }

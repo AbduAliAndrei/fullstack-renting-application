@@ -1,34 +1,39 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import { InputAdornment, TextField } from "@material-ui/core";
+import Search from "@material-ui/icons/Search";
 
 export default function Header() {
   return (
     <div className="Header">
       <div className="text">
         <div className="hd-title">
-          <h1>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-            tempora!
-          </h1>
+          <h1>Let’s choose best apartment in Budapest</h1>
         </div>
         <div className="hd-description">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-            dolorem voluptatibus amet. Ducimus consectetur rerum fugit
+            Type down the search area to start exploring right away new
+            solutions for you
           </p>
         </div>
-        <div className="btns">
-          <div className="find-tenant-btn">
-            <button>Find tenant</button>
-          </div>
-          <div className="find-flat-btn">
-            {/* eslint-disable-next-line @next/next/link-passhref */}
-            <Link href="/offers">
-              <button>Find flat</button>
-            </Link>
-          </div>
-        </div>
+        <TextField
+          id="input-with-icon-textfield"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+            disableUnderline: true,
+          }}
+          style={{
+            backgroundColor: "#fff",
+            borderRadius: "20px",
+            padding: "20px 40px ",
+          }}
+          placeholder="Type a location"
+          fullWidth
+        />
       </div>
       <div className="vector-img-container">
         <Image
