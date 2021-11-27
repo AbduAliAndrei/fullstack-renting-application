@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { InputAdornment, TextField } from "@material-ui/core";
 import Search from "@material-ui/icons/Search";
