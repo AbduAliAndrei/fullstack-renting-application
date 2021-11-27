@@ -16,6 +16,10 @@ function routes(): Router {
   );
   router.post("/auth/login", createExpressCallback(controller.postLogin));
   router.post("/auth/logout", createExpressCallback(controller.postLogout));
+  // router.post(
+  //   "/dummy/check-private",
+  //   createExpressCallback(dummyController, privateAccessMiddleware)
+  // );
 
   return router;
 }

@@ -1,17 +1,24 @@
-import { Request, Response } from "express";
+import { Request } from "express";
 import { PrivateRoutes } from "../enums/private-routes";
 import { HttpException } from "../exceptions/http-exception.exception";
+import asyncF from "../../utils/async-f";
+import { authVerify } from "../database";
 
-// TODO: create HttpException on error case
-export default function privateAccessMiddleware(
-  req: Request,
-  res: Response
-): boolean {
+export default async function privateAccessMiddleware(
+  req: Request
+): Promise<boolean> {
   const privateRoutes = [...Object.values(PrivateRoutes).map((i) => String(i))];
-  if (!privateRoutes.includes(req.url)) {
+  const [, error] = await asyncF(
+    authVerify({ sessionCookie: req.cookies.session ?? "" }),
+    true
+  );
+  if (!privateRoutes.includes(req.url) || error) {
     const error =
       "HttpException raised: Access denied, access to private route not allowed";
-    throw new HttpException(error, 403);
+    const exception = new HttpException(error, 403);
+    exception.initName();
+    exception.initMessage();
+    throw exception;
   }
   return true;
 }

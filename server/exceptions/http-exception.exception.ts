@@ -6,6 +6,7 @@ export class HttpException extends Error {
     private readonly status: number
   ) {
     super();
+    Object.setPrototypeOf(this, new.target.prototype);
   }
 
   public initMessage(): void {
