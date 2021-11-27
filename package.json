@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "install:all": "npm i && cd ./server/functions && npm i",
+    "install:all": "npm i && cd ./server/functions && npm i && cd ../..",
     "serve": "next dev",
     "dev": "cross-env NODE_ENV=development && nodemon server/index.ts",
     "build": "next build",
