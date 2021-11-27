@@ -33,7 +33,7 @@ export default function Card() {
       fan: true,
     },
   };
-  var settings = {
+  const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
