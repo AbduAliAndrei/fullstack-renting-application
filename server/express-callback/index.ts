@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { HttpException } from "../exceptions/http-exception.exception";
 import Controller from "../interfaces/controller";
 import { HttpRequest } from "../interfaces/http-request";
 
@@ -37,8 +38,15 @@ export default function createExpressCallback<T>(
         res.type("json");
         res.status(httpResponse.statusCode).send(httpResponse.body);
       })
-      .catch((e) =>
-        res.status(500).send(`An unknown error occurred. Error message: ${e}`)
-      );
+      .catch((e) => {
+        if (e instanceof HttpException) {
+          res.status(e.getStatus());
+          res.json(e.getResponse());
+        } else {
+          res
+            .status(500)
+            .send(`An unknown error occurred. Error message: ${e}`);
+        }
+      });
   };
 }
