@@ -1,5 +1,6 @@
 import { SecuredUser, User } from "../../../interfaces/user";
 import asyncF from "../../../utils/async-f";
+import { HttpStatus } from "../../enums/http-status";
 import Controller from "../../interfaces/controller";
 import {
   DatabaseFunction,
@@ -41,7 +42,7 @@ export default function createUpdateUser({
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 400,
+        statusCode: HttpStatus.BAD_REQUEST,
         body: {
           error: (error as { message: string }).message,
         },
@@ -52,7 +53,7 @@ export default function createUpdateUser({
           "Content-Type": "application/json",
           "Last-Modified": new Date(data.fetchedData.writeTime).toUTCString(),
         },
-        statusCode: 201,
+        statusCode : HttpStatus.OK,
         body: { res: data.fetchedData },
       };
     }
