@@ -1,4 +1,3 @@
-import { UserType } from "../../../../enums/user-type";
 import {
   DatabaseEntity,
   DatabaseObject,
@@ -13,7 +12,8 @@ export type DeleteUserService = {
 
 export default function deleteUserService({ usersDb }: DeleteUserService) {
   return async function deleteUser(
-    id: string,    authRemove: ({ uid }: { uid: string }) => Promise<void>
+    id: string,
+    authRemove: ({ uid }: { uid: string }) => Promise<void>
   ): Promise<DatabaseObject<string>> {
     const removeRes = await usersDb.remove({ id });
     console.log(removeRes);

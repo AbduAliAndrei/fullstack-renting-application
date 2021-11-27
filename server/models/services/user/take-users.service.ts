@@ -1,7 +1,6 @@
 import {
   DatabaseEntity,
   DatabaseFunction,
-  DatabaseObject,
 } from "../../../interfaces/database-entity";
 import { SecuredUser } from "../../../../interfaces/user";
 import { UserModel } from "../../../interfaces/models/user.type";

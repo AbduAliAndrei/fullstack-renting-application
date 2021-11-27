@@ -1,6 +1,6 @@
 import { HttpStatus } from "../../enums/http-status";
 import asyncF from "../../../utils/async-f";
-import { SecuredUser, User } from "../../../interfaces/user";
+import { SecuredUser } from "../../../interfaces/user";
 import { DatabaseFunction } from "../../interfaces/database-entity";
 import Controller from "../../interfaces/controller";
 import { HttpRequest } from "../../interfaces/http-request";

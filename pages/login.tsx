@@ -5,14 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
-import { makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  root: {
-    backgroundColor: "red",
-    color: (props: { color: string }) => props.color,
-  },
-});
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState<{
