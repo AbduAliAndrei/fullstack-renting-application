@@ -5,12 +5,12 @@
   min-height: 400vh;
   background-color: rgb(240, 240, 240);
   .filter-tool {
-    width: 15%;
+    width: 25%;
     height: 100%;
   }
   .offers-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     row-gap: 20px;
     column-gap: 40px;
     width: 70%;
@@ -18,24 +18,24 @@
   }
 }
 
-// @media screen and (max-width: 1648px) {
-//   .Offers {
-//     .offers-container {
-//       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-//       gap: 60px;
-//     }
-//   }
-// }
+@media screen and (max-width: 1648px) {
+  .Offers {
+    .offers-container {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 60px;
+    }
+  }
+}
 
-// @media screen and (max-width: 800px) {
-//   .Offers {
-//     .offers-container {
-//       gap: 10px;
-//       width: 100%;
-//       padding: 10px;
-//       grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
-//     }
-//     .filter-tool {
-//     }
-//   }
-// }
+@media screen and (max-width: 800px) {
+  .Offers {
+    .offers-container {
+      gap: 10px;
+      width: 100%;
+      padding: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    }
+    .filter-tool {
+    }
+  }
+}

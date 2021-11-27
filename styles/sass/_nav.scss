@@ -1,95 +1,101 @@
 // @import "./config";
 
 .Nav {
+  @include flex(row);
+  // justify-content: flex-start;
   position: relative;
   width: 100vw;
-  text-align: center;
   height: 60px;
-  @include flex(row);
-  border-bottom: solid rgba(0, 0, 0, 0.171) 0.5px;
-
+  box-shadow: 1px 1px 5px #0000002d;
+  height: fit-content;
+  padding: 30px;
   #check,
   .ham-menu {
     display: none;
   }
   .logo {
-    position: absolute;
     left: 0;
+    position: absolute;
     cursor: pointer;
     margin-left: 60px;
     a {
       color: $main-black;
       font-size: 40px;
       text-decoration: none;
+      font-family: roboto;
+      font-weight: bolder;
     }
   }
   .menu {
-    min-width: 150px;
-    height: 100%;
-    display: grid;
-    place-items: center;
+    width: 70%;
+    @include flex(row);
+    height: fit-content;
+
     nav {
-      min-width: 100%;
+      width: 100%;
+      height: fit-content;
       ul {
         @include flex(row);
-        justify-content: space-between;
+        justify-content: flex-start;
+        width: 100%;
+        margin: 0;
+        padding: 0;
         li {
           position: relative;
           text-align: center;
           cursor: pointer;
+          margin: 0 30px;
+          font-size: 23px;
 
           a {
             text-decoration: none;
             color: $main-black;
-            font-size: 20px;
             &:hover {
               transition: 0.2s;
               opacity: 60%;
             }
           }
         }
-        li.active::after {
-          position: absolute;
-          content: "";
-          height: 5px;
-          width: 100%;
-          background-color: $main-color2;
-          left: 0;
-          bottom: -19px;
-          border-radius: 50px;
-          transition: 1s;
-          animation: showUnderLine 0.3s linear;
-        }
-
-        @keyframes showUnderLine {
-          from {
-            width: 0;
-          }
-          to {
-            width: 100%;
-          }
-        }
       }
     }
   }
-  .login_signin {
+  .login_signup {
+    display: flex;
     position: absolute;
     right: 0;
     margin-right: 40px;
     .login {
       cursor: pointer;
-      span {
-        color: $main-color2;
-        margin: 0 0 0 10px;
+      .logInBtn {
+        background-color: #78a5ff;
+        border: solid #0339a6 1px;
+        border-radius: 20px;
+        padding: 5px 30px;
+        text-transform: capitalize;
+        color: #fff;
+        font-family: roboto;
+        font-weight: bolder;
+
+        &:hover {
+          background-color: rgba(120, 165, 255, 0.829);
+        }
       }
     }
-    .signin {
-      p {
-        font-size: 15px;
-        color: rgb(167, 167, 167);
-      }
-      a {
-        color: $main-black;
+    .signup {
+      cursor: pointer;
+      margin-left: 10px;
+      .signUpBtn {
+        background-color: #ffb8d5;
+        border: solid #ff0067 1px;
+        border-radius: 20px;
+        padding: 5px 30px;
+        text-transform: capitalize;
+        color: #ff0067;
+        font-family: roboto;
+        font-weight: bolder;
+        &:hover {
+          background-color: #ffb8d6d2;
+        }
       }
     }
   }

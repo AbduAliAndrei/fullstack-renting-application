@@ -5,30 +5,20 @@
   width: 100vw;
   height: calc(100vh - 60px);
   .text {
-    width: 50%;
+    width: 30%;
     .hd-title {
       h1 {
         font-size: 60px;
+        font-family: roboto;
+        font-weight: bolder;
+        color: #363636;
       }
     }
     .hd-description {
       margin: 10px 0;
       p {
-        font-size: 25px;
-      }
-    }
-    .btns {
-      display: flex;
-      gap: 10px;
-      .find-tenant-btn {
-        button {
-          @include btn($main-color2, none);
-        }
-      }
-      .find-flat-btn {
-        button {
-          @include btn(transparent, $main-color2);
-        }
+        font-size: 35px;
+        font-family: roboto;
       }
     }
   }

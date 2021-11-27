@@ -4,10 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { Typography } from "@material-ui/core";
 export default function Card() {
-  const offter = {
-    title: "offer title",
+  const offer = {
+    title: "offer title Name",
     description: "offer description",
     price: "155,000",
     currency: "Huf",
@@ -28,6 +31,12 @@ export default function Card() {
       fan: true,
     },
   };
+  var settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <div className="Card">
@@ -41,38 +50,67 @@ export default function Card() {
           </div>
         </div>
         <div className="carousel">
-          <Image
-            src="/DSC_2778.jpg"
-            alt="Offer Image"
-            className="of-img"
-            objectFit="cover"
-            layout="fill"
-          />{" "}
-          <Image
-            src="/DSC_2778.jpg"
-            alt="Offer Image"
-            className="of-img"
-            objectFit="cover"
-            layout="fill"
-          />{" "}
-          <Image
-            src="/DSC_2778.jpg"
-            alt="Offer Image"
-            className="of-img"
-            objectFit="cover"
-            layout="fill"
-          />
+          <Slider {...settings}>
+            <div className="slider">
+              <Image
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div className="slider">
+              <Image
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div className="slider">
+              <Image
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div className="slider">
+              <Image
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div>
+              <Image
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div>
+              <Image
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+          </Slider>
         </div>
       </div>
       <div className="offer-details">
-        <div className="offer-title">
-          <p>
-            {offter.title} name ,{offter.title} name,{offter.title} name
-          </p>
-        </div>
+        <Typography className="offer-title" variant="h6" component="h6">
+          {offer.title}
+        </Typography>
         <div className="price-rank">
           <div className="price-info">
-            <h2>{`${offter.price} ${offter.currency}`} / month</h2>
+            <Typography variant="h4" component="h4">
+              {`${offer.price} ${offer.currency}`} / month
+            </Typography>
             <p>all included</p>
           </div>
           <div className="offer-ranking">
@@ -97,7 +135,7 @@ export default function Card() {
             </div>
           </div>
           <div className="facilities">
-            <div className="facilitie">
+            <div className="facility">
               <div className="icon">
                 <FontAwesomeIcon icon={faCheckCircle} color="#5b5f97" />
               </div>
@@ -133,7 +171,7 @@ export default function Card() {
         </div>
         <div className="datePosted-goToOfferBtn">
           <div className="date-posted">
-            <p>{offter.datePosted}</p>
+            <p>{offer.datePosted}</p>
           </div>
           <div className="go-to-offer-btn">
             <Link href="/offerDetails">

@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
 .Nav {
-  position: relative;
-  width: 100vw;
-  text-align: center;
-  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +15,15 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border-bottom: solid rgba(0, 0, 0, 0.171) 0.5px;
+  position: relative;
+  width: 100vw;
+  height: 60px;
+  -webkit-box-shadow: 1px 1px 5px #0000002d;
+          box-shadow: 1px 1px 5px #0000002d;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 30px;
 }
 
 .Nav #check,
@@ -28,8 +32,8 @@
 }
 
 .Nav .logo {
-  position: absolute;
   left: 0;
+  position: absolute;
   cursor: pointer;
   margin-left: 60px;
 }
@@ -38,18 +42,37 @@
   color: #363636;
   font-size: 40px;
   text-decoration: none;
+  font-family: roboto;
+  font-weight: bolder;
 }
 
 .Nav .menu {
-  min-width: 150px;
-  height: 100%;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .Nav .menu nav {
-  min-width: 100%;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .Nav .menu nav ul {
@@ -68,21 +91,25 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .Nav .menu nav ul li {
   position: relative;
   text-align: center;
   cursor: pointer;
+  margin: 0 30px;
+  font-size: 23px;
 }
 
 .Nav .menu nav ul li a {
   text-decoration: none;
   color: #363636;
-  font-size: 20px;
 }
 
 .Nav .menu nav ul li a:hover {
@@ -91,61 +118,52 @@
   opacity: 60%;
 }
 
-.Nav .menu nav ul li.active::after {
-  position: absolute;
-  content: "";
-  height: 5px;
-  width: 100%;
-  background-color: #5b5f97;
-  left: 0;
-  bottom: -19px;
-  border-radius: 50px;
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-animation: showUnderLine 0.3s linear;
-          animation: showUnderLine 0.3s linear;
-}
-
-@-webkit-keyframes showUnderLine {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes showUnderLine {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.Nav .login_signin {
+.Nav .login_signup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   right: 0;
   margin-right: 40px;
 }
 
-.Nav .login_signin .login {
+.Nav .login_signup .login {
   cursor: pointer;
 }
 
-.Nav .login_signin .login span {
-  color: #5b5f97;
-  margin: 0 0 0 10px;
+.Nav .login_signup .login .logInBtn {
+  background-color: #78a5ff;
+  border: solid #0339a6 1px;
+  border-radius: 20px;
+  padding: 5px 30px;
+  text-transform: capitalize;
+  color: #fff;
+  font-family: roboto;
+  font-weight: bolder;
 }
 
-.Nav .login_signin .signin p {
-  font-size: 15px;
-  color: #a7a7a7;
+.Nav .login_signup .login .logInBtn:hover {
+  background-color: rgba(120, 165, 255, 0.829);
 }
 
-.Nav .login_signin .signin a {
-  color: #363636;
+.Nav .login_signup .signup {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.Nav .login_signup .signup .signUpBtn {
+  background-color: #ffb8d5;
+  border: solid #ff0067 1px;
+  border-radius: 20px;
+  padding: 5px 30px;
+  text-transform: capitalize;
+  color: #ff0067;
+  font-family: roboto;
+  font-weight: bolder;
+}
+
+.Nav .login_signup .signup .signUpBtn:hover {
+  background-color: #ffb8d6d2;
 }
 
 @media screen and (max-width: 900px) {
@@ -222,11 +240,14 @@
 }
 
 .Header .text {
-  width: 50%;
+  width: 30%;
 }
 
 .Header .text .hd-title h1 {
   font-size: 60px;
+  font-family: roboto;
+  font-weight: bolder;
+  color: #363636;
 }
 
 .Header .text .hd-description {
@@ -234,59 +255,8 @@
 }
 
 .Header .text .hd-description p {
-  font-size: 25px;
-}
-
-.Header .text .btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 10px;
-}
-
-.Header .text .btns .find-tenant-btn button {
-  background-color: #5b5f97;
-  border: none;
-  border: none;
-  outline: none;
-  padding: 10px 20px;
-  color: #fffffb;
-  color: #fffffb;
-  font-size: 15px;
-  height: 40px;
-  width: 120px;
-  border-radius: 10px;
-  margin: 20px 0;
-  cursor: pointer;
-}
-
-.Header .text .btns .find-tenant-btn button:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: #484b77;
-}
-
-.Header .text .btns .find-flat-btn button {
-  background-color: transparent;
-  border: none;
-  border: #5b5f97;
-  outline: none;
-  padding: 10px 20px;
-  color: #fffffb;
-  color: #5b5f97;
-  border: solid #5b5f97 0.5px;
-  font-size: 15px;
-  height: 40px;
-  width: 120px;
-  border-radius: 10px;
-  margin: 20px 0;
-  cursor: pointer;
-}
-
-.Header .text .btns .find-flat-btn button:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: #f7f7fa;
+  font-size: 35px;
+  font-family: roboto;
 }
 
 .Header .vector-img-container {
@@ -554,20 +524,38 @@
 }
 
 .Offers .filter-tool {
-  width: 15%;
+  width: 25%;
   height: 100%;
 }
 
 .Offers .offers-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  -ms-grid-columns: (minmax(500px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   row-gap: 20px;
   -webkit-column-gap: 40px;
           column-gap: 40px;
   width: 70%;
   margin: 70px auto;
+}
+
+@media screen and (max-width: 1648px) {
+  .Offers .offers-container {
+    -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Offers .offers-container {
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    -ms-grid-columns: (minmax(40%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  }
 }
 
 .Card {
@@ -578,6 +566,7 @@
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
   padding: 30px;
+  min-height: 700px;
 }
 
 .Card:hover {
@@ -609,7 +598,6 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   position: relative;
-  height: 250px;
   width: 100%;
 }
 
@@ -636,17 +624,25 @@
           justify-content: space-between;
 }
 
-.Card .offer-images .of-img {
-  border-radius: 30px;
+.Card .offer-images .carousel {
+  width: 100%;
+}
+
+.Card .offer-images .carousel .slider {
+  position: relative;
+  background-color: blue;
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .Card .offer-details .offer-title {
   margin: 10px 0;
-}
-
-.Card .offer-details .offer-title p {
-  font-size: 20px;
+  color: gray;
+  font-size: 25px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .Card .offer-details .price-rank {
@@ -670,15 +666,15 @@
           justify-content: space-between;
 }
 
-.Card .offer-details .price-rank .price-info h2 {
-  font-size: 20px;
+.Card .offer-details .price-rank .price-info {
+  color: #000;
+  font-weight: bolder;
   font-weight: bold;
-  color: #ffac07;
 }
 
 .Card .offer-details .price-rank .price-info p {
-  color: #5b5f97;
-  font-weight: bold;
+  color: gray;
+  font-weight: bolder;
 }
 
 .Card .offer-details .price-rank .offer-ranking {
@@ -853,11 +849,33 @@
   background-color: #787bad;
 }
 
+.Card:hover {
+  -webkit-box-shadow: 1px 1px 8px #00000056;
+          box-shadow: 1px 1px 8px #00000056;
+}
+
 .FilterTool {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   background-color: #fffffb;
   text-align: center;
-  height: 100vh;
-  background-color: red;
+  min-height: 100vh;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 60px;
 }
 
 .FilterTool .title-arrow {
@@ -896,10 +914,29 @@
 }
 
 .FilterTool .drop-down {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   padding: 0 10px;
-  text-align: left;
   margin-top: 5px;
-  z-index: 99;
   width: 100%;
 }
 
@@ -916,14 +953,12 @@
   border: none;
   border: #5b5f97;
   outline: none;
-  padding: 10px 20px;
+  padding: 10px 70px;
   color: #fffffb;
   color: #fffffb;
   border: solid #5b5f97 0.5px;
-  font-size: 15px;
-  height: 40px;
-  width: 120px;
-  border-radius: 10px;
+  font-size: 25px;
+  border-radius: 30px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -1222,14 +1257,12 @@
   border: none;
   border: #fffffb;
   outline: none;
-  padding: 10px 20px;
+  padding: 10px 70px;
   color: #fffffb;
   color: #fffffb;
   border: solid #fffffb 0.5px;
-  font-size: 15px;
-  height: 40px;
-  width: 120px;
-  border-radius: 10px;
+  font-size: 25px;
+  border-radius: 30px;
   margin: 20px 0;
   cursor: pointer;
 }
@@ -1520,14 +1553,12 @@
   border: none;
   border: #fffffb;
   outline: none;
-  padding: 10px 20px;
+  padding: 10px 70px;
   color: #fffffb;
   color: #fffffb;
   border: solid #fffffb 0.5px;
-  font-size: 15px;
-  height: 40px;
-  width: 120px;
-  border-radius: 10px;
+  font-size: 25px;
+  border-radius: 30px;
   margin: 20px 0;
   cursor: pointer;
 }
