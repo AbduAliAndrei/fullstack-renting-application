@@ -1,47 +1,40 @@
+import { SecuredUser, User } from "../../../interfaces/user";
 import asyncF from "../../../utils/async-f";
 import Controller from "../../interfaces/controller";
-import { HttpRequest } from "../../interfaces/http-request";
 import {
   DatabaseFunction,
   DatabaseObject,
 } from "../../interfaces/database-entity";
-import { SecuredUser, User } from "../../../interfaces/user";
-import { UserType } from "../../../enums/user-type";
+import { HttpRequest } from "../../interfaces/http-request";
 
-export default function createPostUser({
-  createUser,
+export default function createUpdateUser({
+  putUser,
 }: {
-  createUser: (
-    userInfo: User,
-    userType: UserType
+  putUser: (
+    userInfo: SecuredUser
   ) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
 }): (
   h: HttpRequest
 ) => Promise<Controller<DatabaseObject<Required<SecuredUser>>>> {
-  return async function postUser(
+  return async function updateUser(
     httpRequest: HttpRequest
   ): Promise<Controller<DatabaseObject<Required<SecuredUser>>>> {
-    const postProcess = async (): Promise<
+    const updateProcess = async (): Promise<
       DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
     > => {
-      const { source = {}, user, userType } = httpRequest.body;
+      const { source = {}, user } = httpRequest.body;
       source.ip = httpRequest.ip;
       source.browser = httpRequest.headers["User-Agent"];
       if (httpRequest.headers["Referer"]) {
         source.referer = httpRequest.headers["Referer"];
       }
-
-      return await createUser(
-        {
-          ...user,
-        },
-        userType
-      );
+      return await putUser({
+        ...user,
+      });
     };
-
     const [data, error] = await asyncF<
       DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
-    >(postProcess());
+    >(updateProcess());
     let result!: Controller<DatabaseObject<Required<SecuredUser>>>;
     if (error) {
       result = {
@@ -63,7 +56,6 @@ export default function createPostUser({
         body: { res: data.fetchedData },
       };
     }
-
     return result;
   };
 }

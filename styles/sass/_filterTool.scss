@@ -1,10 +1,13 @@
 .FilterTool {
   // display: grid;
   // grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  @include flex(column);
   background-color: $main-color3;
   text-align: center;
-  height: 100vh;
-  // width: 100%;
+  min-height: 100vh;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 60px;
   .title-arrow {
     display: flex;
     justify-content: space-between;
@@ -27,10 +30,11 @@
   }
 
   .drop-down {
+    @include flex(column);
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: 0 10px;
-    text-align: left;
     margin-top: 5px;
-    z-index: 99;
     width: 100%;
     // animation: popup 0.2s linear;
     div {

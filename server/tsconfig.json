@@ -4,7 +4,8 @@
     "module": "commonjs",
     "outDir": "dist",
     "noEmit": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "target": "es2017"
   },
   "include": ["server"]
 }

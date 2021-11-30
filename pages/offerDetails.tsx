@@ -1,9 +1,13 @@
-import ImagesLandlordDetails from "../components/OfferDetails/ImagesLandlordDetails";
+import LandlordDetails from "../components/OfferDetails/LandlordDetails";
+import OfferImages from "../components/OfferDetails/OfferImages";
+import OfferSpecification from "../components/OfferDetails/OfferSpecification";
 
 export default function OfferDetails() {
   return (
     <div className="OfferDetails">
-      <ImagesLandlordDetails />
+      <LandlordDetails />
+      <OfferImages />
+      <OfferSpecification />
     </div>
   );
 }

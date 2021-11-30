@@ -1,8 +1,8 @@
 import asyncF from "../../../../utils/async-f";
-import { User } from "../../../../interfaces/user";
+import { SecuredUser } from "../../../../interfaces/user";
 
 export type CheckTakeUserCreatorParams = {
-  takeUser: ({ id }: { id: string }) => Promise<Required<User>>;
+  takeUser: ({ id }: { id: string }) => Promise<Required<SecuredUser>>;
   checkAuth: ({ sessionCookie }: { sessionCookie: string }) => Promise<string>;
 };
 
@@ -14,11 +14,11 @@ export default function checkTakeUserCreator({
     sessionCookie,
   }: {
     sessionCookie: string;
-  }): Promise<Required<User>> {
+  }): Promise<Required<SecuredUser>> {
     const [uid, uidError] = await asyncF<string>(checkAuth({ sessionCookie }));
 
     if (uidError) {
-      throw new Error(`Check Tenant uid error:  ${uidError}`);
+      throw new Error(`Check user uid error:  ${uidError}`);
     }
     const [user, userError] = await asyncF(takeUser({ id: uid }));
 

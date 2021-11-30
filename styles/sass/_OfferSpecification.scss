@@ -1,0 +1,106 @@
+.OfferSpecification {
+  @include flex(row);
+  justify-content: space-between;
+  background-color: $main-color3;
+  border-radius: 50px;
+  width: 90%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  min-height: 70vh;
+  align-items: flex-start;
+  .specification {
+    @include flex(column);
+    padding: 60px;
+    .offerHeader {
+      position: relative;
+      .offer-duration {
+        .offerTitleH1 {
+          font-weight: bolder;
+          color: #0339a6;
+        }
+      }
+      .offer-title {
+        .offerTitleH1 {
+        }
+      }
+
+      .offer-price {
+        .offerPriceH1 {
+          margin-right: 350px;
+        }
+      }
+
+      .studentFriendly {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        .studentFriendlyContainer {
+          background-color: #32ba7c;
+          color: $main-color3;
+          border-radius: 10px;
+          font-size: 24px;
+        }
+      }
+    }
+    .mainDetails {
+      width: 100%;
+      margin-top: 40px;
+      font-size: 25px;
+
+      .location-features {
+        @include flex(row);
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .location-flatInfo {
+          // @include flex(row);
+          .locationH1 {
+            font-weight: bolder;
+          }
+        }
+        .locationAdvantages {
+          @include flex(column);
+          width: 35%;
+          font-size: 20px;
+          .universities,
+          .transportations {
+            margin-bottom: 20px;
+            .uniTitle,
+            .transportationType {
+              font-weight: bolder;
+            }
+            .transportation,
+            .university {
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+
+              .icon-uniName,
+              .icon-transportationName {
+                display: flex;
+
+                .uniName,
+                .transportationName {
+                  margin-left: 3px;
+                }
+              }
+            }
+            width: 100%;
+          }
+        }
+      }
+      .offerFeatures {
+        width: 100%;
+        .featuresH4 {
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+  .map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+  }
+}

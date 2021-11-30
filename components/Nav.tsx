@@ -7,7 +7,7 @@ import { useRouter } from "next/dist/client/router";
 import { faSignInAlt, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLinkProps } from "react-bootstrap";
-
+import Button from "@material-ui/core/Button";
 export default function Nav({}: NavLinkProps) {
   const router = useRouter();
 
@@ -38,23 +38,28 @@ export default function Nav({}: NavLinkProps) {
                 <a href="">Offers</a>
               </Link>
             </li>
+            <li className={router.pathname === "/contact" ? "active" : ""}>
+              <Link href="/contact">
+                <a href="">Contact Us</a>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
-      <div className="login_signin">
+      <div className="login_signup">
         <div className="login">
-          <FontAwesomeIcon icon={faSignInAlt} />
           <Link href="/login">
-            <a>Log In</a>
+            <Button disableElevation className="logInBtn" variant="contained">
+              Log In
+            </Button>
           </Link>
         </div>
-        <div className="signin">
-          <p>
-            Dont have account?{" "}
-            <Link href="/">
-              <a>Sign In</a>
-            </Link>
-          </p>
+        <div className="signup">
+          <Link href="/register">
+            <Button disableElevation className="signUpBtn" variant="contained">
+              Sign Up
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../interfaces/database-entity";
-import { User } from "../../interfaces/user";
+import { SecuredUser } from "../../interfaces/user";
 import { UserModel } from "../interfaces/models/user.type";
 import { toUserFromModel } from "../models/entities/user/user.entity";
 
@@ -16,7 +16,7 @@ export default function makeUsersDb({
   db,
 }: {
   db: Firestore;
-}): DatabaseEntity<User, UserModel> {
+}): DatabaseEntity<SecuredUser, UserModel> {
   return Object.freeze({
     add,
     findAll,
@@ -27,10 +27,7 @@ export default function makeUsersDb({
 
   async function add(
     userInfo: Required<UserModel>
-  ): Promise<DatabaseFunction<DatabaseObject<Required<User>>>> {
-    console.log(userInfo.getId());
-    console.log(toUserFromModel(userInfo));
-
+  ): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     const result = await db
       .collection(CollectionPaths.USER)
       .doc()
@@ -44,16 +41,15 @@ export default function makeUsersDb({
     };
   }
 
-  function createUserFromDb(doc): Required<User> {
+  function createUserFromDb(doc): Required<SecuredUser> {
     return {
-      id: doc.id,
+      id: doc.data().id,
       firstName: doc.data().firstName,
       lastName: doc.data().lastName,
       userName: doc.data().userName,
       email: doc.data().email,
-      password: doc.data().password,
-      createdAt: doc.data().createdDate,
-      updatedAt: doc.data().updatedDate,
+      createdAt: doc.data().createdAt,
+      updatedAt: doc.data().updatedAt,
       verified: doc.data().verified,
       role: doc.data().role,
       gender: doc.data().gender,
@@ -66,7 +62,9 @@ export default function makeUsersDb({
     userName,
   }: {
     userName?: string;
-  }): Promise<DatabaseFunction<Required<User>[]> & { _userName: string }> {
+  }): Promise<
+    DatabaseFunction<Required<SecuredUser>[]> & { _userName: string }
+  > {
     const opts: [string, WhereFilterOp, string] = ["userName", "==", userName];
     const result = userName
       ? await db
@@ -75,7 +73,7 @@ export default function makeUsersDb({
           .get()
       : await db.collection(CollectionPaths.USER).get();
 
-    const users: Required<User>[] = [];
+    const users: Required<SecuredUser>[] = [];
 
     result.forEach((doc) => {
       users.push(createUserFromDb(doc));
@@ -88,7 +86,7 @@ export default function makeUsersDb({
     id,
   }: {
     id: string;
-  }): Promise<DatabaseFunction<Required<User>> & { id?: string }> {
+  }): Promise<DatabaseFunction<Required<SecuredUser>> & { id?: string }> {
     const usersRef = await db.collection(CollectionPaths.USER);
     const data = await usersRef.where("id", "==", id).get();
     if (data.empty || data.size === 0) {
@@ -103,8 +101,8 @@ export default function makeUsersDb({
     data,
   }: {
     id: string;
-    data: Required<User>;
-  }): Promise<DatabaseFunction<DatabaseObject<Required<User>>>> {
+    data: Required<SecuredUser>;
+  }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     const tenant = await db.collection(CollectionPaths.USER).doc(id);
     const result = await tenant.update(data);
 

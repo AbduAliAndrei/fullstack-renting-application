@@ -1,0 +1,104 @@
+
+> summer_project@0.1.0 dev
+> cross-env NODE_ENV=development && nodemon server/index.ts
+
+[33m[nodemon] 2.0.13[39m
+[33m[nodemon] reading config ./nodemon.json[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] or send SIGHUP to 23618 to restart[39m
+[33m[nodemon] ignoring: ./node_modules/**/* ./.next/**/*[39m
+[33m[nodemon] watching path(s): server/**/* index.ts[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node server/index.ts`[39m
+[33m[nodemon] spawning[39m
+[33m[nodemon] child pid: 23631[39m
+[33m[nodemon] exiting[39m
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:191:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:520:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+info  - Loaded env from /home/abdulla/Desktop/Abdulla/JavaScript/projects/fullstack-renting-application/.env.development
+info  - Using webpack 5. Reason: Enabled by default https://nextjs.org/docs/messages/webpack5
+event - compiled successfully
+> Ready on 3001
+
+> summer_project@0.1.0 dev
+> cross-env NODE_ENV=development && nodemon server/index.ts
+
+[33m[nodemon] 2.0.13[39m
+[33m[nodemon] reading config ./nodemon.json[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] or send SIGHUP to 23923 to restart[39m
+[33m[nodemon] ignoring: ./node_modules/**/* ./.next/**/*[39m
+[33m[nodemon] watching path(s): server/**/* index.ts[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node server/index.ts`[39m
+[33m[nodemon] spawning[39m
+[33m[nodemon] child pid: 23936[39m
+[33m[nodemon] exiting[39m
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:191:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:520:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+info  - Loaded env from /home/abdulla/Desktop/Abdulla/JavaScript/projects/fullstack-renting-application/.env.development
+info  - Using webpack 5. Reason: Enabled by default https://nextjs.org/docs/messages/webpack5
+event - compiled successfully
+error - uncaughtException: Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (net.js:1316:16)
+    at listenInCluster (net.js:1364:12)
+    at Server.listen (net.js:1450:7)
+    at Function.listen (/home/abdulla/Desktop/Abdulla/JavaScript/projects/fullstack-renting-application/node_modules/express/lib/application.js:618:24)
+    at /home/abdulla/Desktop/Abdulla/JavaScript/projects/fullstack-renting-application/server/index.ts:42:12 {
+  code: 'EADDRINUSE',
+  errno: 'EADDRINUSE',
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+event - build page: /
+wait  - compiling...
+event - compiled successfully
+event - build page: /profile
+wait  - compiling...
+event - build page: /login
+Could not find files for /login in .next/build-manifest.json
+Could not find files for /login in .next/build-manifest.json
+event - compiled successfully
+checked error false
+wait  - compiling...
+event - compiled successfully
+wait  - compiling...
+wait  - compiling...
+event - compiled successfully
+event - compiled successfully
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/abdulla/Desktop/Abdulla/JavaScript/projects/fullstack-renting-application/.next/cache/webpack/client-development/8.pack_' -> '/home/abdulla/Desktop/Abdulla/JavaScript/projects/fullstack-renting-application/.next/cache/webpack/client-development/8.pack'
+event - build page: /
+wait  - compiling...
+event - compiled successfully
+event - build page: /profile
+wait  - compiling...
+event - compiled successfully
+checked error false
+wait  - compiling...
+event - compiled successfully
+event - build page: /next/dist/pages/_error
+wait  - compiling...
+event - compiled successfully
+wait  - compiling...
+event - compiled successfully
