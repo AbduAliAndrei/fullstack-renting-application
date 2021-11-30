@@ -3,6 +3,7 @@ import createExpressCallback from "../express-callback";
 import controller from "../controllers";
 import { SecuredUser } from "../../interfaces/user";
 import privateAccessMiddleware from "../middlewares/private-access.middleware";
+import currentOnlyAccessMiddleware from "../middlewares/current-user-only-access.middleware";
 
 const router = express.Router();
 
@@ -20,6 +21,23 @@ function routes(): Router {
     "/auth/logout",
     createExpressCallback(controller.postLogout, privateAccessMiddleware)
   );
+
+  // users CRUD
+  router.get("/users", createExpressCallback(controller.getUsers));
+  router.get("/users/:id", createExpressCallback(controller.getUser));
+  router.delete(
+    "/users",
+    createExpressCallback(controller.deleteUser, currentOnlyAccessMiddleware)
+  );
+  router.put(
+    "/users",
+    createExpressCallback(controller.putUser, currentOnlyAccessMiddleware)
+  );
+  router.put(
+    "/users/:id/role",
+    createExpressCallback(controller.putUserRole, currentOnlyAccessMiddleware)
+  );
+
   // router.post(
   //   "/dummy/check-private",
   //   createExpressCallback(dummyController, privateAccessMiddleware)

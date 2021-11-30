@@ -2,6 +2,11 @@ import { Role } from "./role";
 
 export type SecuredUser = Omit<User, "password">;
 
+export type UpdatedUser = Omit<
+  User,
+  "password" | "email" | "id" | "role" | "createdAt" | "verified"
+>;
+
 export interface User {
   email: string;
   password: string;

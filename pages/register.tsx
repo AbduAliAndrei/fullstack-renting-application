@@ -8,7 +8,7 @@ import { User } from "../interfaces/user";
 import { useRouter } from "next/router";
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
-  const [userGender, setUserGender] = useState<UserGender>(UserGender.MALE);
+  const [, setUserGender] = useState<UserGender>(UserGender.MALE);
   const [registeringUser, setRegisteringUser] = useState<User>({
     email: "andrei.cristea@gmail.com",
     firstName: "Andrei",
