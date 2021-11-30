@@ -3,6 +3,7 @@ import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
 import asyncF from "../../../utils/async-f";
 import { authRemove } from "../../database";
+import { HttpStatus } from "../../enums/http-status";
 
 export default function createDeleteUser(services: {
   deleteUser: (
@@ -21,7 +22,7 @@ export default function createDeleteUser(services: {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 400,
+        statusCode: HttpStatus.BAD_REQUEST,
         body: {
           error: "Please provide both id and type for user deletion",
         },
@@ -35,7 +36,7 @@ export default function createDeleteUser(services: {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 400,
+        statusCode: HttpStatus.BAD_REQUEST,
         body: {
           error: error as string,
         },
@@ -45,7 +46,7 @@ export default function createDeleteUser(services: {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 204,
+        statusCode: HttpStatus.NO_CONTENT,
         body: {
           res: data,
         },

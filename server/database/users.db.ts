@@ -4,25 +4,31 @@ import { CollectionPaths } from "../enums/collection-paths";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 import {
-  DatabaseEntity,
   DatabaseFunction,
   DatabaseObject,
+  DatabaseUserEntity,
 } from "../interfaces/database-entity";
 import { SecuredUser } from "../../interfaces/user";
 import { UserModel } from "../interfaces/models/user.type";
-import { toUserFromModel } from "../models/entities/user/user.entity";
+import {
+  createRole,
+  toUserFromModel,
+} from "../models/entities/user/user.entity";
+import { UserType } from "../../enums/user-type";
+import { Role } from "../../interfaces/role";
 
 export default function makeUsersDb({
   db,
 }: {
   db: Firestore;
-}): DatabaseEntity<SecuredUser, UserModel> {
+}): DatabaseUserEntity<SecuredUser, UserModel, Role> {
   return Object.freeze({
     add,
     findAll,
     findById,
     update,
     remove,
+    updateRole,
   });
 
   async function add(
@@ -103,10 +109,48 @@ export default function makeUsersDb({
     id: string;
     data: Required<SecuredUser>;
   }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
-    const tenant = await db.collection(CollectionPaths.USER).doc(id);
-    const result = await tenant.update(data);
+    const userRef = await db
+      .collection(CollectionPaths.USER)
+      .where("id", "==", id)
+      .get();
 
-    return { fetchedData: { writeTime: result.writeTime.toDate(), data } };
+    let result: Promise<firestore.WriteResult>;
+    userRef.forEach((doc) => {
+      result = doc.ref.update(data);
+    });
+
+    return {
+      fetchedData: { writeTime: (await result).writeTime.toDate(), data },
+    };
+  }
+
+  async function updateRole({
+    id,
+    role,
+  }: {
+    id: string;
+    role: UserType;
+  }): Promise<DatabaseFunction<DatabaseObject<Required<Role>>>> {
+    const userRef = await db
+      .collection(CollectionPaths.USER)
+      .where("id", "==", id)
+      .get();
+
+    const generatedRole = createRole(role);
+
+    let result: Promise<firestore.WriteResult>;
+    userRef.forEach((doc) => {
+      result = doc.ref.update({
+        role: generatedRole,
+      });
+    });
+
+    return {
+      fetchedData: {
+        writeTime: (await result).writeTime.toDate(),
+        data: generatedRole,
+      },
+    };
   }
 
   async function remove({
@@ -114,8 +158,18 @@ export default function makeUsersDb({
   }: {
     id: string;
   }): Promise<DatabaseFunction<DatabaseObject<string>>> {
-    const result = await db.collection(CollectionPaths.USER).doc(id).delete();
+    const usersRef = await db
+      .collection(CollectionPaths.USER)
+      .where("id", "==", id)
+      .get();
 
-    return { fetchedData: { writeTime: result.writeTime.toDate(), data: id } };
+    let result: Promise<firestore.WriteResult>;
+    usersRef.forEach((doc) => {
+      result = doc.ref.delete();
+    });
+
+    const fetched = await result;
+
+    return { fetchedData: { writeTime: fetched.writeTime.toDate(), data: id } };
   }
 }
