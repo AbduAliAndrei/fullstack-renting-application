@@ -5,21 +5,6 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  # robot-testing:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: sudo apt install chromium-chromedriver
-  #     - run: sudo pip3 install robotframework
-  #     - run: sudo npm install -g webdriver-manager
-  #     - run: sudo webdriver-manager update
-  #     - run: sudo nohup webdriver-manager start &
-  #     - run: sudo pip3 install --upgrade robotframework-seleniumlibrary
-  #     - run: sudo chmod u+x run_tests.sh
-  #     - run: sudo npm install --silent
-  #     - run: sudo nohup npm run dev &
-  #     - run: sudo ./run_tests.sh
-  #       shell: bash
   test_pull_request:
     name: test_pullrequests
     runs-on: ${{matrix.os}}
@@ -31,9 +16,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
+      # - run: npm ci -g
+      - run: npm i -g 
+      - run: eslint .
+      - run: eslint . --fix
       - run: npm install --silent
       - run: npm run build
+
   docker:
     name: Docker build image
     runs-on: ubuntu-latest
