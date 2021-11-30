@@ -13,7 +13,7 @@ export default function createGetUser({
     httpRequest: HttpRequest
   ): Promise<Controller<Required<SecuredUser>>> {
     const fetchProcess = async (): Promise<Required<SecuredUser>> => {
-      const userId = httpRequest.headers["id"];
+      const userId = httpRequest.params["id"];
       return await getUser({
         id: userId,
       });

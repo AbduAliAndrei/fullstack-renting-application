@@ -28,14 +28,15 @@ export interface DatabaseEntity<T, TModel> {
   }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
 }
 
-export interface DatabaseUserEntity<T, Model> extends DatabaseEntity<T, Model> {
+export interface DatabaseUserEntity<T, Model, Role>
+  extends DatabaseEntity<T, Model> {
   updateRole: ({
     id,
     role,
   }: {
     id: string;
     role: UserType;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<UserType>>>>;
+  }) => Promise<DatabaseFunction<DatabaseObject<Required<Role>>>>;
 }
 
 export type DatabaseFunction<T> = {

@@ -6,11 +6,12 @@ import {
   DatabaseUserEntity,
 } from "../../../interfaces/database-entity";
 import { UserType } from "../../../../enums/user-type";
+import { Role } from "../../../../interfaces/role";
 
 export function updateUserRoleService({
   db,
 }: {
-  db: DatabaseUserEntity<SecuredUser, UserModel>;
+  db: DatabaseUserEntity<SecuredUser, UserModel, Role>;
 }) {
   return async function updateUserRoleService({
     id,
@@ -18,7 +19,7 @@ export function updateUserRoleService({
   }: {
     id: string;
     role: UserType;
-  }): Promise<DatabaseFunction<DatabaseObject<Required<UserType>>>> {
+  }): Promise<DatabaseFunction<DatabaseObject<Required<Role>>>> {
     return await db.updateRole({ id, role });
   };
 }

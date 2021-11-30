@@ -34,7 +34,7 @@ function routes(): Router {
     createExpressCallback(controller.putUser, currentOnlyAccessMiddleware)
   );
   router.put(
-    "users/:id",
+    "/users/:id/role",
     createExpressCallback(controller.putUserRole, currentOnlyAccessMiddleware)
   );
 
