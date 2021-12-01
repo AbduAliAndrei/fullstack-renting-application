@@ -16,7 +16,6 @@ export default function deleteUserService({ usersDb }: DeleteUserService) {
     authRemove: ({ uid }: { uid: string }) => Promise<void>
   ): Promise<DatabaseObject<string>> {
     const removeRes = await usersDb.remove({ id });
-    console.log(removeRes);
     if (!removeRes.fetchedData) {
       throw new Error("User was not deleted. Uncaught error.");
     }

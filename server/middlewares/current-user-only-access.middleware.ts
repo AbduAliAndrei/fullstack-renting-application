@@ -8,7 +8,6 @@ export default async function currentUserOnlyAccessMiddleware(
   req: Request
 ): Promise<boolean> {
   const takenUser = await userByIdExistsHelperMiddleware(req);
-
   if (takenUser.role.role === UserType.ADMIN) {
     return true;
   }
