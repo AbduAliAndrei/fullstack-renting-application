@@ -165,11 +165,12 @@ export default function makeUsersDb({
 
     let result: Promise<firestore.WriteResult>;
     usersRef.forEach((doc) => {
-      result = doc.ref.delete();
+      result = db.collection(CollectionPaths.USER).doc(doc.id).delete();
     });
+    const res = await result;
 
-    const fetched = await result;
-
-    return { fetchedData: { writeTime: fetched.writeTime.toDate(), data: id } };
+    return {
+      fetchedData: { writeTime: res.writeTime.toDate(), data: id },
+    };
   }
 }
