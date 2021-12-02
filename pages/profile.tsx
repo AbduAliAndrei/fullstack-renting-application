@@ -48,7 +48,7 @@ const Profile = () => {
   const onGetUser = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const res = await fetch(`api/users/g6BOFqQzGKdXQYWr6ww970JNIvn1`, {
+      const res = await fetch(`/api/users`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -58,8 +58,9 @@ const Profile = () => {
         body: JSON.stringify({
           userId: "g6BOFqQzGKdXQYWr6ww970JNIvn1",
           user: {
-            lastName: "Landlordtestsuccess",
-            gender: "female",
+            lastName: "SecondSuccess",
+            gender: "male",
+            id: "g6BOFqQzGKdXQYWr6ww970JNIvn1",
           },
         }),
       });

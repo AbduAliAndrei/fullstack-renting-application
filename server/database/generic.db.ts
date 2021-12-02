@@ -19,7 +19,9 @@ export default function makeGenericDb<T, TModel>({
   collectionPath: string;
   toTFromModelT: (t: TModel) => Required<T>;
   createT: (
-    q: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>
+    q:
+      | FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>
+      | FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
   ) => Required<T>;
 }): GenericDatabaseEntity<T, TModel> {
   return Object.freeze({ add, findAll, find, update, remove });
@@ -37,12 +39,14 @@ export default function makeGenericDb<T, TModel>({
     };
   }
 
-  async function findAll<f extends string>({
+  async function findAll<F extends string>({
     findKey,
+    key,
   }: {
     findKey?: string;
-  }): Promise<DatabaseFunction<Required<T>[]> & { [a in `_${f}`]?: string }> {
-    const opts: [string, WhereFilterOp, string] = [`${findKey}`, "==", findKey];
+    key: F;
+  }): Promise<DatabaseFunction<Required<T>[]> & { [a in `_${F}`]?: string }> {
+    const opts: [string, WhereFilterOp, string] = [`${key}`, "==", findKey];
     const result = findKey
       ? await db
           .collection(collectionPath)
@@ -56,35 +60,39 @@ export default function makeGenericDb<T, TModel>({
       data.push(createT(doc));
     });
 
-    return { fetchedData: data, ...{ [`_${findKey}`]: findKey } };
+    return { fetchedData: data, ...{ [`_${key}`]: findKey } };
   }
 
-  async function find<f extends string>({
+  async function find<F extends string>({
     findKey,
+    key,
   }: {
     findKey: string;
-  }): Promise<DatabaseFunction<Required<T>> & { [a in `_${f}`]?: string }> {
+    key: F;
+  }): Promise<DatabaseFunction<Required<T>> & { [a in `_${F}`]?: string }> {
     const dataRef = await db.collection(collectionPath);
-    const data = await dataRef.where(`${findKey}`, "==", findKey).get();
+    const data = await dataRef.where(`${key}`, "==", findKey).get();
     if (data.empty || data.size === 0) {
       return { fetchedData: null };
     }
     return {
       fetchedData: createT(data.docs[0]),
-      ...{ [`_${findKey}`]: findKey },
+      ...{ [`_${key}`]: findKey },
     };
   }
 
-  async function update<U>({
+  async function update<U, F>({
+    field,
     key,
     data,
   }: {
+    field: F;
     key: string;
     data: U;
   }): Promise<DatabaseFunction<DatabaseObject<Required<T>>>> {
     const dataRef = await db
       .collection(collectionPath)
-      .where(`${key}`, "==", key)
+      .where(`${field}`, "==", key)
       .get();
 
     let result: Promise<firestore.WriteResult>;
@@ -97,7 +105,7 @@ export default function makeGenericDb<T, TModel>({
     return {
       fetchedData: {
         writeTime: (await result).writeTime.toDate(),
-        data: createT((await resData)[0]),
+        data: createT(await resData),
       },
     };
   }

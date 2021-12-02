@@ -1,4 +1,4 @@
-import { SecuredUser } from "../../../interfaces/user";
+import { SecuredUser, UpdatedUser } from "../../../interfaces/user";
 import asyncF from "../../../utils/async-f";
 import { HttpStatus } from "../../enums/http-status";
 import Controller from "../../interfaces/controller";
@@ -12,7 +12,7 @@ export default function createUpdateUser({
   putUser,
 }: {
   putUser: (
-    userInfo: SecuredUser
+    userInfo: UpdatedUser
   ) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
 }): (
   h: HttpRequest

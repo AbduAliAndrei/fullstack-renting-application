@@ -1,5 +1,4 @@
 import { firestore } from "firebase-admin/lib/firestore";
-import Firestore = firestore.Firestore;
 import { CollectionPaths } from "../enums/collection-paths";
 import {
   DatabaseFunction,
@@ -15,6 +14,7 @@ import {
 import { UserType } from "../../enums/user-type";
 import { Role } from "../../interfaces/role";
 import makeGenericDb from "./generic.db";
+import Firestore = firestore.Firestore;
 
 export default function makeUsersDb({
   db,
@@ -67,7 +67,10 @@ export default function makeUsersDb({
   }): Promise<
     DatabaseFunction<Required<SecuredUser>[]> & { _userName?: string }
   > {
-    return genericUserDb.findAll<"userName">({ findKey: userName });
+    return genericUserDb.findAll<"userName">({
+      findKey: userName,
+      key: "userName",
+    });
   }
 
   async function findById({
@@ -75,7 +78,9 @@ export default function makeUsersDb({
   }: {
     id: string;
   }): Promise<DatabaseFunction<Required<SecuredUser>> & { _id?: string }> {
-    return genericUserDb.find<"id">({ findKey: id });
+    const res = genericUserDb.find<"id">({ findKey: id, key: "id" });
+    console.log(res);
+    return res;
   }
 
   async function update({
@@ -85,7 +90,11 @@ export default function makeUsersDb({
     key: string;
     data: Required<SecuredUser>;
   }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
-    return genericUserDb.update({ key, data });
+    return genericUserDb.update<Required<SecuredUser>, "id">({
+      key,
+      data,
+      field: "id",
+    });
   }
 
   async function updateRole({
@@ -96,9 +105,10 @@ export default function makeUsersDb({
     role: UserType;
   }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     const generatedRole = createRole(role);
-    return genericUserDb.update<{ role: Role }>({
+    return genericUserDb.update<{ role: Role }, "id">({
       key: id,
       data: { role: generatedRole },
+      field: "id",
     });
   }
 
