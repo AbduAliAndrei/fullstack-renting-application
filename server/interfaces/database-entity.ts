@@ -28,15 +28,17 @@ export interface GenericDatabaseEntity<T, TModel> {
     key: string;
     data: U;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
-  remove: ({
+  remove: <F>({
     key,
+    field,
   }: {
     key: string;
+    field: F;
   }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
 }
 
 export interface DatabaseEntity<T, TModel>
-  extends Pick<GenericDatabaseEntity<T, TModel>, "remove" | "add"> {
+  extends Pick<GenericDatabaseEntity<T, TModel>, "add"> {
   findAll: ({
     userName,
   }: {
@@ -54,6 +56,11 @@ export interface DatabaseEntity<T, TModel>
     key: string;
     data: Required<T>;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
+  remove: ({
+    key,
+  }: {
+    key: string;
+  }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
 }
 
 export interface DatabaseUserEntity<T, Model>

@@ -110,14 +110,16 @@ export default function makeGenericDb<T, TModel>({
     };
   }
 
-  async function remove({
+  async function remove<F>({
     key,
+    field,
   }: {
     key: string;
+    field: F;
   }): Promise<DatabaseFunction<DatabaseObject<string>>> {
     const dataRef = await db
       .collection(collectionPath)
-      .where(`${key}`, "==", key)
+      .where(`${field}`, "==", key)
       .get();
 
     let result: Promise<firestore.WriteResult>;

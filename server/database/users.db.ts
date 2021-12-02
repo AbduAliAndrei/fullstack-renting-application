@@ -117,6 +117,6 @@ export default function makeUsersDb({
   }: {
     key: string;
   }): Promise<DatabaseFunction<DatabaseObject<string>>> {
-    return genericUserDb.remove({ key });
+    return genericUserDb.remove<"id">({ key, field: "id" });
   }
 }
