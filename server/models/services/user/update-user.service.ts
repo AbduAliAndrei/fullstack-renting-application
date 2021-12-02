@@ -1,24 +1,25 @@
 import {
-  DatabaseEntity,
   DatabaseFunction,
   DatabaseObject,
+  DatabaseUserEntity,
 } from "../../../interfaces/database-entity";
 import { UserModel } from "../../../interfaces/models/user.type";
-import { SecuredUser } from "../../../../interfaces/user";
+import { SecuredUser, UpdatedUser } from "../../../../interfaces/user";
 
 export type UpdateUserServiceCreator = {
-  usersDb: DatabaseEntity<SecuredUser, UserModel>;
+  usersDb: DatabaseUserEntity<SecuredUser, UserModel>;
 };
 
 export default function updateUserService({
   usersDb,
 }: UpdateUserServiceCreator) {
   return async function updateUser(
-    user: SecuredUser
+    user: UpdatedUser,
+    userId: string
   ): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     return await usersDb.update({
-      key: user.id,
-      data: user as Required<SecuredUser>,
+      key: userId,
+      data: user as Required<UpdatedUser>,
     });
   };
 }

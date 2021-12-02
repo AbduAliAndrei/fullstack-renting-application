@@ -5,7 +5,7 @@ import {
   DatabaseObject,
   DatabaseUserEntity,
 } from "../interfaces/database-entity";
-import { SecuredUser } from "../../interfaces/user";
+import { SecuredUser, UpdatedUser } from "../../interfaces/user";
 import { UserModel } from "../interfaces/models/user.type";
 import {
   createRole,
@@ -50,8 +50,8 @@ export default function makeUsersDb({
       lastName: doc.data().lastName,
       userName: doc.data().userName,
       email: doc.data().email,
-      createdAt: doc.data().createdAt,
-      updatedAt: doc.data().updatedAt,
+      createdAt: doc.data().createdAt.toDate(),
+      updatedAt: doc.data().updatedAt.toDate(),
       verified: doc.data().verified,
       role: doc.data().role,
       gender: doc.data().gender,
@@ -88,9 +88,9 @@ export default function makeUsersDb({
     data,
   }: {
     key: string;
-    data: Required<SecuredUser>;
+    data: Required<UpdatedUser>;
   }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
-    return genericUserDb.update<Required<SecuredUser>, "id">({
+    return genericUserDb.update<Required<UpdatedUser>, "id">({
       key,
       data,
       field: "id",

@@ -1,5 +1,5 @@
 import { UserType } from "../../enums/user-type";
-import { SecuredUser } from "../../interfaces/user";
+import { SecuredUser, UpdatedUser } from "../../interfaces/user";
 
 export interface GenericDatabaseEntity<T, TModel> {
   add: (
@@ -56,7 +56,15 @@ export interface DatabaseEntity<T, TModel>
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
 }
 
-export interface DatabaseUserEntity<T, Model> extends DatabaseEntity<T, Model> {
+export interface DatabaseUserEntity<T, Model>
+  extends Omit<DatabaseEntity<T, Model>, "update"> {
+  update: ({
+    key,
+    data,
+  }: {
+    key: string;
+    data: Required<UpdatedUser>;
+  }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
   updateRole: ({
     id,
     role,

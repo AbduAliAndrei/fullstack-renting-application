@@ -58,9 +58,8 @@ const Profile = () => {
         body: JSON.stringify({
           userId: "g6BOFqQzGKdXQYWr6ww970JNIvn1",
           user: {
-            lastName: "SecondSuccess",
+            lastName: "ThirdSuccess",
             gender: "male",
-            id: "g6BOFqQzGKdXQYWr6ww970JNIvn1",
           },
         }),
       });

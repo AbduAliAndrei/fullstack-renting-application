@@ -12,7 +12,8 @@ export default function createUpdateUser({
   putUser,
 }: {
   putUser: (
-    userInfo: UpdatedUser
+    userInfo: UpdatedUser,
+    userId: string
   ) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
 }): (
   h: HttpRequest
@@ -23,15 +24,18 @@ export default function createUpdateUser({
     const updateProcess = async (): Promise<
       DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
     > => {
-      const { source = {}, user } = httpRequest.body;
+      const { source = {}, user, userId } = httpRequest.body;
       source.ip = httpRequest.ip;
       source.browser = httpRequest.headers["User-Agent"];
       if (httpRequest.headers["Referer"]) {
         source.referer = httpRequest.headers["Referer"];
       }
-      return await putUser({
-        ...user,
-      });
+      return await putUser(
+        {
+          ...user,
+        },
+        userId
+      );
     };
     const [data, error] = await asyncF<
       DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
