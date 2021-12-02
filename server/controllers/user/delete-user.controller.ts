@@ -15,9 +15,9 @@ export default function createDeleteUser(services: {
   return async function (
     httpRequest: HttpRequest
   ): Promise<Controller<DatabaseObject<Required<string>>>> {
-    const { id }: { id: string } = httpRequest.body;
+    const { userId }: { userId: string } = httpRequest.body;
 
-    if (!id) {
+    if (!userId) {
       return {
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default function createDeleteUser(services: {
       };
     }
 
-    const [data, error] = await asyncF(services.deleteUser(id, authRemove));
+    const [data, error] = await asyncF(services.deleteUser(userId, authRemove));
 
     if (error) {
       return {
@@ -46,7 +46,7 @@ export default function createDeleteUser(services: {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: HttpStatus.NO_CONTENT,
+        statusCode: HttpStatus.OK,
         body: {
           res: data,
         },
