@@ -17,7 +17,7 @@ export default function updateUserService({
     user: SecuredUser
   ): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     return await usersDb.update({
-      id: user.id,
+      key: user.id,
       data: user as Required<SecuredUser>,
     });
   };

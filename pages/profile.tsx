@@ -2,7 +2,6 @@ import Auth from "../components/Auth";
 import { FormEvent, useCallback } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-import { UserType } from "../enums/user-type";
 
 const Profile = () => {
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
@@ -49,7 +48,7 @@ const Profile = () => {
   const onGetUser = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const res = await fetch(`api/users/hR2r646LPiabzGW6Y5EyBldBOsy2/role`, {
+      const res = await fetch(`api/users/g6BOFqQzGKdXQYWr6ww970JNIvn1`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -57,8 +56,11 @@ const Profile = () => {
           "CSRF-Token": xsrfToken["XSRF-Token"],
         },
         body: JSON.stringify({
-          userId: "hR2r646LPiabzGW6Y5EyBldBOsy2",
-          role: UserType.LANDLORD,
+          userId: "g6BOFqQzGKdXQYWr6ww970JNIvn1",
+          user: {
+            lastName: "Landlordtestsuccess",
+            gender: "female",
+          },
         }),
       });
 

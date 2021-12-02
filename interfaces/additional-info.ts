@@ -1,6 +1,6 @@
-import { roomDetails } from "./room-details";
+import { RoomDetails } from "./room-details";
 
-export type additionalInfo = {
-  rooms?: roomDetails;
+export type AdditionalInfo = {
+  rooms?: RoomDetails;
   floor?: number;
 };

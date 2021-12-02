@@ -1,42 +1,63 @@
 import { UserType } from "../../enums/user-type";
+import { SecuredUser } from "../../interfaces/user";
 
-export interface DatabaseEntity<T, TModel> {
+export interface GenericDatabaseEntity<T, TModel> {
   add: (
-    info: Required<TModel>
+    addInfo: Required<TModel>
   ) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
+  findAll: <f extends string>({
+    findKey,
+  }: {
+    findKey?: string;
+  }) => Promise<DatabaseFunction<Required<T>[]> & { [a in `_${f}`]?: string }>;
+  find: <f extends string>({
+    findKey,
+  }: {
+    findKey: string;
+  }) => Promise<DatabaseFunction<Required<T>> & { [a in `_${f}`]?: string }>;
+  update: <U>({
+    key,
+    data,
+  }: {
+    key: string;
+    data: U;
+  }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
+  remove: ({
+    key,
+  }: {
+    key: string;
+  }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
+}
+
+export interface DatabaseEntity<T, TModel>
+  extends Pick<GenericDatabaseEntity<T, TModel>, "remove" | "add"> {
   findAll: ({
     userName,
   }: {
     userName?: string;
-  }) => Promise<DatabaseFunction<Required<T>[]> & { _userName: string }>;
+  }) => Promise<DatabaseFunction<Required<T>[]> & { _userName?: string }>;
   findById: ({
     id,
   }: {
     id: string;
-  }) => Promise<DatabaseFunction<Required<T>> & { id?: string }>;
+  }) => Promise<DatabaseFunction<Required<T>> & { _id?: string }>;
   update: ({
-    id,
+    key,
     data,
   }: {
-    id: string;
+    key: string;
     data: Required<T>;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
-  remove: ({
-    id,
-  }: {
-    id: string;
-  }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
 }
 
-export interface DatabaseUserEntity<T, Model, Role>
-  extends DatabaseEntity<T, Model> {
+export interface DatabaseUserEntity<T, Model> extends DatabaseEntity<T, Model> {
   updateRole: ({
     id,
     role,
   }: {
     id: string;
     role: UserType;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<Role>>>>;
+  }) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
 }
 
 export type DatabaseFunction<T> = {
