@@ -1,5 +1,4 @@
-name: Build and deploy
-
+name: Build
 on:
   push:
     branches: [ main ]
@@ -20,9 +19,9 @@ jobs:
             node-version: 12
         - run: npm ci
         - run: npm i -g
-        - name: Linting
-           - eslint .
-           - eslint . --fix
+        - name: linting
+          run: eslint . --fix
+        - run: npm install --silent
         - run: npm run build
     build:
       name: Build
@@ -37,12 +36,12 @@ jobs:
           run: npm run build
         - name: Fix linting
           run: eslint .
-         - name: Archive production artifact
+        - name: Archive production artifact
           uses: actions/upload-artifact@main
           with:
             name: dist
             path: dist
-    docker-build-push:
+    docker:
       name: Docker build image
       runs-on: ubuntu-latest
       steps:
@@ -60,21 +59,3 @@ jobs:
             image: robot-testing-viarent:latest
             push: true
             tags: abdualiandrei/fullstack-renting-application:latest
-    # deploy:
-    #   name: Deploy
-    #   needs: build
-    #   runs-on: ubuntu-latest
-    #   steps:
-    #     - name: Checkout repository
-    #       uses: actions/checkout@main
-    #     # - name: Download artifact
-    #       # uses: actions/download-artifact@main
-    #       with:
-    #         name: dist
-    #         path: dist
-    #     - name: Deploy to Firebase
-    #       uses: w9jds/firebase-action@master
-    #       with:
-    #         args: deploy --only hosting
-    #       env:
-    #         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN}}
