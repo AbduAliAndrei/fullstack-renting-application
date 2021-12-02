@@ -1,0 +1,10 @@
+export enum UnitType {
+  STUDIO,
+  SHAREDFLAT,
+  SHAREDROOM,
+  DORMROOM,
+  FLAT,
+  HOUSE,
+  VILLA,
+  MANSION,
+}
