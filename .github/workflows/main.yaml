@@ -20,8 +20,7 @@ jobs:
         - run: npm ci
         - run: npm i -g
         - name: linting
-          run: npm lint:fix
-          run: npm lint:next
+          run: npm lint:fix && npm lint:next
         - run: npm install --silent
         - run: npm run build
     build:
