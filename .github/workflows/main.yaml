@@ -19,8 +19,8 @@ jobs:
             node-version: 12
         - run: npm ci
         - run: npm i -g
-        - name: linting
-          run: npm lint:fix && npm lint:next
+#         - name: linting
+#           run: npm lint:fix && npm lint:next
         - run: npm install --silent
         - run: npm run build
     build:
@@ -34,8 +34,8 @@ jobs:
           run: npm ci
         - name: Build dependencies
           run: npm run build
-        - name: Fix linting
-          run: eslint .
+#         - name: Fix linting
+#           run: eslint .
         - name: Archive production artifact
           uses: actions/upload-artifact@main
           with:
