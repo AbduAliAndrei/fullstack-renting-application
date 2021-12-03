@@ -1,53 +1,73 @@
 .ForLandlords {
   @include flex(row);
+  position: relative;
   width: 100vw;
-  // margin-bottom: 100px;
+  margin: 100px 0;
   padding: 20px;
   min-height: 70vh;
   justify-content: space-around;
   .features {
     @include flex(column);
+    min-height: inherit;
     height: 100%;
     gap: 20px;
-    width: 40%;
+    .features-select {
+      width: 100%;
+      @include flex(row);
+      justify-content: flex-start;
+      gap: 10px;
+      font-size: 35px;
+      .features-select-title {
+        font-size: 35px;
+        color: black;
+      }
+      .forTenantsSelect,
+      .forLandlordsSelect {
+        font-size: 35px;
+      }
+    }
     .feature {
       background-color: transparent;
-      padding: 20px 100px 20px 20px;
+      padding: 60px;
       border-radius: 20px;
       border: solid $main-black 1px;
+      width: 100%;
       .feature-title {
+        font-size: 30px;
         color: $main-color2;
         margin: 10px 0;
+        font-weight: bolder;
       }
       .sub-features {
         color: $main-black;
-        font-size: 20px;
+        font-size: 25px;
       }
     }
   }
   .feature-view {
-    width: 40%;
+    padding: 60px;
+    min-height: inherit;
     height: 100%;
-    // background-color: transparent;
     border-radius: 20px;
     border: solid $main-black 1px;
-    padding: 20px;
-    .right-btn {
-      float: right;
-    }
+    width: 40%;
+
     .feature-view-title {
       margin: 20px 0;
       color: $main-color2;
     }
     .feature-image-description {
       @include flex(row);
-      height: 200px;
+      min-height: 200px;
       width: 100%;
-      flex-wrap: nowrap;
+      padding: 10px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 20px 0;
       .image-preview {
         position: relative;
-        width: 50%;
-        height: 100%;
+        width: 40%;
+        height: 400px;
         margin-right: 5px;
         object-fit: cover;
         .ld-img {
@@ -55,14 +75,19 @@
         }
       }
       .feature-description {
-        width: 50%;
-
+        font-size: 30px;
+        width: 430px;
         p {
           color: $main-black;
         }
       }
     }
-    .left-btn {
+    .left-btn,
+    .right-btn {
+      cursor: pointer;
+    }
+    .right-btn {
+      float: right;
     }
   }
 }

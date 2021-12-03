@@ -27,9 +27,9 @@ export default function Header() {
             disableUnderline: true,
           }}
           style={{
-            backgroundColor: "#fff",
             borderRadius: "20px",
             padding: "20px 40px ",
+            border: "solid #000 1px",
           }}
           placeholder="Type a location"
           fullWidth
@@ -37,11 +37,12 @@ export default function Header() {
       </div>
       <div className="vector-img-container">
         <Image
-          src="/DSC_2778.jpg"
+          src="/budapest.jpg"
           alt="Landlord Image"
           className="ld-img"
           objectFit="cover"
           layout="fill"
+          priority={true}
         />
       </div>
     </div>
