@@ -63,8 +63,8 @@ export default function ForLandlords() {
 
   const [forTenantsActive, setTenantsActive] = useState(true);
   const [forLandlordsActive, setForLandlordsActive] = useState(false);
-  let [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
-  let currentTL = forLandlordsActive
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+  const currentTL = forLandlordsActive
     ? forLandlordsFeatures
     : forTenantsFeatures;
   return (
@@ -100,14 +100,14 @@ export default function ForLandlords() {
             For Landlords
           </Button>
         </div>
-        {currentTL.map((feature) => (
-          <div className="feature">
+        {currentTL.map((feature, index) => (
+          <div className="feature" key={index}>
             <Typography className="feature-title" variant="h1" component="h1">
               {feature.title}
             </Typography>
             <Typography className="sub-features" variant="button" gutterBottom>
-              {feature.subFeatures.map((subFeature) => (
-                <span>{subFeature} | </span>
+              {feature.subFeatures.map((subFeature, index2) => (
+                <span key={index2}>{subFeature} | </span>
               ))}
             </Typography>
           </div>

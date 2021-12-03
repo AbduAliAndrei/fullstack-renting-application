@@ -349,18 +349,12 @@
 }
 
 .RecentOffers .offers .offer {
-  height: 520px;
-  min-width: 350px;
+  min-height: 200px;
   background-color: #fffffb;
   border-radius: 20px;
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
-  padding: 30px;
-}
-
-.RecentOffers .offers .offer:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  padding: 40px;
 }
 
 @media screen and (max-width: 640px) {
@@ -664,13 +658,14 @@
 .Offers .offers-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(500px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  -ms-grid-columns: (minmax(430px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
   row-gap: 20px;
   -webkit-column-gap: 40px;
           column-gap: 40px;
   width: 70%;
   margin: 70px auto;
+  background-color: red;
 }
 
 @media screen and (max-width: 1648px) {
@@ -692,19 +687,12 @@
 }
 
 .Card {
-  height: 520px;
-  min-width: 350px;
+  min-height: 200px;
   background-color: #fffffb;
   border-radius: 20px;
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
-  padding: 30px;
-  min-height: 650px;
-}
-
-.Card:hover {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  padding: 40px;
 }
 
 @media screen and (max-width: 640px) {
@@ -763,7 +751,6 @@
 
 .Card .offer-images .carousel .slider {
   position: relative;
-  background-color: blue;
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
@@ -773,9 +760,10 @@
 
 .Card .offer-details .offer-title {
   color: gray;
-  font-size: 30px;
+  font-size: 23px;
   font-weight: bolder;
   text-transform: capitalize;
+  margin-top: 10px;
 }
 
 .Card .offer-details .price-rank {
@@ -804,7 +792,7 @@
 }
 
 .Card .offer-details .price-rank .price-info .price {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bolder;
 }
 
@@ -832,7 +820,7 @@
   background-color: transparent;
   border: solid #ff0067 4px;
   border-radius: 5px;
-  padding: 1px 15px;
+  padding: 1px 8px;
 }
 
 .Card .offer-details .price-rank .offer-ranking span {
@@ -851,7 +839,7 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .Card .offer-details .price-rank .offer-ranking span p {
@@ -909,8 +897,8 @@
 
 .Card .offer-details .landlord-facilities .landlord .landlord-img {
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   margin-right: 5px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -923,12 +911,13 @@
 .Card .offer-details .landlord-facilities .landlord .landlord-name-username .landlordName {
   color: #ff0067;
   font-weight: bold;
+  font-size: 18px;
 }
 
 .Card .offer-details .landlord-facilities .landlord .landlord-name-username .landlordUsername {
   color: gray;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .Card .offer-details .landlord-facilities .facilities {
@@ -965,7 +954,7 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  font-size: 30px;
+  font-size: 20px;
   color: gray;
   font-family: roboto;
   font-weight: bolder;
@@ -996,7 +985,7 @@
 .Card .offer-details .datePosted .date-posted {
   color: gray;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .Card:hover {

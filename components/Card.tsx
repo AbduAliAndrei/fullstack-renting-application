@@ -162,21 +162,21 @@ export default function Card() {
           <div className="facilities">
             <div>
               <div className="facility">
-                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <Check style={{ color: "#00EAD3" }} />
                 <span>Heater</span>
               </div>
               <div className="facility">
-                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <Check style={{ color: "#00EAD3" }} />
                 <span>Fridge</span>
               </div>
             </div>
             <div>
               <div className="facility">
-                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <Check style={{ color: "#00EAD3" }} />
                 <span>TC</span>
               </div>
               <div className="facility">
-                <Check fontSize="large" style={{ color: "#00EAD3" }} />
+                <Check style={{ color: "#00EAD3" }} />
                 <span>WI-FI</span>
               </div>
             </div>
