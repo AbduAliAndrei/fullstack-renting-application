@@ -29,9 +29,9 @@ version_number="$(date +"%Y%m%d").$(git log --pretty=format:'%h' -n 1)"
 
 
 # Find the merge base
-merge_base="$(git merge-base --fork-point origin/master HEAD)"
+merge_base="$(git merge-base --fork-point origin/main HEAD)"
 
-# Go through folders and if there is a change compared to master, bump its version
+# Go through folders and if there is a change compared to main, bump its version
 
 # Commit the changes, if any
 if git diff --cached --quiet; then
