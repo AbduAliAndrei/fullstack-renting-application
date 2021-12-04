@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 
 // import your icons
-import { faSignInAlt, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLinkProps } from "react-bootstrap";
 import Button from "@material-ui/core/Button";

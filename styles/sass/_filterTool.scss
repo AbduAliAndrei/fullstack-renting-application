@@ -48,8 +48,19 @@
     display: none;
   }
   .action-btn-filter {
-    button {
-      @include btn($main-color2, $main-color2);
+    background-color: #78a5ff;
+    border: solid #0339a6 1px;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 5px 100px;
+    text-transform: capitalize;
+    color: #fff;
+    font-family: roboto;
+    font-size: 25px;
+    font-weight: bold;
+
+    &:hover {
+      background-color: rgba(120, 165, 255, 0.829);
     }
   }
 }
