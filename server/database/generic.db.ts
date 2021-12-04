@@ -3,11 +3,11 @@ import Firestore = firestore.Firestore;
 import {
   DatabaseFunction,
   DatabaseObject,
-  GenericDatabaseEntity,
 } from "../interfaces/database-entity";
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 import { CollectionPaths } from "../enums/collection-paths";
+import { GenericDatabaseEntity } from "../interfaces/databases/generic-database-entity";
 
 export default function makeGenericDb<T, TModel>({
   db,

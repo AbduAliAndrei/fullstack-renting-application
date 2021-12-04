@@ -1,41 +1,4 @@
-import { UserType } from "../../enums/user-type";
-import { SecuredUser, UpdatedUser } from "../../interfaces/user";
-
-export interface GenericDatabaseEntity<T, TModel> {
-  add: (
-    addInfo: Required<TModel>
-  ) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
-  findAll: <F extends string>({
-    findKey,
-    key,
-  }: {
-    findKey?: string;
-    key: F;
-  }) => Promise<DatabaseFunction<Required<T>[]> & { [a in `_${F}`]?: string }>;
-  find: <F extends string>({
-    findKey,
-    key,
-  }: {
-    findKey: string;
-    key: F;
-  }) => Promise<DatabaseFunction<Required<T>> & { [a in `_${F}`]?: string }>;
-  update: <U, F>({
-    field,
-    key,
-    data,
-  }: {
-    field: F;
-    key: string;
-    data: U;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
-  remove: <F>({
-    key,
-    field,
-  }: {
-    key: string;
-    field: F;
-  }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
-}
+import { GenericDatabaseEntity } from "./databases/generic-database-entity";
 
 export interface DatabaseEntity<T, TModel>
   extends Pick<GenericDatabaseEntity<T, TModel>, "add"> {
@@ -61,24 +24,6 @@ export interface DatabaseEntity<T, TModel>
   }: {
     key: string;
   }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
-}
-
-export interface DatabaseUserEntity<T, Model>
-  extends Omit<DatabaseEntity<T, Model>, "update"> {
-  update: ({
-    key,
-    data,
-  }: {
-    key: string;
-    data: Required<UpdatedUser>;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
-  updateRole: ({
-    id,
-    role,
-  }: {
-    id: string;
-    role: UserType;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
 }
 
 export type DatabaseFunction<T> = {

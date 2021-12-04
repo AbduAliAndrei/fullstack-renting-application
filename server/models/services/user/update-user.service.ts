@@ -1,10 +1,10 @@
 import {
   DatabaseFunction,
   DatabaseObject,
-  DatabaseUserEntity,
 } from "../../../interfaces/database-entity";
 import { UserModel } from "../../../interfaces/models/user.model";
 import { SecuredUser, UpdatedUser } from "../../../../interfaces/user";
+import { DatabaseUserEntity } from "../../../interfaces/databases/user-database-entity";
 
 export type UpdateUserServiceCreator = {
   usersDb: DatabaseUserEntity<SecuredUser, UserModel>;

@@ -5,6 +5,7 @@ import serviceAccount from "./service-account.json";
 import {ServiceAccount} from "firebase-admin/lib/credential";
 import firebase from "firebase";
 import {firebaseConfig} from "./firebase-config";
+import "firebase/storage";
 
 
 admin.initializeApp({
@@ -14,7 +15,7 @@ admin.initializeApp({
 firebase.initializeApp(firebaseConfig);
 
 const db: FirebaseFirestore.Firestore = admin.firestore();
-
+export const st: firebase.storage.Storage = firebase.storage();
 export default db;
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript

@@ -3,7 +3,6 @@ import { CollectionPaths } from "../enums/collection-paths";
 import {
   DatabaseFunction,
   DatabaseObject,
-  DatabaseUserEntity,
 } from "../interfaces/database-entity";
 import { SecuredUser, UpdatedUser } from "../../interfaces/user";
 import { UserModel } from "../interfaces/models/user.model";
@@ -14,6 +13,7 @@ import {
 import { UserType } from "../../enums/user-type";
 import { Role } from "../../interfaces/role";
 import makeGenericDb from "./generic.db";
+import { DatabaseUserEntity } from "../interfaces/databases/user-database-entity";
 import Firestore = firestore.Firestore;
 
 export default function makeUsersDb({
@@ -43,7 +43,11 @@ export default function makeUsersDb({
     return genericUserDb.add(addInfo);
   }
 
-  function createUserFromDb(doc): Required<SecuredUser> {
+  function createUserFromDb(
+    doc:
+      | FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>
+      | FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
+  ): Required<SecuredUser> {
     return {
       id: doc.data().id,
       firstName: doc.data().firstName,
@@ -78,9 +82,7 @@ export default function makeUsersDb({
   }: {
     id: string;
   }): Promise<DatabaseFunction<Required<SecuredUser>> & { _id?: string }> {
-    const res = genericUserDb.find<"id">({ findKey: id, key: "id" });
-    console.log(res);
-    return res;
+    return genericUserDb.find<"id">({ findKey: id, key: "id" });
   }
 
   async function update({

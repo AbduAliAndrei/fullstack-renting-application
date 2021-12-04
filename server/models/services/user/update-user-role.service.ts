@@ -3,9 +3,9 @@ import { UserModel } from "../../../interfaces/models/user.model";
 import {
   DatabaseFunction,
   DatabaseObject,
-  DatabaseUserEntity,
 } from "../../../interfaces/database-entity";
 import { UserType } from "../../../../enums/user-type";
+import { DatabaseUserEntity } from "../../../interfaces/databases/user-database-entity";
 
 export function updateUserRoleService({
   db,

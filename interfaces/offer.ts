@@ -3,6 +3,7 @@ import { Cost } from "./cost";
 import { RoomDetails } from "./room-details";
 
 export interface Offer {
+  id: string;
   ownerId: string;
   images: string[];
   generalInfo: GeneralInfo;
@@ -12,7 +13,7 @@ export interface Offer {
   expiresAt: Date;
   prevOffer: string | null; // offerId
   nextOffer: string | null;
-  randomOffer: string;
+  randomOffer: string | null;
 }
 
 export type GeneralInfo = {
@@ -69,4 +70,9 @@ export type Proximity = {
 export type Section = {
   title: string;
   content: string | Section;
+};
+
+export type OfferBlobs = Omit<Offer, "images" | "additionalInfo"> & {
+  images: Blob[];
+  additionalInfo: Omit<AdditionalInfo, "planLayout"> & { planLayout?: Blob[] };
 };
