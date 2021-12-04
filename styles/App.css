@@ -353,8 +353,14 @@
   background-color: #fffffb;
   border-radius: 20px;
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
-  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+  box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.062);
   padding: 40px;
+  width: 600px;
+}
+
+.RecentOffers .offers .offer:hover {
+  -webkit-box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
 }
 
 @media screen and (max-width: 640px) {
@@ -656,34 +662,30 @@
 }
 
 .Offers .offers-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(430px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
-  row-gap: 20px;
-  -webkit-column-gap: 40px;
-          column-gap: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 70%;
   margin: 70px auto;
-  background-color: red;
-}
-
-@media screen and (max-width: 1648px) {
-  .Offers .offers-container {
-    -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 60px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .Offers .offers-container {
-    gap: 10px;
-    width: 100%;
-    padding: 10px;
-    -ms-grid-columns: (minmax(40%, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
-  }
+  gap: 40px;
 }
 
 .Card {
@@ -691,8 +693,14 @@
   background-color: #fffffb;
   border-radius: 20px;
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
-  box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.205);
+  box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.062);
   padding: 40px;
+  width: 600px;
+}
+
+.Card:hover {
+  -webkit-box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
 }
 
 @media screen and (max-width: 640px) {
@@ -986,11 +994,6 @@
   color: gray;
   font-weight: bold;
   font-size: 15px;
-}
-
-.Card:hover {
-  -webkit-box-shadow: 1px 1px 8px #00000056;
-          box-shadow: 1px 1px 8px #00000056;
 }
 
 .FilterTool {

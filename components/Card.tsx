@@ -63,7 +63,7 @@ export default function Card() {
               <div>
                 <Image
                   className="im"
-                  src="/DSC_2778.jpg"
+                  src="/budapest.jpg"
                   alt="Offer Image"
                   objectFit="cover"
                   layout="fill"
