@@ -1,5 +1,5 @@
 import { SecuredUser } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 import {
   DatabaseFunction,
   DatabaseObject,

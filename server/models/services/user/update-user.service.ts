@@ -3,7 +3,7 @@ import {
   DatabaseObject,
   DatabaseUserEntity,
 } from "../../../interfaces/database-entity";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 import { SecuredUser, UpdatedUser } from "../../../../interfaces/user";
 
 export type UpdateUserServiceCreator = {

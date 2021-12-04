@@ -1,6 +1,6 @@
 import { DatabaseEntity } from "../../../interfaces/database-entity";
 import { SecuredUser } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 
 interface TakeUserInterface {
   usersDb: DatabaseEntity<SecuredUser, UserModel>;

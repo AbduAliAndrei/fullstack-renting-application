@@ -15,7 +15,7 @@ export interface Offer {
   randomOffer: string;
 }
 
-type GeneralInfo = {
+export type GeneralInfo = {
   title: string;
   cost: Cost;
   address: Address;
@@ -23,7 +23,7 @@ type GeneralInfo = {
   numberOfRooms: number;
 };
 
-type AdditionalInfo = {
+export type AdditionalInfo = {
   rooms?: RoomDetails[];
   floor?: number;
   features?: Set<Feature>;
@@ -32,7 +32,7 @@ type AdditionalInfo = {
   planLayout?: string[];
 };
 
-type Feature = {
+export type Feature = {
   kitchen: boolean;
   wifi: boolean;
   heating: boolean;
@@ -55,18 +55,18 @@ type Feature = {
   garden?: boolean;
 };
 
-type Environment = {
+export type Environment = {
   universities?: Set<Proximity>;
   transport: Set<Proximity>;
   hotspots?: Set<Proximity>;
 };
 
-type Proximity = {
+export type Proximity = {
   name: string;
   distanceTo: number;
 };
 
-type Section = {
+export type Section = {
   title: string;
   content: string | Section;
 };

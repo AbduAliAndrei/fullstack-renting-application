@@ -6,7 +6,7 @@ import {
   DatabaseUserEntity,
 } from "../interfaces/database-entity";
 import { SecuredUser, UpdatedUser } from "../../interfaces/user";
-import { UserModel } from "../interfaces/models/user.type";
+import { UserModel } from "../interfaces/models/user.model";
 import {
   createRole,
   toUserFromModel,

@@ -4,7 +4,7 @@ import {
 } from "../../../interfaces/database-entity";
 import asyncF from "../../../../utils/async-f";
 import { SecuredUser } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 
 export type DeleteUserService = {
   usersDb: DatabaseEntity<SecuredUser, UserModel>;
