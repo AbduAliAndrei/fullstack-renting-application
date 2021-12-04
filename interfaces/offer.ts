@@ -10,8 +10,8 @@ export interface Offer {
   validUntil: Date;
   validFrom: Date;
   expiresAt: Date;
-  prevOffer: string; // offerId
-  nextOffer: string;
+  prevOffer: string | null; // offerId
+  nextOffer: string | null;
   randomOffer: string;
 }
 
