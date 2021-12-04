@@ -1,3 +1,5 @@
+import { UserType } from "../../enums/user-type";
+
 export interface DatabaseEntity<T, TModel> {
   add: (
     info: Required<TModel>
@@ -24,6 +26,17 @@ export interface DatabaseEntity<T, TModel> {
   }: {
     id: string;
   }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
+}
+
+export interface DatabaseUserEntity<T, Model, Role>
+  extends DatabaseEntity<T, Model> {
+  updateRole: ({
+    id,
+    role,
+  }: {
+    id: string;
+    role: UserType;
+  }) => Promise<DatabaseFunction<DatabaseObject<Required<Role>>>>;
 }
 
 export type DatabaseFunction<T> = {

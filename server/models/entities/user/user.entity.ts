@@ -47,23 +47,7 @@ export default function buildMakeUser({
       throw new Error("Tenant must provide a picture");
     }
 
-    const role: Role =
-      userPick === UserType.TENANT
-        ? {
-            idType: IdType.UNKNOWN,
-            role: userPick,
-          }
-        : userPick === UserType.LANDLORD
-        ? {
-            offerList: [],
-            trusted: false,
-            idType: IdType.UNKNOWN,
-            role: userPick,
-          }
-        : {
-            admin: true,
-            role: userPick,
-          };
+    const role: Role = createRole(userPick);
 
     return Object.freeze({
       getFirstName: () => firstName,
@@ -98,4 +82,23 @@ export function toUserFromModel(userModel: UserModel): Required<SecuredUser> {
     updatedAt: userModel.getUpdatedAt(),
     role: userModel.getRole(),
   };
+}
+
+export function createRole(userPick: UserType): Role {
+  return userPick === UserType.TENANT
+    ? {
+        idType: IdType.UNKNOWN,
+        role: userPick,
+      }
+    : userPick === UserType.LANDLORD
+    ? {
+        offerList: [],
+        trusted: false,
+        idType: IdType.UNKNOWN,
+        role: userPick,
+      }
+    : {
+        admin: true,
+        role: userPick,
+      };
 }

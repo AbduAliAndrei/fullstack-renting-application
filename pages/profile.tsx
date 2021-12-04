@@ -31,6 +31,7 @@ const Profile = () => {
     <Auth>
       <div>
         Profile
+        <div />
         <form onSubmit={onLogout}>
           <button>Logout</button>
         </form>

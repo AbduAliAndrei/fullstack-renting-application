@@ -3,6 +3,7 @@ import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
 import asyncF from "../../../utils/async-f";
 import { authRemove } from "../../database";
+import { HttpStatus } from "../../enums/http-status";
 
 export default function createDeleteUser(services: {
   deleteUser: (
@@ -14,28 +15,28 @@ export default function createDeleteUser(services: {
   return async function (
     httpRequest: HttpRequest
   ): Promise<Controller<DatabaseObject<Required<string>>>> {
-    const { id }: { id: string } = httpRequest.body;
+    const { userId }: { userId: string } = httpRequest.body;
 
-    if (!id) {
+    if (!userId) {
       return {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 400,
+        statusCode: HttpStatus.BAD_REQUEST,
         body: {
           error: "Please provide both id and type for user deletion",
         },
       };
     }
 
-    const [data, error] = await asyncF(services.deleteUser(id, authRemove));
+    const [data, error] = await asyncF(services.deleteUser(userId, authRemove));
 
     if (error) {
       return {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 400,
+        statusCode: HttpStatus.BAD_REQUEST,
         body: {
           error: error as string,
         },
@@ -45,7 +46,7 @@ export default function createDeleteUser(services: {
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 204,
+        statusCode: HttpStatus.OK,
         body: {
           res: data,
         },
