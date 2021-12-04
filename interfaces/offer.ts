@@ -4,6 +4,7 @@ import { RoomDetails } from "./room-details";
 
 export interface Offer {
   ownerId: string;
+  images: string[];
   generalInfo: GeneralInfo;
   additionalInfo: AdditionalInfo;
   validUntil: Date;
@@ -27,7 +28,8 @@ type AdditionalInfo = {
   floor?: number;
   features?: Set<Feature>;
   environment: Environment;
-  sections: Section[];
+  sections?: Section[];
+  planLayout?: string[];
 };
 
 type Feature = {

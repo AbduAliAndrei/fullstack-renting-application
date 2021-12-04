@@ -1,6 +1,7 @@
 import ciud from "cuid";
+import { CustomId } from "../server/interfaces/id";
 
-const Id = Object.freeze({
+const Id: CustomId = Object.freeze({
   makeId: ciud,
   isValidId: ciud.isCuid,
 });
