@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <RecentOffers />
       <ForLandlords />
+      <RecentOffers />
     </div>
   );
 }

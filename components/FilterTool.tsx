@@ -4,6 +4,8 @@ import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Button from "@material-ui/core/Button";
+
 export default function FilterTool() {
   return (
     <div className="FilterTool">
@@ -139,9 +141,14 @@ export default function FilterTool() {
           </div>
         </div>
       </div>
-      <div className="action-btn-filter">
-        <button>Filter</button>
-      </div>
+      <Button
+        action-btn-filter
+        disableElevation
+        className="action-btn-filter"
+        variant="contained"
+      >
+        Filter
+      </Button>
     </div>
   );
 }
