@@ -11,7 +11,5 @@ export type OfferModel = {
   getValidUntil(): Date;
   getValidFrom(): Date;
   getExpiresAt(): Date;
-  getPrevOffer(): string;
-  getNextOffer(): string;
   getRandomOffer(): string;
 };
