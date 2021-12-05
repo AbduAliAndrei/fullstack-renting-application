@@ -18,8 +18,11 @@
         position: relative;
         width: 100%;
         height: 300px;
-        object-fit: cover;
         border-radius: 50px;
+        object-fit: cover;
+        .im {
+          border-radius: 30px;
+        }
       }
     }
   }
@@ -38,8 +41,7 @@
       .price-info {
         color: #000;
         .price {
-          font-size: 30px;
-          font-weight: bolder;
+          font-size: 25px;
         }
         p {
           color: gray;
@@ -122,4 +124,9 @@
       }
     }
   }
+}
+
+.im:before,
+.im:before {
+  color: yellow;
 }

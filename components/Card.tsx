@@ -3,7 +3,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -52,59 +51,23 @@ export default function Card() {
           </div>
         </div> */}
         <div className="carousel">
-          <Image
+          {/* <Image
             src="/DSC_2778.jpg"
             alt="Offer Image"
             objectFit="cover"
             layout="fill"
-          />
+          /> */}
           <Slider {...settings}>
             <div className="slider">
-              <div>
-                <Image
-                  className="im"
-                  src="/budapest.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
+              <Image
+                className="im"
+                src="/budapest.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div className="slider">
               <Image
                 className="im"
                 src="/DSC_2778.jpg"
@@ -113,6 +76,60 @@ export default function Card() {
                 layout="fill"
               />
             </div>
+            <div className="slider">
+              <Image
+                className="im"
+                src="/budapest2.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+            <div className="slider">
+              <Image
+                className="im"
+                src="/DSC_2778.jpg"
+                alt="Offer Image"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+
+            {/* <Image
+              className="im"
+              src="/DSC_2778.jpg"
+              alt="Offer Image"
+              objectFit="cover"
+              layout="fill"
+            />
+            <Image
+              className="im"
+              src="/DSC_2778.jpg"
+              alt="Offer Image"
+              objectFit="cover"
+              layout="fill"
+            />
+            <Image
+              className="im"
+              src="/DSC_2778.jpg"
+              alt="Offer Image"
+              objectFit="cover"
+              layout="fill"
+            />
+            <Image
+              className="im"
+              src="/DSC_2778.jpg"
+              alt="Offer Image"
+              objectFit="cover"
+              layout="fill"
+            />
+            <Image
+              className="im"
+              src="/DSC_2778.jpg"
+              alt="Offer Image"
+              objectFit="cover"
+              layout="fill"
+            /> */}
           </Slider>
         </div>
       </div>

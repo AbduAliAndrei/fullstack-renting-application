@@ -355,7 +355,7 @@
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.062);
   padding: 40px;
-  width: 600px;
+  width: 500px;
 }
 
 .RecentOffers .offers .offer:hover {
@@ -695,7 +695,7 @@
   -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
   box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.062);
   padding: 40px;
-  width: 600px;
+  width: 500px;
 }
 
 .Card:hover {
@@ -761,9 +761,13 @@
   position: relative;
   width: 100%;
   height: 300px;
+  border-radius: 50px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 50px;
+}
+
+.Card .offer-images .carousel .slider .im {
+  border-radius: 30px;
 }
 
 .Card .offer-details .offer-title {
@@ -800,8 +804,7 @@
 }
 
 .Card .offer-details .price-rank .price-info .price {
-  font-size: 30px;
-  font-weight: bolder;
+  font-size: 25px;
 }
 
 .Card .offer-details .price-rank .price-info p {
@@ -994,6 +997,11 @@
   color: gray;
   font-weight: bold;
   font-size: 15px;
+}
+
+.im:before,
+.im:before {
+  color: yellow;
 }
 
 .FilterTool {
