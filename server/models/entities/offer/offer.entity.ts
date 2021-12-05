@@ -15,19 +15,21 @@ export default function buildMakeOffer({
   validate?: any;
 }) {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type,@typescript-eslint/no-empty-function
-  return function makeOffer({
-    id = Id.makeId(),
-    ownerId,
-    generalInfo,
-    additionalInfo,
-    images,
-    validUntil,
-    validFrom,
-    expiresAt = add(new Date(), { months: 6 }) as Date,
-    nextOffer = null,
-    prevOffer = null,
-    randomOffer = null,
-  }: OfferBlobs): OfferModel {
+  return function makeOffer(
+    {
+      id = Id.makeId(),
+      generalInfo,
+      additionalInfo,
+      images,
+      validUntil,
+      validFrom,
+      expiresAt = add(new Date(), { months: 6 }) as Date,
+      nextOffer = null,
+      prevOffer = null,
+      randomOffer = null,
+    }: OfferBlobs,
+    ownerId: string
+  ): OfferModel {
     if (!id) {
       throw new Error("Offer must have id");
     }
@@ -54,6 +56,10 @@ export default function buildMakeOffer({
       throw new Error("Offer must have general info!");
     }
 
+    if (!ownerId) {
+      throw new Error("Offer id must be presented");
+    }
+
     return Object.freeze({
       getId: () => id,
       getOwnerId: () => ownerId,
@@ -66,6 +72,7 @@ export default function buildMakeOffer({
       getNextOffer: () => nextOffer,
       getImages: () => images,
       getRandomOffer: () => randomOffer,
+      getOwner: () => null,
     });
   };
 }

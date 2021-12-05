@@ -79,13 +79,13 @@ export default function makeOffersDb({
   }
 
   async function findAll({
-    id,
+    ownerId,
   }: {
-    id?: string;
-  }): Promise<DatabaseFunction<Required<Offer>[]> & { _id?: string }> {
-    return genericOfferDb.findAll<"id">({
-      findKey: id,
-      key: "id",
+    ownerId?: string;
+  }): Promise<DatabaseFunction<Required<Offer>[]> & { _ownerId?: string }> {
+    return genericOfferDb.findAll<"ownerId">({
+      findKey: ownerId,
+      key: "ownerId",
     });
   }
 

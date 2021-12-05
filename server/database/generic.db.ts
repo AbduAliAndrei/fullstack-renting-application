@@ -24,7 +24,7 @@ export default function makeGenericDb<T, TModel>({
       | FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
   ) => Required<T>;
 }): GenericDatabaseEntity<T, TModel> {
-  return Object.freeze({ add, findAll, find, update, remove });
+  return Object.freeze({ add, findAll, find, update, remove, refObject });
 
   async function add(
     addInfo: Required<TModel>
@@ -63,6 +63,25 @@ export default function makeGenericDb<T, TModel>({
     return { fetchedData: data, ...{ [`_${key}`]: findKey } };
   }
 
+  async function refObject<F extends string>({
+    findKey,
+    key,
+  }: {
+    findKey: string;
+    key: F;
+  }): Promise<
+    FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>
+  > {
+    const dataRef = await db.collection(collectionPath);
+    const data = await dataRef.where(`${key}`, "==", findKey).get();
+    if (data.empty || data.size === 0) {
+      return null;
+    }
+    let res: FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>;
+    data.forEach((i) => (res = i.ref));
+    return res;
+  }
+
   async function find<F extends string>({
     findKey,
     key,
@@ -75,6 +94,7 @@ export default function makeGenericDb<T, TModel>({
     if (data.empty || data.size === 0) {
       return { fetchedData: null };
     }
+
     return {
       fetchedData: createT(data.docs[0]),
       ...{ [`_${key}`]: findKey },

@@ -70,7 +70,10 @@ export type Section = {
   content: string | Section;
 };
 
-export type OfferBlobs = Omit<Offer, "images" | "additionalInfo"> & {
+export type OfferBlobs = Omit<
+  Offer,
+  "images" | "additionalInfo" | "ownerId"
+> & {
   images: Blob[];
   additionalInfo: Omit<AdditionalInfo, "planLayout"> & { planLayout?: Blob[] };
 };

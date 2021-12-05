@@ -1,4 +1,5 @@
 import { AdditionalInfo, GeneralInfo } from "../../../interfaces/offer";
+import { firestore } from "firebase-admin/lib/firestore";
 
 export type OfferModel = {
   getId(): string;
@@ -12,4 +13,5 @@ export type OfferModel = {
   getValidFrom(): Date;
   getExpiresAt(): Date;
   getRandomOffer(): string;
+  getOwner(): null | firestore.DocumentReference<firestore.DocumentData>;
 };

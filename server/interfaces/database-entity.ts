@@ -2,11 +2,6 @@ import { GenericDatabaseEntity } from "./databases/generic-database-entity";
 
 export interface DatabaseEntity<T, TModel>
   extends Pick<GenericDatabaseEntity<T, TModel>, "add"> {
-  findAll: ({
-    userName,
-  }: {
-    userName?: string;
-  }) => Promise<DatabaseFunction<Required<T>[]> & { _userName?: string }>;
   findById: ({
     id,
   }: {

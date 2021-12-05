@@ -22,4 +22,9 @@ export interface DatabaseUserEntity<T, Model>
     id: string;
     role: UserType;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
+  findAll: ({
+    userName,
+  }: {
+    userName?: string;
+  }) => Promise<DatabaseFunction<Required<T>[]> & { _userName?: string }>;
 }
