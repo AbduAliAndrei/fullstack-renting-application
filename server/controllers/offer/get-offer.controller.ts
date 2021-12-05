@@ -7,7 +7,7 @@ import { HttpStatus } from "../../enums/http-status";
 export default function createGetOffer({
   getOffer,
 }: {
-  getOffer: (obj: { id: string }) => Promise<Required<Offer>>;
+  getOffer: (obj: { ownerId: string }) => Promise<Required<Offer>>;
 }): (h: HttpRequest) => Promise<Controller<Required<Offer>>> {
   return async function fetchOffer(
     httpRequest: HttpRequest
@@ -15,7 +15,7 @@ export default function createGetOffer({
     const fetchProcess = async (): Promise<Required<Offer>> => {
       const offerId = httpRequest.params["id"];
       return await getOffer({
-        id: offerId,
+        ownerId: offerId,
       });
     };
     const [data, error] = await asyncF<Required<Offer>>(fetchProcess());

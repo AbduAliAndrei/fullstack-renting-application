@@ -21,4 +21,11 @@ const offerService = Object.freeze({
 });
 
 export default offerService;
-export { offerService, takeOffer, updateOffer, takeOffers, deleteOffer };
+export {
+  offerService,
+  takeOffer,
+  updateOffer,
+  takeOffers,
+  deleteOffer,
+  createOffer,
+};

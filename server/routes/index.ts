@@ -64,7 +64,24 @@ function routes(): Router {
     "/offers",
     createExpressCallback(controller.offerController.getOffers)
   );
+  router.post(
+    "/offers",
+    createExpressCallback(controller.offerController.createOffer)
+  );
 
+  router.get(
+    "/offers/:id",
+    createExpressCallback(controller.offerController.getOffer)
+  );
+
+  router.put(
+    "/offers/:id",
+    createExpressCallback(controller.offerController.updateOffer)
+  );
+  router.delete(
+    "/offers/:id",
+    createExpressCallback(controller.offerController.deleteOffer)
+  );
   // router.post(
   //   "/dummy/check-private",
   //   createExpressCallback(dummyController, privateAccessMiddleware)
