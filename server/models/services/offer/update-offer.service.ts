@@ -10,7 +10,7 @@ export type UpdateOfferServiceCreator = {
   offersDb: DatabaseOfferEntity<Offer, OfferModel>;
 };
 
-export default function updateOfferService({
+export default function updateOfferCreator({
   offersDb,
 }: UpdateOfferServiceCreator) {
   return async function updateOffer(

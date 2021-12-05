@@ -27,6 +27,29 @@ const Profile = () => {
     [router, xsrfToken]
   );
 
+  const getOffers = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log("get offers");
+      const res = await fetch("api/offers", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "CSRF-Token": xsrfToken["XSRF-Token"],
+        },
+      });
+      if (res.status === 301) {
+        await router.push("/login");
+      }
+      console.log(res.status);
+
+      const result = await res.json();
+      console.log(result);
+    },
+    [router, xsrfToken]
+  );
+
   return (
     <Auth>
       <div>
@@ -34,6 +57,9 @@ const Profile = () => {
         <div />
         <form onSubmit={onLogout}>
           <button>Logout</button>
+        </form>
+        <form onSubmit={getOffers}>
+          <button>Get Offers</button>
         </form>
       </div>
     </Auth>

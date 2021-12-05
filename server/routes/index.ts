@@ -10,32 +10,59 @@ const router = express.Router();
 function routes(): Router {
   router.get(
     "/auth/check",
-    createExpressCallback<SecuredUser>(controller.getCheckedUser)
+    createExpressCallback<SecuredUser>(controller.userController.getCheckedUser)
   );
   router.post(
     "/auth/register",
-    createExpressCallback(controller.postRegisterAttempt)
+    createExpressCallback(controller.userController.postRegisterAttempt)
   );
-  router.post("/auth/login", createExpressCallback(controller.postLogin));
+  router.post(
+    "/auth/login",
+    createExpressCallback(controller.userController.postLogin)
+  );
   router.post(
     "/auth/logout",
-    createExpressCallback(controller.postLogout, privateAccessMiddleware)
+    createExpressCallback(
+      controller.userController.postLogout,
+      privateAccessMiddleware
+    )
   );
 
   // users CRUD
-  router.get("/users", createExpressCallback(controller.getUsers));
-  router.get("/users/:id", createExpressCallback(controller.getUser));
+  router.get(
+    "/users",
+    createExpressCallback(controller.userController.getUsers)
+  );
+  router.get(
+    "/users/:id",
+    createExpressCallback(controller.userController.getUser)
+  );
   router.delete(
     "/users",
-    createExpressCallback(controller.deleteUser, currentOnlyAccessMiddleware)
+    createExpressCallback(
+      controller.userController.deleteUser,
+      currentOnlyAccessMiddleware
+    )
   );
   router.put(
     "/users",
-    createExpressCallback(controller.putUser, currentOnlyAccessMiddleware)
+    createExpressCallback(
+      controller.userController.putUser,
+      currentOnlyAccessMiddleware
+    )
   );
   router.put(
     "/users/:id/role",
-    createExpressCallback(controller.putUserRole, currentOnlyAccessMiddleware)
+    createExpressCallback(
+      controller.userController.putUserRole,
+      currentOnlyAccessMiddleware
+    )
+  );
+
+  // offers routers
+  router.get(
+    "/offers",
+    createExpressCallback(controller.offerController.getOffers)
   );
 
   // router.post(
