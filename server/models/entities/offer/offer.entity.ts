@@ -24,8 +24,6 @@ export default function buildMakeOffer({
       validUntil,
       validFrom,
       expiresAt = add(new Date(), { months: 6 }) as Date,
-      nextOffer = null,
-      prevOffer = null,
       randomOffer = null,
     }: OfferBlobs,
     ownerId: string
@@ -67,12 +65,10 @@ export default function buildMakeOffer({
       getAdditionalInfo: () => additionalInfo,
       getValidUntil: () => validUntil,
       getValidFrom: () => validFrom,
-      getExpiresAt: () => expiresAt,
-      getPrevOffer: () => prevOffer,
-      getNextOffer: () => nextOffer,
       getImages: () => images,
       getRandomOffer: () => randomOffer,
       getOwner: () => null,
+      getExpiresAt: () => expiresAt,
     });
   };
 }
@@ -86,8 +82,6 @@ export function toOfferFromModel(offerModel: OfferModel): Required<Offer> {
     validUntil: offerModel.getValidUntil(),
     validFrom: offerModel.getValidFrom(),
     expiresAt: offerModel.getExpiresAt(),
-    prevOffer: offerModel.getPrevOffer(),
-    nextOffer: offerModel.getNextOffer(),
     images: offerModel.getImages() as string[],
     randomOffer: offerModel.getRandomOffer(),
   };
