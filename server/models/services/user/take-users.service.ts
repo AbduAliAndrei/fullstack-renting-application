@@ -1,12 +1,10 @@
-import {
-  DatabaseEntity,
-  DatabaseFunction,
-} from "../../../interfaces/database-entity";
+import { DatabaseFunction } from "../../../interfaces/database-entity";
 import { SecuredUser } from "../../../../interfaces/user";
 import { UserModel } from "../../../interfaces/models/user.model";
+import { DatabaseUserEntity } from "../../../interfaces/databases/user-database-entity";
 
 interface TakeUserInterface {
-  usersDb: DatabaseEntity<SecuredUser, UserModel>;
+  usersDb: DatabaseUserEntity<SecuredUser, UserModel>;
 }
 
 export default function takeUsersCreator({ usersDb }: TakeUserInterface) {

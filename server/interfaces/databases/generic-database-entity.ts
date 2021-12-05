@@ -4,6 +4,7 @@ export interface GenericDatabaseEntity<T, TModel> {
   add: (
     addInfo: Required<TModel>
   ) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
+
   findAll: <F extends string>({
     findKey,
     key,
@@ -11,6 +12,7 @@ export interface GenericDatabaseEntity<T, TModel> {
     findKey?: string;
     key: F;
   }) => Promise<DatabaseFunction<Required<T>[]> & { [a in `_${F}`]?: string }>;
+
   find: <F extends string>({
     findKey,
     key,
@@ -18,6 +20,7 @@ export interface GenericDatabaseEntity<T, TModel> {
     findKey: string;
     key: F;
   }) => Promise<DatabaseFunction<Required<T>> & { [a in `_${F}`]?: string }>;
+
   update: <U, F>({
     field,
     key,
@@ -27,6 +30,7 @@ export interface GenericDatabaseEntity<T, TModel> {
     key: string;
     data: U;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
+
   remove: <F>({
     key,
     field,
@@ -34,4 +38,14 @@ export interface GenericDatabaseEntity<T, TModel> {
     key: string;
     field: F;
   }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
+
+  refObject: <F extends string>({
+    key,
+    findKey,
+  }: {
+    key: string;
+    findKey: F;
+  }) => Promise<
+    FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>
+  >;
 }

@@ -9,40 +9,14 @@ import {
   DatabaseObject,
 } from "../interfaces/database-entity";
 import makeGenericDb from "./generic.db";
+import { DatabaseOfferEntity } from "../interfaces/databases/offer-database-entity";
 
-// TODO: finish make offers db
 export default function makeOffersDb({
   db,
 }: {
   db: Firestore;
   st: Storage;
-}): Readonly<{
-  getNextOffer: () => null;
-  findById: ({
-    id,
-  }: {
-    id: string;
-  }) => Promise<DatabaseFunction<Required<Offer>> & { _id?: string }>;
-  update: ({
-    key,
-    data,
-  }: {
-    key: string;
-    data: Required<Offer>;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>>;
-  getPreviousOffer: () => null;
-  findAll: ({
-    id,
-  }: {
-    id?: string;
-  }) => Promise<DatabaseFunction<Required<Offer>[]> & { _id?: string }>;
-  remove: ({
-    key,
-  }: {
-    key: string;
-  }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
-  getRandomOffer: () => null;
-}> {
+}): DatabaseOfferEntity<Offer, OfferModel> {
   const genericOfferDb = makeGenericDb<Offer, OfferModel>({
     db,
     collectionPath: CollectionPaths.OFFER,
@@ -54,9 +28,7 @@ export default function makeOffersDb({
     findById,
     update,
     remove,
-    getNextOffer: () => null,
-    getPreviousOffer: () => null,
-    getRandomOffer: () => null,
+    add,
   });
 
   function createOfferFromDb(
@@ -72,11 +44,38 @@ export default function makeOffersDb({
       validUntil: doc.data().validUntil,
       validFrom: doc.data().validFrom,
       expiresAt: doc.data().expiresAt,
-      prevOffer: doc.data().prevOffer,
-      nextOffer: doc.data().nextOffer,
       images: doc.data().images,
       randomOffer: doc.data().randomOffer,
     };
+  }
+
+  async function getRandomOffer({
+    ownerId,
+  }: {
+    ownerId: string;
+  }): Promise<DatabaseFunction<Required<Offer>> & { _id?: string }> {
+    const offersList = await genericOfferDb.findAll<"ownerId">({
+      findKey: ownerId,
+      key: "ownerId",
+    });
+    const res: Offer =
+      offersList.fetchedData[
+        Math.floor(Math.random() * offersList.fetchedData.length)
+      ];
+    return { fetchedData: res, _id: ownerId };
+  }
+
+  async function getOwnerRefById(
+    id: string
+  ): Promise<firestore.DocumentReference<firestore.DocumentData>> {
+    return await genericOfferDb.refObject<"id">({ key: id, findKey: "id" });
+  }
+
+  async function add(
+    offerInfo: Required<OfferModel>
+  ): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>> {
+    const ownerRef = await getOwnerRefById(offerInfo.getOwnerId());
+    return genericOfferDb.add({ ...offerInfo, getOwner: () => ownerRef });
   }
 
   async function findAll({
