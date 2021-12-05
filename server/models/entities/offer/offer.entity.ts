@@ -17,7 +17,6 @@ export default function buildMakeOffer({
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type,@typescript-eslint/no-empty-function
   return function makeOffer(
     {
-      id = Id.makeId(),
       generalInfo,
       additionalInfo,
       images,
@@ -28,10 +27,6 @@ export default function buildMakeOffer({
     }: OfferBlobs,
     ownerId: string
   ): OfferModel {
-    if (!id) {
-      throw new Error("Offer must have id");
-    }
-
     if (!images) {
       throw new Error("Offer must have images!");
     }
@@ -59,7 +54,7 @@ export default function buildMakeOffer({
     }
 
     return Object.freeze({
-      getId: () => id,
+      getId: () => Id.makeId(),
       getOwnerId: () => ownerId,
       getGeneralInfo: () => generalInfo,
       getAdditionalInfo: () => additionalInfo,

@@ -76,7 +76,7 @@ export type Section = {
 
 export type OfferBlobs = Omit<
   Offer,
-  "images" | "additionalInfo" | "ownerId"
+  "images" | "additionalInfo" | "ownerId" | "id"
 > & {
   images: Blob[];
   additionalInfo: Omit<AdditionalInfo, "planLayout"> & { planLayout?: Blob[] };

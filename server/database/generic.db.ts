@@ -7,7 +7,11 @@ import {
 import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 import { CollectionPaths } from "../enums/collection-paths";
-import { GenericDatabaseEntity } from "../interfaces/databases/generic-database-entity";
+import {
+  FilterBy,
+  GenericDatabaseEntity,
+  OrderBy,
+} from "../interfaces/databases/generic-database-entity";
 
 export default function makeGenericDb<T, TModel>({
   db,
@@ -24,6 +28,8 @@ export default function makeGenericDb<T, TModel>({
       | FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
   ) => Required<T>;
 }): GenericDatabaseEntity<T, TModel> {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return Object.freeze({ add, findAll, find, update, remove, refObject });
 
   async function add(
@@ -37,6 +43,28 @@ export default function makeGenericDb<T, TModel>({
         data: tObj,
       },
     };
+  }
+
+  async function findAllByKeys<
+    FilterKeys extends string,
+    OrderKeys extends string
+  >({
+    filterBy,
+    orderBy,
+    exclusiveEqual,
+  }: {
+    filterBy: FilterBy<FilterKeys>;
+    orderBy: OrderBy<OrderKeys>;
+    exclusiveEqual: boolean;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+  }): Promise<
+    DatabaseFunction<Required<T>[]> &
+      Array<{ [filter in `_${FilterKeys}`]?: FilterBy<FilterKeys> }> &
+      Array<{ [order in `_${OrderKeys}`]?: OrderBy<OrderKeys> }>
+  > {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    Object.keys(filterBy).map((filterKey) => {});
   }
 
   async function findAll<F extends string>({
