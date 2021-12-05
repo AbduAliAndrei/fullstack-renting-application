@@ -7,8 +7,8 @@ type Admin = {
   role: UserType.ADMIN;
 };
 
-type Landlord = {
-  offerList: unknown[];
+export type Landlord = {
+  offerList: string[];
   trusted: boolean;
   idType: string;
   role: UserType.LANDLORD;

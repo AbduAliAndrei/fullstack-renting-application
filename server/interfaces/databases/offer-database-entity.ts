@@ -3,7 +3,7 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../database-entity";
-import { Offer } from "../../../interfaces/offer";
+import { UpdatedOffer } from "../../../interfaces/offer";
 
 export interface DatabaseOfferEntity<T, TModel>
   extends Omit<DatabaseEntity<T, TModel>, "update"> {
@@ -12,7 +12,7 @@ export interface DatabaseOfferEntity<T, TModel>
     data,
   }: {
     key: string;
-    data: Required<Offer>;
+    data: Required<UpdatedOffer>;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
   findAll: ({
     ownerId,
