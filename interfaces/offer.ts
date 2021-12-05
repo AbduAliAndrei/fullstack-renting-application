@@ -13,6 +13,10 @@ export interface Offer {
   expiresAt: Date;
   randomOffer: string | null;
 }
+export type UpdatedOffer = Omit<
+  Offer,
+  "expiresAt" | "ownerId" | "id" | "randomOffer"
+>;
 
 export type GeneralInfo = {
   title: string;
