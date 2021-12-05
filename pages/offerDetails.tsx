@@ -5,48 +5,28 @@ import Button from "@material-ui/core/Button";
 import React from "react";
 import Box from "@mui/material/Box";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Typography from "@mui/material/Typography";
+import OfferDescription from "../components/OfferDetails/OfferDescription";
+import OtherOffers from "../components/OfferDetails/OtherOffers";
 export default function OfferDetails() {
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClick = () => {
-  //   setOpen((prev) => !prev);
-  // };
-
-  // const handleClickAway = () => {
-  //   setOpen(false);
-  // };
-
-  // const styles = {
-  //   position: "absolute",
-  //   top: 28,
-  //   right: 0,
-  //   left: 0,
-  //   zIndex: 1,
-  //   border: "1px solid",
-  //   p: 1,
-  //   bgcolor: "background.paper",
-  // };
   return (
     <div className="OfferDetails">
-      <LandlordDetails />
-      <OfferImages />
+      <div className="offerHeader">
+        <Typography className="title" variant="h4" component="h4">
+          Cozy studio apartment in Astoria suitable for couples next to 4/6
+        </Typography>
+        <Typography className="price" variant="h3" component="h3">
+          500 000 00 ft
+          <b style={{ color: "gray", fontSize: "23px" }}>/ Month</b>
+        </Typography>
+      </div>
+      <div className="details-images">
+        <OfferImages />
+        <LandlordDetails />
+      </div>
       <OfferSpecification />
-      {/* <ClickAwayListener
-        mouseEvent="onMouseDown"
-        touchEvent="onTouchStart"
-        onClickAway={handleClickAway}
-      > */}
-      {/* <Box sx={{ position: "relative" }}>
-          <button type="button" onClick={handleClick}>
-            Open menu dropdown
-          </button>
-          {open ? (
-            <Box sx={styles}>
-              Click me, I will stay visible until you click outside.
-            </Box>
-          ) : null}
-        </Box> */}
-      {/* </ClickAwayListener> */}
+      <OfferDescription />
+      <OtherOffers />
     </div>
   );
 }

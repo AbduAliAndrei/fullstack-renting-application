@@ -172,13 +172,13 @@ const Register = () => {
             </button>
           </div>
         </form>
-        <div className="register-with">
+        {/* <div className="register-with">
           <p>Register With</p>
           <div className="social-media">
             <span>Google</span>
             <span>Facebook</span>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="login-img">
         <Image

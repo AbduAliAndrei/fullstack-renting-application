@@ -1,0 +1,43 @@
+.OfferDescription {
+  @include flex(row);
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 90%;
+  margin: 200px auto;
+  align-items: stretch;
+  height: 100%;
+  .shortDescription,
+  .moreInfo {
+    padding: 40px;
+    background-color: $main-color3;
+    width: 45%;
+    border-radius: 30px;
+    min-height: 100%;
+    .title {
+      margin: 20px 0;
+      font-weight: bolder;
+    }
+    .dropDowns {
+      .dropDown {
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: none;
+        background-color: rgb(240, 240, 240);
+        &:hover {
+          background-color: #78a5ff;
+          color: #fff;
+        }
+        .l {
+          right: 0;
+        }
+      }
+    }
+  }
+  //   .moreInfo {
+  //     background-color: $main-color3;
+
+  //     width: 40%;
+  //     height: 100%;
+  //   }
+}

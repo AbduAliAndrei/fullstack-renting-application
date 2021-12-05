@@ -1,0 +1,23 @@
+.OfferDetails {
+  padding-bottom: 100px;
+  .offerHeader {
+    @include flex(row);
+    justify-content: space-around;
+    padding-top: 100px;
+    .title {
+      font-weight: bolder;
+      width: 40%;
+    }
+    .price {
+      font-weight: bolder;
+      color: black;
+    }
+  }
+  .details-images {
+    @include flex(row);
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 100px;
+    height: 100%;
+  }
+}

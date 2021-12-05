@@ -1,34 +1,61 @@
 .LandlordDetails {
-  background-color: rgb(240, 240, 240);
-  height: 100vh;
-  width: 100vw;
+  margin: 40px;
   .landlord-details {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.479);
     width: fit-content;
     border-radius: 50px;
-    padding: 30px 50px;
-    .image-name {
+    padding: 10px 30px;
+    .image-name-viewProfileBtn {
       @include flex(row);
       margin: 10px 0;
+      justify-content: flex-start;
       .img {
         position: relative;
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
         margin-right: 5px;
         object-fit: cover;
         .ld-img {
           border-radius: 50px;
         }
       }
+      .name {
+        color: black;
+        font-weight: bolder;
+      }
+    }
+    .contact-title {
+      font-weight: bolder;
+      font-size: 20px;
     }
     .contacts {
+      @include flex(row);
+      justify-content: space-between;
+      align-items: flex-start;
       background-color: rgb(240, 240, 240);
       border-radius: 20px;
       padding: 20px;
       margin: 10px 0;
+
+      .phone,
+      .email,
+      .social-media {
+        margin: 10px;
+        h5 {
+          font-weight: bolder;
+          font-size: 20px;
+        }
+        h6 {
+          font-weight: normal;
+          font-size: 15px;
+        }
+      }
     }
     .message-form {
       .message-title {
+        font-weight: bolder;
+        font-size: 20px;
+        margin: 10px 0;
       }
       .message {
         text-align: center;
@@ -42,10 +69,39 @@
           background-color: rgb(240, 240, 240);
         }
       }
-      #sendMessageBtn {
-        font-size: 23px;
-        border-radius: 20px;
-        margin: 20px 0;
+      .sendMSGBTN-favBTN {
+        #sendMessageBtn,
+        #favBtn {
+          font-size: 15px;
+          border-radius: 20px;
+          margin: 20px 0;
+          font-size: 20px;
+          font-weight: bold;
+          text-transform: capitalize;
+          padding: 5px 30px;
+          font-family: roboto;
+          border-radius: 20px;
+          margin: 10px;
+        }
+        #sendMessageBtn {
+          background-color: #78a5ff;
+          border: solid #0339a6 1px;
+          color: #fff;
+
+          &:hover {
+            background-color: rgba(120, 165, 255, 0.829);
+          }
+        }
+        #favBtn {
+          background-color: #ffb8d5;
+          border: solid #ff0067 1px;
+
+          color: #ff0067;
+          font-weight: bolder;
+          &:hover {
+            background-color: #ffb8d6d2;
+          }
+        }
       }
     }
   }

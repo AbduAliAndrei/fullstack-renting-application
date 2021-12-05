@@ -4,41 +4,27 @@
   background-color: $main-color3;
   border-radius: 50px;
   width: 90%;
-  margin: 0 auto;
+  margin: 100px auto;
   flex-wrap: wrap;
-  min-height: 70vh;
+  height: 100%;
   align-items: flex-start;
   .specification {
     @include flex(column);
     padding: 60px;
-    .offerHeader {
+    width: 50%;
+    align-items: flex-start;
+    .detailsHeader {
+      @include flex(row);
+      justify-content: space-between;
+      width: 100%;
       position: relative;
-      .offer-duration {
-        .offerTitleH1 {
-          font-weight: bolder;
-          color: #0339a6;
-        }
-      }
-      .offer-title {
-        .offerTitleH1 {
-        }
-      }
-
-      .offer-price {
-        .offerPriceH1 {
-          margin-right: 350px;
-        }
-      }
-
       .studentFriendly {
-        position: absolute;
-        right: 0;
-        bottom: 0;
         .studentFriendlyContainer {
-          background-color: #32ba7c;
-          color: $main-color3;
-          border-radius: 10px;
-          font-size: 24px;
+          border: solid #32ba7c 1px;
+          background-color: transparent;
+          color: #000000;
+          border-radius: 50px;
+          font-size: 15px;
         }
       }
     }
@@ -51,13 +37,6 @@
         @include flex(row);
         justify-content: space-between;
         align-items: flex-start;
-
-        .location-flatInfo {
-          // @include flex(row);
-          .locationH1 {
-            font-weight: bolder;
-          }
-        }
         .locationAdvantages {
           @include flex(column);
           width: 35%;
@@ -91,16 +70,23 @@
       }
       .offerFeatures {
         width: 100%;
-        .featuresH4 {
-          font-weight: bolder;
+        .featuresList {
+          @include flex(row);
+          width: 50%;
+          margin-top: 20px;
+          justify-content: flex-start;
+          justify-content: space-between;
+          ul {
+            margin: 0;
+            padding: 0;
+          }
         }
       }
     }
   }
   .map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px;
+    @include flex(row);
+    width: fit-content;
+    background-color: red;
   }
 }

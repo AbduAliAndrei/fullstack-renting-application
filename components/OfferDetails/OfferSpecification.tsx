@@ -34,35 +34,15 @@ export default function OfferSpecification() {
   return (
     <div className="OfferSpecification">
       <div className="specification">
-        <div className="offerHeader">
-          <div className="offer-duration">
+        <div className="detailsHeader">
+          <div className="location">
             <Typography
-              className="offerTitleH1"
+              className="locationH1"
               color="black"
-              variant="h3"
-              component="h3"
+              variant="h5"
+              component="h5"
             >
-              until 2021 august
-            </Typography>
-          </div>
-          <div className="offer-title">
-            <Typography
-              className="offerTitleH1"
-              color="black"
-              variant="h1"
-              component="h1"
-            >
-              Offer title
-            </Typography>
-          </div>
-          <div className="offer-price">
-            <Typography
-              className="offerPriceH1"
-              color="gray"
-              variant="h1"
-              component="h1"
-            >
-              500 000 ft / month
+              Blaha utca 92, Budapest
             </Typography>
           </div>
           <div className="studentFriendly">
@@ -79,16 +59,6 @@ export default function OfferSpecification() {
         <div className="mainDetails">
           <div className="location-features">
             <div className="location-flatInfo">
-              <div className="location">
-                <Typography
-                  className="locationH1"
-                  color="black"
-                  variant="h4"
-                  component="h4"
-                >
-                  Blaha utca 92, Budapest
-                </Typography>
-              </div>
               <div className="flatInfo">
                 <div className="size">Size: 25 sq/m</div>
                 <div className="bedRoom">Bedroom(s): 2</div>
@@ -138,13 +108,18 @@ export default function OfferSpecification() {
               <Typography
                 className="featuresH4"
                 color="black"
-                variant="h4"
-                component="h4"
+                variant="h5"
+                component="h5"
               >
                 Features
               </Typography>
             </div>
             <div className="featuresList">
+              <ul>
+                <li>best property</li>
+                <li>best property</li>
+                <li>best property</li>
+              </ul>
               <ul>
                 <li>best property</li>
                 <li>best property</li>

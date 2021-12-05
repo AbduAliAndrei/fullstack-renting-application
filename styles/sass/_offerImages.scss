@@ -1,0 +1,16 @@
+.OfferImages {
+  position: relative;
+  width: 60%;
+  margin: 40px;
+  border-radius: 60px;
+  .slider {
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+    height: 600px;
+
+    .im {
+      border-radius: 60px;
+    }
+  }
+}

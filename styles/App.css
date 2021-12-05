@@ -139,7 +139,7 @@
   text-transform: capitalize;
   color: #fff;
   font-family: roboto;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -158,7 +158,7 @@
   border-radius: 20px;
   padding: 5px 30px;
   text-transform: capitalize;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   color: #ff0067;
   font-family: roboto;
@@ -561,7 +561,7 @@
   min-height: 50vh;
   background-color: #fffffb;
   margin-top: auto;
-  font-size: 25px;
+  font-size: 20px;
   padding: 40px;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
@@ -599,7 +599,7 @@
   width: 500px;
 }
 
-.Footer .footerHeader-contact .footerHeader .footerHeaderH2 {
+.Footer .footerHeader-contact .footerHeader .footerHeaderH4 {
   font-weight: bold;
   margin: 5px 0;
 }
@@ -761,7 +761,6 @@
   position: relative;
   width: 100%;
   height: 300px;
-  border-radius: 50px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -1749,22 +1748,80 @@
      object-fit: cover;
 }
 
+.OfferDetails {
+  padding-bottom: 100px;
+}
+
+.OfferDetails .offerHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-top: 100px;
+}
+
+.OfferDetails .offerHeader .title {
+  font-weight: bolder;
+  width: 40%;
+}
+
+.OfferDetails .offerHeader .price {
+  font-weight: bolder;
+  color: black;
+}
+
+.OfferDetails .details-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 0 100px;
+  height: 100%;
+}
+
 .LandlordDetails {
-  background-color: #f0f0f0;
-  height: 100vh;
-  width: 100vw;
+  margin: 40px;
 }
 
 .LandlordDetails .landlord-details {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.479);
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 50px;
-  padding: 30px 50px;
+  padding: 10px 30px;
 }
 
-.LandlordDetails .landlord-details .image-name {
+.LandlordDetails .landlord-details .image-name-viewProfileBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1781,25 +1838,85 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 10px 0;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.LandlordDetails .landlord-details .image-name .img {
+.LandlordDetails .landlord-details .image-name-viewProfileBtn .img {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   margin-right: 5px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.LandlordDetails .landlord-details .image-name .img .ld-img {
+.LandlordDetails .landlord-details .image-name-viewProfileBtn .img .ld-img {
   border-radius: 50px;
 }
 
+.LandlordDetails .landlord-details .image-name-viewProfileBtn .name {
+  color: black;
+  font-weight: bolder;
+}
+
+.LandlordDetails .landlord-details .contact-title {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
 .LandlordDetails .landlord-details .contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   background-color: #f0f0f0;
   border-radius: 20px;
   padding: 20px;
+  margin: 10px 0;
+}
+
+.LandlordDetails .landlord-details .contacts .phone,
+.LandlordDetails .landlord-details .contacts .email,
+.LandlordDetails .landlord-details .contacts .social-media {
+  margin: 10px;
+}
+
+.LandlordDetails .landlord-details .contacts .phone h5,
+.LandlordDetails .landlord-details .contacts .email h5,
+.LandlordDetails .landlord-details .contacts .social-media h5 {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.LandlordDetails .landlord-details .contacts .phone h6,
+.LandlordDetails .landlord-details .contacts .email h6,
+.LandlordDetails .landlord-details .contacts .social-media h6 {
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.LandlordDetails .landlord-details .message-form .message-title {
+  font-weight: bolder;
+  font-size: 20px;
   margin: 10px 0;
 }
 
@@ -1817,10 +1934,58 @@
   background-color: #f0f0f0;
 }
 
-.LandlordDetails .landlord-details .message-form #sendMessageBtn {
-  font-size: 23px;
+.LandlordDetails .landlord-details .message-form .sendMSGBTN-favBTN #sendMessageBtn,
+.LandlordDetails .landlord-details .message-form .sendMSGBTN-favBTN #favBtn {
+  font-size: 15px;
   border-radius: 20px;
   margin: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 5px 30px;
+  font-family: roboto;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.LandlordDetails .landlord-details .message-form .sendMSGBTN-favBTN #sendMessageBtn {
+  background-color: #78a5ff;
+  border: solid #0339a6 1px;
+  color: #fff;
+}
+
+.LandlordDetails .landlord-details .message-form .sendMSGBTN-favBTN #sendMessageBtn:hover {
+  background-color: rgba(120, 165, 255, 0.829);
+}
+
+.LandlordDetails .landlord-details .message-form .sendMSGBTN-favBTN #favBtn {
+  background-color: #ffb8d5;
+  border: solid #ff0067 1px;
+  color: #ff0067;
+  font-weight: bolder;
+}
+
+.LandlordDetails .landlord-details .message-form .sendMSGBTN-favBTN #favBtn:hover {
+  background-color: #ffb8d6d2;
+}
+
+.OfferImages {
+  position: relative;
+  width: 60%;
+  margin: 40px;
+  border-radius: 60px;
+}
+
+.OfferImages .slider {
+  position: relative;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 600px;
+}
+
+.OfferImages .slider .im {
+  border-radius: 60px;
 }
 
 .OfferSpecification {
@@ -1845,9 +2010,9 @@
   background-color: #fffffb;
   border-radius: 50px;
   width: 90%;
-  margin: 0 auto;
+  margin: 100px auto;
   flex-wrap: wrap;
-  min-height: 70vh;
+  height: 100%;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -1870,32 +2035,41 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 60px;
+  width: 50%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.OfferSpecification .specification .offerHeader {
+.OfferSpecification .specification .detailsHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
   position: relative;
 }
 
-.OfferSpecification .specification .offerHeader .offer-duration .offerTitleH1 {
-  font-weight: bolder;
-  color: #0339a6;
-}
-
-.OfferSpecification .specification .offerHeader .offer-price .offerPriceH1 {
-  margin-right: 350px;
-}
-
-.OfferSpecification .specification .offerHeader .studentFriendly {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.OfferSpecification .specification .offerHeader .studentFriendly .studentFriendlyContainer {
-  background-color: #32ba7c;
-  color: #fffffb;
-  border-radius: 10px;
-  font-size: 24px;
+.OfferSpecification .specification .detailsHeader .studentFriendly .studentFriendlyContainer {
+  border: solid #32ba7c 1px;
+  background-color: transparent;
+  color: #000000;
+  border-radius: 50px;
+  font-size: 15px;
 }
 
 .OfferSpecification .specification .mainDetails {
@@ -1926,10 +2100,6 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-
-.OfferSpecification .specification .mainDetails .location-features .location-flatInfo .locationH1 {
-  font-weight: bolder;
 }
 
 .OfferSpecification .specification .mainDetails .location-features .locationAdvantages {
@@ -2014,21 +2184,384 @@
   width: 100%;
 }
 
-.OfferSpecification .specification .mainDetails .offerFeatures .featuresH4 {
-  font-weight: bolder;
-}
-
-.OfferSpecification .map {
+.OfferSpecification .specification .mainDetails .offerFeatures .featuresList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 60px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 50%;
+  margin-top: 20px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.OfferSpecification .specification .mainDetails .offerFeatures .featuresList ul {
+  margin: 0;
+  padding: 0;
+}
+
+.OfferSpecification .map {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: red;
+}
+
+.OfferDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  margin: 200px auto;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  height: 100%;
+}
+
+.OfferDescription .shortDescription,
+.OfferDescription .moreInfo {
+  padding: 40px;
+  background-color: #fffffb;
+  width: 45%;
+  border-radius: 30px;
+  min-height: 100%;
+}
+
+.OfferDescription .shortDescription .title,
+.OfferDescription .moreInfo .title {
+  margin: 20px 0;
+  font-weight: bolder;
+}
+
+.OfferDescription .shortDescription .dropDowns .dropDown,
+.OfferDescription .moreInfo .dropDowns .dropDown {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #f0f0f0;
+}
+
+.OfferDescription .shortDescription .dropDowns .dropDown:hover,
+.OfferDescription .moreInfo .dropDowns .dropDown:hover {
+  background-color: #78a5ff;
+  color: #fff;
+}
+
+.OfferDescription .shortDescription .dropDowns .dropDown .l,
+.OfferDescription .moreInfo .dropDowns .dropDown .l {
+  right: 0;
+}
+
+.OtherOffers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 90%;
+  margin: 200px auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.OtherOffers .otherLandLordListing,
+.OtherOffers .otherRandomOffers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 100px;
+  width: 40%;
+  background-color: #fffffb;
+  border-radius: 30px;
+}
+
+.OtherOffers .otherLandLordListing .title,
+.OtherOffers .otherRandomOffers .title {
+  margin: 20px 0;
+  font-weight: bolder;
+}
+
+.OtherOffers .otherLandLordListing .card-arrows,
+.OtherOffers .otherRandomOffers .card-arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.Profile {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.Profile .controlBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 100px 0;
+  gap: 40px;
+}
+
+.Profile .controlBtns .controlBtn,
+.Profile .controlBtns #logoutBtn {
+  font-size: 15px;
+  padding: 10px 40px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: solid #d1d1d1 2px;
+  background-color: #fffffb;
+  text-transform: capitalize;
+  color: #8d8d8d;
+}
+
+.Profile .controlBtns .controlBtn:hover,
+.Profile .controlBtns #logoutBtn:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border: solid #0339a6 2px;
+  color: #0339a6;
+}
+
+.Profile .controlBtns #logoutBtn {
+  font-size: 15px;
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: solid #ff0067 2px;
+  color: #ff0067;
+  font-weight: bolder;
+}
+
+.Profile .controlBtns #logoutBtn:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #ff84b548;
+  border: solid #ff0067 2px;
+  color: #ff0067;
+}
+
+.Profile .profileImageContainer .profileImageTitle {
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .profileImage {
+  position: relative;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100px;
+  margin-right: 20px;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .profileImage .ld-img {
+  border-radius: 50px;
+  width: 100px;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns .changeAvatar,
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns .deleteAvatar {
+  font-size: 15px;
+  border-radius: 50px;
+  padding: 8px 30px;
+  margin-right: 20px;
+  border-radius: 20px;
+  padding: 5px 30px;
+  text-transform: capitalize;
+  font-family: roboto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns .changeAvatar {
+  color: #fff;
+  background-color: #78a5ff;
+  border: solid #0339a6 1px;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns .changeAvatar:hover {
+  background-color: rgba(120, 165, 255, 0.829);
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns .deleteAvatar {
+  background-color: #c0c0c0;
+  border: solid #080808 1px;
+  color: #080808;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .editBtns .deleteAvatar:hover {
+  background-color: #c0c0c0a1;
+}
+
+.Profile .profileImageContainer .profileImage-extraInfo .editBtns-note .note {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.Profile .primaryInfo {
+  margin-top: 100px;
+}
+
+.Profile .primaryInfo .title {
+  font-weight: bolder;
+  margin: 20px 0;
+}
+
+.Profile .primaryInfo .primaryInformationForm {
+  width: 50%;
+}
+
+.Profile .primaryInfo .primaryInformationForm .primaryInfoInput {
+  background-color: #fffffb;
+  border-radius: 10px;
 }
 
 * {
