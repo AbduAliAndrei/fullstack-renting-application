@@ -11,11 +11,11 @@ export interface GenericDatabaseEntity<T, TModel> {
   }: {
     filterBy: FilterBy<FilterKeys>;
     orderBy: OrderBy<OrderKeys>;
-    exclusiveEqual: boolean;
+    exclusiveEqual?: boolean;
   }) => Promise<
-    DatabaseFunction<Required<T>[]> &
-      Array<{ [filter in `_${FilterKeys}`]?: FilterBy<FilterKeys> }> &
-      Array<{ [order in `_${OrderKeys}`]?: OrderBy<OrderKeys> }>
+    DatabaseFunction<Required<T>[]> & { filterBy?: FilterBy<FilterKeys> } & {
+      orderBy?: OrderBy<OrderKeys>;
+    }
   >;
 
   findAll: <F extends string>({
@@ -66,10 +66,12 @@ export interface GenericDatabaseEntity<T, TModel> {
 export type FilterBy<Key extends string> = Record<Key, MultiselectSortBy>;
 
 export type MultiselectSortBy = Array<
-  string | boolean | number | BoundedBetween
+  string | boolean | number | BoundedBetweenNumber
 >;
 
-export type BoundedBetween = { lowerBound: number; upperBound: number };
+export type BoundedBetween<T> = { lowerBound: T; upperBound: T };
+
+export type BoundedBetweenNumber = BoundedBetween<number>;
 
 export type OrderBy<Key extends string> = Record<Key, OrderDirection>;
 
@@ -77,3 +79,18 @@ export enum OrderDirection {
   ACCENDING,
   DESCENDING,
 }
+
+export function isBoundedBetween(
+  variable: any
+): variable is BoundedBetweenNumber {
+  return !!variable.lowerBound && !!variable.upperBound;
+}
+
+export function isBoundedBetweenArray(
+  variable: any[]
+): variable is BoundedBetweenNumber[] {
+  return variable.some(isBoundedBetween);
+}
+
+export type ComparisonOperator = "==" | "<=" | ">=" | "<" | ">";
+export type FilterOptionTuple = [string, ComparisonOperator, any];

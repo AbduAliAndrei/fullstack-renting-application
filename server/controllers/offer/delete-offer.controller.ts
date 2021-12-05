@@ -5,7 +5,7 @@ import { HttpStatus } from "../../enums/http-status";
 import asyncF from "../../../utils/async-f";
 
 export default function createDeleteOffer(services: {
-  deleteOffer: (id: string) => Promise<DatabaseObject<string>>;
+  deleteOffer: (id: { id: string }) => Promise<DatabaseObject<string>>;
 }): (h: HttpRequest) => Promise<Controller<DatabaseObject<string>>> {
   return async function (
     httpRequest: HttpRequest
@@ -22,7 +22,7 @@ export default function createDeleteOffer(services: {
         },
       };
     }
-    const [data, error] = await asyncF(services.deleteOffer(offerId));
+    const [data, error] = await asyncF(services.deleteOffer({ id: offerId }));
     if (error) {
       return {
         headers: {

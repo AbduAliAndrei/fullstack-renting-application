@@ -3,8 +3,10 @@ import { offersDb } from "../../../database";
 import deleteOfferService from "./delete-offer.service";
 import takeOffersCreator from "./take-offers.service";
 import updateOfferCreator from "./update-offer.service";
+import createOfferCreator from "./create-offer.service";
+import { makeOffer } from "../../entities/offer";
 
-const createOffer = takeOfferCreator({ offersDb });
+const createOffer = createOfferCreator({ db: offersDb, makeOffer });
 const deleteOffer = deleteOfferService({ offersDb });
 const takeOffers = takeOffersCreator({ offersDb });
 const takeOffer = takeOfferCreator({ offersDb });
