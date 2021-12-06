@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "rvest.vs-code-prettier-eslint"
+        "rvest.vs-code-prettier-eslint",
+        "redhat.vscode-yaml"
     ]
 }

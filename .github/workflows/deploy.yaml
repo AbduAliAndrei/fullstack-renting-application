@@ -1,33 +1,33 @@
-name: Deploy
+name: deploy
 on:
   workflow_run:
-    workflows: ["Build-Docker"]
+    workflows: 
+      - Build-Docker
     branches: [ main ]
     types:
-     - completed
+      - completed
 jobs:
-    name: Deploy
     deploy:
-     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-     needs: build
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout repository
-         uses: actions/checkout@main
-       - name: 'Upload artifact'
-         uses: actions/upload-artifact@main
-         with:
-          name: deploy-artifact
-          path: deploy_artifact.txt
-       - name: Deploy to Firebase
-         uses: w9jds/firebase-action@master
-         with:
-           args: deploy --only hosting
-         env:
-           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN}}
-       - name: 'Download artifact'
-         uses: actions/download-artifact@main
-         with:
-           name: build-artifact
-       - shell: bash
-            cat build_artifact.txt
+      name: deploy-firebase
+      if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@main
+        - name: 'Upload artifact'
+          uses: actions/upload-artifact@main
+          with:
+            name: deploy-artifact
+            path: deploy_artifact.txt
+        - name: Deploy to Firebase
+          uses: w9jds/firebase-action@master
+          with:
+            args: deploy --only hosting
+          env:
+            FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN}}
+        - name: 'Download artifact'
+          uses: actions/download-artifact@main
+          with:
+            name: build-artifact
+          run: cat build_artifact.txt
