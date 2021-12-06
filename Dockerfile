@@ -10,9 +10,6 @@ COPY package*.json ./
 
 RUN npm i 
 
-RUN npm run install:all
-
-RUN npm run lint:fix && npm run lint:next
 
 # RUN npm install --silent
 
