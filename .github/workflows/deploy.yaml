@@ -9,9 +9,9 @@ on:
 jobs:
     deploy:
       name: deploy-firebase
-      if: ${{ github.event.workflow_run.conclusion == 'success' }}
-      needs: build
       runs-on: ubuntu-latest
+      needs: build
+      if: ${{ github.event.workflow_run.conclusion == 'success' }}
       steps:
         - name: Checkout repository
           uses: actions/checkout@main
