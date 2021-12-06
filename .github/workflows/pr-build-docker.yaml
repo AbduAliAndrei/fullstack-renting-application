@@ -37,7 +37,7 @@ jobs:
         - name: Install dependencies
           run: npm ci
         - name: linting
-          run: npm lint:fix && npm lint:next
+          run: npm run lint:fix && npm run lint:next
         - name: Build dependencies
           run: npm run build
         - name: 'Upload artifact'
