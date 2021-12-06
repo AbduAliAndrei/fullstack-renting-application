@@ -6,9 +6,9 @@ on:
     types:
      - completed
 jobs:
+    name: Deploy
     deploy:
      if: ${{ github.event.workflow_run.conclusion == 'success' }}
-     name: Deploy
      needs: build
      runs-on: ubuntu-latest
      steps:
