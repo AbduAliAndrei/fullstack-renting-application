@@ -1,25 +1,33 @@
 name: Deploy
 on:
-  push:
+  workflow_run:
+   workflows: ["Build-Docker"]
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    types:
+     - completed
 jobs:
     deploy:
+     if: ${{ github.event.workflow_run.conclusion == 'success' }}
       name: Deploy
       needs: build
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repository
           uses: actions/checkout@main
-        # - name: Download artifact
-          # uses: actions/download-artifact@main
+        - name: 'Upload artifact'
+          uses: actions/upload-artifact@main
           with:
-            name: dist
-            path: dist
+            name: deploy-artifact
+            path: deploy_artifact.txt
         - name: Deploy to Firebase
           uses: w9jds/firebase-action@master
           with:
             args: deploy --only hosting
           env:
             FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN}}
+        - name: 'Download artifact'
+          uses: actions/download-artifact@main
+          with:
+            name: build-artifact
+        - shell: bash
+            run: cat build_artifact.txt

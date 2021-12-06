@@ -1,4 +1,4 @@
-name: Build
+name: Build-Docker
 on:
   push:
     branches: [ main ]
@@ -6,47 +6,57 @@ on:
     branches: [ main ]
   # Run workflow manually
 jobs:
-    test_pull_request:
-      name: test_pullrequests
+#     test_pull_request:
+#       name: test_pull_requests
+#       runs-on: ${{matrix.os}}
+#       strategy:
+#         matrix:
+#            os: [ ubuntu-latest, macOS-latest ]
+#       steps:
+#         - uses: actions/checkout@v2
+#         - uses: actions/setup-node@v1
+#           with:
+#             node-version: 12
+#         - run: npm ci
+#         - run: npm i
+#         - name: linting
+#           run: npm lint:fix && npm lint:next
+#         - run: npm install --silent
+#         - run: npm run build
+    build:
+      name: Build
+#       needs: test_pull_request
+#       runs-on: ubuntu-latest
       runs-on: ${{matrix.os}}
       strategy:
         matrix:
            os: [ ubuntu-latest, macOS-latest ]
       steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-        - run: npm ci
-        - run: npm i -g
-#         - name: linting
-#           run: npm lint:fix && npm lint:next
-        - run: npm install --silent
-        - run: npm run build
-    build:
-      name: Build
-      needs: test_pull_request
-      runs-on: ubuntu-latest
-      steps:
         - name: Checkout repository
           uses: actions/checkout@main
         - name: Install dependencies
           run: npm ci
+        - name: linting
+          run: npm lint:fix && npm lint:next
         - name: Build dependencies
           run: npm run build
-#         - name: Fix linting
-#           run: eslint .
-        - name: Archive production artifact
+        - name: 'Upload artifact'
           uses: actions/upload-artifact@main
           with:
-            name: dist
-            path: dist
+            name: build-artifact
+            path: build_artifact.txt
+        - name: 'Download artifact'
+          uses: actions/download-artifact@main
+          with:
+            name: build-artifact
+        - shell: bash
+          run: cat build_artifact.txt
     docker:
       name: Docker build image
       needs: build
       runs-on: ubuntu-latest
       steps:
-        - name: Set up Docker Buildx
+        - name: Set up Docker Build
           uses: docker/setup-buildx-action@v1
         - name: Login to DockerHub
           uses: docker/login-action@v1
