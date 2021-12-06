@@ -1,5 +1,7 @@
 {
   "projects": {
+    "staging": "summer-project-49c32",
     "default": "summer-project-49c32"
-  }
+  },
+  "targets": {}
 }
