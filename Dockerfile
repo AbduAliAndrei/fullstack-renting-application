@@ -8,7 +8,10 @@ EXPOSE 8080
 
 COPY package*.json ./ 
 
-RUN npm install --silent
+RUN npm i 
+
+
+# RUN npm install --silent
 
 # copy local src code to the container 
 COPY . . 
