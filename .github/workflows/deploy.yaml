@@ -30,4 +30,5 @@ jobs:
           uses: actions/download-artifact@main
           with:
             name: build-artifact
+        - name: 'Display artifact'
           run: cat build_artifact.txt
