@@ -6,27 +6,8 @@ on:
     branches: [ main ]
   # Run workflow manually
 jobs:
-#     test_pull_request:
-#       name: test_pull_requests
-#       runs-on: ${{matrix.os}}
-#       strategy:
-#         matrix:
-#            os: [ ubuntu-latest, macOS-latest ]
-#       steps:
-#         - uses: actions/checkout@v2
-#         - uses: actions/setup-node@v1
-#           with:
-#             node-version: 12
-#         - run: npm ci
-#         - run: npm i
-#         - name: linting
-#           run: npm lint:fix && npm lint:next
-#         - run: npm install --silent
-#         - run: npm run build
     build:
       name: Build
-#       needs: test_pull_request
-#       runs-on: ubuntu-latest
       runs-on: ${{matrix.os}}
       strategy:
         matrix:
@@ -40,17 +21,6 @@ jobs:
           run: npm run lint:fix && npm run lint:next
         - name: Build dependencies
           run: npm run build
-        - name: 'Upload artifact'
-          uses: actions/upload-artifact@main
-          with:
-            name: build-artifact
-            path: build_artifact.txt
-        - name: 'Download artifact'
-          uses: actions/download-artifact@main
-          with:
-            name: build-artifact
-        - shell: bash
-          run: cat build_artifact.txt
     docker:
       name: Docker build image
       needs: build
