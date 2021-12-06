@@ -3,7 +3,7 @@ import add from "date-fns/add";
 import {
   AdditionalInfo,
   Offer,
-  OfferBlobs,
+  CreatedOffer,
 } from "../../../../interfaces/offer";
 import { OfferModel } from "../../../interfaces/models/offer.model";
 
@@ -16,20 +16,9 @@ export default function buildMakeOffer({
 }) {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type,@typescript-eslint/no-empty-function
   return function makeOffer(
-    {
-      generalInfo,
-      additionalInfo,
-      images,
-      validUntil,
-      validFrom,
-      expiresAt = add(new Date(), { months: 6 }) as Date,
-      randomOffer = null,
-    }: OfferBlobs,
+    { generalInfo, additionalInfo, validUntil, validFrom }: CreatedOffer,
     ownerId: string
   ): OfferModel {
-    if (!images) {
-      throw new Error("Offer must have images!");
-    }
     if (!validUntil) {
       throw new Error(
         "Offer must have a validity period! : End date not specified"
@@ -60,10 +49,10 @@ export default function buildMakeOffer({
       getAdditionalInfo: () => additionalInfo,
       getValidUntil: () => validUntil,
       getValidFrom: () => validFrom,
-      getImages: () => images,
-      getRandomOffer: () => randomOffer,
+      getImages: () => [],
+      getRandomOffer: () => null,
       getOwner: () => null,
-      getExpiresAt: () => expiresAt,
+      getExpiresAt: () => add(new Date(), { months: 6 }) as Date,
     });
   };
 }

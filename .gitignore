@@ -102,3 +102,6 @@ kubectl
 kubectl.*
 
 
+# storage
+/server/temp
+

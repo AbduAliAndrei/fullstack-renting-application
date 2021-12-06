@@ -3,7 +3,7 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../database-entity";
-import { UpdatedOffer } from "../../../interfaces/offer";
+import { Offer, UpdatedOffer } from "../../../interfaces/offer";
 
 export interface DatabaseOfferEntity<T, TModel>
   extends Omit<DatabaseEntity<T, TModel>, "update"> {
@@ -19,4 +19,12 @@ export interface DatabaseOfferEntity<T, TModel>
   }: {
     ownerId?: string;
   }) => Promise<DatabaseFunction<Required<T>[]> & { _ownerId?: string }>;
+  addPlanLayouts: (
+    images: Express.Multer.File[],
+    id: string
+  ) => Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>>;
+  addImages: (
+    images: Express.Multer.File[],
+    id: string
+  ) => Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>>;
 }

@@ -12,10 +12,10 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as ServiceAccount),
 });
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
 const db: FirebaseFirestore.Firestore = admin.firestore();
-export const st: firebase.storage.Storage = firebase.storage();
+export const st: firebase.storage.Storage = firebase.storage(app);
 export default db;
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript

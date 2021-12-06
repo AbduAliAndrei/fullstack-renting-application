@@ -167,14 +167,16 @@ export default function makeGenericDb<T, TModel>({
   async function refObject<F extends string>({
     findKey,
     key,
+    alterCollectionPath,
   }: {
     findKey: string;
     key: F;
+    alterCollectionPath?: string;
   }): Promise<
     FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>
   > {
-    const dataRef = await db.collection(collectionPath);
-    const data = await dataRef.where(`${key}`, "==", findKey).get();
+    const dataRef = await db.collection(alterCollectionPath ?? collectionPath);
+    const data = await dataRef.where(`${findKey}`, "==", key).get();
     if (data.empty || data.size === 0) {
       return null;
     }

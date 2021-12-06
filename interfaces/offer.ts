@@ -74,10 +74,9 @@ export type Section = {
   content: string | Section;
 };
 
-export type OfferBlobs = Omit<
+export type CreatedOffer = Omit<
   Offer,
-  "images" | "additionalInfo" | "ownerId" | "id"
+  "images" | "additionalInfo" | "ownerId" | "id" | "randomOffer" | "expiresAt"
 > & {
-  images: Blob[];
-  additionalInfo: Omit<AdditionalInfo, "planLayout"> & { planLayout?: Blob[] };
+  additionalInfo: Omit<AdditionalInfo, "planLayout">;
 };

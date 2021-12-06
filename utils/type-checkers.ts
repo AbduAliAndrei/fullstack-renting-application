@@ -11,4 +11,17 @@ const isObject = (fn: any): fn is object =>
 const isUserType = (fn: any): fn is UserType =>
   fn === UserType.TENANT || fn === UserType.ADMIN || fn === UserType.LANDLORD;
 
-export { isNil, isObject, isString, isUndefined, isUserType };
+const isBlobOrStringArray = (fn: any[]): fn is Array<string | Blob> => {
+  return fn.every(
+    (i) => isString(i) || ((i.text && i.type && i.arrayBuffer) as Blob)
+  );
+};
+
+export {
+  isNil,
+  isObject,
+  isString,
+  isUndefined,
+  isUserType,
+  isBlobOrStringArray,
+};

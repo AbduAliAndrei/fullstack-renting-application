@@ -2,7 +2,7 @@ import {
   DatabaseFunction,
   DatabaseObject,
 } from "../../../interfaces/database-entity";
-import { Offer, OfferBlobs } from "../../../../interfaces/offer";
+import { Offer, CreatedOffer } from "../../../../interfaces/offer";
 import { OfferModel } from "../../../interfaces/models/offer.model";
 import { DatabaseOfferEntity } from "../../../interfaces/databases/offer-database-entity";
 
@@ -11,11 +11,11 @@ export default function createOfferCreator({
   makeOffer,
 }: {
   db: DatabaseOfferEntity<Offer, OfferModel>;
-  makeOffer: (offer: OfferBlobs, ownerId: string) => OfferModel;
+  makeOffer: (offer: CreatedOffer, ownerId: string) => OfferModel;
 }) {
   return async function createOffer(
     ownerId: string,
-    info: OfferBlobs
+    info: CreatedOffer
   ): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>> {
     return db.add(makeOffer(info, ownerId));
   };

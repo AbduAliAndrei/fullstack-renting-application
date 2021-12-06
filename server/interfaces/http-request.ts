@@ -13,4 +13,6 @@ export interface HttpRequest {
   path: string;
   headers: Record<string, string>;
   cookies: any;
+  file: Express.Multer.File;
+  files: Record<string, any>;
 }

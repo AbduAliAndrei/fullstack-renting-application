@@ -1,5 +1,5 @@
 import Firestore = firestore.Firestore;
-import { Offer, UpdatedOffer } from "../../interfaces/offer";
+import { AdditionalInfo, Offer, UpdatedOffer } from "../../interfaces/offer";
 import { firestore } from "firebase-admin/lib/firestore";
 import { OfferModel } from "../interfaces/models/offer.model";
 import { CollectionPaths } from "../enums/collection-paths";
@@ -10,12 +10,15 @@ import {
 } from "../interfaces/database-entity";
 import makeGenericDb from "./generic.db";
 import { DatabaseOfferEntity } from "../interfaces/databases/offer-database-entity";
-import { Landlord, Role } from "../../interfaces/role";
+import { Role } from "../../interfaces/role";
 import firebase from "firebase";
 import { createImagesOnPath } from "./utils";
 import FileDeleteException from "../exceptions/file-delete.exception";
 import { ImagePaths } from "../enums/image-paths";
 import FalsyValueException from "../exceptions/falsy-value-exception";
+import { UserType } from "../../enums/user-type";
+import WrongUserTypeException from "../exceptions/wrong-user-type.exception";
+import { isBlobOrStringArray } from "../../utils/type-checkers";
 
 export default function makeOffersDb({
   db,
@@ -36,6 +39,8 @@ export default function makeOffersDb({
     update,
     remove,
     add,
+    addImages,
+    addPlanLayouts,
   });
 
   function createOfferFromDb(
@@ -75,41 +80,81 @@ export default function makeOffersDb({
   async function getOwnerRefById(
     id: string
   ): Promise<firestore.DocumentReference<firestore.DocumentData>> {
-    return await genericOfferDb.refObject<"id">({ key: id, findKey: "id" });
+    return await genericOfferDb.refObject<"id">({
+      key: id,
+      findKey: "id",
+      alterCollectionPath: CollectionPaths.USER,
+    });
   }
 
   async function add(
     offerInfo: Required<OfferModel>
   ): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>> {
+    if (!isBlobOrStringArray(offerInfo.getImages())) {
+      throw new FalsyValueException("Expected array of strings or blobs");
+    }
     // update owner (user)
     const ownerRef = await getOwnerRefById(offerInfo.getOwnerId());
-    const role: Role = (await ownerRef.get()).data().role as Landlord;
+    const role: Role = (await ownerRef.get()).data().role;
+    if (role.role !== UserType.LANDLORD) {
+      throw new WrongUserTypeException(role.role, UserType.LANDLORD);
+    }
     await ownerRef.update({
       role: { ...role, offerList: [...role.offerList, offerInfo.getId()] },
     });
-    // put images to storage
-    const flatImagePaths = await createImagesOnPath(
-      st,
-      `${ImagePaths.OFFERS_IMAGES}${offerInfo.getId()}`,
-      offerInfo.getImages()
-    );
-    const planImagePaths = await createImagesOnPath(
-      st,
-      `${ImagePaths.OFFERS_PLAN_IMAGES}${offerInfo.getId()}`,
-      offerInfo.getAdditionalInfo().planLayout
-    );
+    // put images to storage -> done in separate functions
 
     const offerModel: Required<OfferModel> = {
       ...offerInfo,
       getOwner: () => ownerRef,
-      getImages: () => flatImagePaths,
-      getAdditionalInfo: () => ({
-        ...offerInfo.getAdditionalInfo(),
-        planLayout: planImagePaths,
-      }),
     };
 
     return genericOfferDb.add(offerModel);
+  }
+
+  async function addImages(
+    images: Express.Multer.File[],
+    id: string
+  ): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>> {
+    const flatImagePaths = await createImagesOnPath(
+      st,
+      `${ImagePaths.OFFERS_IMAGES}${id}/`,
+      images
+    );
+
+    const updateKey = {
+      images: flatImagePaths,
+    };
+
+    return genericOfferDb.update<{ images: Array<string> }, "id">({
+      field: "id",
+      data: updateKey,
+      key: id,
+    });
+  }
+
+  async function addPlanLayouts(
+    images: Express.Multer.File[],
+    id: string
+  ): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>> {
+    const planImagePaths = await createImagesOnPath(
+      st,
+      `${ImagePaths.OFFERS_PLAN_IMAGES}${id}/`,
+      images
+    );
+    const currentOffer = await findById({ id });
+    const updateKey = {
+      additionalInfo: {
+        ...currentOffer.fetchedData.additionalInfo,
+        planLayout: planImagePaths,
+      },
+    };
+
+    return genericOfferDb.update<{ additionalInfo: AdditionalInfo }, "id">({
+      field: "id",
+      data: updateKey,
+      key: id,
+    });
   }
 
   async function findAll({

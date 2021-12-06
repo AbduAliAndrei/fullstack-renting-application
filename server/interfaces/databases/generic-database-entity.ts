@@ -55,9 +55,11 @@ export interface GenericDatabaseEntity<T, TModel> {
   refObject: <F extends string>({
     key,
     findKey,
+    alterCollectionPath,
   }: {
     key: string;
     findKey: F;
+    alterCollectionPath?: string;
   }) => Promise<
     FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>
   >;

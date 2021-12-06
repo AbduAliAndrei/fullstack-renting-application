@@ -4,6 +4,7 @@ import controller from "../controllers";
 import { SecuredUser } from "../../interfaces/user";
 import privateAccessMiddleware from "../middlewares/private-access.middleware";
 import currentOnlyAccessMiddleware from "../middlewares/current-user-only-access.middleware";
+import uploadFn from "../middlewares/multer-storage.middleware";
 
 const router = express.Router();
 
@@ -67,6 +68,15 @@ function routes(): Router {
   router.post(
     "/offers",
     createExpressCallback(controller.offerController.createOffer)
+  );
+
+  router.post(
+    "/offers/images/:id",
+    uploadFn.fields([
+      { name: "images", maxCount: 10 },
+      { name: "planLayout", maxCount: 10 },
+    ]),
+    createExpressCallback(controller.offerController.addImages)
   );
 
   router.get(

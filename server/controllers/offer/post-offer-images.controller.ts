@@ -1,20 +1,24 @@
+import { Offer } from "../../../interfaces/offer";
 import {
   DatabaseFunction,
   DatabaseObject,
 } from "../../interfaces/database-entity";
-import { Offer, CreatedOffer } from "../../../interfaces/offer";
 import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
 import asyncF from "../../../utils/async-f";
 import { postOfferHelper } from "../utils";
+import { ImageDest } from "../../../interfaces/image-dest";
 
-export default function createPostOffer({
-  createOffer,
+export default function createPostOfferImages({
+  addImages,
 }: {
-  createOffer(
-    ownerId: string,
-    offer: CreatedOffer
-  ): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>>;
+  addImages({
+    offerId,
+    images,
+  }: {
+    offerId: string;
+    images: Record<ImageDest, Express.Multer.File[]>;
+  }): Promise<DatabaseFunction<DatabaseObject<Required<Offer>>>>;
 }): (h: HttpRequest) => Promise<Controller<DatabaseObject<Required<Offer>>>> {
   return async function postOffer(
     httpRequest: HttpRequest
@@ -22,13 +26,9 @@ export default function createPostOffer({
     const postProcess = async (): Promise<
       DatabaseFunction<DatabaseObject<Required<Offer>>>
     > => {
-      const { source = {}, offer, ownerId } = httpRequest.body;
-      source.ip = httpRequest.ip;
-      source.browser = httpRequest.headers["Offer-Agent"];
-      if (httpRequest.headers["Referer"]) {
-        source.referer = httpRequest.headers["Referer"];
-      }
-      return await createOffer(ownerId, offer);
+      const images = httpRequest.files;
+      const offerId = httpRequest.params["id"];
+      return await addImages({ offerId, images });
     };
 
     const [data, error] = await asyncF<
