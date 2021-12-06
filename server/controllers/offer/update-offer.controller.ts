@@ -24,7 +24,8 @@ export default function createUpdateOffer({
     const updateProcess = async (): Promise<
       DatabaseFunction<DatabaseObject<Required<UpdatedOffer>>>
     > => {
-      const { source = {}, offer, offerId } = httpRequest.body;
+      const { source = {}, offer } = httpRequest.body;
+      const offerId = httpRequest.params["id"];
       source.ip = httpRequest.ip;
       source.browser = httpRequest.headers["Offer-Agent"];
       if (httpRequest.headers["Referer"]) {

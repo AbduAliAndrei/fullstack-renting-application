@@ -10,7 +10,7 @@ export default function createDeleteOffer(services: {
   return async function (
     httpRequest: HttpRequest
   ): Promise<Controller<DatabaseObject<Required<string>>>> {
-    const { offerId }: { offerId: string } = httpRequest.body;
+    const offerId = httpRequest.params["id"];
     if (!offerId) {
       return {
         headers: {

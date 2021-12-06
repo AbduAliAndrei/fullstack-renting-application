@@ -55,7 +55,7 @@ export default function makeOffersDb({
       additionalInfo: doc.data().additionalInfo,
       validUntil: doc.data().validUntil,
       validFrom: doc.data().validFrom,
-      expiresAt: doc.data().expiresAt,
+      expiresAt: doc.data().expiresAt.toDate(),
       images: doc.data().images,
       randomOffer: doc.data().randomOffer,
     };
@@ -99,9 +99,6 @@ export default function makeOffersDb({
     if (role.role !== UserType.LANDLORD) {
       throw new WrongUserTypeException(role.role, UserType.LANDLORD);
     }
-    await ownerRef.update({
-      role: { ...role, offerList: [...role.offerList, offerInfo.getId()] },
-    });
     // put images to storage -> done in separate functions
 
     const offerModel: Required<OfferModel> = {
@@ -109,7 +106,14 @@ export default function makeOffersDb({
       getOwner: () => ownerRef,
     };
 
-    return genericOfferDb.add(offerModel);
+    const offer = await genericOfferDb.add(offerModel);
+    await ownerRef.update({
+      role: {
+        ...role,
+        offerList: [...role.offerList, offer.fetchedData.data.id],
+      },
+    });
+    return offer;
   }
 
   async function addImages(
@@ -126,7 +130,7 @@ export default function makeOffersDb({
       images: flatImagePaths,
     };
 
-    return genericOfferDb.update<{ images: Array<string> }, "id">({
+    return await genericOfferDb.update<{ images: Array<string> }, "id">({
       field: "id",
       data: updateKey,
       key: id,
@@ -150,7 +154,10 @@ export default function makeOffersDb({
       },
     };
 
-    return genericOfferDb.update<{ additionalInfo: AdditionalInfo }, "id">({
+    return await genericOfferDb.update<
+      { additionalInfo: AdditionalInfo },
+      "id"
+    >({
       field: "id",
       data: updateKey,
       key: id,
@@ -189,28 +196,44 @@ export default function makeOffersDb({
       field: "id",
     });
   }
+
   async function remove({
     key,
   }: {
     key: string;
   }): Promise<DatabaseFunction<DatabaseObject<string>>> {
-    const storageRef = st.ref();
     // remove images from storage
     try {
-      await storageRef.child(`${ImagePaths.OFFERS_IMAGES}${key}`).delete();
-      await storageRef.child(`${ImagePaths.OFFERS_PLAN_IMAGES}${key}`).delete();
+      const flatImages = await st
+        .ref(`${ImagePaths.OFFERS_IMAGES}${key}`)
+        .listAll();
+      flatImages.items.map((fileRef) => {
+        fileRef.delete();
+      });
+      const planImages = await st
+        .ref(`${ImagePaths.OFFERS_PLAN_IMAGES}${key}`)
+        .listAll();
+      planImages.items.map((fileRef) => fileRef.delete());
     } catch (e) {
       new FileDeleteException(e);
     }
 
+    const currentOffer = await findById({ id: key });
     // remove id from owner (landlord)
-    const ownerRef = await getOwnerRefById(key);
+    const ownerRef = await getOwnerRefById(currentOffer.fetchedData.ownerId);
     if (!(await ownerRef.get()).exists) {
       throw new FalsyValueException(
-        `Owner ref of offer with id ${key} is empty. Please update your database`
+        `Owner ref of offer with id ${currentOffer.fetchedData.ownerId} is empty. Please update your database`
       );
     }
-    await ownerRef.delete();
+
+    const role: Role = (await ownerRef.get()).data().role;
+    if (role.role !== UserType.LANDLORD) {
+      throw new WrongUserTypeException(role.role, UserType.LANDLORD);
+    }
+    await ownerRef.update({
+      role: { ...role, offerList: role.offerList.filter((i) => i !== key) },
+    });
 
     return genericOfferDb.remove<"id">({ key, field: "id" });
   }

@@ -15,8 +15,10 @@ export interface Offer {
 }
 export type UpdatedOffer = Omit<
   Offer,
-  "expiresAt" | "ownerId" | "id" | "randomOffer"
->;
+  "expiresAt" | "ownerId" | "id" | "randomOffer" | "images"
+> & {
+  additionalInfo: Omit<AdditionalInfo, "planLayout">;
+};
 
 export type GeneralInfo = {
   title: string;
