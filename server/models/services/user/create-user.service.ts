@@ -4,7 +4,7 @@ import {
   DatabaseObject,
 } from "../../../interfaces/database-entity";
 import { SecuredUser, User } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 import { UserType } from "../../../../enums/user-type";
 
 export default function createUserCreator({

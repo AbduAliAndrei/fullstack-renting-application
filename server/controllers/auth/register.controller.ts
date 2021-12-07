@@ -1,6 +1,6 @@
 import { HttpRequest } from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
-import controller from "../index";
+import userController from "../user";
 import Controller from "../../interfaces/controller";
 import { DatabaseObject } from "../../interfaces/database-entity";
 import { SecuredUser, User } from "../../../interfaces/user";
@@ -74,7 +74,7 @@ export default function createRegisterAttempt({
       };
     } else {
       loginInfo.user.id = created.uid;
-      result = await controller.postUser(httpRequest);
+      result = await userController.postUser(httpRequest);
 
       if (result.body.error) {
         await authRemove({ uid: created.uid });

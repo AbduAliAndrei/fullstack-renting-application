@@ -1,17 +1,16 @@
 import { SecuredUser } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 import {
   DatabaseFunction,
   DatabaseObject,
-  DatabaseUserEntity,
 } from "../../../interfaces/database-entity";
 import { UserType } from "../../../../enums/user-type";
-import { Role } from "../../../../interfaces/role";
+import { DatabaseUserEntity } from "../../../interfaces/databases/user-database-entity";
 
 export function updateUserRoleService({
   db,
 }: {
-  db: DatabaseUserEntity<SecuredUser, UserModel, Role>;
+  db: DatabaseUserEntity<SecuredUser, UserModel>;
 }) {
   return async function updateUserRoleService({
     id,
@@ -19,7 +18,7 @@ export function updateUserRoleService({
   }: {
     id: string;
     role: UserType;
-  }): Promise<DatabaseFunction<DatabaseObject<Required<Role>>>> {
+  }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     return await db.updateRole({ id, role });
   };
 }

@@ -1,15 +1,13 @@
-import {
-  DatabaseEntity,
-  DatabaseFunction,
-} from "../../../interfaces/database-entity";
+import { DatabaseFunction } from "../../../interfaces/database-entity";
 import { SecuredUser } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
+import { DatabaseUserEntity } from "../../../interfaces/databases/user-database-entity";
 
-interface TakeUserInterface {
-  usersDb: DatabaseEntity<SecuredUser, UserModel>;
+interface TakeUsersInterface {
+  usersDb: DatabaseUserEntity<SecuredUser, UserModel>;
 }
 
-export default function takeUsersCreator({ usersDb }: TakeUserInterface) {
+export default function takeUsersCreator({ usersDb }: TakeUsersInterface) {
   return async function takeUsers(): Promise<
     DatabaseFunction<Required<SecuredUser[]>>
   > {

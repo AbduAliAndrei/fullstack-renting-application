@@ -1,6 +1,6 @@
 import { SecuredUser, User } from "../../../../interfaces/user";
 import { UserType } from "../../../../enums/user-type";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 import { Role } from "../../../../interfaces/role";
 import { IdType } from "../../../../enums/id-type";
 

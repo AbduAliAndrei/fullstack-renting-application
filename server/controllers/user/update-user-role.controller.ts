@@ -7,7 +7,7 @@ import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
 import asyncF from "../../../utils/async-f";
 import { HttpStatus } from "../../enums/http-status";
-import { Role } from "../../../interfaces/role";
+import { SecuredUser } from "../../../interfaces/user";
 
 export default function createUpdateUserRole({
   updateRole,
@@ -18,13 +18,15 @@ export default function createUpdateUserRole({
   }: {
     id: string;
     role: UserType;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<Role>>>>;
+  }) => Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>;
 }) {
   return async function updateUserRole(
     httpRequest: HttpRequest
-  ): Promise<Controller<DatabaseFunction<DatabaseObject<Required<Role>>>>> {
+  ): Promise<
+    Controller<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>>
+  > {
     const process = async (): Promise<
-      DatabaseFunction<DatabaseObject<Required<Role>>>
+      DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
     > => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { source = {}, role } = httpRequest.body;
@@ -33,7 +35,9 @@ export default function createUpdateUserRole({
     };
 
     const [data, error] = await asyncF(process());
-    let result!: Controller<DatabaseFunction<DatabaseObject<Required<Role>>>>;
+    let result!: Controller<
+      DatabaseFunction<DatabaseObject<Required<SecuredUser>>>
+    >;
     if (error) {
       result = {
         headers: {

@@ -2,8 +2,8 @@ import { isObject, isString } from "../../utils/type-checkers";
 
 export class HttpException extends Error {
   constructor(
-    private readonly response: string | Record<string, any>,
-    private readonly status: number
+    protected readonly response: string | Record<string, any>,
+    protected readonly status: number
   ) {
     super();
     Object.setPrototypeOf(this, new.target.prototype);
