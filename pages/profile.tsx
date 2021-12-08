@@ -7,19 +7,19 @@ import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/system/Box";
-import { styled } from "@mui/system";
+// import { styled } from "@mui/system";
 import Switch from "@material-ui/core/Switch";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
+// import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import { dividerClasses } from "@mui/material";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Search from "@material-ui/icons/Search";
+// import { dividerClasses } from "@mui/material";
+// import InputAdornment from "@material-ui/core/InputAdornment";
+// import Search from "@material-ui/icons/Search";
 
-let generalInfo = () => {
+const generalInfo = () => {
   return (
     <div>
       <div className="profileImageContainer">
@@ -169,7 +169,7 @@ let generalInfo = () => {
   );
 };
 
-let passwordInfo = () => {
+const passwordInfo = () => {
   return (
     <div>
       <div className="primaryInfo">
@@ -223,7 +223,7 @@ let passwordInfo = () => {
   );
 };
 
-let emailInfo = () => {
+const emailInfo = () => {
   return (
     <div>
       <div className="primaryInfo">
@@ -273,7 +273,7 @@ let emailInfo = () => {
   );
 };
 
-let roleChangeInfo = () => {
+const roleChangeInfo = () => {
   return (
     <div>
       <div className="primaryInfo">

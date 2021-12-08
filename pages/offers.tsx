@@ -1,8 +1,21 @@
 import Card from "../components/Card";
 import FilterTool from "../components/FilterTool";
 import * as React from "react";
-import Grid from "@mui/material/Grid";
+import useFetch, { RequestType } from "../api/data-fetcher";
+import { Offer } from "../interfaces/offer";
+import { useEffect } from "react";
+// import Grid from "@mui/material/Grid";
 export default function Offers() {
+  const [offers, loading] = useFetch<Offer[]>({
+    type: RequestType.GET,
+    path: "offers",
+    query: [["takeOwner", "true"]],
+  });
+
+  useEffect(() => {
+    console.log(loading, offers);
+  }, [loading, offers]);
+
   return (
     <div className="Offers">
       <div className="filter-tool">
