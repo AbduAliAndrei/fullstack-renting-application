@@ -2,7 +2,6 @@
   @include flex(row);
   position: relative;
   width: 100vw;
-  height: 60px;
   box-shadow: 1px 1px 5px #0000002d;
   height: fit-content;
   padding: 30px;
@@ -19,7 +18,7 @@
       color: $main-black;
       font-size: 40px;
       text-decoration: none;
-      font-family: roboto;
+      font-family: Roboto, Helvetica, Arial, sans-serif;
       font-weight: bolder;
     }
   }
@@ -70,7 +69,7 @@
         padding: 5px 30px;
         text-transform: capitalize;
         color: #fff;
-        font-family: roboto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;;
         font-size: 20px;
         font-weight: bold;
 
@@ -89,15 +88,76 @@
         padding: 5px 30px;
         text-transform: capitalize;
         font-size: 20px;
-        font-weight: bold;
 
         color: #ff0067;
-        font-family: roboto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;;
         font-weight: bolder;
         &:hover {
           background-color: #ffb8d6d2;
         }
       }
+    }
+  }
+  .profileDetails {
+    @include flex(column);
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+    .primaryInfo {
+      @include flex(row);
+      .imgContainer {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        .userProfileImg {
+          border-radius: 50px;
+        }
+      }
+
+      .userName {
+        margin-left: 10px;
+        color: #ff0067;
+      }
+    }
+    .userMenu {
+      position: absolute;
+      background-color: $main-color3;
+      display: none;
+      margin-left: 10px;
+      margin-top: 160px;
+      box-shadow: 1px 1px 10px hsla(0, 0%, 0%, 0.176);
+      width: 100%;
+      nav {
+        ul {
+          @include flex(column);
+          margin: 0;
+          padding: 0;
+          li {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 10px;
+            a {
+              text-decoration: none;
+              color: $main-black;
+              &:hover {
+                transition: 0.2s;
+                opacity: 60%;
+              }
+            }
+          }
+        }
+      }
+      &:hover {
+        transition: 0.5s;
+        display: block;
+      }
+    }
+    &:hover .userMenu {
+      transition: 0.5s;
+      display: block;
     }
   }
 }
@@ -123,7 +183,7 @@
         color: $main-black;
         font-size: 40px;
         text-decoration: none;
-        font-family: roboto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;;
         font-weight: bolder;
       }
     }
@@ -160,6 +220,17 @@
       cursor: pointer;
       .signUpBtn {
         padding: 5px 20px;
+      }
+    }
+    .profileDetails {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      .userProfileImg {
+        border-radius: 50px;
+      }
+
+      .userName {
       }
     }
   }

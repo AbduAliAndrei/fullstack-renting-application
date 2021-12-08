@@ -107,7 +107,6 @@
       }
       .facilities {
         @include flex(row);
-        // padding: 0 35px;
         .facility {
           @include flex(row);
           font-size: 20px;
@@ -128,9 +127,4 @@
       }
     }
   }
-}
-
-.im:before,
-.im:before {
-  color: yellow;
 }
