@@ -1,27 +1,33 @@
 import { firestore } from "firebase-admin/lib/firestore";
-import Firestore = firestore.Firestore;
 import { CollectionPaths } from "../enums/collection-paths";
-import firebase from "firebase";
-import WhereFilterOp = firebase.firestore.WhereFilterOp;
 import {
   DatabaseFunction,
   DatabaseObject,
-  DatabaseUserEntity,
 } from "../interfaces/database-entity";
-import { SecuredUser } from "../../interfaces/user";
-import { UserModel } from "../interfaces/models/user.type";
+import { SecuredUser, UpdatedUser } from "../../interfaces/user";
+import { UserModel } from "../interfaces/models/user.model";
 import {
   createRole,
   toUserFromModel,
 } from "../models/entities/user/user.entity";
 import { UserType } from "../../enums/user-type";
 import { Role } from "../../interfaces/role";
+import makeGenericDb from "./generic.db";
+import { DatabaseUserEntity } from "../interfaces/databases/user-database-entity";
+import Firestore = firestore.Firestore;
 
 export default function makeUsersDb({
   db,
 }: {
   db: Firestore;
-}): DatabaseUserEntity<SecuredUser, UserModel, Role> {
+}): DatabaseUserEntity<SecuredUser, UserModel> {
+  const genericUserDb = makeGenericDb<SecuredUser, UserModel>({
+    db,
+    collectionPath: CollectionPaths.USER,
+    createT: createUserFromDb,
+    toTFromModelT: toUserFromModel,
+  });
+
   return Object.freeze({
     add,
     findAll,
@@ -32,30 +38,24 @@ export default function makeUsersDb({
   });
 
   async function add(
-    userInfo: Required<UserModel>
+    addInfo: Required<UserModel>
   ): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
-    const result = await db
-      .collection(CollectionPaths.USER)
-      .doc()
-      .set(toUserFromModel(userInfo));
-
-    return {
-      fetchedData: {
-        writeTime: result.writeTime.toDate(),
-        data: toUserFromModel(userInfo),
-      },
-    };
+    return genericUserDb.add(addInfo);
   }
 
-  function createUserFromDb(doc): Required<SecuredUser> {
+  function createUserFromDb(
+    doc:
+      | FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>
+      | FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
+  ): Required<SecuredUser> {
     return {
       id: doc.data().id,
       firstName: doc.data().firstName,
       lastName: doc.data().lastName,
       userName: doc.data().userName,
       email: doc.data().email,
-      createdAt: doc.data().createdAt,
-      updatedAt: doc.data().updatedAt,
+      createdAt: doc.data().createdAt.toDate(),
+      updatedAt: doc.data().updatedAt.toDate(),
       verified: doc.data().verified,
       role: doc.data().role,
       gender: doc.data().gender,
@@ -69,59 +69,34 @@ export default function makeUsersDb({
   }: {
     userName?: string;
   }): Promise<
-    DatabaseFunction<Required<SecuredUser>[]> & { _userName: string }
+    DatabaseFunction<Required<SecuredUser>[]> & { _userName?: string }
   > {
-    const opts: [string, WhereFilterOp, string] = ["userName", "==", userName];
-    const result = userName
-      ? await db
-          .collection(CollectionPaths.USER)
-          .where(...opts)
-          .get()
-      : await db.collection(CollectionPaths.USER).get();
-
-    const users: Required<SecuredUser>[] = [];
-
-    result.forEach((doc) => {
-      users.push(createUserFromDb(doc));
+    return genericUserDb.findAll<"userName">({
+      findKey: userName,
+      key: "userName",
     });
-
-    return { fetchedData: users, _userName: userName };
   }
 
   async function findById({
     id,
   }: {
     id: string;
-  }): Promise<DatabaseFunction<Required<SecuredUser>> & { id?: string }> {
-    const usersRef = await db.collection(CollectionPaths.USER);
-    const data = await usersRef.where("id", "==", id).get();
-    if (data.empty || data.size === 0) {
-      return { fetchedData: null };
-    }
-
-    return { fetchedData: createUserFromDb(data.docs[0]), id };
+  }): Promise<DatabaseFunction<Required<SecuredUser>> & { _id?: string }> {
+    return genericUserDb.find<"id">({ findKey: id, key: "id" });
   }
 
   async function update({
-    id,
+    key,
     data,
   }: {
-    id: string;
-    data: Required<SecuredUser>;
+    key: string;
+    data: Required<UpdatedUser>;
   }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
-    const userRef = await db
-      .collection(CollectionPaths.USER)
-      .where("id", "==", id)
-      .get();
-
-    let result: Promise<firestore.WriteResult>;
-    userRef.forEach((doc) => {
-      result = doc.ref.update(data);
+    return genericUserDb.update<Required<UpdatedUser>, "id">({
+      key,
+      data,
+      field: "id",
     });
-
-    return {
-      fetchedData: { writeTime: (await result).writeTime.toDate(), data },
-    };
   }
 
   async function updateRole({
@@ -130,47 +105,20 @@ export default function makeUsersDb({
   }: {
     id: string;
     role: UserType;
-  }): Promise<DatabaseFunction<DatabaseObject<Required<Role>>>> {
-    const userRef = await db
-      .collection(CollectionPaths.USER)
-      .where("id", "==", id)
-      .get();
-
+  }): Promise<DatabaseFunction<DatabaseObject<Required<SecuredUser>>>> {
     const generatedRole = createRole(role);
-
-    let result: Promise<firestore.WriteResult>;
-    userRef.forEach((doc) => {
-      result = doc.ref.update({
-        role: generatedRole,
-      });
+    return genericUserDb.update<{ role: Role }, "id">({
+      key: id,
+      data: { role: generatedRole },
+      field: "id",
     });
-
-    return {
-      fetchedData: {
-        writeTime: (await result).writeTime.toDate(),
-        data: generatedRole,
-      },
-    };
   }
 
   async function remove({
-    id,
+    key,
   }: {
-    id: string;
+    key: string;
   }): Promise<DatabaseFunction<DatabaseObject<string>>> {
-    const usersRef = await db
-      .collection(CollectionPaths.USER)
-      .where("id", "==", id)
-      .get();
-
-    let result: Promise<firestore.WriteResult>;
-    usersRef.forEach((doc) => {
-      result = db.collection(CollectionPaths.USER).doc(doc.id).delete();
-    });
-    const res = await result;
-
-    return {
-      fetchedData: { writeTime: res.writeTime.toDate(), data: id },
-    };
+    return genericUserDb.remove<"id">({ key, field: "id" });
   }
 }

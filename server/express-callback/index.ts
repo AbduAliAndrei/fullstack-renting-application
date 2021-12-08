@@ -20,6 +20,8 @@ export default function createExpressCallback<T>(
       params: req.params,
       ip: req.ip,
       method: req.method,
+      files: req.files,
+      file: req.file,
       path: req.path,
       headers: {
         "Content-Type": req.get("Content-Type"),

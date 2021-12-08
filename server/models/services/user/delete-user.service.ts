@@ -4,7 +4,7 @@ import {
 } from "../../../interfaces/database-entity";
 import asyncF from "../../../../utils/async-f";
 import { SecuredUser } from "../../../../interfaces/user";
-import { UserModel } from "../../../interfaces/models/user.type";
+import { UserModel } from "../../../interfaces/models/user.model";
 
 export type DeleteUserService = {
   usersDb: DatabaseEntity<SecuredUser, UserModel>;
@@ -15,7 +15,7 @@ export default function deleteUserService({ usersDb }: DeleteUserService) {
     id: string,
     authRemove: ({ uid }: { uid: string }) => Promise<void>
   ): Promise<DatabaseObject<string>> {
-    const removeRes = await usersDb.remove({ id });
+    const removeRes = await usersDb.remove({ key: id });
     if (!removeRes.fetchedData) {
       throw new Error("User was not deleted. Uncaught error.");
     }

@@ -18,6 +18,8 @@ app
   .then(() => {
     const server = express();
     const PORT = process.env.PORT || 3000;
+    // needed for firebase storage
+    global.XMLHttpRequest = require("xhr2");
 
     server.use(bodyParser.json());
     server.use(cookieParser());

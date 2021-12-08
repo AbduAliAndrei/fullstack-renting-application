@@ -1,42 +1,24 @@
-import { UserType } from "../../enums/user-type";
+import { GenericDatabaseEntity } from "./databases/generic-database-entity";
 
-export interface DatabaseEntity<T, TModel> {
-  add: (
-    info: Required<TModel>
-  ) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
-  findAll: ({
-    userName,
-  }: {
-    userName?: string;
-  }) => Promise<DatabaseFunction<Required<T>[]> & { _userName: string }>;
+export interface DatabaseEntity<T, TModel>
+  extends Pick<GenericDatabaseEntity<T, TModel>, "add"> {
   findById: ({
     id,
   }: {
     id: string;
-  }) => Promise<DatabaseFunction<Required<T>> & { id?: string }>;
+  }) => Promise<DatabaseFunction<Required<T>> & { _id?: string }>;
   update: ({
-    id,
+    key,
     data,
   }: {
-    id: string;
+    key: string;
     data: Required<T>;
   }) => Promise<DatabaseFunction<DatabaseObject<Required<T>>>>;
   remove: ({
-    id,
+    key,
   }: {
-    id: string;
+    key: string;
   }) => Promise<DatabaseFunction<DatabaseObject<string>>>;
-}
-
-export interface DatabaseUserEntity<T, Model, Role>
-  extends DatabaseEntity<T, Model> {
-  updateRole: ({
-    id,
-    role,
-  }: {
-    id: string;
-    role: UserType;
-  }) => Promise<DatabaseFunction<DatabaseObject<Required<Role>>>>;
 }
 
 export type DatabaseFunction<T> = {
