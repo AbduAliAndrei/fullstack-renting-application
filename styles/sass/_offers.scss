@@ -2,35 +2,32 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  min-height: 400vh;
+  min-height: 100vh;
   background-color: rgb(240, 240, 240);
   .filter-tool {
-    width: 25%;
+    width: fit-content;
     height: 100%;
   }
   .offers-container {
-    // display: grid;
-    // grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
-    // row-gap: 210px;
-    // column-gap: 40px;
     @include flex(row);
     justify-content: space-evenly;
     align-items: flex-start;
-    // flex-wrap: wrap;
-    width: 70%;
     margin: 70px auto;
     gap: 40px;
   }
 }
 
-// @media screen and (max-width: 1648px) {
-//   .Offers {
-//     .offers-container {
-//       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-//       // gap: 60px;
-//     }
-//   }
-// }
+@media screen and (max-width: 1648px) {
+  .Offers {
+    flex-direction: column;
+    .filter-tool {
+      width: 100%;
+      height: fit-content;
+    }
+    .offers-container {
+    }
+  }
+}
 
 // @media screen and (max-width: 800px) {
 //   .Offers {
@@ -38,7 +35,6 @@
 //       gap: 10px;
 //       width: 100%;
 //       padding: 10px;
-//       grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
 //     }
 //     .filter-tool {
 //     }

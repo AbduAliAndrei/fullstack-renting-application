@@ -1,10 +1,9 @@
 .FilterTool {
-  // display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
-  @include flex(column);
+  // @include flex(column);
   background-color: $main-color3;
+  // min-height: 100vh;
   text-align: center;
-  min-height: 100vh;
+  height: fit-content;
   border-radius: 30px;
   padding: 20px;
   margin: 60px;
@@ -36,7 +35,6 @@
     padding: 0 10px;
     margin-top: 5px;
     width: 100%;
-    // animation: popup 0.2s linear;
     div {
       input {
         margin-right: 3px;
@@ -74,6 +72,21 @@
   }
 }
 
+@media screen and (max-width: 1648px) {
+  .FilterTool {
+    .options {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .drop-down {
+      @include flex(row);
+      justify-content: flex-start;
+      margin-top: 0;
+    }
+  }
+}
+
 @media screen and (max-width: 1050px) {
   .FilterTool {
     .title-arrow {
@@ -85,6 +98,9 @@
           font-size: 1em;
         }
       }
+    }
+    .action-btn-filter {
+      padding: 5px 60px;
     }
   }
 }

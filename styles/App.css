@@ -181,6 +181,19 @@
     margin-left: 20px;
     z-index: 99;
   }
+  .Nav .logo {
+    left: 0;
+    position: absolute;
+    cursor: pointer;
+    margin-left: 100px;
+  }
+  .Nav .logo a {
+    color: #363636;
+    font-size: 40px;
+    text-decoration: none;
+    font-family: roboto;
+    font-weight: bolder;
+  }
   .Nav #check:checked ~ .menu {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -201,10 +214,11 @@
             transform: translateY(0);
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    background-color: #5b5f97;
+    background-color: #000;
     width: 100vw;
     height: 50vh;
     z-index: 98;
+    color: #fff;
   }
   .Nav #check:checked ~ .menu nav ul {
     display: -webkit-box;
@@ -225,6 +239,57 @@
   }
   .Nav #check:checked ~ .menu nav ul li.active::after {
     display: none;
+  }
+  .Nav .login_signup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+    cursor: pointer;
+  }
+  .Nav .login_signup .login {
+    cursor: pointer;
+  }
+  .Nav .login_signup .login .logInBtn {
+    padding: 5px 20px;
+  }
+  .Nav .login_signup .signUpBtn {
+    padding: 5px 20px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .Nav .logo {
+    margin-left: 70px;
+  }
+  .Nav .logo a {
+    font-size: 30px;
+  }
+  .Nav .login_signup {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    margin-right: 20px;
+  }
+  .Nav .login_signup .login {
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  .Nav .login_signup .login .logInBtn {
+    width: 100%;
+    font-size: 10px;
+  }
+  .Nav .login_signup .signup {
+    width: 100%;
+    margin-left: 0;
+  }
+  .Nav .login_signup .signup .signUpBtn {
+    width: 100%;
+    font-size: 10px;
   }
 }
 
@@ -315,21 +380,9 @@
   position: relative;
   min-height: 100vh;
   width: 100vw;
-  text-align: center;
 }
 
-.RecentOffers .title {
-  display: inline-block;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 70px 0 90px 0;
-}
-
-.RecentOffers .offers {
-  width: 100%;
-  z-index: 9;
-  height: 80%;
+.RecentOffers .slider-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -345,29 +398,16 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 20px;
 }
 
-.RecentOffers .offers .offer {
-  min-height: 200px;
-  background-color: #fffffb;
-  border-radius: 20px;
-  -webkit-box-shadow: -1px 1px 14px -2px rgba(0, 0, 0, 0.247);
-  box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.062);
-  padding: 40px;
-  width: 500px;
-}
-
-.RecentOffers .offers .offer:hover {
-  -webkit-box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
-          box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
-}
-
-@media screen and (max-width: 640px) {
-  .RecentOffers .offers .offer {
-    min-width: 350px;
-    height: 250px;
-  }
+.RecentOffers .title {
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 70px 0 90px 0;
+  width: 100%;
+  text-align: center;
 }
 
 .ForLandlords {
@@ -635,13 +675,124 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 50%;
+  width: 60%;
+}
+
+.Footer .pagesDetailContainer ul {
+  margin: 0;
+  padding: 0;
 }
 
 .Footer .pagesDetailContainer .title {
   color: #ff0067;
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1338px) {
+  .Footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100vw;
+    min-height: 50vh;
+    background-color: #fffffb;
+    margin-top: auto;
+    font-size: 20px;
+    padding: 40px;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-shadow: 1px 1px 5px #00000052;
+            box-shadow: 1px 1px 5px #00000052;
+  }
+  .Footer .footerHeader-contact {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+  .Footer .footerHeader-contact .footerHeader {
+    width: 100%;
+  }
+  .Footer .footerHeader-contact .footerHeader .footerHeaderH4 {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  .Footer .footerHeader-contact .contact {
+    margin: 50px 0;
+  }
+  .Footer .footerHeader-contact .contact ul {
+    margin: 0;
+    padding: 0;
+  }
+  .Footer .footerHeader-contact .contact .contacts {
+    font-weight: bold;
+  }
+  .Footer .pagesDetailContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 100%;
+  }
+  .Footer .pagesDetailContainer ul {
+    margin: 0;
+    padding: 0;
+  }
+  .Footer .pagesDetailContainer .title {
+    color: #ff0067;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
 }
 
 .Offers {
@@ -652,12 +803,14 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  min-height: 400vh;
+  min-height: 100vh;
   background-color: #f0f0f0;
 }
 
 .Offers .filter-tool {
-  width: 25%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 100%;
 }
 
@@ -683,9 +836,23 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 70%;
   margin: 70px auto;
   gap: 40px;
+}
+
+@media screen and (max-width: 1648px) {
+  .Offers {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .Offers .filter-tool {
+    width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 
 .Card {
@@ -701,13 +868,6 @@
 .Card:hover {
   -webkit-box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
           box-shadow: 0px 14px 14px 0px rgba(0, 0, 0, 0.075);
-}
-
-@media screen and (max-width: 640px) {
-  .Card {
-    min-width: 350px;
-    height: 250px;
-  }
 }
 
 .Card .offer-images {
@@ -1004,24 +1164,11 @@
 }
 
 .FilterTool {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   background-color: #fffffb;
   text-align: center;
-  min-height: 100vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 30px;
   padding: 20px;
   margin: 60px;
@@ -1132,6 +1279,38 @@
   }
 }
 
+@media screen and (max-width: 1648px) {
+  .FilterTool .options {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .FilterTool .drop-down {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-top: 0;
+  }
+}
+
 @media screen and (max-width: 1050px) {
   .FilterTool .title-arrow {
     display: -webkit-box;
@@ -1144,6 +1323,9 @@
   }
   .FilterTool .title-arrow .title p {
     font-size: 1em;
+  }
+  .FilterTool .action-btn-filter {
+    padding: 5px 60px;
   }
 }
 
@@ -2559,7 +2741,7 @@
   width: 50%;
 }
 
-.Profile .primaryInfo .primaryInformationForm .primaryInfoInput {
+.Profile .primaryInfo .primaryInformationForm .infoInput {
   background-color: #fffffb;
   border-radius: 10px;
 }
