@@ -8,9 +8,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Typography } from "@material-ui/core";
 import Check from "@material-ui/icons/Check";
+import { OfferWithUser } from "../interfaces/offer";
+import { format } from "date-fns";
 
-export default function Card() {
-  const offer = {
+export default function Card({ offer }: { offer: OfferWithUser }) {
+  const mock = {
     title: "offer title Name",
     description: "offer description",
     price: "155,000",
@@ -39,6 +41,9 @@ export default function Card() {
     slidesToScroll: 1,
   };
 
+  const getCheckColor = (isChecked: boolean) =>
+    isChecked ? "#00EAD3" : "#000000";
+
   return (
     <div className="Card">
       <div className="offer-images">
@@ -51,49 +56,18 @@ export default function Card() {
           </div>
         </div> */}
         <div className="carousel">
-          {/* <Image
-            src="/DSC_2778.jpg"
-            alt="Offer Image"
-            objectFit="cover"
-            layout="fill"
-          /> */}
           <Slider {...settings}>
-            <div className="slider">
-              <Image
-                className="im"
-                src="/budapest.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-            </div>
-            <div className="slider">
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-            </div>
-            <div className="slider">
-              <Image
-                className="im"
-                src="/budapest2.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-            </div>
-            <div className="slider">
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-            </div>
+            {offer.images.map((imageSrc, index) => (
+              <div key={index} className="slider">
+                <Image
+                  className="im"
+                  src={imageSrc}
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
+            ))}
 
             {/* <Image
               className="im"
@@ -135,14 +109,17 @@ export default function Card() {
       </div>
       <div className="offer-details">
         <Typography className="offer-title" variant="h6" component="h6">
-          {offer.title}
+          {offer.generalInfo.title}
         </Typography>
         <div className="price-rank">
           <div className="price-info">
             <Typography className="price" variant="h4" component="h4">
-              {`${offer.price} ${offer.currency}`} / Month
+              {`${offer.generalInfo.cost.totalCost} ${
+                offer.generalInfo.cost.currency ?? "Huf"
+              }`}{" "}
+              / Month
             </Typography>
-            <p>all included</p>
+            {/*<p>all included</p>*/}
           </div>
           <div className="offer-ranking">
             <span>
@@ -151,7 +128,7 @@ export default function Card() {
             </span>
           </div>
         </div>
-        <div className="line"></div>
+        <div className="line" />
         <div className="landlord-facilities">
           <div className="landlord">
             <div className="landlord-img">
@@ -165,35 +142,51 @@ export default function Card() {
             </div>
             <div className="landlord-name-username">
               <Typography className="landlordName" variant="h5" component="h5">
-                Abdulla Jaber
+                {offer.owner.firstName} {offer.owner.lastName}
               </Typography>
               <Typography
                 className="landlordUsername"
                 variant="h5"
                 component="h5"
               >
-                Abdulla_alk
+                {offer.owner.userName}
               </Typography>
             </div>
           </div>
           <div className="facilities">
             <div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>Heater</span>
               </div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>Fridge</span>
               </div>
             </div>
             <div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>TC</span>
               </div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>WI-FI</span>
               </div>
             </div>
@@ -202,7 +195,7 @@ export default function Card() {
         <div className="datePosted">
           <div className="date-posted">
             <Typography className="date-posted" variant="h5" component="h5">
-              {offer.datePosted}
+              {format(new Date(offer.validFrom), "dd LLLL yyyy")}
             </Typography>
           </div>
         </div>

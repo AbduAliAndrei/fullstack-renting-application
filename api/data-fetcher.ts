@@ -26,7 +26,7 @@ export default function useFetch<Res>({
   params = [],
   contentType = ContentType.JSON,
   body,
-  query,
+  query = [],
 }: {
   type: RequestType;
   path: string;
@@ -35,7 +35,11 @@ export default function useFetch<Res>({
   body?: Record<string, any>;
   query?: [string, any][];
 }): [Res | null, boolean, string | null, Response | null] {
-  const [res, setRes] = useState<DataFetched<Res>>({
+  const [res, setRes] = useState<
+    DataFetched<{
+      res: Res;
+    }>
+  >({
     data: null,
     loading: false,
     error: null,
@@ -74,7 +78,7 @@ export default function useFetch<Res>({
         const json = await result.json();
         setRes((prevRes) => ({
           ...prevRes,
-          data: json as Res,
+          data: json,
           response: result,
         }));
       })
@@ -86,5 +90,5 @@ export default function useFetch<Res>({
       });
   }, [apiPath, body, contentType, type, xsrfToken]);
 
-  return [res.data, res.loading, res.error, res.response];
+  return [res.data?.res, res.loading, res.error, res.response];
 }

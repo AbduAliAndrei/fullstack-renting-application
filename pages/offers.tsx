@@ -2,11 +2,11 @@ import Card from "../components/Card";
 import FilterTool from "../components/FilterTool";
 import * as React from "react";
 import useFetch, { RequestType } from "../api/data-fetcher";
-import { Offer } from "../interfaces/offer";
+import { OfferWithUser } from "../interfaces/offer";
 import { useEffect } from "react";
 // import Grid from "@mui/material/Grid";
 export default function Offers() {
-  const [offers, loading] = useFetch<Offer[]>({
+  const [offers, loading] = useFetch<OfferWithUser[]>({
     type: RequestType.GET,
     path: "offers",
     query: [["takeOwner", "true"]],
@@ -15,6 +15,14 @@ export default function Offers() {
   useEffect(() => {
     console.log(loading, offers);
   }, [loading, offers]);
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
+
+  if (!offers) {
+    return <div>Error. No Offers</div>;
+  }
 
   return (
     <div className="Offers">
@@ -51,27 +59,9 @@ export default function Offers() {
         </Grid>
       </Grid> */}
       <div className="offers-container">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {offers.map((offer) => (
+          <Card offer={offer} key={offer.id} />
+        ))}
       </div>
     </div>
   );
