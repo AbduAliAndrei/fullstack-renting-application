@@ -1,13 +1,16 @@
 import { HttpRequest } from "../../interfaces/http-request";
 import Controller from "../../interfaces/controller";
-import { Offer } from "../../../interfaces/offer";
+import { Offer, OfferWithUser } from "../../../interfaces/offer";
 import asyncF from "../../../utils/async-f";
 import { HttpStatus } from "../../enums/http-status";
+import { SecuredUser } from "../../../interfaces/user";
 
 export default function createGetOffer({
   getOffer,
+  getUser,
 }: {
   getOffer: (obj: { ownerId: string }) => Promise<Required<Offer>>;
+  getUser: ({ id }: { id: string }) => Promise<Required<SecuredUser>>;
 }): (h: HttpRequest) => Promise<Controller<Required<Offer>>> {
   return async function fetchOffer(
     httpRequest: HttpRequest
@@ -19,6 +22,12 @@ export default function createGetOffer({
       });
     };
     const [data, error] = await asyncF<Required<Offer>>(fetchProcess());
+
+    if (httpRequest.query["takeOwner"]) {
+      (data as OfferWithUser).owner = await getUser({
+        id: data.ownerId,
+      });
+    }
     let result!: Controller<Required<Offer>>;
     if (error) {
       result = {

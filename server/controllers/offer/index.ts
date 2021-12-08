@@ -9,6 +9,7 @@ import createPostOfferImages from "./post-offer-images.controller";
 
 const getOffer = createGetOffer({
   getOffer: offerService.takeOffer,
+  getUser: userService.takeUser,
 });
 const deleteOffer = createDeleteOffer({
   deleteOffer: offerService.deleteOffer,

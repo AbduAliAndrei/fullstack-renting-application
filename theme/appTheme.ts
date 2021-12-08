@@ -32,7 +32,7 @@ const appTheme: ThemeOptions = {
     allVariants: {
       letterSpacing: "normal",
     },
-    fontFamily: ["Coolvetica", "sans-serif"].join(","),
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
     h1: {
       fontWeight: "bold",
       fontSize: "2.5rem",

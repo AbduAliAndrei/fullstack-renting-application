@@ -3,6 +3,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import People from "@material-ui/icons/People";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { AdditionalInfo, GeneralInfo } from "../../interfaces/offer";
 const containerStyle = {
   width: "600px",
   height: "600px",
@@ -14,7 +15,13 @@ const center = {
   lng: 19.04,
 };
 
-export default function OfferSpecification() {
+export default function OfferSpecification({
+  generalInfo,
+  additionalInfo,
+}: {
+  generalInfo: GeneralInfo;
+  additionalInfo: AdditionalInfo;
+}) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyBTqXQw52_-bPDsCtJnOzoYAVSWzcNpu9Y",
@@ -42,7 +49,9 @@ export default function OfferSpecification() {
               variant="h5"
               component="h5"
             >
-              Blaha utca 92, Budapest
+              {generalInfo.address.streetName}{" "}
+              {generalInfo.address.houseNumber + ", "}
+              {generalInfo.address.city}
             </Typography>
           </div>
           <div className="studentFriendly">
