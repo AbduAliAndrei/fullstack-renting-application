@@ -8,7 +8,32 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Typography } from "@material-ui/core";
 import Check from "@material-ui/icons/Check";
-
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIosIcon from "@material-ui/icons/ArrowBackIos";
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", color: "black" }}
+      onClick={onClick}
+    >
+      <ArrowForwardIosIcon />,
+    </div>
+  );
+}
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", color: "black" }}
+      onClick={onClick}
+    >
+      <ArrowBackIosIosIcon />,
+    </div>
+  );
+}
 export default function Card() {
   const offer = {
     title: "offer title Name",
@@ -37,6 +62,8 @@ export default function Card() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   return (
