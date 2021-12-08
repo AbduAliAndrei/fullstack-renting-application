@@ -36,9 +36,12 @@ export type GeneralInfo = {
 export type AdditionalInfo = {
   rooms?: RoomDetails[];
   floor?: number;
-  features?: Set<Feature>;
+  features: Feature;
   environment: Environment;
-  sections?: Section[];
+  sections: {
+    shortDescription: Section;
+    more: Section;
+  };
   planLayout?: string[];
 };
 

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Button from "@material-ui/core/Button";
 import React from "react";
 import Typography from "@mui/material/Typography";
-export default function LandlordDetails() {
+import { SecuredUser } from "../../interfaces/user";
+export default function LandlordDetails({ user }: { user: SecuredUser }) {
   return (
     <div className="LandlordDetails">
       <div className="landlord-details">
@@ -18,7 +19,7 @@ export default function LandlordDetails() {
           </div>
           <span>
             <Typography className="name" variant="h6" component="h6">
-              Abdulla Alkhulaqui
+              {user.firstName} {user.lastName}
             </Typography>
             <Button variant="text" size="small" color="primary">
               View Profile
@@ -35,7 +36,7 @@ export default function LandlordDetails() {
                 Phone
               </Typography>
               <Typography variant="h6" component="h6">
-                +36 34 345 2343
+                {"No phone"}
               </Typography>
             </div>
             <div className="email">
@@ -43,7 +44,7 @@ export default function LandlordDetails() {
                 Email
               </Typography>
               <Typography variant="h6" component="h6">
-                abdulla@gmail.com
+                {user.email}
               </Typography>
             </div>
           </div>
@@ -58,7 +59,7 @@ export default function LandlordDetails() {
         </div>
         <div className="message-form">
           <Typography className="message-title" variant="h5" component="h5">
-            Send a message to Abdulla
+            Send a message to {user.firstName}
           </Typography>
           <form className="message">
             <textarea

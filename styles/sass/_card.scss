@@ -32,6 +32,11 @@
       font-weight: bolder;
       text-transform: capitalize;
       margin-top: 10px;
+      transition: all 0.4ms ease-in;
+      cursor: pointer;
+      &:hover {
+        color: #78a5ff;
+      }
     }
     .price-rank {
       @include flex(row);
@@ -106,7 +111,7 @@
           @include flex(row);
           font-size: 20px;
           color: gray;
-          font-family: roboto;
+          font-family: Roboto, Helvetica, Arial, sans-serif serif;
           font-weight: bolder;
         }
       }

@@ -2,7 +2,6 @@
   @include flex(row);
   position: relative;
   width: 100vw;
-  height: 60px;
   box-shadow: 1px 1px 5px #0000002d;
   height: fit-content;
   padding: 30px;
@@ -19,7 +18,7 @@
       color: $main-black;
       font-size: 40px;
       text-decoration: none;
-      font-family: roboto;
+      font-family: Roboto, Helvetica, Arial, sans-serif;
       font-weight: bolder;
     }
   }
@@ -70,7 +69,7 @@
         padding: 5px 30px;
         text-transform: capitalize;
         color: #fff;
-        font-family: roboto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;;
         font-size: 20px;
         font-weight: bold;
 
@@ -89,10 +88,9 @@
         padding: 5px 30px;
         text-transform: capitalize;
         font-size: 20px;
-        font-weight: bold;
 
         color: #ff0067;
-        font-family: roboto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;;
         font-weight: bolder;
         &:hover {
           background-color: #ffb8d6d2;
@@ -185,7 +183,7 @@
         color: $main-black;
         font-size: 40px;
         text-decoration: none;
-        font-family: roboto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;;
         font-weight: bolder;
       }
     }

@@ -1,11 +1,12 @@
-import Card from "../components/Card";
-import FilterTool from "../components/FilterTool";
+import Card from "../../components/Card";
+import FilterTool from "../../components/FilterTool";
 import * as React from "react";
-import useFetch, { RequestType } from "../api/data-fetcher";
-import { OfferWithUser } from "../interfaces/offer";
+import useFetch, { RequestType } from "../../api/data-fetcher";
+import { OfferWithUser } from "../../interfaces/offer";
 import { useEffect } from "react";
 // import Grid from "@mui/material/Grid";
-export default function Offers() {
+
+export default function Index() {
   const [offers, loading] = useFetch<OfferWithUser[]>({
     type: RequestType.GET,
     path: "offers",

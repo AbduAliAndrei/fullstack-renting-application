@@ -12,6 +12,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIosIcon from "@material-ui/icons/ArrowBackIos";
 import { format } from "date-fns";
 import { OfferWithUser } from "../interfaces/offer";
+import { useRouter } from "next/router";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -39,6 +40,7 @@ function SamplePrevArrow(props) {
 }
 
 export default function Card({ offer }: { offer: OfferWithUser }) {
+  const nextRouter = useRouter();
   const mock = {
     title: "offer title Name",
     description: "offer description",
@@ -73,6 +75,10 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
   const getCheckColor = (isChecked: boolean) =>
     isChecked ? "#00EAD3" : "#000000";
 
+  const onEnterInfoOffer = () => {
+    nextRouter.push(`${nextRouter.pathname}/${offer.id}`);
+  };
+
   return (
     <div className="Card">
       <div className="offer-images">
@@ -93,7 +99,12 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
         </div>
       </div>
       <div className="offer-details">
-        <Typography className="offer-title" variant="h6" component="h6">
+        <Typography
+          onClick={onEnterInfoOffer}
+          className="offer-title"
+          variant="h6"
+          component="h6"
+        >
           {offer.generalInfo.title}
         </Typography>
         <div className="price-rank">

@@ -1,6 +1,5 @@
 import Typography from "@mui/material/Typography";
 import React from "react";
-import Card from "../Card";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 export default function OtherOffers() {
@@ -13,7 +12,7 @@ export default function OtherOffers() {
         <div className="card-arrows">
           <ArrowBackIcon fontSize="large" />
 
-          <Card />
+          {/*<Card />*/}
           <ArrowForwardIcon fontSize="large" />
         </div>
       </div>
@@ -23,7 +22,7 @@ export default function OtherOffers() {
         </Typography>
         <div className="card-arrows">
           <ArrowBackIcon fontSize="large" />
-          <Card />
+          {/*<Card />*/}
           <ArrowForwardIcon fontSize="large" />
         </div>
       </div>
