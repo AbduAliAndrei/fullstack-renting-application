@@ -85,7 +85,7 @@ const appTheme: ThemeOptions = {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          fontFamily: ["Coolvetica", "sans-serif"].join(","),
+          fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
         },
       },
     },
