@@ -169,6 +169,124 @@
   background-color: #ffb8d6d2;
 }
 
+.Nav .profileDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  right: 0;
+  margin-right: 50px;
+}
+
+.Nav .profileDetails .primaryInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Nav .profileDetails .primaryInfo .imgContainer {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Nav .profileDetails .primaryInfo .imgContainer .userProfileImg {
+  border-radius: 50px;
+}
+
+.Nav .profileDetails .primaryInfo .userName {
+  margin-left: 10px;
+  color: #ff0067;
+}
+
+.Nav .profileDetails .userMenu {
+  position: absolute;
+  background-color: #fffffb;
+  display: none;
+  margin-left: 10px;
+  margin-top: 160px;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.176);
+          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.176);
+  width: 100%;
+}
+
+.Nav .profileDetails .userMenu nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.Nav .profileDetails .userMenu nav ul li {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.Nav .profileDetails .userMenu nav ul li a {
+  text-decoration: none;
+  color: #363636;
+}
+
+.Nav .profileDetails .userMenu nav ul li a:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 60%;
+}
+
+.Nav .profileDetails .userMenu:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  display: block;
+}
+
+.Nav .profileDetails:hover .userMenu {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  display: block;
+}
+
 @media screen and (max-width: 900px) {
   .Nav .menu {
     -webkit-transform: translateY(-100vh);
@@ -257,6 +375,14 @@
   }
   .Nav .login_signup .signUpBtn {
     padding: 5px 20px;
+  }
+  .Nav .profileDetails {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+  }
+  .Nav .profileDetails .userProfileImg {
+    border-radius: 50px;
   }
 }
 
@@ -1263,11 +1389,6 @@
   color: gray;
   font-weight: bold;
   font-size: 15px;
-}
-
-.im:before,
-.im:before {
-  color: yellow;
 }
 
 .FilterTool {

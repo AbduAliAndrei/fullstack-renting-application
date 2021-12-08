@@ -100,6 +100,68 @@
       }
     }
   }
+  .profileDetails {
+    @include flex(column);
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+    .primaryInfo {
+      @include flex(row);
+      .imgContainer {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        .userProfileImg {
+          border-radius: 50px;
+        }
+      }
+
+      .userName {
+        margin-left: 10px;
+        color: #ff0067;
+      }
+    }
+    .userMenu {
+      position: absolute;
+      background-color: $main-color3;
+      display: none;
+      margin-left: 10px;
+      margin-top: 160px;
+      box-shadow: 1px 1px 10px hsla(0, 0%, 0%, 0.176);
+      width: 100%;
+      nav {
+        ul {
+          @include flex(column);
+          margin: 0;
+          padding: 0;
+          li {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 10px;
+            a {
+              text-decoration: none;
+              color: $main-black;
+              &:hover {
+                transition: 0.2s;
+                opacity: 60%;
+              }
+            }
+          }
+        }
+      }
+      &:hover {
+        transition: 0.5s;
+        display: block;
+      }
+    }
+    &:hover .userMenu {
+      transition: 0.5s;
+      display: block;
+    }
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -160,6 +222,17 @@
       cursor: pointer;
       .signUpBtn {
         padding: 5px 20px;
+      }
+    }
+    .profileDetails {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      .userProfileImg {
+        border-radius: 50px;
+      }
+
+      .userName {
       }
     }
   }
