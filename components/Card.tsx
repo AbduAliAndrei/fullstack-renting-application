@@ -8,8 +8,35 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Typography } from "@material-ui/core";
 import Check from "@material-ui/icons/Check";
-import { OfferWithUser } from "../interfaces/offer";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIosIcon from "@material-ui/icons/ArrowBackIos";
 import { format } from "date-fns";
+import { OfferWithUser } from "../interfaces/offer";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", color: "black" }}
+      onClick={onClick}
+    >
+      <ArrowForwardIosIcon />,
+    </div>
+  );
+}
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", color: "black" }}
+      onClick={onClick}
+    >
+      <ArrowBackIosIosIcon />,
+    </div>
+  );
+}
 
 export default function Card({ offer }: { offer: OfferWithUser }) {
   const mock = {
@@ -39,6 +66,8 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   const getCheckColor = (isChecked: boolean) =>
@@ -47,14 +76,6 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
   return (
     <div className="Card">
       <div className="offer-images">
-        {/* <div className="btns">
-          <div className="carousel-btn prev-btn">
-            <button>P</button>
-          </div>
-          <div className="carousel-btn next-btn">
-            <button>N</button>
-          </div>
-        </div> */}
         <div className="carousel">
           <Slider {...settings}>
             {offer.images.map((imageSrc, index) => (
@@ -68,42 +89,6 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
                 />
               </div>
             ))}
-
-            {/* <Image
-              className="im"
-              src="/DSC_2778.jpg"
-              alt="Offer Image"
-              objectFit="cover"
-              layout="fill"
-            />
-            <Image
-              className="im"
-              src="/DSC_2778.jpg"
-              alt="Offer Image"
-              objectFit="cover"
-              layout="fill"
-            />
-            <Image
-              className="im"
-              src="/DSC_2778.jpg"
-              alt="Offer Image"
-              objectFit="cover"
-              layout="fill"
-            />
-            <Image
-              className="im"
-              src="/DSC_2778.jpg"
-              alt="Offer Image"
-              objectFit="cover"
-              layout="fill"
-            />
-            <Image
-              className="im"
-              src="/DSC_2778.jpg"
-              alt="Offer Image"
-              objectFit="cover"
-              layout="fill"
-            /> */}
           </Slider>
         </div>
       </div>

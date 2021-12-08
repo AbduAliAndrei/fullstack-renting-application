@@ -380,6 +380,7 @@
   position: relative;
   min-height: 100vh;
   width: 100vw;
+  background-color: red;
 }
 
 .RecentOffers .slider-container {
@@ -429,13 +430,13 @@
   position: relative;
   width: 100vw;
   margin: 100px 0;
-  padding: 20px;
-  min-height: 70vh;
+  min-height: 60vh;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
 
 .ForLandlords .features {
+  padding: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -451,13 +452,11 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-height: inherit;
-  height: 100%;
   gap: 20px;
+  width: 50%;
 }
 
 .ForLandlords .features .features-select {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -476,6 +475,7 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  width: 100%;
   gap: 10px;
   font-size: 35px;
 }
@@ -492,7 +492,7 @@
 
 .ForLandlords .features .feature {
   background-color: transparent;
-  padding: 60px;
+  padding: 30px;
   border-radius: 20px;
   border: solid #363636 1px;
   width: 100%;
@@ -511,12 +511,11 @@
 }
 
 .ForLandlords .feature-view {
-  padding: 60px;
-  min-height: inherit;
-  height: 100%;
+  padding: 10px;
   border-radius: 20px;
   border: solid #363636 1px;
   width: 40%;
+  min-height: inherit;
 }
 
 .ForLandlords .feature-view .feature-view-title {
@@ -540,7 +539,6 @@
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-height: 200px;
   width: 100%;
   padding: 10px;
   -webkit-box-pack: justify;
@@ -548,24 +546,25 @@
           justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px 0;
+  text-align: center;
 }
 
 .ForLandlords .feature-view .feature-image-description .image-preview {
   position: relative;
-  width: 40%;
-  height: 400px;
-  margin-right: 5px;
+  width: 90%;
+  height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
+  margin: 20px auto;
 }
 
 .ForLandlords .feature-view .feature-image-description .image-preview .ld-img {
-  border-radius: 50px;
+  border-radius: 30px;
 }
 
 .ForLandlords .feature-view .feature-image-description .feature-description {
-  font-size: 30px;
-  width: 430px;
+  font-size: 25px;
+  width: 100%;
 }
 
 .ForLandlords .feature-view .feature-image-description .feature-description p {
@@ -579,6 +578,114 @@
 
 .ForLandlords .feature-view .right-btn {
   float: right;
+}
+
+@media screen and (max-width: 1500px) {
+  .ForLandlords .features {
+    width: 90%;
+  }
+  .ForLandlords .features .features-select {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+    font-size: 35px;
+  }
+  .ForLandlords .features .features-select .features-select-title {
+    font-size: 35px;
+    color: black;
+  }
+  .ForLandlords .features .features-select .forTenantsSelect,
+  .ForLandlords .features .features-select .forLandlordsSelect {
+    font-size: 35px;
+  }
+  .ForLandlords .features .feature {
+    background-color: transparent;
+    padding: 30px;
+    border-radius: 20px;
+    border: solid #363636 1px;
+    width: 100%;
+  }
+  .ForLandlords .features .feature .feature-title {
+    font-size: 30px;
+    color: #5b5f97;
+    margin: 10px 0;
+    font-weight: bolder;
+  }
+  .ForLandlords .features .feature .sub-features {
+    color: #363636;
+    font-size: 25px;
+  }
+  .ForLandlords .feature-view {
+    padding: 10px;
+    border-radius: 20px;
+    border: solid #363636 1px;
+    width: 90%;
+    min-height: inherit;
+  }
+  .ForLandlords .feature-view .feature-view-title {
+    margin: 20px 0;
+    color: #5b5f97;
+  }
+  .ForLandlords .feature-view .feature-image-description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .ForLandlords .feature-view .feature-image-description .image-preview {
+    position: relative;
+    width: 80%;
+    height: 500px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin: 20px auto;
+  }
+  .ForLandlords .feature-view .feature-image-description .image-preview .ld-img {
+    border-radius: 30px;
+  }
+  .ForLandlords .feature-view .feature-image-description .feature-description {
+    font-size: 25px;
+    width: 100%;
+  }
+  .ForLandlords .feature-view .feature-image-description .feature-description p {
+    color: #363636;
+  }
 }
 
 .Footer {

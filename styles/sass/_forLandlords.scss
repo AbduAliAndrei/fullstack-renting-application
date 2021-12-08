@@ -3,18 +3,17 @@
   position: relative;
   width: 100vw;
   margin: 100px 0;
-  padding: 20px;
-  min-height: 70vh;
+  min-height: 60vh;
   justify-content: space-around;
   .features {
+    padding: 50px;
     @include flex(column);
-    min-height: inherit;
-    height: 100%;
     gap: 20px;
+    width: 50%;
     .features-select {
-      width: 100%;
       @include flex(row);
       justify-content: flex-start;
+      width: 100%;
       gap: 10px;
       font-size: 35px;
       .features-select-title {
@@ -28,7 +27,7 @@
     }
     .feature {
       background-color: transparent;
-      padding: 60px;
+      padding: 30px;
       border-radius: 20px;
       border: solid $main-black 1px;
       width: 100%;
@@ -45,38 +44,36 @@
     }
   }
   .feature-view {
-    padding: 60px;
-    min-height: inherit;
-    height: 100%;
+    padding: 10px;
     border-radius: 20px;
     border: solid $main-black 1px;
     width: 40%;
-
+    min-height: inherit;
     .feature-view-title {
       margin: 20px 0;
       color: $main-color2;
     }
     .feature-image-description {
       @include flex(row);
-      min-height: 200px;
       width: 100%;
       padding: 10px;
       justify-content: space-between;
       flex-wrap: wrap;
       margin: 20px 0;
+      text-align: center;
       .image-preview {
         position: relative;
-        width: 40%;
-        height: 400px;
-        margin-right: 5px;
+        width: 90%;
+        height: 300px;
         object-fit: cover;
+        margin: 20px auto;
         .ld-img {
-          border-radius: 50px;
+          border-radius: 30px;
         }
       }
       .feature-description {
-        font-size: 30px;
-        width: 430px;
+        font-size: 25px;
+        width: 100%;
         p {
           color: $main-black;
         }
@@ -88,6 +85,82 @@
     }
     .right-btn {
       float: right;
+    }
+  }
+}
+@media screen and (max-width: 1500px) {
+  .ForLandlords {
+    .features {
+      width: 90%;
+      .features-select {
+        @include flex(row);
+        justify-content: flex-start;
+        width: 100%;
+        gap: 10px;
+        font-size: 35px;
+        .features-select-title {
+          font-size: 35px;
+          color: black;
+        }
+        .forTenantsSelect,
+        .forLandlordsSelect {
+          font-size: 35px;
+        }
+      }
+      .feature {
+        background-color: transparent;
+        padding: 30px;
+        border-radius: 20px;
+        border: solid $main-black 1px;
+        width: 100%;
+        .feature-title {
+          font-size: 30px;
+          color: $main-color2;
+          margin: 10px 0;
+          font-weight: bolder;
+        }
+        .sub-features {
+          color: $main-black;
+          font-size: 25px;
+        }
+      }
+    }
+    .feature-view {
+      padding: 10px;
+      border-radius: 20px;
+      border: solid $main-black 1px;
+      width: 90%;
+      min-height: inherit;
+      .feature-view-title {
+        margin: 20px 0;
+        color: $main-color2;
+      }
+      .feature-image-description {
+        @include flex(row);
+        width: 100%;
+        padding: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 20px 0;
+        text-align: center;
+        .image-preview {
+          position: relative;
+          width: 80%;
+          height: 500px;
+          object-fit: cover;
+          margin: 20px auto;
+          .ld-img {
+            border-radius: 30px;
+          }
+        }
+        .feature-description {
+          font-size: 25px;
+          width: 100%;
+          p {
+            color: $main-black;
+          }
+        }
+      }
     }
   }
 }
