@@ -1,4 +1,7 @@
 import { DatabaseFunction, DatabaseObject } from "../database-entity";
+import firebase from "firebase";
+import WhereFilterOp = firebase.firestore.WhereFilterOp;
+import { firestore } from "firebase-admin/lib/firestore";
 
 export interface GenericDatabaseEntity<T, TModel> {
   add: (
@@ -10,7 +13,7 @@ export interface GenericDatabaseEntity<T, TModel> {
     orderBy,
   }: {
     filterBy: FilterBy<FilterKeys>;
-    orderBy: OrderBy<OrderKeys>;
+    orderBy?: OrderBy<OrderKeys>;
     exclusiveEqual?: boolean;
   }) => Promise<
     DatabaseFunction<Required<T>[]> & { filterBy?: FilterBy<FilterKeys> } & {
@@ -75,11 +78,19 @@ export type BoundedBetween<T> = { lowerBound: T; upperBound: T };
 
 export type BoundedBetweenNumber = BoundedBetween<number>;
 
+export type BoundedBetweenKeyField = {
+  lowerBound: number;
+  upperBound: number;
+  fieldKey: string;
+};
+
+export type QueryWithFieldKey = Record<string, firestore.Query[]>;
+
 export type OrderBy<Key extends string> = Record<Key, OrderDirection>;
 
 export enum OrderDirection {
-  ACCENDING,
-  DESCENDING,
+  ACCENDING = "asc",
+  DESCENDING = "desc",
 }
 
 export function isBoundedBetween(
@@ -94,5 +105,4 @@ export function isBoundedBetweenArray(
   return variable.some(isBoundedBetween);
 }
 
-export type ComparisonOperator = "==" | "<=" | ">=" | "<" | ">";
-export type FilterOptionTuple = [string, ComparisonOperator, any];
+export type FilterOptionTuple = [string, WhereFilterOp, any];

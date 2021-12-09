@@ -8,7 +8,7 @@ import firebase from "firebase";
 import WhereFilterOp = firebase.firestore.WhereFilterOp;
 import { CollectionPaths } from "../enums/collection-paths";
 import {
-  BoundedBetween,
+  BoundedBetweenKeyField,
   BoundedBetweenNumber,
   FilterBy,
   FilterOptionTuple,
@@ -16,6 +16,8 @@ import {
   isBoundedBetweenArray,
   OrderBy,
 } from "../interfaces/databases/generic-database-entity";
+import MultiMap from "mnemonist/multi-map";
+import { intersectArray } from "../../utils/intersect";
 
 export default function makeGenericDb<T, TModel>({
   db,
@@ -64,7 +66,7 @@ export default function makeGenericDb<T, TModel>({
     exclusiveEqual = true,
   }: {
     filterBy: FilterBy<FilterKeys>;
-    orderBy: OrderBy<OrderKeys>;
+    orderBy?: OrderBy<OrderKeys>;
     exclusiveEqual?: boolean;
     orderDirection?: boolean;
   }): Promise<
@@ -72,69 +74,96 @@ export default function makeGenericDb<T, TModel>({
       orderBy?: OrderBy<OrderKeys>;
     }
   > {
-    const filterRules: (
-      | FilterOptionTuple[]
-      | BoundedBetween<FilterOptionTuple>
-    )[] = Object.keys(filterBy).map((filterKey) => {
-      if (isBoundedBetweenArray(filterBy[filterKey])) {
-        const lowerBounds = (filterBy[filterKey] as BoundedBetweenNumber[]).map(
-          (i) => i.lowerBound
-        );
-        const upperBounds = (filterBy[filterKey] as BoundedBetweenNumber[]).map(
-          (i) => i.upperBound
-        );
-        const min = Math.min(...lowerBounds);
-        const max = Math.max(...upperBounds);
-        return {
-          lowerBound: [`${filterKey}`, exclusiveEqual ? "<=" : "<", min],
-          upperBound: [`${filterKey}`, exclusiveEqual ? ">=" : ">", max],
-        };
-      } else {
-        return filterBy[filterKey].map((i) => [`${filterKey}`, "==", i]);
-      }
-    });
+    const filterRules: (FilterOptionTuple[] | BoundedBetweenKeyField)[] =
+      Object.keys(filterBy).map((filterKey) => {
+        if (isBoundedBetweenArray(filterBy[filterKey])) {
+          const lowerBounds = (
+            filterBy[filterKey] as BoundedBetweenNumber[]
+          ).map((i) => i.lowerBound);
+          const upperBounds = (
+            filterBy[filterKey] as BoundedBetweenNumber[]
+          ).map((i) => i.upperBound);
+          const min = Math.min(...lowerBounds);
+          const max = Math.max(...upperBounds);
+          return {
+            lowerBound: min,
+            upperBound: max,
+            fieldKey: filterKey,
+          };
+        } else {
+          return filterBy[filterKey].map((i) => [
+            `${filterKey}`,
+            filterKey.includes(".") ? "in" : "==",
+            filterKey.includes(".") ? [i] : i,
+          ]);
+        }
+      });
 
     const filterOnlyEqualRules = filterRules.filter((rule) =>
       Array.isArray(rule)
     ) as FilterOptionTuple[][];
 
     const biggerLessRules = filterRules.filter(
-      (rule) => !!(rule as BoundedBetween<FilterOptionTuple>).lowerBound
-    ) as BoundedBetween<FilterOptionTuple>[];
+      (rule) => typeof (rule as BoundedBetweenKeyField).upperBound === "number"
+    ) as BoundedBetweenKeyField[];
     const collection = db.collection(collectionPath);
 
-    let sortedCollection: firestore.Query<firestore.DocumentData>;
-    Object.keys(orderBy).map((orderByKey) => {
-      sortedCollection = collection.orderBy(orderByKey, orderBy[orderByKey]);
-    });
+    let sortedCollection: firestore.Query<firestore.DocumentData> = collection;
+    if (orderBy) {
+      Object.keys(orderBy).map((orderByKey) => {
+        sortedCollection = collection.orderBy(orderByKey, orderBy[orderByKey]);
+      });
+    }
+    const multiMap = new MultiMap<string, Required<T>>();
 
-    let queryOne: firestore.Query;
-    filterOnlyEqualRules.map((oneD) =>
-      oneD.map((twoD) => {
-        queryOne = sortedCollection.where(...twoD);
+    await Promise.all(
+      filterOnlyEqualRules.map(
+        async (oneD) =>
+          await Promise.all(
+            oneD.map(async (twoD) => {
+              const query = await sortedCollection.where(...twoD).get();
+              query.forEach((queryElement) => {
+                multiMap.set(twoD[0], createT(queryElement));
+              });
+            })
+          )
+      )
+    );
+
+    await Promise.all(
+      biggerLessRules.map(async (oneD) => {
+        const query = await (exclusiveEqual
+          ? sortedCollection
+              .orderBy(oneD.fieldKey)
+              .startAt(oneD.lowerBound)
+              .endAt(oneD.upperBound)
+          : sortedCollection
+              .orderBy(oneD.fieldKey)
+              .startAfter(oneD.lowerBound)
+              .endBefore(oneD.upperBound)
+        ).get();
+        query.forEach((queryElement) => {
+          multiMap.set(oneD.fieldKey, createT(queryElement));
+        });
       })
     );
 
-    let queryTwo: firestore.Query;
-    biggerLessRules.map((oneD) => {
-      queryTwo = sortedCollection.where(...oneD.lowerBound);
-      queryTwo = sortedCollection.where(...oneD.upperBound);
-    });
-
-    const q1Get = await queryOne.get();
-    const q2Get = await queryTwo.get();
-    const hashMap = new Map<string, Required<T>>();
-    q1Get.forEach((q1) => {
-      hashMap.set(q1.id, createT(q1));
-    });
-    q2Get.forEach((q2) => {
-      if (!hashMap.has(q2.id)) {
-        hashMap.set(q2.id, createT(q2));
+    let intersection: Required<T[]> = [];
+    let index = 0;
+    const iterator = multiMap.associations();
+    let it = iterator.next();
+    while (!it.done) {
+      if (index === 0) {
+        intersection = it.value[1];
+      } else {
+        intersection = [...intersectArray<T>(intersection, it.value[1])];
       }
-    });
+      it = iterator.next();
+      index++;
+    }
 
     return {
-      fetchedData: Array.from(hashMap.values()) as Required<T>[],
+      fetchedData: intersection as Required<T>[],
       filterBy,
       orderBy,
     };

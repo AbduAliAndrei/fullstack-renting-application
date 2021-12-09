@@ -19,6 +19,8 @@ import FalsyValueException from "../exceptions/falsy-value-exception";
 import { UserType } from "../../enums/user-type";
 import WrongUserTypeException from "../exceptions/wrong-user-type.exception";
 import { isBlobOrStringArray } from "../../utils/type-checkers";
+import { FilterBy } from "../interfaces/databases/generic-database-entity";
+import { AllowedFilterOfferKeys } from "../../enums/allowed-offer-keys";
 
 export default function makeOffersDb({
   db,
@@ -161,6 +163,48 @@ export default function makeOffersDb({
       field: "id",
       data: updateKey,
       key: id,
+    });
+  }
+
+  async function testFindAll(): Promise<
+    DatabaseFunction<Required<Offer>[]> & {
+      filterBy?: FilterBy<
+        | "generalInfo.title"
+        | "generalInfo.address.city"
+        | "generalInfo.cost.totalCost"
+      >;
+    }
+  > {
+    return genericOfferDb.findAllByKeys<
+      | "generalInfo.title"
+      | "generalInfo.address.city"
+      | "generalInfo.cost.totalCost",
+      "generalInfo.title"
+    >({
+      filterBy: {
+        "generalInfo.title": ["Just title", "Test title", "Taken "],
+        "generalInfo.address.city": ["Budapest", "Ljubljana"],
+        "generalInfo.cost.totalCost": [
+          { lowerBound: 200000, upperBound: 600000 },
+        ],
+      },
+    });
+  }
+
+  async function findAllByKeys({
+    filter,
+  }: {
+    filter: FilterBy<AllowedFilterOfferKeys>;
+  }): Promise<
+    DatabaseFunction<Required<Offer>[]> & {
+      filterBy?: FilterBy<AllowedFilterOfferKeys>;
+    }
+  > {
+    return genericOfferDb.findAllByKeys<
+      AllowedFilterOfferKeys,
+      AllowedFilterOfferKeys
+    >({
+      filterBy: filter,
     });
   }
 
