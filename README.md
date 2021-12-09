@@ -35,8 +35,8 @@ CONTENTS OF THIS FILE
  * Starting the Bot with bot_start.php
  * Using the Bot
  * IRC Message Hooks
- * Other IRC Hooks
  * Design Decisions
+ * Technongies
 
 
 INTRODUCTION
@@ -181,46 +181,6 @@ NOT to use bot_message() within your implementation, else you'll cause an
 infinite loop. Another hook, irc_bot_reply_action, does the same for actions.
 
 
-OTHER IRC HOOKS
----------------
-
-Another hook of interest is irc_bot_cron, which is run every five minutes.
-This is very similar to Drupal's own hook_cron, but is intended only for
-bot-related operations (though, naturally, any hook_cron you add to your
-own bot plugins will function as expected). irc_bot_cron_faster (one minute)
-and irc_bot_cron_fastest (15 seconds) are also available.
-
-In addition to the actual utility of your module, you also should add a
-few lines describing how to use your module. This is done via Drupal's
-hook_help(), and the use of two special strings:
-
- irc:features
-   Returns an array of feature names your modules provides.
-
- irc:features#FEATURE_NAME
-   Returns an explanation of a specific feature of your module.
-
-FEATURE_NAME will be lowercased, trimmed of whitespace, and anything not a
-letter or number will be turned into an underscore. For an example in code,
-take a look at the shipped bot_project.module. This information is provided
-by the bot under the following conditions:
-
-  <Morbus> bot_module: help
-
-  <bot_module> Detailed information is available by asking for
-    "help <feature>" where <feature> is one of:
-    Project URLs, dns, karma.
-
-  <Morbus> bot_module: help Project URLs
-
-  <bot_module> Displays the title of project URLs ...
-
-hook_irc_bot_access() allows you to control whether a particular message
-should be delivered to the other bot hooks at all: it receives $irc and $data
-for analysis and, should it return FALSE, the incoming message is not sent
-to the normal list of IRC Message Hooks as defined above.
-
-
 DESIGN DECISIONS
 ----------------
 
@@ -243,3 +203,15 @@ modules (either codewise or enabled/disabled) will require the bot to be
 restarted entirely.
 
 Love the limitations, and craziness, of this project.
+       
+TECHNOLOGIES
+---------------
+
+- Languages:
+    - Server: NodeJS (Typescript supersetted)
+    - Client: JS (Typescript supersetted)
+- Frameworks:
+    - Server: ExpressJS + Firebase
+    - Client: NextJS + ReactJS
+
+
