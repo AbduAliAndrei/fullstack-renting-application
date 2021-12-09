@@ -3,18 +3,6 @@
 
 This repository contains the backend and frontend parts
 
-<details>
-<summary>User documentation</summary>
-<br>
-## Technologies
-
-- Languages:
-    - Server: NodeJS (Typescript supersetted)
-    - Client: JS (Typescript supersetted)
-- Frameworks:
-    - Server: ExpressJS + Firebase
-    - Client: NextJS + ReactJS
-</details>
 
 ## Technologies
 
