@@ -3,9 +3,11 @@
 
 This repository contains the backend and frontend parts
 
-Project parts:
-- [X] application backend
-- [X] application frontend
+<details>
+<summary>How do I dropdown?</summary>
+<br>
+This is how you dropdown.
+</details>
 
 ## Technologies
 
