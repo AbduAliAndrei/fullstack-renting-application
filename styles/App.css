@@ -1851,33 +1851,20 @@
   text-align: center;
   min-height: 100vh;
   background-image: url("/budapest2.jpg");
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   background-size: cover;
 }
-
 .Contact .contactUs-title {
   color: white;
   font-weight: bolder;
   padding: 100px 0;
 }
-
 .Contact .contact-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 60px;
   width: 100vw;
@@ -1886,23 +1873,12 @@
   margin-bottom: 200px;
   color: black;
 }
-
 .Contact .contact-info .contact-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.308);
   border-radius: 20px;
@@ -1913,7 +1889,6 @@
   gap: 20px;
   padding: 20px 5px;
 }
-
 .Contact .contact-info .contact-form input,
 .Contact .contact-info .contact-form textarea {
   background-color: transparent;
@@ -1923,31 +1898,13 @@
   outline: none;
   border-radius: 5px;
 }
-
-.Contact .contact-info .contact-form input::-webkit-input-placeholder,
-.Contact .contact-info .contact-form textarea::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.747);
-}
-
-.Contact .contact-info .contact-form input:-ms-input-placeholder,
-.Contact .contact-info .contact-form textarea:-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.747);
-}
-
-.Contact .contact-info .contact-form input::-ms-input-placeholder,
-.Contact .contact-info .contact-form textarea::-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.747);
-}
-
 .Contact .contact-info .contact-form input::placeholder,
 .Contact .contact-info .contact-form textarea::placeholder {
   color: rgba(0, 0, 0, 0.747);
 }
-
 .Contact .contact-info .contact-form textarea {
   height: 150px;
 }
-
 .Contact .contact-info .contact-form button {
   background-color: #ffb8d64f;
   border: solid #ffffff 1px;
@@ -1960,27 +1917,15 @@
   font-family: roboto;
   font-weight: bolder;
 }
-
 .Contact .contact-info .contact-form button:hover {
   background-color: #ffb8d62c;
 }
-
 .Contact .contact-info .info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   background-color: transparent;
   align-items: center;
   justify-content: center;
@@ -1993,44 +1938,29 @@
   padding: 10px;
   background-color: #ffffff34;
 }
-
 .Contact .contact-info .info h1 {
   font-family: "Share", cursive;
   font-size: 10px;
 }
-
 .Contact .contact-info .info p {
   color: rgba(255, 255, 255, 0.699);
   font-weight: bolder;
   font-family: "Thasadith", sans-serif;
 }
-
 .Contact .contact-info .info .phone,
 .Contact .contact-info .info .email,
 .Contact .contact-info .info .address {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   align-items: center;
 }
-
 .Contact .contact-info .info i {
   margin-bottom: 10px;
   color: #fffffb;
 }
-
 .Contact .contact-info .info .sub-title {
   color: aliceblue;
   font-weight: bolder;
