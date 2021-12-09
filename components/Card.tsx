@@ -3,15 +3,45 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Typography } from "@material-ui/core";
 import Check from "@material-ui/icons/Check";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIosIcon from "@material-ui/icons/ArrowBackIos";
+import { format } from "date-fns";
+import { OfferWithUser } from "../interfaces/offer";
+import { useRouter } from "next/router";
 
-export default function Card() {
-  const offer = {
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", color: "black" }}
+      onClick={onClick}
+    >
+      <ArrowForwardIosIcon />,
+    </div>
+  );
+}
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", color: "black" }}
+      onClick={onClick}
+    >
+      <ArrowBackIosIosIcon />,
+    </div>
+  );
+}
+
+export default function Card({ offer }: { offer: OfferWithUser }) {
+  const nextRouter = useRouter();
+  const mock = {
     title: "offer title Name",
     description: "offer description",
     price: "155,000",
@@ -38,94 +68,54 @@ export default function Card() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  const getCheckColor = (isChecked: boolean) =>
+    isChecked ? "#00EAD3" : "#000000";
+
+  const onEnterInfoOffer = () => {
+    nextRouter.push(`${nextRouter.pathname}/${offer.id}`);
   };
 
   return (
     <div className="Card">
       <div className="offer-images">
-        {/* <div className="btns">
-          <div className="carousel-btn prev-btn">
-            <button>P</button>
-          </div>
-          <div className="carousel-btn next-btn">
-            <button>N</button>
-          </div>
-        </div> */}
         <div className="carousel">
-          <Image
-            src="/DSC_2778.jpg"
-            alt="Offer Image"
-            objectFit="cover"
-            layout="fill"
-          />
           <Slider {...settings}>
-            <div className="slider">
-              <div>
+            {offer.images.map((imageSrc, index) => (
+              <div key={index} className="slider">
                 <Image
                   className="im"
-                  src="/DSC_2778.jpg"
+                  src={imageSrc}
                   alt="Offer Image"
                   objectFit="cover"
                   layout="fill"
                 />
               </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <Image
-                  className="im"
-                  src="/DSC_2778.jpg"
-                  alt="Offer Image"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-              <Image
-                className="im"
-                src="/DSC_2778.jpg"
-                alt="Offer Image"
-                objectFit="cover"
-                layout="fill"
-              />
-            </div>
+            ))}
           </Slider>
         </div>
       </div>
       <div className="offer-details">
-        <Typography className="offer-title" variant="h6" component="h6">
-          {offer.title}
+        <Typography
+          onClick={onEnterInfoOffer}
+          className="offer-title"
+          variant="h6"
+          component="h6"
+        >
+          {offer.generalInfo.title}
         </Typography>
         <div className="price-rank">
           <div className="price-info">
             <Typography className="price" variant="h4" component="h4">
-              {`${offer.price} ${offer.currency}`} / Month
+              {`${offer.generalInfo.cost.totalCost} ${
+                offer.generalInfo.cost.currency ?? "Huf"
+              }`}{" "}
+              / Month
             </Typography>
-            <p>all included</p>
+            {/*<p>all included</p>*/}
           </div>
           <div className="offer-ranking">
             <span>
@@ -134,7 +124,7 @@ export default function Card() {
             </span>
           </div>
         </div>
-        <div className="line"></div>
+        <div className="line" />
         <div className="landlord-facilities">
           <div className="landlord">
             <div className="landlord-img">
@@ -148,35 +138,51 @@ export default function Card() {
             </div>
             <div className="landlord-name-username">
               <Typography className="landlordName" variant="h5" component="h5">
-                Abdulla Jaber
+                {offer.owner.firstName} {offer.owner.lastName}
               </Typography>
               <Typography
                 className="landlordUsername"
                 variant="h5"
                 component="h5"
               >
-                Abdulla_alk
+                {offer.owner.userName}
               </Typography>
             </div>
           </div>
           <div className="facilities">
             <div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>Heater</span>
               </div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>Fridge</span>
               </div>
             </div>
             <div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>TC</span>
               </div>
               <div className="facility">
-                <Check style={{ color: "#00EAD3" }} />
+                <Check
+                  style={{
+                    color: getCheckColor(!!offer.additionalInfo.features),
+                  }}
+                />
                 <span>WI-FI</span>
               </div>
             </div>
@@ -185,7 +191,7 @@ export default function Card() {
         <div className="datePosted">
           <div className="date-posted">
             <Typography className="date-posted" variant="h5" component="h5">
-              {offer.datePosted}
+              {format(new Date(offer.validFrom), "dd LLLL yyyy")}
             </Typography>
           </div>
         </div>

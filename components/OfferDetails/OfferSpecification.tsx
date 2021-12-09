@@ -3,6 +3,8 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import People from "@material-ui/icons/People";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { AdditionalInfo, GeneralInfo } from "../../interfaces/offer";
+import Check from "@material-ui/icons/Check";
 const containerStyle = {
   width: "600px",
   height: "600px",
@@ -14,7 +16,13 @@ const center = {
   lng: 19.04,
 };
 
-export default function OfferSpecification() {
+export default function OfferSpecification({
+  generalInfo,
+  additionalInfo,
+}: {
+  generalInfo: GeneralInfo;
+  additionalInfo: AdditionalInfo;
+}) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyBTqXQw52_-bPDsCtJnOzoYAVSWzcNpu9Y",
@@ -28,41 +36,26 @@ export default function OfferSpecification() {
     setMap(map);
   }, []);
 
+  const getCheckColor = (isChecked: boolean) =>
+    isChecked ? "#00EAD3" : "#000000";
+
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
   return (
     <div className="OfferSpecification">
       <div className="specification">
-        <div className="offerHeader">
-          <div className="offer-duration">
+        <div className="detailsHeader">
+          <div className="location">
             <Typography
-              className="offerTitleH1"
+              className="locationH1"
               color="black"
-              variant="h3"
-              component="h3"
+              variant="h5"
+              component="h5"
             >
-              until 2021 august
-            </Typography>
-          </div>
-          <div className="offer-title">
-            <Typography
-              className="offerTitleH1"
-              color="black"
-              variant="h1"
-              component="h1"
-            >
-              Offer title
-            </Typography>
-          </div>
-          <div className="offer-price">
-            <Typography
-              className="offerPriceH1"
-              color="gray"
-              variant="h1"
-              component="h1"
-            >
-              500 000 ft / month
+              {generalInfo.address.streetName}{" "}
+              {generalInfo.address.houseNumber + ", "}
+              {generalInfo.address.city}
             </Typography>
           </div>
           <div className="studentFriendly">
@@ -79,58 +72,62 @@ export default function OfferSpecification() {
         <div className="mainDetails">
           <div className="location-features">
             <div className="location-flatInfo">
-              <div className="location">
-                <Typography
-                  className="locationH1"
-                  color="black"
-                  variant="h4"
-                  component="h4"
-                >
-                  Blaha utca 92, Budapest
-                </Typography>
-              </div>
               <div className="flatInfo">
-                <div className="size">Size: 25 sq/m</div>
-                <div className="bedRoom">Bedroom(s): 2</div>
-                <div className="kitchen">kitchen</div>
-                <div className="bathrooms">bathroom(s): 2</div>
+                {additionalInfo.rooms &&
+                  additionalInfo.rooms.map((room, index) => (
+                    <div key={index}>
+                      <div className="size">Room {room.name}</div>
+                      <div className="size">{room.area} sq/m</div>
+                    </div>
+                  ))}
+                {/*<div className="bedRoom">Bedroom(s): 2</div>*/}
+                {/*<div className="kitchen">kitchen</div>*/}
+                {/*<div className="bathrooms">bathroom(s): 2</div>*/}
               </div>
             </div>
             <div className="locationAdvantages">
-              <div className="universities">
-                <div className="uniTitle">Universities</div>
-                <div className="university">
-                  <div className="icon-uniName">
-                    <People />
-                    <div className="uniName">ELTE</div>
+              {additionalInfo.environment.universities && (
+                <>
+                  <div className="uniTitle">Universities</div>
+                  <div className="universities">
+                    {Array.from(additionalInfo.environment.universities).map(
+                      (university, index) => (
+                        <div className="university" key={index}>
+                          <div className="icon-uniName">
+                            <People />
+                            <div className="uniName">{university.name}</div>
+                          </div>
+                          <div className="distance">
+                            {university.distanceTo} km
+                          </div>
+                        </div>
+                      )
+                    )}
                   </div>
-                  <div className="distance">0.2 km</div>
-                </div>
-                <div className="university">
-                  <div className="icon-uniName">
-                    <People />
-                    <div className="uniName">BME</div>
+                </>
+              )}
+              {additionalInfo.environment.transport && (
+                <>
+                  <div className="transportationType">Tram</div>
+                  <div className="transportations">
+                    {Array.from(additionalInfo.environment.transport).map(
+                      (transport, index) => (
+                        <div className="transportation" key={index}>
+                          <div className="icon-transportationName">
+                            <People />
+                            <div className="transportationName">
+                              {transport.name}
+                            </div>
+                          </div>
+                          <div className="distance">
+                            {transport.distanceTo} km
+                          </div>
+                        </div>
+                      )
+                    )}
                   </div>
-                  <div className="distance">2 km</div>
-                </div>
-              </div>
-              <div className="transportations">
-                <div className="transportationType">Tram</div>
-                <div className="transportation">
-                  <div className="icon-transportationName">
-                    <People />
-                    <div className="transportationName">1</div>
-                  </div>
-                  <div className="distance">2 km</div>
-                </div>
-                <div className="transportation">
-                  <div className="icon-transportationName">
-                    <People />
-                    <div className="transportationName">4/6</div>
-                  </div>
-                  <div className="distance">1 km</div>
-                </div>
-              </div>
+                </>
+              )}
             </div>
           </div>
           <div className="offerFeatures">
@@ -138,17 +135,25 @@ export default function OfferSpecification() {
               <Typography
                 className="featuresH4"
                 color="black"
-                variant="h4"
-                component="h4"
+                variant="h5"
+                component="h5"
               >
                 Features
               </Typography>
             </div>
             <div className="featuresList">
               <ul>
-                <li>best property</li>
-                <li>best property</li>
-                <li>best property</li>
+                {additionalInfo.features &&
+                  Object.keys(additionalInfo.features).map((i, index) => (
+                    <div className="facility" key={index}>
+                      <Check
+                        style={{
+                          color: getCheckColor(additionalInfo.features[i]),
+                        }}
+                      />
+                      <span>{i}</span>
+                    </div>
+                  ))}
               </ul>
             </div>
           </div>

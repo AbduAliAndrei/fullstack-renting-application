@@ -5,7 +5,7 @@ export default function Footer() {
     <div className="Footer">
       <div className="footerHeader-contact">
         <div className="footerHeader">
-          <Typography className="footerHeaderH2" variant="h2" component="h2">
+          <Typography className="footerHeaderH4" variant="h4" component="h4">
             Explore viaRent
           </Typography>
           <p>

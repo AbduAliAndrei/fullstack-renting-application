@@ -1,0 +1,104 @@
+.Contact {
+  text-align: center;
+  min-height: 100vh;
+  background-image: url("/budapest2.jpg");
+  object-fit: cover;
+  background-size: cover;
+  .contactUs-title {
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    padding: 100px 0;
+  }
+  .contact-info {
+    @include flex(row);
+    justify-content: center;
+    gap: 60px;
+    width: 100vw;
+    min-height: 400px;
+    align-items: center;
+    margin-bottom: 200px;
+    color: black;
+    .contact-form {
+      @include flex(column);
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.308);
+      border-radius: 20px;
+      width: 350px;
+      min-height: 400px;
+      -webkit-box-shadow: 5px 4px 14px 5px #00000060;
+      box-shadow: 5px 4px 14px 5px #0000004b;
+      gap: 20px;
+      padding: 20px 5px;
+      input,
+      textarea {
+        background-color: transparent;
+        border: solid rgba(0, 0, 0, 0.151) 1px;
+        width: 90%;
+        padding: 20px;
+        outline: none;
+        border-radius: 5px;
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.747);
+        }
+      }
+      textarea {
+        height: 150px;
+      }
+
+      button {
+        background-color: #ffb8d64f;
+        border: solid #ffffff 1px;
+        border-radius: 20px;
+        padding: 5px 30px;
+        text-transform: capitalize;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+        font-family: roboto;
+        font-weight: bolder;
+        &:hover {
+          background-color: #ffb8d62c;
+        }
+      }
+    }
+
+    .info {
+      @include flex(column);
+      background-color: transparent;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      border-radius: 20px;
+      width: 400px;
+      min-height: 450px;
+      -webkit-box-shadow: 5px 4px 14px 5px #00000060;
+      box-shadow: 5px 4px 14px 5px #0000004b;
+      padding: 10px;
+      background-color: #ffffff34;
+      h1 {
+        font-family: "Share", cursive;
+        font-size: 10px;
+      }
+      p {
+        color: rgba(255, 255, 255, 0.699);
+        font-weight: bolder;
+
+        font-family: "Thasadith", sans-serif;
+      }
+      .phone,
+      .email,
+      .address {
+        @include flex(column);
+        align-items: center;
+      }
+      i {
+        margin-bottom: 10px;
+        color: $main-color3;
+      }
+      .sub-title {
+        color: aliceblue;
+        font-weight: bolder;
+      }
+    }
+  }
+}

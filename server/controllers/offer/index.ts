@@ -1,5 +1,6 @@
 import createOffersController from "./get-offers.controller";
 import offerService from "../../models/services/offer";
+import userService from "../../models/services/user";
 import createPostOffer from "./post-offer.controller";
 import createUpdateOffer from "./update-offer.controller";
 import createDeleteOffer from "./delete-offer.controller";
@@ -8,6 +9,7 @@ import createPostOfferImages from "./post-offer-images.controller";
 
 const getOffer = createGetOffer({
   getOffer: offerService.takeOffer,
+  getUser: userService.takeUser,
 });
 const deleteOffer = createDeleteOffer({
   deleteOffer: offerService.deleteOffer,
@@ -24,6 +26,7 @@ const addImages = createPostOfferImages({
 
 const getOffers = createOffersController({
   getOffers: offerService.takeOffers,
+  getUser: userService.takeUser,
 });
 
 const offerController = Object.freeze({

@@ -1,6 +1,11 @@
 import { Address } from "./address";
 import { Cost } from "./cost";
 import { RoomDetails } from "./room-details";
+import { SecuredUser } from "./user";
+
+export interface OfferWithUser extends Offer {
+  owner: SecuredUser;
+}
 
 export interface Offer {
   id: string;
@@ -31,9 +36,12 @@ export type GeneralInfo = {
 export type AdditionalInfo = {
   rooms?: RoomDetails[];
   floor?: number;
-  features?: Set<Feature>;
+  features: Feature;
   environment: Environment;
-  sections?: Section[];
+  sections: {
+    shortDescription: Section;
+    more: Section;
+  };
   planLayout?: string[];
 };
 

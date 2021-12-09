@@ -117,13 +117,13 @@ const Login = () => {
               Login
             </button>
           </div>
-          <div className="login-with">
+          {/* <div className="login-with">
             <p>Login With</p>
             <div className="social-media">
               <span>Google</span>
               <span>Facebook</span>
             </div>
-          </div>
+          </div> */}
         </form>
       </div>
       <div className="login-img">

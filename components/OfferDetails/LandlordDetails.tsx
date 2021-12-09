@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Button from "@material-ui/core/Button";
-export default function LandlordDetails() {
+import React from "react";
+import Typography from "@mui/material/Typography";
+import { SecuredUser } from "../../interfaces/user";
+export default function LandlordDetails({ user }: { user: SecuredUser }) {
   return (
     <div className="LandlordDetails">
       <div className="landlord-details">
-        <div className="image-name">
+        <div className="image-name-viewProfileBtn">
           <div className="img">
             <Image
               src="/DSC_2778.jpg"
@@ -14,46 +17,64 @@ export default function LandlordDetails() {
               layout="fill"
             />
           </div>
-
-          <div className="name">
-            <h1>Abdulla Alkhulaqui</h1>
-          </div>
+          <span>
+            <Typography className="name" variant="h6" component="h6">
+              {user.firstName} {user.lastName}
+            </Typography>
+            <Button variant="text" size="small" color="primary">
+              View Profile
+            </Button>
+          </span>
         </div>
-        <div className="contact-title">
-          <h1>Contact</h1>
-        </div>
+        <Typography className="contact-title" variant="h5" component="h5">
+          Contact
+        </Typography>
         <div className="contacts">
-          <div className="phone">
-            <h3>Phone</h3>
-            <p>+36 34 345 2343</p>
-          </div>
-          <div className="email">
-            <h3>Email</h3>
-            <p>abdulla@gmail.com</p>
+          <div className="">
+            <div className="phone">
+              <Typography variant="h5" component="h5">
+                Phone
+              </Typography>
+              <Typography variant="h6" component="h6">
+                {"No phone"}
+              </Typography>
+            </div>
+            <div className="email">
+              <Typography variant="h5" component="h5">
+                Email
+              </Typography>
+              <Typography variant="h6" component="h6">
+                {user.email}
+              </Typography>
+            </div>
           </div>
           <div className="social-media">
-            <h3>Social Media</h3>
-            <p>F G H</p>
+            <Typography variant="h5" component="h5">
+              Social Media
+            </Typography>
+            <Typography variant="h6" component="h6">
+              F G H
+            </Typography>
           </div>
         </div>
         <div className="message-form">
-          <div className="message-title">
-            <h2>Send a message to Abdulla</h2>
-          </div>
+          <Typography className="message-title" variant="h5" component="h5">
+            Send a message to {user.firstName}
+          </Typography>
           <form className="message">
             <textarea
               name="message"
               id="msg"
               placeholder="Write your message here..."
             />
-            <Button
-              size="large"
-              id="sendMessageBtn"
-              variant="contained"
-              color="primary"
-            >
-              Send Message
-            </Button>
+            <div className="sendMSGBTN-favBTN">
+              <Button id="sendMessageBtn" variant="contained">
+                Send Message
+              </Button>
+              <Button id="favBtn" variant="contained">
+                Add to favorite
+              </Button>
+            </div>
           </form>
         </div>
       </div>

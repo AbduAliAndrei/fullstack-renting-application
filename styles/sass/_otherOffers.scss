@@ -1,0 +1,24 @@
+.OtherOffers {
+  @include flex(row);
+  width: 90%;
+  margin: 200px auto;
+  justify-content: space-between;
+  .otherLandLordListing,
+  .otherRandomOffers {
+    @include flex(column);
+    padding: 100px;
+    width: 40%;
+    background-color: $main-color3;
+    border-radius: 30px;
+    .title {
+      margin: 20px 0;
+      font-weight: bolder;
+    }
+    .card-arrows {
+      @include flex(row);
+      width: 100%;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+  }
+}
