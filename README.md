@@ -4,9 +4,16 @@
 This repository contains the backend and frontend parts
 
 <details>
-<summary>How do I dropdown?</summary>
+<summary>User documentation</summary>
 <br>
-This is how you dropdown.
+## Technologies
+
+- Languages:
+    - Server: NodeJS (Typescript supersetted)
+    - Client: JS (Typescript supersetted)
+- Frameworks:
+    - Server: ExpressJS + Firebase
+    - Client: NextJS + ReactJS
 </details>
 
 ## Technologies
