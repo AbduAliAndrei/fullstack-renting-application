@@ -30,7 +30,7 @@ const CreateOffer = () => {
   const handelFormSubmission = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
 
-    let features: Feature = {
+    const features: Feature = {
       kitchen: false,
       wifi: false,
       heating: false,
@@ -45,7 +45,7 @@ const CreateOffer = () => {
         features[e.target[i].id] = true;
       }
     }
-    let newOffer: CreatedOffer = {
+    const newOffer: CreatedOffer = {
       generalInfo: {
         title: e.target[0].value,
         cost: {

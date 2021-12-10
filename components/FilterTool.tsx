@@ -129,24 +129,6 @@ export default function FilterTool() {
         }}
       />
       <div className="options">
-        <TextField
-          id="input-with-icon-textfield"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            ),
-            disableUnderline: true,
-          }}
-          style={{
-            borderRadius: "20px",
-            padding: "10px ",
-            border: "solid #000 1px",
-          }}
-          placeholder="Search by title"
-          fullWidth
-        />
         <div className="price">
           <div className="title-arrow">
             <div className="title">
@@ -172,7 +154,7 @@ export default function FilterTool() {
                 control={<Checkbox />}
                 label="Under 50000ft"
                 onInput={() => {
-                  let temp = filters;
+                  const temp = filters;
                   temp[1]["filters"][0]["checked"] =
                     !temp[1]["filters"][0]["checked"];
                   setFilters(temp);
@@ -184,7 +166,7 @@ export default function FilterTool() {
                 control={<Checkbox />}
                 label="50,000 - 100,000"
                 onInput={() => {
-                  let temp = filters;
+                  const temp = filters;
                   temp[1]["filters"][1]["checked"] =
                     !temp[1]["filters"][1]["checked"];
                   setFilters(temp);
@@ -196,7 +178,7 @@ export default function FilterTool() {
                 control={<Checkbox />}
                 label="100,000 - 150,000"
                 onInput={() => {
-                  let temp = filters;
+                  const temp = filters;
                   temp[1]["filters"][2]["checked"] =
                     !temp[1]["filters"][2]["checked"];
                   setFilters(temp);
@@ -208,7 +190,7 @@ export default function FilterTool() {
                 control={<Checkbox />}
                 label="150,000 - 250,000"
                 onInput={() => {
-                  let temp = filters;
+                  const temp = filters;
                   temp[1]["filters"][3]["checked"] =
                     !temp[1]["filters"][3]["checked"];
                   setFilters(temp);
@@ -220,7 +202,7 @@ export default function FilterTool() {
                 control={<Checkbox />}
                 label="All included"
                 onInput={() => {
-                  let temp = filters;
+                  const temp = filters;
                   temp[1]["filters"][4]["checked"] =
                     !temp[1]["filters"][4]["checked"];
                   setFilters(temp);
@@ -252,7 +234,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="Xll"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[2]["filters"][0]["checked"] =
                   !temp[2]["filters"][0]["checked"];
                 setFilters(temp);
@@ -262,7 +244,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="xlll"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[2]["filters"][1]["checked"] =
                   !temp[2]["filters"][1]["checked"];
                 setFilters(temp);
@@ -272,7 +254,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="lX"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[2]["filters"][2]["checked"] =
                   !temp[2]["filters"][2]["checked"];
                 setFilters(temp);
@@ -282,7 +264,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="lll"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[2]["filters"][3]["checked"] =
                   !temp[2]["filters"][3]["checked"];
                 setFilters(temp);
@@ -314,7 +296,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="Budapest"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[0]["filters"][0]["checked"] =
                   !temp[0]["filters"][0]["checked"];
                 setFilters(temp);
@@ -324,7 +306,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="Szeged"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[0]["filters"][1]["checked"] =
                   !temp[0]["filters"][1]["checked"];
                 setFilters(temp);
@@ -334,7 +316,7 @@ export default function FilterTool() {
               control={<Checkbox />}
               label="Debrecen"
               onInput={() => {
-                let temp = filters;
+                const temp = filters;
                 temp[0]["filters"][2]["checked"] =
                   !temp[0]["filters"][2]["checked"];
                 setFilters(temp);

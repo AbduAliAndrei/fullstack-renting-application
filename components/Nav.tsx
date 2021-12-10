@@ -54,7 +54,7 @@ function LoggedInUserNav(props) {
           <div className="imgContainer">
             <Image
               className="userProfileImg"
-              src="/budapest2.jpg"
+              src="/DSC_2778.jpg"
               alt="Image"
               objectFit="cover"
               layout="fill"
