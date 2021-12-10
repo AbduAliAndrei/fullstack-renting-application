@@ -39,35 +39,45 @@ USAGE
 -----
 ###Users
 
-#Register user
+Register user
+--------------
 Create a new user using your personal data. 
-
+![image](https://user-images.githubusercontent.com/60021814/145650421-d37e811e-5258-48c3-bf0b-2d12bec5c2e7.png)
 
 After registeration, you will be redirected to the offers page.
 
-#Login user
+Login user
+-----------------
+
+![image](https://user-images.githubusercontent.com/60021814/145650566-75af2805-9a44-48e1-a997-87759976ec4a.png)
 
 After logging in successfully, you will be redicrected to the offers page.
 
 
-#Update user
+Update user
+--------------
 To update your personal info, navigate to profile.
 You can update your personal info, credentials and others there.
 Create offer (As tenant)
 
-![image](https://user-images.githubusercontent.com/60021814/145650421-d37e811e-5258-48c3-bf0b-2d12bec5c2e7.png)
+![image](https://user-images.githubusercontent.com/60021814/145650653-d74a8034-a404-4c85-a5d2-9c88bc577a00.png)
 
-###Offers
+
+Offers
+--------------
 
 #Create offer
 If your role type is a landlord, you can create a listing and receive requests for it.
-Navigate to profile -> create offer. Enter the offer's details and upload the images 
-of the property along with the layout. After you're done, click on publish.
-Done
+Navigate to profile -> create offer. Enter the offer's details and after you're done, click on submit.
+
+![image](https://user-images.githubusercontent.com/60021814/145650730-c40f135f-6821-44bd-a1be-d1bd5019a11f.png)
+
 
 #View offers globally
 You can view all the offers currently hosted on the platform. 
 Use the side filter tool to filter the offers according to your needs.
+
+![image](https://user-images.githubusercontent.com/60021814/145650809-d1810219-c630-4b26-aac3-3398b0746bef.png)
 
 
 TECHNOLOGIES USED
