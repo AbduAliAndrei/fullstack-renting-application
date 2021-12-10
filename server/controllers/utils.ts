@@ -6,11 +6,16 @@ import {
 } from "../interfaces/database-entity";
 import { Offer } from "../../interfaces/offer";
 import Controller from "../interfaces/controller";
+import { MultiselectSortBy } from "../interfaces/databases/generic-database-entity";
+import { ParsedQs } from "qs";
+import parseJSONObject from "../../utils/parse-json";
+import { isString } from "../../utils/type-checkers";
 
 export async function requestControllerHandler<T>(
   httpRequest: HttpRequest,
   callback: (...args: unknown[]) => Promise<T>,
-  keys: string[]
+  keys: string[],
+  data?: Record<string, any>
 ): Promise<T> {
   if (callback.length > 1) {
     throw new AppException(
@@ -25,6 +30,12 @@ export async function requestControllerHandler<T>(
       obj[key] = httpRequest.params[key];
     }
   });
+
+  if (data) {
+    Object.keys(data).map((key) => {
+      obj[key] = data[key];
+    });
+  }
 
   return await callback(obj);
 }
@@ -55,4 +66,24 @@ export async function postOfferHelper(
     };
   }
   return result;
+}
+
+export function parseOfferQueryToString(
+  queryLiteral: string | ParsedQs | string[] | ParsedQs[] | undefined
+): undefined | MultiselectSortBy {
+  if (!queryLiteral) {
+    return;
+  }
+
+  try {
+    return parseJSONObject(queryLiteral);
+  } catch (e) {
+    if (isString(queryLiteral) && queryLiteral.includes(",")) {
+      return queryLiteral.split(",");
+    } else if (isString(queryLiteral)) {
+      return [queryLiteral];
+    } else {
+      return [(queryLiteral as ParsedQs).toString()];
+    }
+  }
 }

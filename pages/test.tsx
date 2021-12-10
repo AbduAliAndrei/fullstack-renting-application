@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import { CreatedOffer } from "../interfaces/offer";
 import { addDays } from "date-fns";
+import { Currency } from "../enums/currency";
 
 const Test = () => {
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
@@ -60,6 +61,7 @@ const Test = () => {
         coldRent: 40000,
         utilities: 10000,
         extras: 0,
+        currency: Currency.EUR,
       },
       address: {
         streetName: "Kazyncy",
@@ -74,6 +76,16 @@ const Test = () => {
       numberOfRooms: 2,
     },
     additionalInfo: {
+      features: {
+        kitchen: false,
+        wifi: false,
+        heating: true,
+        smoking: true,
+        furnished: true,
+        elevator: false,
+        fridge: false,
+        microwave: false,
+      },
       environment: {
         transport: new Set([
           {
@@ -81,6 +93,16 @@ const Test = () => {
             distanceTo: 23,
           },
         ]),
+      },
+      sections: {
+        shortDescription: {
+          title: "Description",
+          content: "Some description",
+        },
+        more: {
+          title: "More",
+          content: [],
+        },
       },
     },
     validUntil: new Date(),
