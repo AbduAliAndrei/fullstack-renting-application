@@ -56,9 +56,7 @@ You can update your personal info, credentials and others there.
 Create offer (As tenant)
 
 
-<img src="./public/budapest3.jpg"
-     alt="budapest"
-     style="float: left; margin-right: 10px;" />
+![alt text](http://url/to/img.png)
 
 
 ###Offers
