@@ -56,10 +56,9 @@ You can update your personal info, credentials and others there.
 Create offer (As tenant)
 
 
-
-#Delete user
-To delete your account, navigate to profile -> delete account.
-Upon deletion, your data will be removed from our server.
+<img src="./public/budapest3.jpg"
+     alt="budapest"
+     style="float: left; margin-right: 10px;" />
 
 
 ###Offers
