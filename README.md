@@ -55,9 +55,7 @@ To update your personal info, navigate to profile.
 You can update your personal info, credentials and others there.
 Create offer (As tenant)
 
-
-![alt text](https://github.com/AbduAliAndrei/fullstack-renting-application/blob/main/public/budapest.jpg)
-
+![image](https://user-images.githubusercontent.com/60021814/145650421-d37e811e-5258-48c3-bf0b-2d12bec5c2e7.png)
 
 ###Offers
 
