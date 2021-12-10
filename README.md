@@ -56,7 +56,7 @@ You can update your personal info, credentials and others there.
 Create offer (As tenant)
 
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/AbduAliAndrei/fullstack-renting-application/blob/main/public/budapest.jpg)
 
 
 ###Offers
