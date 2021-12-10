@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footerHeader-contact">
         <div className="footerHeader">
           <Typography className="footerHeaderH4" variant="h4" component="h4">
-            Explore viaRent
+            Explore lambdRents
           </Typography>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias

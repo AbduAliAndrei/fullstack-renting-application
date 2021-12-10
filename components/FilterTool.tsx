@@ -125,7 +125,7 @@ export default function FilterTool() {
         variant="standard"
         value={searchByText}
         onInput={(e) => {
-          setSearchByText(e.target.value);
+          // setSearchByText(e.target.value);
         }}
       />
       <div className="options">
