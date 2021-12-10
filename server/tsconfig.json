@@ -5,7 +5,8 @@
     "outDir": "dist",
     "noEmit": false,
     "esModuleInterop": true,
-    "target": "es2017"
+    "target": "es2017",
+    "downlevelIteration": true
   },
   "include": ["server"]
 }

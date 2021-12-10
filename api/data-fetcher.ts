@@ -124,6 +124,10 @@ export const fetchCall = async ({
   body?: Record<string, any>;
   query?: [string, any][];
 }) => {
+  let toMatchAfter = document.cookie; 
+  let myRegexp = /XSRF-Token=(.*)/;
+  let match = myRegexp.exec(toMatchAfter);
+  const xsrf =  match[1]
   const ROOT_PATH =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3001/api"
@@ -142,6 +146,7 @@ export const fetchCall = async ({
   if (contentType === ContentType.JSON) {
     headers["Accept"] = "application/json";
     headers["Content-Type"] = "application/json";
+    headers["CSRF-Token"]= xsrf;
   } else if (contentType === ContentType.FORM_DATA) {
     headers.enctype = "multipart/form-data";
   }

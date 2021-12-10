@@ -1,14 +1,44 @@
-# Renting Apartments Application
-#### Running on nextjs react framework ultimate solution for house renting
+# lambdarents
+##### Running on nextjs react framework ultimate solution for house renting
 
-This repository contains the backend and frontend parts
+CONTENTS OF THIS FILE
+---------------------
 
-Project parts:
-- [X] application backend
-- [X] application frontend
+ * Introduction
+ * Installation
+ * Technongies Decisions
 
-## Technologies
+INTRODUCTION
+------------
 
+//TODO
+Intro about the app
+
+INSTALLATION
+------------
+First, clone the repositry:
+
+```bash
+git clone https://github.com/AbduAliAndrei/fullstack-renting-application.git
+# or
+git clone git@github.com:AbduAliAndrei/fullstack-renting-application.git
+```
+Second, npm install:
+
+```bash
+npm install
+# or
+npm i
+```
+
+Lastly, run the app:
+```bash
+npm run dev
+```
+
+
+TECHNOLOGIES DECISIONS
+----------------
 - Languages:
     - Server: NodeJS (Typescript supersetted)
     - Client: JS (Typescript supersetted)
@@ -16,12 +46,3 @@ Project parts:
     - Server: ExpressJS + Firebase
     - Client: NextJS + ReactJS
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```

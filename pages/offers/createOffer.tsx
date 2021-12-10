@@ -16,14 +16,20 @@ import Dropzone, { useDropzone } from "react-dropzone";
 import Typography from "@mui/material/Typography";
 import Input from "@material-ui/core/Input";
 // import AddIcon from "@mui/icons-material/Add";
-import { Environment, Feature } from "../../interfaces/offer";
+import { CreatedOffer, Environment, Feature } from "../../interfaces/offer";
 import AddIcon from "@material-ui/icons/AddCircle";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Box from "@material-ui/core/Box";
 import logoutService from "../../server/models/services/user/logout.service";
+import { useCookies } from "react-cookie";
+import { fetchCall, RequestType } from "../../api/data-fetcher";
+
 const CreateOffer = () => {
-  let newOffer = {};
-  const handelFormSubmission = (e: BaseSyntheticEvent) => {
+  const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
+
+  const handelFormSubmission = async (e: BaseSyntheticEvent) => {
+    e.preventDefault();
+
     let features: Feature = {
       kitchen: false,
       wifi: false,
@@ -34,33 +40,107 @@ const CreateOffer = () => {
       fridge: false,
       microwave: false,
     };
-    e.preventDefault();
-    newOffer["title"] = e.target[0].value;
-    newOffer["description"] = e.target[1].value;
-    newOffer["price"] = e.target[2].value;
-    newOffer["utilities"] = e.target[3].value;
-    newOffer["extras"] = e.target[4].value;
-    newOffer["currency"] = e.target[6].checked
-      ? e.target[6].value
-      : e.target[7].checked
-      ? e.target[7].value
-      : e.target[8].value;
-
-    newOffer["streetName"] = e.target[9].value;
-    newOffer["houseNumber"] = e.target[10].value;
-    newOffer["postalCode"] = e.target[11].value;
-    newOffer["city"] = e.target[12].value;
-    newOffer["district"] = e.target[13].value;
-    newOffer["mapLink"] = e.target[14].value;
-    newOffer["roomsNum"] = e.target[15].value;
-    newOffer["floor"] = e.target[16].value;
     for (let i = 16; i < 16 + 19; i++) {
       if (e.target[i].checked) {
         features[e.target[i].id] = true;
       }
     }
-    newOffer["features"] = features;
+    let newOffer: CreatedOffer = {
+      generalInfo: {
+        title: e.target[0].value,
+        cost: {
+          totalCost: e.target[2].value,
+          coldRent: e.target[2].value,
+          utilities: e.target[3].value,
+          extras: e.target[4].value,
+          currency: e.target[6].checked
+            ? e.target[6].value
+            : e.target[7].checked
+            ? e.target[7].value
+            : e.target[8].value,
+        },
+        address: {
+          streetName: e.target[9].value,
+          houseNumber: e.target[10].value,
+          postalCode: e.target[11].value,
+          district: e.target[13].value,
+          city: e.target[12].value,
+          country: "Hungary",
+          mapLink: e.target[14].value,
+        },
+        area: 34,
+        numberOfRooms: e.target[15].value,
+      },
+      additionalInfo: {
+        features: features,
+        environment: {
+          transport: new Set([
+            {
+              name: "M2",
+              distanceTo: 23,
+            },
+          ]),
+        },
+        sections: {
+          shortDescription: {
+            title: "Description",
+            content: e.target[1].value,
+          },
+          more: {
+            title: "More",
+            content: [],
+          },
+        },
+      },
+      validUntil: new Date(),
+      validFrom: new Date(),
+    };
+    // newOffer["title"] = e.target[0].value;
+    // newOffer["description"] = e.target[1].value;
+    // newOffer["price"] = e.target[2].value;
+    // newOffer["utilities"] = e.target[3].value;
+    // newOffer["extras"] = e.target[4].value;
+    // newOffer["currency"] = e.target[6].checked
+    //   ? e.target[6].value
+    //   : e.target[7].checked
+    //   ? e.target[7].value
+    //   : e.target[8].value;
+
+    // newOffer["streetName"] = e.target[9].value;
+    // newOffer["houseNumber"] = e.target[10].value;
+    // newOffer["postalCode"] = e.target[11].value;
+    // newOffer["city"] = e.target[12].value;
+    // newOffer["district"] = e.target[13].value;
+    // newOffer["mapLink"] = e.target[14].value;
+    // newOffer["roomsNum"] = e.target[15].value;
+    // newOffer["floor"] = e.target[16].value;
+
+    // newOffer["features"] = features;
     console.log(newOffer);
+    const req = async () => {
+      await fetchCall({
+        type: RequestType.POST,
+        path: "offers",
+        body: {
+          offer: newOffer,
+          ownerId: "nWgZw679sTat3TELhNlT5jjf4Ni1",
+        },
+      });
+    };
+    req();
+    // const res = await fetch("offers", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     "CSRF-Token": xsrfToken["XSRF-Token"],
+    //   },
+    //   body: JSON.stringify({
+    //     offer: newOffer,
+    //     ownerId: "nWgZw679sTat3TELhNlT5jjf4Ni1",
+    //   }),
+    // });
+    // const result = await res.json();
   };
   const defaultValues = {
     name: "",
@@ -126,18 +206,22 @@ const CreateOffer = () => {
               type="number"
               inputProps={ariaLabel}
             />
+            <br />
             <Input
               required
               placeholder="Utilities"
               type="number"
               inputProps={ariaLabel}
             />
+            <br />
+
             <Input
               required
               placeholder="extras"
               type="number"
               inputProps={ariaLabel}
             />
+            <br />
 
             <FormControl component="fieldset">
               <RadioGroup
@@ -176,7 +260,11 @@ const CreateOffer = () => {
               inputProps={ariaLabel}
               required
             />
+            <br />
+
             <Input placeholder="Floor" type="number" inputProps={ariaLabel} />
+            <br />
+
             <FormGroup className="featuresContainer">
               <FormControlLabel
                 control={<Checkbox id="Kitchen" />}

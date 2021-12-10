@@ -15,11 +15,18 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Input from "@material-ui/core/Input";
+import { FormLabel } from "@mui/material";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
 // import { dividerClasses } from "@mui/material";
 // import InputAdornment from "@material-ui/core/InputAdornment";
 // import Search from "@material-ui/icons/Search";
 
 const generalInfo = () => {
+  const ariaLabel = { "aria-label": "description" };
+
   return (
     <div>
       <div className="profileImageContainer">
@@ -73,32 +80,30 @@ const generalInfo = () => {
           autoComplete="off"
           className="primaryInformationForm"
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <TextField
-              label="First name"
-              className="infoInput"
-              id="standard-size-normal"
-              defaultValue="Normal"
-              variant="standard"
-              InputProps={{ disableUnderline: true }}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "column",
+            }}
+          >
+            <Input
+              style={{ margin: "20px 0" }}
+              placeholder="First Name"
+              inputProps={ariaLabel}
+              required
             />
-            <TextField
-              className="infoInput"
-              label="Last Name"
-              id="standard-size-normal"
-              defaultValue="Normal"
-              variant="standard"
-              InputProps={{ disableUnderline: true }}
+            <Input
+              style={{ margin: "20px 0" }}
+              placeholder="Last Name"
+              inputProps={ariaLabel}
+              required
             />
-          </div>
-          <div>
-            <TextField
-              className="infoInput"
-              label="Location"
-              id="standard-size-normal"
-              defaultValue="Normal"
-              variant="standard"
-              InputProps={{ disableUnderline: true }}
+            <Input
+              style={{ margin: "20px 0" }}
+              placeholder="Location"
+              inputProps={ariaLabel}
+              required
             />
           </div>
           <div>
@@ -122,28 +127,30 @@ const generalInfo = () => {
           autoComplete="off"
           className="secondaryInformationForm"
         >
-          <FormControl sx={{ minWidth: 320 }}>
-            <Select
-              value={1}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}
+          <FormControl component="fieldset">
+            <RadioGroup
+              aria-label="gender"
+              defaultValue="Male"
+              name="radio-buttons-group"
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-            <FormHelperText>Without label</FormHelperText>
+              <FormControlLabel value="Male" control={<Radio />} label="Male" />
+              <FormControlLabel
+                value="Female"
+                control={<Radio />}
+                label="Female"
+              />
+              <FormControlLabel
+                value="Prefer not to say"
+                control={<Radio />}
+                label="Prefer not to say"
+              />
+            </RadioGroup>
           </FormControl>
           <div>
             <Typography className="title" variant="h5" component="h5">
               Bio
             </Typography>
-            <TextareaAutosize
-              maxRows={4}
-              aria-label="maximum height"
+            <textarea
               placeholder="100 words maximum."
               style={{
                 width: 500,
@@ -154,15 +161,6 @@ const generalInfo = () => {
               }}
             />
           </div>
-          <div>
-            <Button
-              disableElevation
-              className="deleteAvatar"
-              variant="contained"
-            >
-              Save changes
-            </Button>
-          </div>
         </Box>
       </div>
     </div>
@@ -170,6 +168,8 @@ const generalInfo = () => {
 };
 
 const passwordInfo = () => {
+  const ariaLabel = { "aria-label": "description" };
+
   return (
     <div>
       <div className="primaryInfo">
@@ -185,36 +185,33 @@ const passwordInfo = () => {
           autoComplete="off"
           className="primaryInformationForm"
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
-              placeholder="Type a location"
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "column",
+            }}
+          >
+            <Input
+              style={{ margin: "20px 0" }}
+              placeholder="Old password"
+              inputProps={ariaLabel}
+              required
+              type="password"
             />
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
-              placeholder="Type a location"
+            <Input
+              style={{ margin: "20px 0" }}
+              placeholder="New Password"
+              inputProps={ariaLabel}
+              required
+              type="password"
             />
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
-              placeholder="Type a location"
+            <Input
+              style={{ margin: "20px 0" }}
+              placeholder="Repeat Password"
+              inputProps={ariaLabel}
+              required
+              type="password"
             />
           </div>
         </Box>
@@ -224,6 +221,8 @@ const passwordInfo = () => {
 };
 
 const emailInfo = () => {
+  const ariaLabel = { "aria-label": "description" };
+
   return (
     <div>
       <div className="primaryInfo">
@@ -239,32 +238,24 @@ const emailInfo = () => {
           autoComplete="off"
           className="primaryInformationForm"
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="h6" component="h6">
-              Old Email
-            </Typography>
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "column",
+            }}
+          >
+            <Input
+              style={{ margin: "20px 0" }}
               placeholder="Type your old email"
+              inputProps={ariaLabel}
+              required
             />
-            <Typography variant="h6" component="h6">
-              New Email
-            </Typography>
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
+            <Input
+              style={{ margin: "20px 0" }}
               placeholder="Type your new email"
+              inputProps={ariaLabel}
+              required
             />
           </div>
         </Box>
@@ -273,49 +264,33 @@ const emailInfo = () => {
   );
 };
 
-const roleChangeInfo = () => {
-  return (
-    <div>
-      <div className="primaryInfo">
-        <Typography className="title" variant="h5" component="h5">
-          Primary Information role change
-        </Typography>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
-          }}
-          noValidate
-          autoComplete="off"
-          className="primaryInformationForm"
-        >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
-              placeholder="Type a location"
-            />
-            <TextField
-              id="input-with-icon-textfield"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{
-                backgroundColor: "#fff",
-              }}
-              placeholder="Type a location"
-            />
-          </div>
-        </Box>
-      </div>
-    </div>
-  );
-};
+// const roleChangeInfo = () => {
+
+//   return (
+//     <div>
+//       <div className="primaryInfo">
+//         <Typography className="title" variant="h5" component="h5">
+//           Primary Information role change
+//         </Typography>
+//         <Box
+//           component="form"
+//           sx={{
+//             "& .MuiTextField-root": { m: 1, width: "25ch" },
+//           }}
+//           noValidate
+//           autoComplete="off"
+//           className="primaryInformationForm"
+//         >
+//           <div style={{ display: "flex", justifyContent: "space-between" }}>
+//             <Button disableElevation className="controlBtn" variant="contained">
+//               Become a Landlord
+//             </Button>
+//           </div>
+//         </Box>
+//       </div>
+//     </div>
+//   );
+// };
 
 const Profile = () => {
   const [profileContent, setProfileContent] = useState(() => generalInfo());
@@ -359,7 +334,7 @@ const Profile = () => {
             disableElevation
             className="controlBtn"
             variant="contained"
-            onClick={() => {
+            onClick={(e) => {
               setProfileContent(passwordInfo);
             }}
           >
@@ -375,7 +350,7 @@ const Profile = () => {
           >
             Email
           </Button>
-          <Button
+          {/* <Button
             disableElevation
             className="controlBtn"
             variant="contained"
@@ -384,7 +359,7 @@ const Profile = () => {
             }}
           >
             Role Change
-          </Button>
+          </Button> */}
           <Button
             disableElevation
             className="controlBtn"
@@ -399,8 +374,32 @@ const Profile = () => {
             <button id="logoutBtn">Logout</button>
           </form>
         </div>
-
-        {profileContent}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log(e.target);
+          }}
+        >
+          {profileContent}
+          <Button
+            type="submit"
+            disableElevation
+            className="saveChanges"
+            variant="contained"
+          >
+            Save changes
+          </Button>
+        </form>
+        <div>
+          {/* <Button
+            type="submit"
+            disableElevation
+            className="saveChanges"
+            variant="contained"
+          >
+            Save changes
+          </Button> */}
+        </div>
       </div>
     </Auth>
   );

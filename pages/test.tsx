@@ -76,6 +76,16 @@ const Test = () => {
       numberOfRooms: 2,
     },
     additionalInfo: {
+      features: {
+        kitchen: false,
+        wifi: false,
+        heating: true,
+        smoking: true,
+        furnished: true,
+        elevator: false,
+        fridge: false,
+        microwave: false,
+      },
       environment: {
         transport: new Set([
           {
@@ -83,6 +93,16 @@ const Test = () => {
             distanceTo: 23,
           },
         ]),
+      },
+      sections: {
+        shortDescription: {
+          title: "Description",
+          content: "Some description",
+        },
+        more: {
+          title: "More",
+          content: [],
+        },
       },
     },
     validUntil: new Date(),
