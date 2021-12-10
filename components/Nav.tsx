@@ -11,7 +11,7 @@ import { NavLinkProps } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import Typography from "@mui/material/Typography";
 
-function LoggedInUserNav() {
+function LoggedInUserNav(props) {
   const router = useRouter();
 
   return (
@@ -25,7 +25,7 @@ function LoggedInUserNav() {
       </label>
       <div className="logo">
         <Link href="/">
-          <a>viaRent</a>
+          <a>lambdaRents</a>
         </Link>
       </div>
       <div className="menu">
@@ -61,7 +61,7 @@ function LoggedInUserNav() {
             />
           </div>
           <Typography className="userName" variant="h6" component="h6">
-            Abdulla
+            {props.userName}
           </Typography>
         </div>
         <div className="userMenu">
@@ -92,8 +92,9 @@ function LoggedInUserNav() {
 export default function Nav({}: NavLinkProps) {
   const router = useRouter();
   const userLoggedIn = true;
+  const userName = "Abdulla";
   return userLoggedIn ? (
-    <LoggedInUserNav />
+    <LoggedInUserNav userName={userName} />
   ) : (
     <div className="Nav">
       <input type="checkbox" id="check" />

@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import { CreatedOffer } from "../interfaces/offer";
 import { addDays } from "date-fns";
+import { Currency } from "../enums/currency";
 
 const Test = () => {
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
@@ -60,6 +61,7 @@ const Test = () => {
         coldRent: 40000,
         utilities: 10000,
         extras: 0,
+        currency: Currency.HUF,
       },
       address: {
         streetName: "Kazyncy",

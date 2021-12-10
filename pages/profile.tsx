@@ -385,6 +385,16 @@ const Profile = () => {
           >
             Role Change
           </Button>
+          <Button
+            disableElevation
+            className="controlBtn"
+            variant="contained"
+            onClick={() => {
+              router.push("/offers/createOffer");
+            }}
+          >
+            Create new offer
+          </Button>
           <form onSubmit={onLogout}>
             <button id="logoutBtn">Logout</button>
           </form>
