@@ -88,13 +88,17 @@ TECHNOLOGIES USED
     - Server: ExpressJS + Firebase
     - Client: NextJS + ReactJS
 - Hosting:
-		- Firebase
+	
+       - Firebase
 - Database:
-		- Firestore
+
+       - Firestore
 - CI/CD :
-		- Github Actions + Firebase integrated workflow-setup/deployment
+	
+       - Github Actions + Firebase integrated workflow-setup/deployment
 - Containerization:
-		- Docker containers  Find the image on docker hub here
+	
+       - Docker containers  Find the image on docker hub [link here]: https://hub.docker.com/repository/docker/abdualiandrei/fullstack-renting-application
 
 UNDER PROGRESS
 --------------
