@@ -8,8 +8,11 @@ import Button from "@material-ui/core/Button";
 import { fetchCall, RequestType } from "../api/data-fetcher";
 import { AllowedFilterOfferKeys } from "../enums/allowed-offer-keys";
 import { FilterElement, Filters } from "../interfaces/filterElement";
+import Search from "@material-ui/icons/Search";
+import { TextField, InputAdornment } from "@mui/material";
 
 export default function FilterTool() {
+  const [searchByText, setSearchByText] = useState("");
   const filterOffers = async () => {
     await fetchCall({
       type: RequestType.GET,
@@ -36,9 +39,9 @@ export default function FilterTool() {
           value: "Szeged",
         },
         {
-          name: "Szeged",
+          name: "Debrecen",
           checked: false,
-          value: "Szeged",
+          value: "Debrecen",
         },
       ],
     },
@@ -101,6 +104,29 @@ export default function FilterTool() {
 
   return (
     <div className="FilterTool">
+      <TextField
+        id="input-with-icon-textfield"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          ),
+          disableUnderline: true,
+        }}
+        style={{
+          borderRadius: "20px",
+          padding: "10px",
+          border: "solid #000 1px",
+        }}
+        placeholder="Search by name"
+        fullWidth
+        variant="standard"
+        value={searchByText}
+        onInput={(e) => {
+          setSearchByText(e.target.value);
+        }}
+      />
       <div className="options">
         <div className="price">
           <div className="title-arrow">
@@ -123,28 +149,64 @@ export default function FilterTool() {
           </div>
           <div className="drop-down">
             <div>
-              <FormControlLabel control={<Checkbox />} label="Under 50000ft" />
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Under 50000ft"
+                onInput={() => {
+                  let temp = filters;
+                  temp[1]["filters"][0]["checked"] =
+                    !temp[1]["filters"][0]["checked"];
+                  setFilters(temp);
+                }}
+              />
             </div>
             <div>
               <FormControlLabel
                 control={<Checkbox />}
                 label="50,000 - 100,000"
+                onInput={() => {
+                  let temp = filters;
+                  temp[1]["filters"][1]["checked"] =
+                    !temp[1]["filters"][1]["checked"];
+                  setFilters(temp);
+                }}
               />
             </div>
             <div>
               <FormControlLabel
                 control={<Checkbox />}
                 label="100,000 - 150,000"
+                onInput={() => {
+                  let temp = filters;
+                  temp[1]["filters"][2]["checked"] =
+                    !temp[1]["filters"][2]["checked"];
+                  setFilters(temp);
+                }}
               />
             </div>
             <div>
               <FormControlLabel
                 control={<Checkbox />}
                 label="150,000 - 250,000"
+                onInput={() => {
+                  let temp = filters;
+                  temp[1]["filters"][3]["checked"] =
+                    !temp[1]["filters"][3]["checked"];
+                  setFilters(temp);
+                }}
               />
             </div>
             <div className="all-included">
-              <FormControlLabel control={<Checkbox />} label="All included" />
+              <FormControlLabel
+                control={<Checkbox />}
+                label="All included"
+                onInput={() => {
+                  let temp = filters;
+                  temp[1]["filters"][4]["checked"] =
+                    !temp[1]["filters"][4]["checked"];
+                  setFilters(temp);
+                }}
+              />
             </div>
           </div>
         </div>
@@ -167,16 +229,52 @@ export default function FilterTool() {
             />
           </div>
           <div className="drop-down">
-            <FormControlLabel control={<Checkbox />} label="Xll" />
-            <FormControlLabel control={<Checkbox />} label="xlll" />
-            <FormControlLabel control={<Checkbox />} label="lX" />
-            <FormControlLabel control={<Checkbox />} label="lll" />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Xll"
+              onInput={() => {
+                let temp = filters;
+                temp[2]["filters"][0]["checked"] =
+                  !temp[2]["filters"][0]["checked"];
+                setFilters(temp);
+              }}
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="xlll"
+              onInput={() => {
+                let temp = filters;
+                temp[2]["filters"][1]["checked"] =
+                  !temp[2]["filters"][1]["checked"];
+                setFilters(temp);
+              }}
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="lX"
+              onInput={() => {
+                let temp = filters;
+                temp[2]["filters"][2]["checked"] =
+                  !temp[2]["filters"][2]["checked"];
+                setFilters(temp);
+              }}
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="lll"
+              onInput={() => {
+                let temp = filters;
+                temp[2]["filters"][3]["checked"] =
+                  !temp[2]["filters"][3]["checked"];
+                setFilters(temp);
+              }}
+            />
           </div>
         </div>
         <div className="date">
           <div className="title-arrow">
             <div className="title">
-              <p>Date</p>
+              <p>City</p>
             </div>
             <FontAwesomeIcon
               className="arrow-down"
@@ -193,10 +291,36 @@ export default function FilterTool() {
           </div>
 
           <div className="drop-down">
-            <FormControlLabel control={<Checkbox />} label="Xll" />
-            <FormControlLabel control={<Checkbox />} label="xlll" />
-            <FormControlLabel control={<Checkbox />} label="lX" />
-            <FormControlLabel control={<Checkbox />} label="lll" />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Budapest"
+              onInput={() => {
+                let temp = filters;
+                temp[0]["filters"][0]["checked"] =
+                  !temp[0]["filters"][0]["checked"];
+                setFilters(temp);
+              }}
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Szeged"
+              onInput={() => {
+                let temp = filters;
+                temp[0]["filters"][1]["checked"] =
+                  !temp[0]["filters"][1]["checked"];
+                setFilters(temp);
+              }}
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Debrecen"
+              onInput={() => {
+                let temp = filters;
+                temp[0]["filters"][2]["checked"] =
+                  !temp[0]["filters"][2]["checked"];
+                setFilters(temp);
+              }}
+            />
           </div>
         </div>
         <div className="property-type">
@@ -219,16 +343,13 @@ export default function FilterTool() {
           </div>
           <div className="drop-down">
             <div>
-              <FormControlLabel control={<Checkbox />} label="Xll" />
+              <FormControlLabel control={<Checkbox />} label="Studio" />
             </div>
             <div>
-              <FormControlLabel control={<Checkbox />} label="xlll" />
+              <FormControlLabel control={<Checkbox />} label="Apartment" />
             </div>
             <div>
-              <FormControlLabel control={<Checkbox />} label="lX" />
-            </div>
-            <div>
-              <FormControlLabel control={<Checkbox />} label="lll" />
+              <FormControlLabel control={<Checkbox />} label="House" />
             </div>
           </div>
         </div>
@@ -236,7 +357,10 @@ export default function FilterTool() {
       <Button
         action-btn-filter
         disableElevation
-        onClick={filterOffers}
+        onClick={() => {
+          // filterOffers()
+          console.log(filters);
+        }}
         className="action-btn-filter"
         variant="contained"
       >
