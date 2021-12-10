@@ -65,10 +65,10 @@ Create offer (As tenant)
 Offers
 --------------
 
-#Create offer
+Create offer
 If your role type is a landlord, you can create a listing and receive requests for it.
 Navigate to profile -> create offer. Enter the offer's details and after you're done, click on submit.
-
+----------------------------------------------------------------------------------------------------------
 ![image](https://user-images.githubusercontent.com/60021814/145650730-c40f135f-6821-44bd-a1be-d1bd5019a11f.png)
 
 
