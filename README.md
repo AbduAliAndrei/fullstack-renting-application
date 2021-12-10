@@ -37,7 +37,6 @@ You should see it running on your local host.
 
 USAGE
 -----
-###Users
 
 Register user
 --------------
@@ -73,10 +72,10 @@ Navigate to profile -> create offer. Enter the offer's details and after you're 
 ![image](https://user-images.githubusercontent.com/60021814/145650730-c40f135f-6821-44bd-a1be-d1bd5019a11f.png)
 
 
-#View offers globally
+View offers globally
 You can view all the offers currently hosted on the platform. 
 Use the side filter tool to filter the offers according to your needs.
-
+-------------------------------------------------------------------------
 ![image](https://user-images.githubusercontent.com/60021814/145650809-d1810219-c630-4b26-aac3-3398b0746bef.png)
 
 
