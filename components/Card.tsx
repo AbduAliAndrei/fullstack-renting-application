@@ -84,7 +84,7 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
       <div className="offer-images">
         <div className="carousel">
           <Slider {...settings}>
-            {offer.images.map((imageSrc, index) => (
+            {/* {offer.images.map((imageSrc, index) => (
               <div key={index} className="slider">
                 <Image
                   className="im"
@@ -92,6 +92,18 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
                   alt="Offer Image"
                   objectFit="cover"
                   layout="fill"
+                />
+              </div>
+            ))} */}
+            {[1, 2, 3, 4, 5, 6, 7].map((image, index) => (
+              <div key={index} className="slider">
+                <Image
+                  className="im"
+                  src={`/${image}.jpg`}
+                  alt="Offer Image"
+                  objectFit="cover"
+                  layout="fill"
+                  priority={true}
                 />
               </div>
             ))}

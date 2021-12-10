@@ -1,0 +1,52 @@
+.CreateOffer {
+  @include flex(column);
+  // background-color: rgba(255, 0, 0, 0.294);
+  .title {
+    margin: 20px 0;
+  }
+  textarea {
+    resize: none;
+    outline: none;
+    background-color: transparent;
+    min-height: 100px;
+    min-width: 300px;
+    padding: 10px;
+  }
+
+  .main-container {
+    padding: 100px;
+    .dropZoneContainer {
+      @include flex(column);
+      padding: 20px;
+    }
+    .additionalInfo,
+    .basic-cost-location {
+      justify-content: space-between;
+      width:50%;
+      .cost,
+      .location {
+        width: fit-content;
+      }
+
+      .environmentContainer{
+      }
+    }
+
+    .featuresContainer {
+      @include flex(row);
+      // background-color: rgba(163, 163, 163, 0.288);
+      border-radius: 50px;
+      gap: 20px;
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      height: inherit;
+      .featureCheckBox {
+        background-color: rgba(255, 255, 255, 0.397);
+        border-radius: 50px;
+        padding: 5px 10px 5px 0px;
+        box-shadow: 1px 1px 5px #0000002d;
+      }
+    }
+  }
+}

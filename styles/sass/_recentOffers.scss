@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   width: 100vw;
-  background-color: red;
+padding-left: 40px;
   .slider-container {
     @include flex(row);
   }

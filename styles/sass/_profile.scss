@@ -1,6 +1,13 @@
 .Profile {
   margin: 0 auto;
   width: 90%;
+  .saveChanges{
+    margin: 50px 0;
+    padding: 8px 20px;
+    background-color: #ff0067;
+    color: #fff;
+    border-radius: 20px;
+  }
   .controlBtns {
     @include flex(row);
     justify-content: flex-start;
@@ -101,7 +108,7 @@
       }
     }
   }
-  .primaryInfo {
+  .primaryInfo,.secondaryInfo {
     margin-top: 100px;
     .title {
       font-weight: bolder;
@@ -114,5 +121,9 @@
         border-radius: 10px;
       }
     }
+    textarea{
+      resize: none;
+    }
   }
+ 
 }

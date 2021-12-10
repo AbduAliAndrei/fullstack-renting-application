@@ -5,7 +5,7 @@ import useFetch, { RequestType } from "../../api/data-fetcher";
 import { OfferWithUser } from "../../interfaces/offer";
 import { useEffect } from "react";
 // import Grid from "@mui/material/Grid";
-
+import ReactLoading from "react-loading";
 export default function Index() {
   const [offers, loading] = useFetch<OfferWithUser[]>({
     type: RequestType.GET,
@@ -18,7 +18,25 @@ export default function Index() {
   }, [loading, offers]);
 
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ReactLoading
+          type={"spin"}
+          color={"#ff0067"}
+          height={167}
+          width={175}
+        />
+      </div>
+    );
+    // return <div>Loading</div>;
   }
 
   if (!offers) {
@@ -30,35 +48,6 @@ export default function Index() {
       <div className="filter-tool">
         <FilterTool />
       </div>
-      {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={6}>
-          <Card />
-        </Grid>
-        <Grid item xs={6}>
-          <Card />
-        </Grid>
-        <Grid item xs={6}>
-          <Card />
-        </Grid>
-        <Grid item xs={6}>
-          <Card />
-        </Grid>
-      </Grid> */}
       <div className="offers-container">
         {offers.map((offer) => (
           <Card offer={offer} key={offer.id} />

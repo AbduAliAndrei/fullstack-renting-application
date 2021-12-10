@@ -8,44 +8,50 @@ import Button from "@mui/material/Button";
 export default function ForLandlords() {
   const forTenantsFeatures = [
     {
-      title: "Real time messaging T",
-      subFeatures: ["Notification center", "Email notifications"],
+      title: "Real time messaging",
+      subFeatures: ["Message with owner", "Notification center"],
       bodyParagraph:
-        "RLorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
       image: "/DSC_2778.jpg",
     },
     {
-      title: "Tenant blogs T",
-      subFeatures: ["Useful info", "Shared experience"],
+      title: "Effective filtering tool",
+      subFeatures: ["Search by different variables", "Fast filtering"],
       bodyParagraph:
-        "TLorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
+        "dolorum quod eum, corporis libero placeat autem earum molestiae non. Explicabo pariatur ab adipisci nam aut suscipit illum, ea reiciendis deleniti aliquam! Laboriosam repellat nihil nesciunt consectetur et, ut dolor doloribus fugiat incidunt beatae. Atque sit ullam delectus? Animi erro",
       image: "/budapest.jpg",
     },
     {
-      title: "Offer sections T",
+      title: "Best offers on the web",
       subFeatures: [
-        "Bookmark an offer",
-        "Review & comment",
-        "report offer/landlord",
+        "More than 1000 landlords",
+        "More than 300 successful deals",
+        "More than 200 agencies",
       ],
       bodyParagraph:
-        "OLorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
       image: "/budapest2.jpg",
     },
   ];
   const forLandlordsFeatures = [
     {
-      title: "Real time messaging L",
-      subFeatures: ["Notification center", "Email notifications"],
+      title: "High traffic",
+      subFeatures: [
+        "More than 10,000 visiters / day",
+        "More than 300 successful deals",
+      ],
       bodyParagraph:
-        "LANDLORD RLorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
-      image: "/DSC_2778.jpg",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
+      image: "/budapest3.jpg",
     },
     {
-      title: "Tenant blogs L",
-      subFeatures: ["Useful info", "Shared experience"],
+      title: "Flexibility",
+      subFeatures: [
+        "You can create up to 4 offers.",
+        "You can have extra offers by paying small fee.",
+      ],
       bodyParagraph:
-        "LANDLORD TLorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
+        "laudantium consequuntur facilis, reiciendis fuga quae id veritatis quos sed officia. Ea reprehenderit, modi aut ipsa quibusdam sit ducimus itaque ipsam maxime aliquid voluptatem, omnis repellendus recusandae quidem repudiandae perspiciatis voluptate ducimus nam est corrupti. ",
       image: "/budapest.jpg",
     },
     {
@@ -56,7 +62,7 @@ export default function ForLandlords() {
         "report offer/landlord",
       ],
       bodyParagraph:
-        "LANDLORD OLorem ipsum dolor, sit amet consectetur adipisicing elit. Provident laboriosam dolorem voluptates, voluptatibus eius vel explicabo qui optio quidem et suscipit maxime id magni fuga ullam reiciendis impedit accusantium accusamus.",
+        "autem natus quo incidunt atque impedit numquam. Pariatur iusto facilis explicab neque consequuntur quidem quis vel quos provident sequi voluptates tenetur? Culpa aspernatur ut facere a tempor dignissimos deleniti aliquid, ipsum porro! Error autem placeat",
       image: "/budapest2.jpg",
     },
   ];
@@ -125,7 +131,7 @@ export default function ForLandlords() {
             }
           }}
         />
-        <Typography className="feature-view-title" variant="h3" component="h3">
+        <Typography className="feature-view-title" variant="h4" component="h4">
           {currentTL[currentFeatureIndex].title}
         </Typography>
         <div className="feature-image-description">

@@ -61,7 +61,7 @@ const Test = () => {
         coldRent: 40000,
         utilities: 10000,
         extras: 0,
-        currency: Currency.EUR,
+        currency: Currency.HUF,
       },
       address: {
         streetName: "Kazyncy",
