@@ -81,7 +81,7 @@ export type Proximity = {
 
 export type Section = {
   title: string;
-  content: string | Section;
+  content: string | Section[];
 };
 
 export type CreatedOffer = Omit<

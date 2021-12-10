@@ -43,6 +43,7 @@ export default function makeOffersDb({
     add,
     addImages,
     addPlanLayouts,
+    findAllByKeys,
   });
 
   function createOfferFromDb(

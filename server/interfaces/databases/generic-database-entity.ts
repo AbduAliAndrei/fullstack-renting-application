@@ -68,7 +68,9 @@ export interface GenericDatabaseEntity<T, TModel> {
   >;
 }
 
-export type FilterBy<Key extends string> = Record<Key, MultiselectSortBy>;
+export type FilterBy<Key extends string> = {
+  [key in Key]?: MultiselectSortBy;
+};
 
 export type MultiselectSortBy = Array<
   string | boolean | number | BoundedBetweenNumber

@@ -4,3 +4,9 @@ export enum AllowedFilterOfferKeys {
   CITY = "generalInfo.address.city",
   DISTRICT = "generalInfo.address.district",
 }
+
+export type AllowedFilterOfferKeysType =
+  | AllowedFilterOfferKeys.TITLE
+  | AllowedFilterOfferKeys.CITY
+  | AllowedFilterOfferKeys.DISTRICT
+  | AllowedFilterOfferKeys.PRICE;
