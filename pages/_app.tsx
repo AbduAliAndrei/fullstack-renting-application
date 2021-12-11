@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     setCurrentUser(null);
   }, []);
 
-  const [data, loading] = useFetch<SecuredUser>({
+  const [data, loading, error] = useFetch<SecuredUser>({
     type: RequestType.GET,
     path: "auth/check",
   });
@@ -43,11 +43,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (data) {
       setCurrentUser(data);
+    } else {
+      setCurrentUser(null);
     }
-  }, [data, loading]);
+
+    if (error) {
+      setCurrentUser(null);
+    }
+  }, [data, loading, error]);
 
   const getContextUser = useCallback(() => {
-    return { user: { ...currentUser }, setUserLogged, setUserLoggedOut };
+    return {
+      user: currentUser ? { ...currentUser } : null,
+      setUserLogged,
+      setUserLoggedOut,
+    };
   }, [currentUser, setUserLogged, setUserLoggedOut]);
 
   return (

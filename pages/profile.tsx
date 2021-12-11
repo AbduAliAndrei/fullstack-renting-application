@@ -311,44 +311,43 @@ const Profile = () => {
       if (res.status === 301) {
         await router.push("/login");
       }
-      console.log(res.status);
     },
     [router, xsrfToken]
   );
   return (
-      <div className="Profile">
-        <div className="controlBtns">
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              setProfileContent(generalInfo);
-            }}
-          >
-            General Info
-          </Button>
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              setProfileContent(passwordInfo);
-            }}
-          >
-            Password
-          </Button>
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              setProfileContent(emailInfo);
-            }}
-          >
-            Email
-          </Button>
-          {/* <Button
+    <div className="Profile">
+      <div className="controlBtns">
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            setProfileContent(generalInfo);
+          }}
+        >
+          General Info
+        </Button>
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            setProfileContent(passwordInfo);
+          }}
+        >
+          Password
+        </Button>
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            setProfileContent(emailInfo);
+          }}
+        >
+          Email
+        </Button>
+        {/* <Button
             disableElevation
             className="controlBtn"
             variant="contained"
@@ -358,38 +357,38 @@ const Profile = () => {
           >
             Role Change
           </Button> */}
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              router.push("/offers/createOffer");
-            }}
-          >
-            Create new offer
-          </Button>
-          <form onSubmit={onLogout}>
-            <button id="logoutBtn">Logout</button>
-          </form>
-        </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(e.target);
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            router.push("/offers/createOffer");
           }}
         >
-          {profileContent}
-          <Button
-            type="submit"
-            disableElevation
-            className="saveChanges"
-            variant="contained"
-          >
-            Save changes
-          </Button>
+          Create new offer
+        </Button>
+        <form onSubmit={onLogout}>
+          <button id="logoutBtn">Logout</button>
         </form>
-        <div>
-          {/* <Button
+      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(e.target);
+        }}
+      >
+        {profileContent}
+        <Button
+          type="submit"
+          disableElevation
+          className="saveChanges"
+          variant="contained"
+        >
+          Save changes
+        </Button>
+      </form>
+      <div>
+        {/* <Button
             type="submit"
             disableElevation
             className="saveChanges"
@@ -397,8 +396,8 @@ const Profile = () => {
           >
             Save changes
           </Button> */}
-        </div>
       </div>
+    </div>
   );
 };
 

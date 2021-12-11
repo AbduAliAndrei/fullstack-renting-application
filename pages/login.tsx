@@ -43,9 +43,8 @@ const Login = () => {
     e.preventDefault();
 
     const user = await register();
-    userLogged.setUserLogged(user);
-    console.log(userLogged);
     if (user) {
+      userLogged.setUserLogged(user.res);
       await router.push("/profile");
     }
   };

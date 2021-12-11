@@ -1,5 +1,5 @@
 // import '../styles/App.css'
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
@@ -11,9 +11,23 @@ import { NavLinkProps } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import Typography from "@mui/material/Typography";
 import UserLogged, { IUserLogged } from "../context/user-logged.context";
+import { fetchCall, RequestType } from "../api/data-fetcher";
+import { HttpStatus } from "../server/enums/http-status";
 
 function LoggedInUserNav(props) {
   const router = useRouter();
+  const { setUserLoggedOut } = useContext<IUserLogged>(UserLogged);
+
+  const onLogout = useCallback(async () => {
+    const responsePromise = await fetchCall({
+      type: RequestType.POST,
+      path: "auth/logout",
+    });
+    if (responsePromise.status === HttpStatus.MOVED_PERMANENTLY) {
+      setUserLoggedOut();
+      await router.push("/login");
+    }
+  }, [router, setUserLoggedOut]);
 
   return (
     <div className="Nav">
@@ -80,9 +94,7 @@ function LoggedInUserNav(props) {
                 </Link>
               </li>
               <li className={router.pathname === "/contact" ? "active" : ""}>
-                <Link href="/contact">
-                  <a href="">Log out</a>
-                </Link>
+                <span onClick={onLogout}>Log out</span>
               </li>
             </ul>
           </nav>
@@ -97,12 +109,14 @@ export default function Nav({}: NavLinkProps) {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (userContext.user) {
+    if (userContext.user && userContext.user.userName) {
       setUserLoggedIn(true);
+    } else {
+      setUserLoggedIn(false);
     }
   }, [userContext.user]);
 
-  return userLoggedIn ? (
+  return userLoggedIn && userContext.user ? (
     <LoggedInUserNav userName={userContext.user.userName} />
   ) : (
     <div className="Nav">
