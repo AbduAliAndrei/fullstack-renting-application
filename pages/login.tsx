@@ -55,7 +55,7 @@ const Login = () => {
         <div className="login-form-header">
           <div className="logo">
             <Link href="/">
-              <a>viaRent</a>
+              <a>lambdaRents</a>
             </Link>
           </div>
           <div className="back-home-btn">

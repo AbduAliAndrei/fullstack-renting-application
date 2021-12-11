@@ -69,7 +69,7 @@ const Register = () => {
         <div className="register-form-header">
           <div className="logo">
             <Link href="/">
-              <a>viaRent</a>
+              <a>lambdaRents</a>
             </Link>
           </div>
           <div className="back-home-btn">

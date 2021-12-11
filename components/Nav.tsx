@@ -129,7 +129,7 @@ export default function Nav({}: NavLinkProps) {
       </label>
       <div className="logo">
         <Link href="/">
-          <a>viaRent</a>
+          <a>lambdaRents</a>
         </Link>
       </div>
       <div className="menu">

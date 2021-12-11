@@ -365,7 +365,7 @@ const Profile = () => {
             router.push("/offers/createOffer");
           }}
         >
-          Create new offer
+          Create
         </Button>
         <form onSubmit={onLogout}>
           <button id="logoutBtn">Logout</button>
