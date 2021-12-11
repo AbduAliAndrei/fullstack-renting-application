@@ -2,6 +2,7 @@ import { HttpRequest } from "../../interfaces/http-request";
 import asyncF from "../../../utils/async-f";
 import { SecuredUser } from "../../../interfaces/user";
 import Controller from "../../interfaces/controller";
+import { HttpStatus } from "../../enums/http-status";
 
 export default function createUserChecker({
   checkTakeUser,
@@ -25,9 +26,9 @@ export default function createUserChecker({
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 404,
+        statusCode: HttpStatus.NO_CONTENT,
         body: {
-          error: userError as string,
+          res: {} as Required<SecuredUser>,
         },
       };
     } else {
@@ -35,7 +36,7 @@ export default function createUserChecker({
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 200,
+        statusCode: HttpStatus.OK,
         body: {
           res: user,
         },
