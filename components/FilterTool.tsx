@@ -15,22 +15,21 @@ import { FilterElement, Filters } from "../interfaces/filterElement";
 export default function FilterTool(props) {
   const [searchByText, setSearchByText] = useState("");
   const filterOffers = async () => {
-    let filterFromCurrentFilters = () => {
-      let finalResult = [];
-      let result = filters.map((filterObj) => {
+    const filterFromCurrentFilters = () => {
+      const result = filters.map((filterObj) => {
         return filterObj.filters.filter((ob) => ob.checked);
       });
-      let reqCities = result[0].map((city) => city.name);
-      let reqPrice = result[1].map((price) => price.name);
-      let reqDistrict = result[2].map((district) => district.name);
-      let query: [string, any][] = [
+      const reqCities = result[0].map((city) => city.name);
+      const reqPrice = result[1].map((price) => price.name);
+      const reqDistrict = result[2].map((district) => district.name);
+      const query: [string, any][] = [
         [`filter.${AllowedFilterOfferKeys.CITY}`, reqCities],
         [`filter.${AllowedFilterOfferKeys.PRICE}`, reqPrice],
         [`filter.${AllowedFilterOfferKeys.DISTRICT}`, reqDistrict],
       ];
       return query.filter((query) => query[1].length > 0);
     };
-    let query = filterFromCurrentFilters();
+    const query = filterFromCurrentFilters();
     if (query.length > 0) {
       const res = await fetchCall({
         type: RequestType.GET,

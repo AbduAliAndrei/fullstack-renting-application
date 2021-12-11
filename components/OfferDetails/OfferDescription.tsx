@@ -8,24 +8,24 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 export default function OfferDescription() {
   const [open, setOpen] = React.useState(false);
 
-  const handleClick = () => {
-    setOpen((prev) => !prev);
-  };
+  // const handleClick = () => {
+  //   setOpen((prev) => !prev);
+  // };
 
-  const handleClickAway = () => {
-    setOpen(false);
-  };
+  // const handleClickAway = () => {
+  //   setOpen(false);
+  // };
 
-  const styles = {
-    position: "absolute",
-    top: 28,
-    right: 0,
-    left: 0,
-    zIndex: 1,
-    border: "1px solid",
-    p: 1,
-    bgcolor: "background.paper",
-  };
+  // const styles = {
+  //   position: "absolute",
+  //   top: 28,
+  //   right: 0,
+  //   left: 0,
+  //   zIndex: 1,
+  //   border: "1px solid",
+  //   p: 1,
+  //   bgcolor: "background.paper",
+  // };
   return (
     <div className="OfferDescription">
       <div className="shortDescription">

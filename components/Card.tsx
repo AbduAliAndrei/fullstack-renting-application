@@ -41,28 +41,28 @@ function SamplePrevArrow(props) {
 
 export default function Card({ offer }: { offer: OfferWithUser }) {
   const nextRouter = useRouter();
-  const mock = {
-    title: "offer title Name",
-    description: "offer description",
-    price: "155,000",
-    currency: "Huf",
-    allIncluded: true,
-    datePosted: "12 august 2021",
-    facilities: {
-      fridge: true,
-      AC: true,
-      washing_machine: true,
-      wifi: true,
-      gas_heating: true,
-      dryer: true,
-      tv: true,
-      oven: true,
-      stove: true,
-      dishwasher: true,
-      microwave: true,
-      fan: true,
-    },
-  };
+  // const mock = {
+  //   title: "offer title Name",
+  //   description: "offer description",
+  //   price: "155,000",
+  //   currency: "Huf",
+  //   allIncluded: true,
+  //   datePosted: "12 august 2021",
+  //   facilities: {
+  //     fridge: true,
+  //     AC: true,
+  //     washing_machine: true,
+  //     wifi: true,
+  //     gas_heating: true,
+  //     dryer: true,
+  //     tv: true,
+  //     oven: true,
+  //     stove: true,
+  //     dishwasher: true,
+  //     microwave: true,
+  //     fan: true,
+  //   },
+  // };
   const settings = {
     infinite: true,
     speed: 500,

@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 // import Grid from "@mui/material/Grid";
 import ReactLoading from "react-loading";
 export default function Index() {
-  let updateOffer = (offerToUpdate) => {
+  const updateOffer = (offerToUpdate) => {
     console.log(offerToUpdate);
-    setOffers(offerToUpdate);
+    if (offerToUpdate.length > 0) {
+      setOffers(offerToUpdate);
+    }
   };
 
   const [offers, setOffers] = useState<OfferWithUser[]>([]);

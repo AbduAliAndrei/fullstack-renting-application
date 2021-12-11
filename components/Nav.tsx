@@ -133,14 +133,14 @@ export default function Nav({}: NavLinkProps) {
       </div>
       <div className="login_signup">
         <div className="login">
-          <Link href="/login">
+          <Link href="/login" passHref>
             <Button disableElevation className="logInBtn" variant="contained">
               Log In
             </Button>
           </Link>
         </div>
         <div className="signup">
-          <Link href="/register">
+          <Link href="/register" passHref>
             <Button disableElevation className="signUpBtn" variant="contained">
               Sign Up
             </Button>
