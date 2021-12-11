@@ -146,6 +146,7 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
                 className="ld-img"
                 objectFit="cover"
                 layout="fill"
+                priority={true}
               />
             </div>
             <div className="landlord-name-username">

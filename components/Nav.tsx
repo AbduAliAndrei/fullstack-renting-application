@@ -58,6 +58,7 @@ function LoggedInUserNav(props) {
               alt="Image"
               objectFit="cover"
               layout="fill"
+              priority={true}
             />
           </div>
           <Typography className="userName" variant="h6" component="h6">

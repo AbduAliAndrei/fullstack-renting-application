@@ -3,19 +3,27 @@ import FilterTool from "../../components/FilterTool";
 import * as React from "react";
 import useFetch, { RequestType } from "../../api/data-fetcher";
 import { OfferWithUser } from "../../interfaces/offer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import Grid from "@mui/material/Grid";
 import ReactLoading from "react-loading";
 export default function Index() {
-  const [offers, loading] = useFetch<OfferWithUser[]>({
+  let updateOffer = (offerToUpdate) => {
+    console.log(offerToUpdate);
+    setOffers(offerToUpdate);
+  };
+
+  const [offers, setOffers] = useState<OfferWithUser[]>([]);
+
+  const [fetchedOffers, loading] = useFetch<OfferWithUser[]>({
     type: RequestType.GET,
     path: "offers",
     query: [["takeOwner", "true"]],
   });
 
   useEffect(() => {
-    console.log(loading, offers);
-  }, [loading, offers]);
+    // console.log(loading, fetchedOffers);
+    setOffers(fetchedOffers);
+  }, [loading, fetchedOffers]);
 
   if (loading) {
     return (
@@ -46,7 +54,7 @@ export default function Index() {
   return (
     <div className="Offers">
       <div className="filter-tool">
-        <FilterTool />
+        <FilterTool updateOffers={updateOffer} />
       </div>
       <div className="offers-container">
         {offers.map((offer) => (

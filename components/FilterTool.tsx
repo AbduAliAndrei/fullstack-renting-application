@@ -12,17 +12,34 @@ import { InputAdornment } from "@mui/material";
 import Search from "@material-ui/icons/Search";
 import { FilterElement, Filters } from "../interfaces/filterElement";
 
-export default function FilterTool() {
+export default function FilterTool(props) {
   const [searchByText, setSearchByText] = useState("");
   const filterOffers = async () => {
-    await fetchCall({
-      type: RequestType.GET,
-      path: "offers",
-      query: [
-        [`filter.${AllowedFilterOfferKeys.CITY}`, ["Budapest"]],
-        [`filter.${AllowedFilterOfferKeys.TITLE}`, ["Taken"]],
-      ],
-    });
+    let filterFromCurrentFilters = () => {
+      let finalResult = [];
+      let result = filters.map((filterObj) => {
+        return filterObj.filters.filter((ob) => ob.checked);
+      });
+      let reqCities = result[0].map((city) => city.name);
+      let reqPrice = result[1].map((price) => price.name);
+      let reqDistrict = result[2].map((district) => district.name);
+      let query: [string, any][] = [
+        [`filter.${AllowedFilterOfferKeys.CITY}`, reqCities],
+        [`filter.${AllowedFilterOfferKeys.PRICE}`, reqPrice],
+        [`filter.${AllowedFilterOfferKeys.DISTRICT}`, reqDistrict],
+      ];
+      return query.filter((query) => query[1].length > 0);
+    };
+    let query = filterFromCurrentFilters();
+    if (query.length > 0) {
+      const res = await fetchCall({
+        type: RequestType.GET,
+        path: "offers",
+        query: query,
+      });
+      const offers = await res.json();
+      props.updateOffers(offers.res);
+    }
   };
 
   const [filters, setFilters] = useState<Filters[]>([
@@ -125,7 +142,9 @@ export default function FilterTool() {
         variant="standard"
         value={searchByText}
         onInput={(e) => {
-          // setSearchByText(e.target.value);
+          const element = e.target as HTMLInputElement;
+          const value = element.value;
+          setSearchByText(value);
         }}
       />
       <div className="options">
@@ -356,11 +375,10 @@ export default function FilterTool() {
         </div>
       </div>
       <Button
-        action-btn-filter
         disableElevation
         onClick={() => {
-          // filterOffers()
-          console.log(filters);
+          filterOffers();
+          // console.log(filters);
         }}
         className="action-btn-filter"
         variant="contained"

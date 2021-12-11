@@ -187,6 +187,7 @@ const Register = () => {
           className="ld-img"
           objectFit="cover"
           layout="fill"
+          priority={true}
         />
       </div>
     </div>

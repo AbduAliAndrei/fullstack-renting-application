@@ -133,6 +133,7 @@ const Login = () => {
           className="ld-img"
           objectFit="cover"
           layout="fill"
+          priority={true}
         />
       </div>
     </div>
