@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useEffect, useState } from "react";
+import { BaseSyntheticEvent, useContext, useEffect, useState } from "react";
 import { UserGender } from "../enums/user-gender";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 import { UserType } from "../enums/user-type";
 import { User } from "../interfaces/user";
 import { useRouter } from "next/router";
+import UserLogged, { IUserLogged } from "../context/user-logged.context";
 const Register = () => {
   const [userType, setUserType] = useState<UserType>(UserType.TENANT);
   const [, setUserGender] = useState<UserGender>(UserGender.MALE);
@@ -19,6 +20,7 @@ const Register = () => {
     gender: "male",
     picture: "svg.net",
   });
+  const { setUserLogged } = useContext<IUserLogged>(UserLogged);
 
   const [xsrfToken] = useCookies(["XSRF-TOKEN"]);
 
@@ -55,6 +57,8 @@ const Register = () => {
     e.preventDefault();
     const res = await register();
     if (res.status === 201) {
+      const user = await res.json();
+      setUserLogged(user.res.data);
       await router.push("./profile");
     }
   };
