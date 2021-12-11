@@ -15,6 +15,7 @@ export default function LandlordDetails({ user }: { user: SecuredUser }) {
               className="ld-img"
               objectFit="cover"
               layout="fill"
+              priority={true}
             />
           </div>
           <span>

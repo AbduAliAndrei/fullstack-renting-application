@@ -1,5 +1,6 @@
 import Controller from "../../interfaces/controller";
 import asyncF from "../../../utils/async-f";
+import { HttpStatus } from "../../enums/http-status";
 
 export default function createLogout({
   logoutService,
@@ -16,7 +17,7 @@ export default function createLogout({
         headers: {
           "Content-Type": "application/json",
         },
-        statusCode: 404,
+        statusCode: HttpStatus.NOT_FOUND,
         body: {
           res: error,
         },
@@ -28,7 +29,7 @@ export default function createLogout({
       headers: {
         "Content-Type": "application/json",
       },
-      statusCode: 301,
+      statusCode: HttpStatus.MOVED_PERMANENTLY,
       body: {
         res: true,
       },

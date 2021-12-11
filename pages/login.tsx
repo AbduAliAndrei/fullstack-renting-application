@@ -1,16 +1,18 @@
-import { BaseSyntheticEvent, useCallback, useState } from "react";
+import { BaseSyntheticEvent, useCallback, useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
+import UserLogged, { IUserLogged } from "../context/user-logged.context";
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState<{
     email: string;
     password: string;
   }>({ email: "andrei@gmail.com", password: "123456" });
+  const userLogged = useContext<IUserLogged>(UserLogged);
   // const styles = useStyles({ color: "#ff0000" });
 
   const changeLoginInfo = useCallback(
@@ -42,6 +44,7 @@ const Login = () => {
 
     const user = await register();
     if (user) {
+      userLogged.setUserLogged(user.res);
       await router.push("/profile");
     }
   };
@@ -52,7 +55,7 @@ const Login = () => {
         <div className="login-form-header">
           <div className="logo">
             <Link href="/">
-              <a>viaRent</a>
+              <a>lambdaRents</a>
             </Link>
           </div>
           <div className="back-home-btn">
@@ -133,6 +136,7 @@ const Login = () => {
           className="ld-img"
           objectFit="cover"
           layout="fill"
+          priority={true}
         />
       </div>
     </div>

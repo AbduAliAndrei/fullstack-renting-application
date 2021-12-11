@@ -1,25 +1,24 @@
-import Auth from "../components/Auth";
 import React, { FormEvent, useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
 import Box from "@mui/system/Box";
 // import { styled } from "@mui/system";
 import Switch from "@material-ui/core/Switch";
 import FormControl from "@mui/material/FormControl";
 // import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
+// import Select from "@mui/material/Select";
+// import MenuItem from "@mui/material/MenuItem";
+// import FormHelperText from "@mui/material/FormHelperText";
+// import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Input from "@material-ui/core/Input";
-import { FormLabel } from "@mui/material";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+// import { FormLabel } from "@mui/material";
 // import { dividerClasses } from "@mui/material";
 // import InputAdornment from "@material-ui/core/InputAdornment";
 // import Search from "@material-ui/icons/Search";
@@ -312,45 +311,43 @@ const Profile = () => {
       if (res.status === 301) {
         await router.push("/login");
       }
-      console.log(res.status);
     },
     [router, xsrfToken]
   );
   return (
-    <Auth>
-      <div className="Profile">
-        <div className="controlBtns">
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              setProfileContent(generalInfo);
-            }}
-          >
-            General Info
-          </Button>
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={(e) => {
-              setProfileContent(passwordInfo);
-            }}
-          >
-            Password
-          </Button>
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              setProfileContent(emailInfo);
-            }}
-          >
-            Email
-          </Button>
-          {/* <Button
+    <div className="Profile">
+      <div className="controlBtns">
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            setProfileContent(generalInfo);
+          }}
+        >
+          General Info
+        </Button>
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            setProfileContent(passwordInfo);
+          }}
+        >
+          Password
+        </Button>
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            setProfileContent(emailInfo);
+          }}
+        >
+          Email
+        </Button>
+        {/* <Button
             disableElevation
             className="controlBtn"
             variant="contained"
@@ -360,38 +357,38 @@ const Profile = () => {
           >
             Role Change
           </Button> */}
-          <Button
-            disableElevation
-            className="controlBtn"
-            variant="contained"
-            onClick={() => {
-              router.push("/offers/createOffer");
-            }}
-          >
-            Create new offer
-          </Button>
-          <form onSubmit={onLogout}>
-            <button id="logoutBtn">Logout</button>
-          </form>
-        </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(e.target);
+        <Button
+          disableElevation
+          className="controlBtn"
+          variant="contained"
+          onClick={() => {
+            router.push("/offers/createOffer");
           }}
         >
-          {profileContent}
-          <Button
-            type="submit"
-            disableElevation
-            className="saveChanges"
-            variant="contained"
-          >
-            Save changes
-          </Button>
+          Create
+        </Button>
+        <form onSubmit={onLogout}>
+          <button id="logoutBtn">Logout</button>
         </form>
-        <div>
-          {/* <Button
+      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(e.target);
+        }}
+      >
+        {profileContent}
+        <Button
+          type="submit"
+          disableElevation
+          className="saveChanges"
+          variant="contained"
+        >
+          Save changes
+        </Button>
+      </form>
+      <div>
+        {/* <Button
             type="submit"
             disableElevation
             className="saveChanges"
@@ -399,9 +396,8 @@ const Profile = () => {
           >
             Save changes
           </Button> */}
-        </div>
       </div>
-    </Auth>
+    </div>
   );
 };
 

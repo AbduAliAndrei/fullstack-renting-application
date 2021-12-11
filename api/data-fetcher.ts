@@ -1,5 +1,6 @@
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
+import { HttpStatus } from "../server/enums/http-status";
 export enum RequestType {
   POST = "POST",
   GET = "GET",
@@ -81,6 +82,11 @@ export default function useFetch<Res>({
       body: JSON.stringify(body),
     })
       .then(async (result) => {
+        if (result.status === HttpStatus.NOT_FOUND) {
+          const json = await result.json();
+          setRes((prevRes) => ({ ...prevRes, error: json }));
+          return;
+        }
         const json = await result.json();
         setRes((prevRes) => ({
           ...prevRes,

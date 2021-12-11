@@ -1,4 +1,3 @@
-import Auth from "../components/Auth";
 import { FormEvent, useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -234,30 +233,28 @@ const Test = () => {
   );
 
   return (
-    <Auth>
-      <div>
-        Profile
-        <div />
-        <form onSubmit={onLogout}>
-          <button>Logout</button>
-        </form>
-        <form onSubmit={getOffers}>
-          <button>Get Offers</button>
-        </form>
-        <form onSubmit={createOffer}>
-          <button>Create Offer</button>
-        </form>
-        <form onSubmit={getOffer}>
-          <button>Get Offer</button>
-        </form>
-        <form onSubmit={updateOffer}>
-          <button>Update Offer</button>
-        </form>
-        <form onSubmit={deleteOffer}>
-          <button>Delete Offer</button>
-        </form>
-      </div>
-    </Auth>
+    <div>
+      Profile
+      <div />
+      <form onSubmit={onLogout}>
+        <button>Logout</button>
+      </form>
+      <form onSubmit={getOffers}>
+        <button>Get Offers</button>
+      </form>
+      <form onSubmit={createOffer}>
+        <button>Create Offer</button>
+      </form>
+      <form onSubmit={getOffer}>
+        <button>Get Offer</button>
+      </form>
+      <form onSubmit={updateOffer}>
+        <button>Update Offer</button>
+      </form>
+      <form onSubmit={deleteOffer}>
+        <button>Delete Offer</button>
+      </form>
+    </div>
   );
 };
 

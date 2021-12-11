@@ -21,6 +21,7 @@ export default function OfferImages({ images }: { images: string[] }) {
               alt="Offer Image"
               objectFit="cover"
               layout="fill"
+              priority={true}
             />
           </div>
         ))}
