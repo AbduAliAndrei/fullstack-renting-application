@@ -19,12 +19,12 @@ export default function FilterTool(props) {
       const result = filters.map((filterObj) => {
         return filterObj.filters.filter((ob) => ob.checked);
       });
-      const reqCities = result[0].map((city) => city.name);
-      const reqPrice = result[1].map((price) => price.name);
-      const reqDistrict = result[2].map((district) => district.name);
+      const reqCities = result[0].map((city) => city.value);
+      const reqPrice = result[1].map((price) => price.value);
+      const reqDistrict = result[2].map((district) => district.value);
       const query: [string, any][] = [
         [`filter.${AllowedFilterOfferKeys.CITY}`, reqCities],
-        [`filter.${AllowedFilterOfferKeys.PRICE}`, reqPrice],
+        [`filter.${AllowedFilterOfferKeys.PRICE}`, JSON.stringify(reqPrice)],
         [`filter.${AllowedFilterOfferKeys.DISTRICT}`, reqDistrict],
       ];
       return query.filter((query) => query[1].length > 0);

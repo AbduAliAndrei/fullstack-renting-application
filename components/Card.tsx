@@ -151,14 +151,14 @@ export default function Card({ offer }: { offer: OfferWithUser }) {
             </div>
             <div className="landlord-name-username">
               <Typography className="landlordName" variant="h5" component="h5">
-                {offer.owner.firstName} {offer.owner.lastName}
+                {/* {offer.owner.firstName} {offer.owner.lastName} */}
               </Typography>
               <Typography
                 className="landlordUsername"
                 variant="h5"
                 component="h5"
               >
-                {offer.owner.userName}
+                {/* {offer.owner.userName} */}
               </Typography>
             </div>
           </div>
