@@ -1,16 +1,18 @@
-import { BaseSyntheticEvent, useCallback, useState } from "react";
+import { BaseSyntheticEvent, useCallback, useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faEye } from "@fortawesome/free-solid-svg-icons";
+import UserLogged, { IUserLogged } from "../context/user-logged.context";
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState<{
     email: string;
     password: string;
   }>({ email: "andrei@gmail.com", password: "123456" });
+  const userLogged = useContext<IUserLogged>(UserLogged);
   // const styles = useStyles({ color: "#ff0000" });
 
   const changeLoginInfo = useCallback(
@@ -41,6 +43,8 @@ const Login = () => {
     e.preventDefault();
 
     const user = await register();
+    userLogged.setUserLogged(user);
+    console.log(userLogged);
     if (user) {
       await router.push("/profile");
     }

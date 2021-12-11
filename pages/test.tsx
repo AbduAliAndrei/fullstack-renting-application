@@ -1,4 +1,3 @@
-import Auth from "../components/Auth";
 import { FormEvent, useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -234,7 +233,6 @@ const Test = () => {
   );
 
   return (
-    <Auth>
       <div>
         Profile
         <div />
@@ -257,7 +255,6 @@ const Test = () => {
           <button>Delete Offer</button>
         </form>
       </div>
-    </Auth>
   );
 };
 

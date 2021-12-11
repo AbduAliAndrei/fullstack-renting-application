@@ -1,5 +1,5 @@
 // import '../styles/App.css'
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLinkProps } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import Typography from "@mui/material/Typography";
+import UserLogged, { IUserLogged } from "../context/user-logged.context";
 
 function LoggedInUserNav(props) {
   const router = useRouter();
@@ -92,10 +93,17 @@ function LoggedInUserNav(props) {
 }
 export default function Nav({}: NavLinkProps) {
   const router = useRouter();
-  const userLoggedIn = true;
-  const userName = "Abdulla";
+  const userContext = useContext<IUserLogged>(UserLogged);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (userContext.user) {
+      setUserLoggedIn(true);
+    }
+  }, [userContext.user]);
+
   return userLoggedIn ? (
-    <LoggedInUserNav userName={userName} />
+    <LoggedInUserNav userName={userContext.user.userName} />
   ) : (
     <div className="Nav">
       <input type="checkbox" id="check" />

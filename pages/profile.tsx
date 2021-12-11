@@ -1,4 +1,3 @@
-import Auth from "../components/Auth";
 import React, { FormEvent, useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -317,7 +316,6 @@ const Profile = () => {
     [router, xsrfToken]
   );
   return (
-    <Auth>
       <div className="Profile">
         <div className="controlBtns">
           <Button
@@ -401,7 +399,6 @@ const Profile = () => {
           </Button> */}
         </div>
       </div>
-    </Auth>
   );
 };
 
